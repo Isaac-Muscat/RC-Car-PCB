@@ -499,7 +499,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
+		(property "Value" "GND_3V3"
 			(at 72.39 45.72 0)
 			(effects
 				(font
@@ -651,6 +651,26 @@
 				)
 				(justify left top)
 			)
+		)
+		(pin "UART_TX" input
+			(at 77.47 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "3c628395-b1f9-4cb6-b649-e0bfe5f20460")
+		)
+		(pin "UART_RX" input
+			(at 77.47 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "042906be-68d1-454c-871c-a61251796568")
 		)
 		(instances
 			(project "RC-Car-Project"
