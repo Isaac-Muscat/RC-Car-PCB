@@ -223,20 +223,30 @@
 		)
 	)
 	(no_connect
-		(at 72.39 40.64)
-		(uuid "1c4cef99-f8a4-4dcd-824e-4bacb3c58f9a")
-	)
-	(no_connect
 		(at 90.17 34.29)
 		(uuid "271cffcb-d88b-4d69-b1ab-869f76cd0d00")
 	)
 	(no_connect
-		(at 90.17 40.64)
-		(uuid "de50c51b-8689-457d-b7df-c2eaaf95a551")
+		(at 102.87 34.29)
+		(uuid "6eafe79d-177d-40fb-9e12-ea689d4c1922")
+	)
+	(no_connect
+		(at 102.87 40.64)
+		(uuid "de8b789a-844a-42df-8b04-b431c5edaa8b")
 	)
 	(no_connect
 		(at 72.39 34.29)
 		(uuid "ed051293-a8ad-4bcf-ad25-85560c61b6c6")
+	)
+	(wire
+		(pts
+			(xy 72.39 40.64) (xy 90.17 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5367cd23-6a4e-44a1-9b0b-267381475443")
 	)
 	(rectangle
 		(start 45.72 25.4)
@@ -281,6 +291,138 @@
 			)
 		)
 		(uuid "e47c771a-04aa-4154-9b52-ec4897119085")
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 102.87 34.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "27589121-345f-4595-8123-170a0ce7b8e1")
+		(property "Reference" "#PWR017"
+			(at 102.87 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "5V_BUCK"
+			(at 102.87 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 102.87 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 102.87 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "38b27e79-b79b-4593-9700-ef08be805a1d")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "#PWR017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 102.87 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3c80f3e6-46f4-418a-a844-8dbb0b7ef812")
+		(property "Reference" "#PWR016"
+			(at 102.87 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_BATT"
+			(at 102.87 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 102.87 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 102.87 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f350f267-f8da-4950-bab0-b3ce41ea2b1c")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "power:+3V3")
