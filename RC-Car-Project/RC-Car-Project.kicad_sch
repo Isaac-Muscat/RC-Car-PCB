@@ -776,7 +776,7 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc")
-		(property "Sheetname" "Xbee"
+		(property "Sheetname" "RF"
 			(at 44.45 70.4084 0)
 			(effects
 				(font
@@ -785,7 +785,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "Xbee_sch.kicad_sch"
+		(property "Sheetfile" "RF_sch.kicad_sch"
 			(at 44.45 98.3746 0)
 			(effects
 				(font
@@ -793,26 +793,6 @@
 				)
 				(justify left top)
 			)
-		)
-		(pin "UART_TX" input
-			(at 77.47 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "3c628395-b1f9-4cb6-b649-e0bfe5f20460")
-		)
-		(pin "UART_RX" input
-			(at 77.47 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "042906be-68d1-454c-871c-a61251796568")
 		)
 		(instances
 			(project "RC-Car-Project"
