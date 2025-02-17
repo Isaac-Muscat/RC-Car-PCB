@@ -5,4 +5,5 @@
   (lib (name "2450FB15A050E Balun")(type "KiCad")(uri "${KIPRJMOD}/../Libraries/2450FB15A050E/KiCADv6/2025-02-11_03-01-25.kicad_sym")(options "")(descr ""))
   (lib (name "INA229AQDGSRQ1")(type "KiCad")(uri "${KIPRJMOD}/../Libraries/INA229AQDGSRQ1/KiCADv6/2025-02-11_03-42-13.kicad_sym")(options "")(descr ""))
   (lib (name "SN74HC244PWR")(type "KiCad")(uri "${KIPRJMOD}/../Libraries/SN74HC244PWR/KiCADv6/2025-02-11_03-56-46.kicad_sym")(options "")(descr ""))
+  (lib (name "A6986F3V3TR")(type "KiCad")(uri "${KIPRJMOD}/../Libraries/A6986F3V3TR/KiCADv6/2025-02-17_15-26-51.kicad_sym")(options "")(descr ""))
 )

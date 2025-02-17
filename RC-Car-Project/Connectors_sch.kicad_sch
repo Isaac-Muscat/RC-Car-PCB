@@ -953,82 +953,44 @@
 		)
 	)
 	(no_connect
+		(at 165.1 99.06)
+		(uuid "0e0cc3f4-d800-4a18-8f96-31fbd5cea0bc")
+	)
+	(no_connect
+		(at 165.1 88.9)
+		(uuid "2760104a-fc25-4790-a700-8f715cbb64a9")
+	)
+	(no_connect
+		(at 104.14 99.06)
+		(uuid "7a8de155-3b1d-452b-b534-e9af21ba59e6")
+	)
+	(no_connect
+		(at 165.1 96.52)
+		(uuid "a0b271d0-ab43-4e92-974f-2ebd3be0db72")
+	)
+	(no_connect
+		(at 165.1 86.36)
+		(uuid "b0d5946f-5a5c-4fa6-8f9c-86e3a0b1ab5b")
+	)
+	(no_connect
+		(at 104.14 96.52)
+		(uuid "b8e7fc52-619f-4704-938f-e0690325b319")
+	)
+	(no_connect
 		(at 69.85 82.55)
 		(uuid "c60819b1-06ea-46cc-9c1e-11b753aa6a58")
 	)
-	(hierarchical_label "DIO"
-		(shape input)
-		(at 69.85 90.17 180)
-		(fields_autoplaced yes)
+	(text "Need to find the right connectors + right sizes."
+		(exclude_from_sim no)
+		(at 109.728 74.168 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
 		)
-		(uuid "1a312159-d613-4d94-8700-50f882395734")
+		(uuid "57003916-662f-4903-921f-a7f0f4b2660a")
 	)
-	(hierarchical_label "XBEE_RTS"
-		(shape input)
-		(at 113.03 92.71 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2fc09086-1be4-4c1a-b1c9-1dfa7966b2a3")
-	)
-	(hierarchical_label "XBEE_DTR"
-		(shape input)
-		(at 113.03 90.17 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "52bf960f-8c6d-455a-857e-3d80fb1a67df")
-	)
-	(hierarchical_label "XBEE_UART_RX"
-		(shape input)
-		(at 113.03 95.25 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "5aa6dd67-96c1-4fc7-b06a-e8698ac3024f")
-	)
-	(hierarchical_label "NRST"
-		(shape input)
-		(at 69.85 92.71 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "5da36401-490d-4116-ba34-58f6b328e0e0")
-	)
-	(hierarchical_label "XBEE_UART_TX"
-		(shape input)
-		(at 113.03 97.79 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "60a576fc-c2fa-402c-b8f1-9807e9f20734")
-	)
-	(hierarchical_label "CLK"
+	(hierarchical_label "SWCLK"
 		(shape input)
 		(at 69.85 95.25 180)
 		(fields_autoplaced yes)
@@ -1038,7 +1000,19 @@
 			)
 			(justify right)
 		)
-		(uuid "8c132aeb-588f-4ed7-8e5e-c3e2c3377f28")
+		(uuid "00fe3d47-d318-4c07-a6ee-d24c5a5ac912")
+	)
+	(hierarchical_label "M1_LEFT"
+		(shape input)
+		(at 104.14 93.98 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0da9f999-e598-4c24-924a-8eaffe5e797f")
 	)
 	(hierarchical_label "USART_RX"
 		(shape input)
@@ -1050,7 +1024,67 @@
 			)
 			(justify right)
 		)
-		(uuid "da8b36bb-20dc-4cd0-9f72-adb652e83823")
+		(uuid "292db7fd-3111-450a-ba9b-02f0e773be64")
+	)
+	(hierarchical_label "M2_LEFT"
+		(shape input)
+		(at 104.14 88.9 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "41e19492-8af2-4f0e-b419-75d099629880")
+	)
+	(hierarchical_label "RF_ANT"
+		(shape input)
+		(at 132.08 88.9 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6dfb523d-a206-4930-a035-2c53d1d47b4d")
+	)
+	(hierarchical_label "NRST"
+		(shape input)
+		(at 69.85 90.17 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "707fb30f-ea47-451a-a1ce-bb68392a43bd")
+	)
+	(hierarchical_label "M1_RIGHT"
+		(shape input)
+		(at 104.14 91.44 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "731a8a1c-d504-4cf6-a376-e3f27882f830")
+	)
+	(hierarchical_label "RELAY_CTRL"
+		(shape input)
+		(at 165.1 91.44 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "81bd6331-0910-49d3-9598-a46eda294d2b")
 	)
 	(hierarchical_label "USART_TX"
 		(shape input)
@@ -1062,7 +1096,43 @@
 			)
 			(justify right)
 		)
-		(uuid "e2950460-5c21-4281-b8b8-ec48770e4f75")
+		(uuid "bdc74fd0-063b-49cb-bd54-9fb33433b5cf")
+	)
+	(hierarchical_label "SWDIO"
+		(shape input)
+		(at 69.85 92.71 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cce258ad-7cf0-4785-ad56-de701e4e08dc")
+	)
+	(hierarchical_label "M2_RIGHT"
+		(shape input)
+		(at 104.14 86.36 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ce964aaa-dc99-41d4-8742-34eb4e175031")
+	)
+	(hierarchical_label "LIGHTS_PWM"
+		(shape input)
+		(at 165.1 93.98 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e846a197-578d-420c-ae1f-334bc640950b")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -1220,222 +1290,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 113.03 85.09 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "21510875-2281-413f-9123-4a12b75bda37")
-		(property "Reference" "#PWR011"
-			(at 116.84 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 109.14 85.0899 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 113.03 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 113.03 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 113.03 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b08d7f41-1287-4374-87c9-4fc05ca15df1")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
-					(reference "#PWR011")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 113.03 87.63 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "35cc9574-8a51-40db-9cd3-e70bec2d63e5")
-		(property "Reference" "#PWR010"
-			(at 106.68 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND_3V3"
-			(at 109.22 87.6299 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 113.03 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 113.03 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 113.03 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "33a0cf25-aac9-4f95-9b00-fe1572fd1620")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
-					(reference "#PWR010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:Conn_01x06_Pin")
-		(at 118.11 92.71 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5364c8bd-7e1b-4193-a139-9a78770fc13b")
-		(property "Reference" "J2"
-			(at 119.38 90.1699 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "XBEE_IF"
-			(at 119.38 92.7099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 118.11 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 118.11 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connector, single row, 01x06, script generated"
-			(at 118.11 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "6"
-			(uuid "47e138e3-8457-45fe-9af9-cf83da28f586")
-		)
-		(pin "1"
-			(uuid "f365aa95-10f2-4d51-b37b-9b8fd23bce4a")
-		)
-		(pin "2"
-			(uuid "afbae603-7d1d-405f-84b8-d1191c379159")
-		)
-		(pin "3"
-			(uuid "7111ac14-9e5a-4452-8480-1b9c4c181073")
-		)
-		(pin "4"
-			(uuid "062faffd-6962-472d-8562-32d0b173441d")
-		)
-		(pin "5"
-			(uuid "37c276a4-e92a-4df5-8c39-97661252ec06")
-		)
-		(instances
-			(project ""
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
-					(reference "J2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 69.85 87.63 270)
 		(unit 1)
@@ -1497,6 +1351,252 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
 					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x06_Pin")
+		(at 137.16 93.98 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9cb92d6e-50ee-4534-95b0-19b253419b93")
+		(property "Reference" "J4"
+			(at 138.43 91.4399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "ANT_IF"
+			(at 138.43 93.9799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 137.16 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 137.16 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x06, script generated"
+			(at 137.16 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "ae84ce6d-8bdf-4b2d-bfa5-9c9cc9b715bc")
+		)
+		(pin "1"
+			(uuid "4c55f0f2-5a31-4766-8bb6-e7b744a421f5")
+		)
+		(pin "2"
+			(uuid "87a46701-f10b-423b-af61-83e00de57059")
+		)
+		(pin "3"
+			(uuid "8af8c096-f753-4b81-9b39-478743e459cd")
+		)
+		(pin "4"
+			(uuid "55b8fc0f-9d62-425d-89a2-3b39d82de5d8")
+		)
+		(pin "5"
+			(uuid "2159d0b2-d7c2-4a26-8346-a3486b7b872f")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x06_Pin")
+		(at 170.18 93.98 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a7c797dd-3d8f-404c-98fc-8c04a422ef9c")
+		(property "Reference" "J5"
+			(at 171.45 91.4399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "MISC_IF"
+			(at 171.45 93.9799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 170.18 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 170.18 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x06, script generated"
+			(at 170.18 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "9aff023a-5647-4315-a559-7fe698efdbaf")
+		)
+		(pin "1"
+			(uuid "52b09663-b119-403c-9919-50d43e2f83af")
+		)
+		(pin "2"
+			(uuid "d2aaa0d1-e93d-431e-a91b-b1af0ae31277")
+		)
+		(pin "3"
+			(uuid "d3c0423e-c932-41dc-8365-5fe6f90a6edb")
+		)
+		(pin "4"
+			(uuid "d92a6839-d9e2-4f35-aa0d-83163313968c")
+		)
+		(pin "5"
+			(uuid "623257ea-d11e-45f1-b420-8b198f2e5799")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
+					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_01x06_Pin")
+		(at 109.22 93.98 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e4af12e7-026c-4765-9bda-db54d1199293")
+		(property "Reference" "J3"
+			(at 110.49 91.4399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "MOTOR_IF"
+			(at 110.49 93.9799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 109.22 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 109.22 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x06, script generated"
+			(at 109.22 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "db8b6b19-9420-4744-9cf6-e5e653a020ad")
+		)
+		(pin "1"
+			(uuid "7da7bbb1-c629-40a4-ab53-32e414540a87")
+		)
+		(pin "2"
+			(uuid "60d4fe6b-cec6-48a5-ba6a-75653b061e29")
+		)
+		(pin "3"
+			(uuid "6db3ea41-fbde-4433-bb07-aec8546b9e48")
+		)
+		(pin "4"
+			(uuid "4691cee0-fc43-4120-b847-5af22b95cad5")
+		)
+		(pin "5"
+			(uuid "3edc4197-a2df-4cf0-8b86-b71afc21175f")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
+					(reference "J3")
 					(unit 1)
 				)
 			)
