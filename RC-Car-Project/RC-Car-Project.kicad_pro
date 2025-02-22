@@ -601,11 +601,7 @@
     ],
     [
       "15913cf9-3929-404b-bf1a-e176e0fdf251",
-      "MotorDriver1"
-    ],
-    [
-      "1b6fe3a4-6a02-4e80-a5e3-1ee98d7a98e1",
-      "MotorDriver2"
+      "MotorDriver"
     ]
   ],
   "text_variables": {}
