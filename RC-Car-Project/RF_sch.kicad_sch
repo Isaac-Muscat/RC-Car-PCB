@@ -4225,7 +4225,7 @@
 				)
 			)
 		)
-		(property "Footprint" "QFN48_PQ_MCH"
+		(property "Footprint" "footprints:QFN48_PQ_MCH"
 			(at 105.41 128.27 0)
 			(effects
 				(font
@@ -4438,7 +4438,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 267.6652 100.33 0)
 			(effects
 				(font
@@ -4642,7 +4642,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 101.2952 156.21 0)
 			(effects
 				(font
@@ -5046,7 +5046,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 59.3852 156.21 0)
 			(effects
 				(font
@@ -5316,7 +5316,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 77.1652 156.21 0)
 			(effects
 				(font
@@ -5386,7 +5386,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 93.6752 156.21 0)
 			(effects
 				(font
@@ -5589,7 +5589,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 108.9152 156.21 0)
 			(effects
 				(font
@@ -6258,7 +6258,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 271.4752 95.25 0)
 			(effects
 				(font
@@ -6462,7 +6462,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 86.0552 156.21 0)
 			(effects
 				(font
@@ -6532,7 +6532,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 68.2752 156.21 0)
 			(effects
 				(font
@@ -6602,7 +6602,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 50.4952 156.21 0)
 			(effects
 				(font
@@ -6737,7 +6737,7 @@
 				)
 			)
 		)
-		(property "Footprint" "2450FB15A050E_JOT"
+		(property "Footprint" "footprints:2450FB15A050E_JOT"
 			(at 121.92 87.63 0)
 			(effects
 				(font
@@ -7153,7 +7153,7 @@
 				)
 			)
 		)
-		(property "Footprint" "RFX2401C_SKY"
+		(property "Footprint" "footprints:RFX2401C_SKY"
 			(at 222.25 85.09 0)
 			(effects
 				(font

@@ -527,11 +527,23 @@
           "label": "DNP",
           "name": "${DNP}",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
-      "name": "Grouped By Value",
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -602,6 +614,10 @@
     [
       "15913cf9-3929-404b-bf1a-e176e0fdf251",
       "MotorDriver"
+    ],
+    [
+      "6cd00c1a-14cd-4705-8fa1-76b1c50e2463",
+      "MiscDriver"
     ]
   ],
   "text_variables": {}
