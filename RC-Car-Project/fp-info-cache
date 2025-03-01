@@ -1,4 +1,4 @@
-24456134898922769
+24466580098808196
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -98623,6 +98623,27 @@ CONN_1805375_RSP
 4
 4
 footprints
+DDA0008E_L
+
+LMR16020PDDAR 
+0
+15
+10
+footprints
+DDA0008E_M
+
+LMR16020PDDAR 
+0
+15
+10
+footprints
+DDA0008E_N
+
+LMR16020PDDAR 
+0
+15
+10
+footprints
 HTSSOP16_4P5X5P1X0P65P_STM
 
 A6986F3V3TR 
@@ -98671,6 +98692,27 @@ STM32H743VGT6
 0
 100
 100
+footprints
+MUA08A
+
+ADC082S021CIMM/NOPB 
+0
+8
+8
+footprints
+MUA08A-L
+
+ADC082S021CIMM/NOPB 
+0
+8
+8
+footprints
+MUA08A-M
+
+ADC082S021CIMM/NOPB 
+0
+8
+8
 footprints
 OSC_J032_JAU
 
