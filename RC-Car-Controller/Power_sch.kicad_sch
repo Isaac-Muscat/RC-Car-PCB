@@ -1358,6 +1358,12 @@
 		(uuid "4ad66ad8-a5e3-416a-9d5a-1f9051a88936")
 	)
 	(junction
+		(at 176.53 73.66)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "526c7c57-905b-455f-ae95-b4ef31a6e238")
+	)
+	(junction
 		(at 170.18 107.95)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1569,6 +1575,16 @@
 	)
 	(wire
 		(pts
+			(xy 176.53 73.66) (xy 176.53 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "332704f5-ffaa-4f7c-a394-0742b5e87191")
+	)
+	(wire
+		(pts
 			(xy 82.55 125.73) (xy 100.33 125.73)
 		)
 		(stroke
@@ -1639,7 +1655,7 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 76.2) (xy 176.53 78.74)
+			(xy 176.53 68.58) (xy 176.53 73.66)
 		)
 		(stroke
 			(width 0)
@@ -1669,7 +1685,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 76.2) (xy 176.53 76.2)
+			(xy 177.8 68.58) (xy 176.53 68.58)
 		)
 		(stroke
 			(width 0)
@@ -1699,7 +1715,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 73.66) (xy 176.53 73.66)
+			(xy 177.8 66.04) (xy 176.53 66.04)
 		)
 		(stroke
 			(width 0)
@@ -1899,7 +1915,7 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 73.66) (xy 176.53 71.12)
+			(xy 176.53 66.04) (xy 176.53 63.5)
 		)
 		(stroke
 			(width 0)
@@ -5568,7 +5584,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 176.53 71.12 0)
+		(at 176.53 63.5 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5577,7 +5593,7 @@
 		(fields_autoplaced yes)
 		(uuid "04f57a11-1acf-4b51-9b00-fc0c09f25e0b")
 		(property "Reference" "#PWR015"
-			(at 176.53 74.93 0)
+			(at 176.53 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5586,7 +5602,7 @@
 			)
 		)
 		(property "Value" "VDD_BATT"
-			(at 176.53 66.04 0)
+			(at 176.53 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5594,7 +5610,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 176.53 71.12 0)
+			(at 176.53 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5603,7 +5619,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 176.53 71.12 0)
+			(at 176.53 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5612,7 +5628,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 176.53 71.12 0)
+			(at 176.53 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6221,6 +6237,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 176.53 73.66 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "33b0f4b7-a383-45cf-9f41-d19d990366d8")
+		(property "Reference" "#PWR033"
+			(at 172.72 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD_REF"
+			(at 180.34 73.6599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 176.53 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 176.53 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 176.53 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "49901868-c0e9-45f9-a6d2-6ba7cab280cc")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/e8cbdd69-5fc8-4583-a262-8a3c06e86dab"
+					(reference "#PWR033")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 227.33 118.11 0)
 		(unit 1)
@@ -6698,7 +6781,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x02_Pin")
-		(at 182.88 76.2 180)
+		(at 182.88 68.58 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6707,7 +6790,7 @@
 		(fields_autoplaced yes)
 		(uuid "73916447-0f2f-4169-93a8-908d9340ed76")
 		(property "Reference" "J4"
-			(at 184.15 73.6599 0)
+			(at 184.15 66.0399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6716,7 +6799,7 @@
 			)
 		)
 		(property "Value" "Conn_01x02_Pin"
-			(at 184.15 76.1999 0)
+			(at 184.15 68.5799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6725,7 +6808,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 182.88 76.2 0)
+			(at 182.88 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6734,7 +6817,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 182.88 76.2 0)
+			(at 182.88 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6743,7 +6826,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated"
-			(at 182.88 76.2 0)
+			(at 182.88 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
