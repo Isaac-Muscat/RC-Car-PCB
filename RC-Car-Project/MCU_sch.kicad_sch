@@ -3566,12 +3566,6 @@
 		(uuid "78d892f7-4aed-4800-94df-b539fdaa54a5")
 	)
 	(junction
-		(at 106.68 143.51)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9d645db9-0638-40cd-ac48-522520454176")
-	)
-	(junction
 		(at 137.16 21.59)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3833,17 +3827,7 @@
 	)
 	(wire
 		(pts
-			(xy 106.68 140.97) (xy 106.68 143.51)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0ced789e-ea36-467b-8c07-ba20a2b716ed")
-	)
-	(wire
-		(pts
-			(xy 116.84 140.97) (xy 106.68 140.97)
+			(xy 88.9 140.97) (xy 116.84 140.97)
 		)
 		(stroke
 			(width 0)
@@ -3890,6 +3874,16 @@
 			(type default)
 		)
 		(uuid "22d72f42-4a27-4038-87d9-9ff33b02d8b6")
+	)
+	(wire
+		(pts
+			(xy 88.9 144.78) (xy 88.9 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26088c5f-a6ed-4f70-af3e-83a9d8aff850")
 	)
 	(wire
 		(pts
@@ -5646,7 +5640,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22uF/10V"
+		(property "Value" "2.2uF/10V"
 			(at 110.49 149.8599 0)
 			(effects
 				(font
@@ -5655,7 +5649,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
 			(at 107.6452 152.4 0)
 			(effects
 				(font
@@ -5895,6 +5889,76 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
 					(reference "#PWR021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 88.9 148.59 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a8f0c529-6233-46d8-99c8-330dc54bf0f1")
+		(property "Reference" "C21"
+			(at 92.71 147.3199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2.2uF/10V"
+			(at 92.71 149.8599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+			(at 89.8652 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 88.9 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 88.9 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0d328d92-8a3f-4753-9941-778880ad581e")
+		)
+		(pin "2"
+			(uuid "687d8f54-3393-4df9-b048-14084ae585c2")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "C21")
 					(unit 1)
 				)
 			)
@@ -6169,6 +6233,72 @@
 			(project ""
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
 					(reference "Y1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 88.9 152.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "da12e555-a371-4ed0-a334-f63e00572811")
+		(property "Reference" "#PWR018"
+			(at 88.9 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 88.9 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 88.9 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 88.9 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 88.9 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "343aaac2-c91c-4c97-8cff-d9676e449cdb")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "#PWR018")
 					(unit 1)
 				)
 			)
