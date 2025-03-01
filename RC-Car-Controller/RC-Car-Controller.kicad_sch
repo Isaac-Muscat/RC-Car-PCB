@@ -667,16 +667,6 @@
 	)
 	(wire
 		(pts
-			(xy 194.31 87.63) (xy 208.28 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "322df739-4850-4045-bc61-3f5fd146ac75")
-	)
-	(wire
-		(pts
 			(xy 148.59 100.33) (xy 208.28 100.33)
 		)
 		(stroke
@@ -704,16 +694,6 @@
 			(type default)
 		)
 		(uuid "512d87e2-8754-4cad-b70a-ad8d4f36cad0")
-	)
-	(wire
-		(pts
-			(xy 148.59 87.63) (xy 157.48 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6af16e62-8f59-4097-a7a4-6421de597549")
 	)
 	(wire
 		(pts
@@ -817,16 +797,6 @@
 	)
 	(wire
 		(pts
-			(xy 148.59 85.09) (xy 157.48 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ba3ca6bd-3e86-40dc-8580-0686c3f64db0")
-	)
-	(wire
-		(pts
 			(xy 113.03 86.36) (xy 99.06 86.36)
 		)
 		(stroke
@@ -834,16 +804,6 @@
 			(type default)
 		)
 		(uuid "bff5dfe8-5e39-4498-80f8-081586eed86e")
-	)
-	(wire
-		(pts
-			(xy 194.31 85.09) (xy 208.28 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d6820fa4-0ea8-411c-b406-c9cbd68c0866")
 	)
 	(wire
 		(pts
@@ -1802,6 +1762,84 @@
 		)
 	)
 	(sheet
+		(at 52.07 100.33)
+		(size 33.02 15.24)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "2b1fa8b9-c985-4895-a194-2800399bdd10")
+		(property "Sheetname" "Inputs"
+			(at 52.07 99.6184 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Inputs.kicad_sch"
+			(at 52.07 116.1546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "Button_L" input
+			(at 85.09 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "bce78556-28ea-450a-b97e-3062ce3cc249")
+		)
+		(pin "Slider_R" input
+			(at 85.09 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "66fd9d94-a2be-4c76-ac4b-dd32478008e3")
+		)
+		(pin "Slider_L" input
+			(at 85.09 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "9a8ff776-5cc5-4537-8d0d-bec3752215d4")
+		)
+		(pin "Button_R" input
+			(at 85.09 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "174eb33f-91a2-4c38-b385-32dcbc93eb25")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(page "7")
+				)
+			)
+		)
+	)
+	(sheet
 		(at 208.28 66.04)
 		(size 29.845 41.91)
 		(fields_autoplaced yes)
@@ -1830,26 +1868,6 @@
 				)
 				(justify left top)
 			)
-		)
-		(pin "RELAY_CTRL" input
-			(at 208.28 85.09 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "19776314-e676-4fad-82a1-1a4d79765847")
-		)
-		(pin "LIGHTS_PWM" input
-			(at 208.28 87.63 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "610c2e83-df03-48f6-a201-eeec7ed7cc20")
 		)
 		(pin "RF_ANT" input
 			(at 208.28 69.85 180)
@@ -2028,84 +2046,6 @@
 		)
 	)
 	(sheet
-		(at 157.48 80.645)
-		(size 36.83 9.525)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0.0000)
-		)
-		(uuid "6cd00c1a-14cd-4705-8fa1-76b1c50e2463")
-		(property "Sheetname" "MiscDriver"
-			(at 157.48 79.9334 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "MiscDriver.kicad_sch"
-			(at 157.48 90.7546 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "MCU_RELAY_IN" input
-			(at 157.48 85.09 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "d4d15908-b14d-4e1f-8b61-6b3cd037e3a7")
-		)
-		(pin "MCU_LIGHTS_IN" input
-			(at 157.48 87.63 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "38c8ca11-0104-4bb5-a2c6-aa2e11c97b6c")
-		)
-		(pin "LIGHTS_PWM_OUT" input
-			(at 194.31 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "03556e4a-fefc-4bea-b211-5286c4b02bfd")
-		)
-		(pin "RELAY_OUT" input
-			(at 194.31 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "3989508b-4a64-48e8-9a0c-cc5fb6654cf8")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(page "8")
-				)
-			)
-		)
-	)
-	(sheet
 		(at 113.03 82.55)
 		(size 35.56 26.67)
 		(fields_autoplaced yes)
@@ -2185,16 +2125,6 @@
 			)
 			(uuid "83ebdb98-d3f1-4aa5-bb5f-aa896a04f347")
 		)
-		(pin "RELAY_CTRL" input
-			(at 148.59 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "0c551629-6927-4ffa-975b-2aa16201f785")
-		)
 		(pin "SPI1_CS_RF" input
 			(at 113.03 91.44 180)
 			(effects
@@ -2245,20 +2175,48 @@
 			)
 			(uuid "f8eef27a-4786-4005-a2d1-1d442821013a")
 		)
-		(pin "LIGHTS_PWM" input
-			(at 148.59 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "6acd80b3-1c6a-4bb6-99a6-d2e58fcb15cc")
-		)
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
 					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 52.07 121.92)
+		(size 33.02 20.32)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "c7631c9a-9d0f-4b64-bf26-f76b69ba0d74")
+		(property "Sheetname" "Outputs"
+			(at 52.07 121.2084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Outputs.kicad_sch"
+			(at 52.07 142.8246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(page "8")
 				)
 			)
 		)

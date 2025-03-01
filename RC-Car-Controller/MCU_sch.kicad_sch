@@ -4271,18 +4271,6 @@
 		)
 		(uuid "299ae126-545b-4ae4-bb2c-8bb289081ef9")
 	)
-	(hierarchical_label "RIGHT_PWM2"
-		(shape input)
-		(at 162.56 82.55 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "3f647869-065f-4440-8627-3d4ed6e4e0b5")
-	)
 	(hierarchical_label "ALERT_GPIO"
 		(shape input)
 		(at 162.56 118.11 0)
@@ -4319,18 +4307,6 @@
 		)
 		(uuid "624e8de4-1920-409c-b3c8-8ea78c493817")
 	)
-	(hierarchical_label "RIGHT_EN2"
-		(shape input)
-		(at 162.56 85.09 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "62a0e07d-d761-4566-83c5-e2b33e4c0d16")
-	)
 	(hierarchical_label "SPI2_SCLK_ISENSE"
 		(shape input)
 		(at 162.56 100.33 0)
@@ -4342,30 +4318,6 @@
 			(justify left)
 		)
 		(uuid "6872a31f-c7a0-4130-a6b8-ceae9a1ee026")
-	)
-	(hierarchical_label "LEFT_PWM2"
-		(shape input)
-		(at 162.56 36.83 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "6ba75ef5-030a-4981-9b81-bf2a852b3ad7")
-	)
-	(hierarchical_label "LEFT_EN2"
-		(shape input)
-		(at 162.56 39.37 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "72206e96-3e42-4c2a-a96b-9360113f4fef")
 	)
 	(hierarchical_label "SPI2_CS_ISENSE"
 		(shape input)
@@ -4390,78 +4342,6 @@
 			(justify left)
 		)
 		(uuid "9ea584b3-4dfd-4d16-afbc-d96579551377")
-	)
-	(hierarchical_label "LEFT_PWM1"
-		(shape input)
-		(at 162.56 31.75 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "ae3d6af3-5892-4a31-9ac4-f94829f6f113")
-	)
-	(hierarchical_label "RIGHT_PWM1"
-		(shape input)
-		(at 116.84 128.27 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "d0f6493a-d6f4-4f38-a27d-4348c28f2354")
-	)
-	(hierarchical_label "LIGHTS_PWM"
-		(shape input)
-		(at 116.84 90.17 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "d34d68bb-16ee-475e-8904-b96dfd4cb907")
-	)
-	(hierarchical_label "LEFT_EN1"
-		(shape input)
-		(at 162.56 34.29 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "d39cad26-fe60-48ac-8572-9d00c598ebb7")
-	)
-	(hierarchical_label "RELAY_CTRL"
-		(shape input)
-		(at 162.56 92.71 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "dba39c70-8e75-4b4c-a992-fb88ff410f96")
-	)
-	(hierarchical_label "RIGHT_EN1"
-		(shape input)
-		(at 116.84 130.81 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "de5b6431-b0b8-4539-931a-1d3ceb95cd6c")
 	)
 	(hierarchical_label "NRST"
 		(shape input)
