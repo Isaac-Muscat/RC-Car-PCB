@@ -527,11 +527,23 @@
           "label": "DNP",
           "name": "${DNP}",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
-      "name": "Grouped By Value",
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
@@ -596,8 +608,8 @@
       "RF"
     ],
     [
-      "9035ce50-cc35-47ce-85b3-06db8b07dac9",
-      "CurrentSense"
+      "6cd00c1a-14cd-4705-8fa1-76b1c50e2463",
+      "MiscDriver"
     ]
   ],
   "text_variables": {}
