@@ -3766,7 +3766,7 @@
 			(uuid "0e602216-2286-49d8-b80d-68980ac7dc2d")
 		)
 		(instances
-			(project ""
+			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
 					(reference "R15")
 					(unit 1)
@@ -4604,7 +4604,7 @@
 			(uuid "29a0764d-d9b6-4c44-88b7-6648e910937a")
 		)
 		(instances
-			(project ""
+			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
 					(reference "U8")
 					(unit 1)
@@ -4893,7 +4893,7 @@
 			(uuid "d0e209b9-9087-4033-b5f1-8d17f4b2da69")
 		)
 		(instances
-			(project ""
+			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
 					(reference "U3")
 					(unit 1)
@@ -5165,7 +5165,7 @@
 			(uuid "c3e3b902-e82e-43e5-b832-90e122fe2ce3")
 		)
 		(instances
-			(project ""
+			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
 					(reference "C3")
 					(unit 1)
