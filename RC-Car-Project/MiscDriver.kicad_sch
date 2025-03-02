@@ -741,6 +741,12 @@
 		(uuid "7692d4c3-8d8a-41b0-9d98-e74e8c25c47e")
 	)
 	(junction
+		(at 181.61 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dbfb91b5-989b-4a3d-81e1-5ce900c67425")
+	)
+	(junction
 		(at 127 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -761,6 +767,26 @@
 			(type default)
 		)
 		(uuid "0539e59a-acec-487c-aaac-f358cb977831")
+	)
+	(wire
+		(pts
+			(xy 179.07 66.04) (xy 181.61 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b34f5ad-5a35-48f7-9ec8-ab200871b46c")
+	)
+	(wire
+		(pts
+			(xy 191.77 55.88) (xy 193.04 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f822d31-2b6b-4213-86de-9a5d825a14e4")
 	)
 	(wire
 		(pts
@@ -791,6 +817,16 @@
 			(type default)
 		)
 		(uuid "5fe16de1-aea1-4c02-8416-11305999c4b7")
+	)
+	(wire
+		(pts
+			(xy 191.77 55.88) (xy 191.77 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60e46e83-844e-4605-9c98-47f5f229c71a")
 	)
 	(wire
 		(pts
@@ -834,6 +870,16 @@
 	)
 	(wire
 		(pts
+			(xy 181.61 66.04) (xy 184.15 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9d3509fc-455c-4ebf-ae6a-e6c0d0daf85e")
+	)
+	(wire
+		(pts
 			(xy 137.16 55.88) (xy 137.16 60.96)
 		)
 		(stroke
@@ -841,6 +887,16 @@
 			(type default)
 		)
 		(uuid "b7d8b89c-2466-4339-9eeb-a2961a3bc191")
+	)
+	(wire
+		(pts
+			(xy 191.77 74.93) (xy 191.77 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce6fca68-a534-4fbc-a709-1764f2994b11")
 	)
 	(wire
 		(pts
@@ -862,6 +918,18 @@
 		)
 		(uuid "ecc10509-e143-4d59-a067-dd056dc63905")
 	)
+	(hierarchical_label "LIGHTS2_NEG"
+		(shape input)
+		(at 193.04 55.88 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4c02cde2-a504-4f47-bce6-cc629d246530")
+	)
 	(hierarchical_label "MCU_RELAY_IN"
 		(shape input)
 		(at 116.84 106.68 180)
@@ -874,7 +942,19 @@
 		)
 		(uuid "55ef74fe-fb8e-4d77-baf8-ea95fa48356f")
 	)
-	(hierarchical_label "MCU_LIGHTS_IN"
+	(hierarchical_label "MCU_LIGHTS2_CTRL"
+		(shape input)
+		(at 171.45 66.04 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a0e8d3f8-234c-4ec3-bff7-63f615a303c9")
+	)
+	(hierarchical_label "MCU_LIGHTS1_CTRL"
 		(shape input)
 		(at 116.84 66.04 180)
 		(fields_autoplaced yes)
@@ -885,6 +965,18 @@
 			(justify right)
 		)
 		(uuid "a317713c-2f3d-46e2-93b3-38520c2537e8")
+	)
+	(hierarchical_label "LIGHTS2_POS"
+		(shape input)
+		(at 193.04 52.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a3d330d9-b703-4ec8-916e-fff061ad1ffa")
 	)
 	(hierarchical_label "RELAY_OUT"
 		(shape input)
@@ -898,7 +990,7 @@
 		)
 		(uuid "bb9e256d-4779-4979-8104-65e4a913fcc4")
 	)
-	(hierarchical_label "LIGHTS_NEG"
+	(hierarchical_label "LIGHTS1_NEG"
 		(shape input)
 		(at 138.43 55.88 0)
 		(fields_autoplaced yes)
@@ -910,7 +1002,7 @@
 		)
 		(uuid "c830b1b0-b12c-4349-883e-69bafc2be0b0")
 	)
-	(hierarchical_label "LIGHTS_POS"
+	(hierarchical_label "LIGHTS1_POS"
 		(shape input)
 		(at 138.43 52.07 0)
 		(fields_autoplaced yes)
@@ -1123,6 +1215,144 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 181.61 69.85 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1d9f5f3a-33bf-408e-8f82-b7238c8c36ae")
+		(property "Reference" "R31"
+			(at 184.15 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10k"
+			(at 184.15 71.1199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+			(at 183.388 69.85 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 181.61 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 181.61 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "34781c60-1379-4701-97a2-fd392aa0dd16")
+		)
+		(pin "1"
+			(uuid "0b72322c-f591-4dd6-8925-139dea3db34c")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
+					(reference "R31")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 175.26 66.04 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "228abe4c-620e-4792-805d-9dfaab450600")
+		(property "Reference" "R30"
+			(at 175.26 59.69 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100"
+			(at 175.26 62.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+			(at 175.26 67.818 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 175.26 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 175.26 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "86cc79e1-c38b-443e-bb32-cf81a16cc901")
+		)
+		(pin "1"
+			(uuid "57094b07-f86f-4d32-87ae-fdb521889dd6")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
+					(reference "R30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 127 114.3 0)
 		(unit 1)
@@ -1315,6 +1545,148 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
 					(reference "#PWR089")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:2N7002E")
+		(at 189.23 66.04 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7944779f-af75-4e3c-8d2d-4965f9aab2d7")
+		(property "Reference" "Q7"
+			(at 195.58 64.7699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2N7002E"
+			(at 195.58 67.3099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 194.31 67.945 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.diodes.com/assets/Datasheets/ds30376.pdf"
+			(at 194.31 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Description" "0.24A Id, 60V Vds, N-Channel MOSFET, SOT-23"
+			(at 189.23 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c6ec4735-a74e-48b7-878a-35b8f818e842")
+		)
+		(pin "1"
+			(uuid "e07f0cff-d245-4f46-901a-3b343f374268")
+		)
+		(pin "3"
+			(uuid "41281848-76c0-4ac7-b5d3-e68daa51feed")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
+					(reference "Q7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 191.77 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "81337d5b-0639-41e2-a5e4-8963b4020f1b")
+		(property "Reference" "#PWR0123"
+			(at 191.77 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 191.77 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 191.77 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 191.77 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDA\" , analog ground"
+			(at 191.77 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "87aeee94-0bee-4eda-8348-5e84c6c1bb16")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
+					(reference "#PWR0123")
 					(unit 1)
 				)
 			)
@@ -1680,6 +2052,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 181.61 73.66 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e1868cfe-8740-498d-bfe7-ab9bada46569")
+		(property "Reference" "#PWR0103"
+			(at 181.61 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 181.61 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 181.61 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 181.61 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 181.61 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "78b78144-c0df-43cb-bf0f-082da66177df")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
+					(reference "#PWR0103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 120.65 106.68 90)
 		(unit 1)
@@ -1742,6 +2180,73 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
 					(reference "R19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 193.04 52.07 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fa3612ea-a66c-4887-be26-b66a205efbaf")
+		(property "Reference" "#PWR0124"
+			(at 196.85 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 189.23 52.0699 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 193.04 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 193.04 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 193.04 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c220f0aa-0b1a-4c04-8331-bb939e09167e")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
+					(reference "#PWR0124")
 					(unit 1)
 				)
 			)

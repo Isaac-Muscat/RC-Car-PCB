@@ -2370,6 +2370,18 @@
 		)
 		(uuid "00fe3d47-d318-4c07-a6ee-d24c5a5ac912")
 	)
+	(hierarchical_label "LIGHTS2_NEG"
+		(shape input)
+		(at 168.91 135.89 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0aab2553-de58-4846-8223-9cb68982c7bb")
+	)
 	(hierarchical_label "M1_LEFT"
 		(shape input)
 		(at 73.66 128.27 180)
@@ -2381,6 +2393,18 @@
 			(justify right)
 		)
 		(uuid "0da9f999-e598-4c24-924a-8eaffe5e797f")
+	)
+	(hierarchical_label "LIGHTS1_NEG"
+		(shape input)
+		(at 168.91 127 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "25c1bebc-2bc0-4620-80a5-6846059a9237")
 	)
 	(hierarchical_label "USART_RX"
 		(shape input)
@@ -2490,18 +2514,6 @@
 		)
 		(uuid "7b82917b-d952-497b-8f95-fb14dc0de8fb")
 	)
-	(hierarchical_label "LIGHTS_POS"
-		(shape input)
-		(at 162.56 118.11 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "82ff1ac6-9c75-415d-ba9c-e3f04a13215c")
-	)
 	(hierarchical_label "THERMO1"
 		(shape input)
 		(at 189.23 78.74 0)
@@ -2538,9 +2550,9 @@
 		)
 		(uuid "924953c7-7087-416a-8863-e9a497028a7b")
 	)
-	(hierarchical_label "LIGHTS_NEG"
+	(hierarchical_label "LIGHTS1_POS"
 		(shape input)
-		(at 162.56 120.65 0)
+		(at 168.91 123.19 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2548,7 +2560,19 @@
 			)
 			(justify left)
 		)
-		(uuid "996e484c-609b-40a0-8c16-1d9d92699e9e")
+		(uuid "a84eba24-8267-4f5e-abe0-709f4c3e1507")
+	)
+	(hierarchical_label "LIGHTS2_POS"
+		(shape input)
+		(at 168.91 132.08 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "b0b3f12e-f989-420f-b735-564a8b165b7e")
 	)
 	(hierarchical_label "USART_TX"
 		(shape input)
