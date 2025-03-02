@@ -997,7 +997,7 @@
 	)
 	(bus
 		(pts
-			(xy 148.59 123.19) (xy 208.28 123.19)
+			(xy 148.59 125.73) (xy 208.28 125.73)
 		)
 		(stroke
 			(width 0)
@@ -1064,6 +1064,16 @@
 			(type default)
 		)
 		(uuid "983f5af4-844b-44a3-94d8-14dd78a22fe6")
+	)
+	(wire
+		(pts
+			(xy 148.59 123.19) (xy 208.28 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9a689bb0-d702-4ece-ba08-e848e3cbc27e")
 	)
 	(wire
 		(pts
@@ -2530,7 +2540,7 @@
 			(uuid "52115162-4613-4e0f-adf0-5a821876cb51")
 		)
 		(pin "DCMI_D[7..0]" input
-			(at 208.28 123.19 180)
+			(at 208.28 125.73 180)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2608,6 +2618,16 @@
 				(justify left)
 			)
 			(uuid "7244255c-1827-4209-9a9e-4f10ac3c6de5")
+		)
+		(pin "DCMI_XCLK" input
+			(at 208.28 123.19 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "f24e52ea-4928-49c8-bafe-dceed80443ad")
 		)
 		(instances
 			(project "RC-Car-Project"
@@ -3252,7 +3272,7 @@
 			(uuid "d315d595-16fe-46b7-8062-87363bca20ca")
 		)
 		(pin "DCMI_D[7..0]" input
-			(at 148.59 123.19 0)
+			(at 148.59 125.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3270,6 +3290,16 @@
 				(justify left)
 			)
 			(uuid "b16924d9-6219-481a-9cf8-5562feedb6ca")
+		)
+		(pin "DCMI_XCLK" input
+			(at 148.59 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "3d2c5747-2f90-4f87-b8e0-b5cea953061c")
 		)
 		(instances
 			(project "RC-Car-Project"
