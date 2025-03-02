@@ -2382,18 +2382,6 @@
 		)
 		(uuid "0da9f999-e598-4c24-924a-8eaffe5e797f")
 	)
-	(hierarchical_label "LIGHTS_PWM"
-		(shape input)
-		(at 196.85 88.9 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "22b5fb08-4cf5-4fd0-86e0-93f2e82447e1")
-	)
 	(hierarchical_label "USART_RX"
 		(shape input)
 		(at 123.19 105.41 180)
@@ -2502,6 +2490,18 @@
 		)
 		(uuid "7b82917b-d952-497b-8f95-fb14dc0de8fb")
 	)
+	(hierarchical_label "LIGHTS_POS"
+		(shape input)
+		(at 162.56 118.11 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "82ff1ac6-9c75-415d-ba9c-e3f04a13215c")
+	)
 	(hierarchical_label "THERMO1"
 		(shape input)
 		(at 189.23 78.74 0)
@@ -2537,6 +2537,18 @@
 			(justify right)
 		)
 		(uuid "924953c7-7087-416a-8863-e9a497028a7b")
+	)
+	(hierarchical_label "LIGHTS_NEG"
+		(shape input)
+		(at 162.56 120.65 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "996e484c-609b-40a0-8c16-1d9d92699e9e")
 	)
 	(hierarchical_label "USART_TX"
 		(shape input)

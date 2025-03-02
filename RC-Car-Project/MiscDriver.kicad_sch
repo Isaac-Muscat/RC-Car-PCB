@@ -741,12 +741,6 @@
 		(uuid "7692d4c3-8d8a-41b0-9d98-e74e8c25c47e")
 	)
 	(junction
-		(at 137.16 59.69)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c1fba935-9350-4db0-b983-a40eed3b364e")
-	)
-	(junction
 		(at 127 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -800,6 +794,16 @@
 	)
 	(wire
 		(pts
+			(xy 137.16 55.88) (xy 138.43 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8263f182-ba46-494b-847d-7c7851ccfebd")
+	)
+	(wire
+		(pts
 			(xy 127 106.68) (xy 129.54 106.68)
 		)
 		(stroke
@@ -830,17 +834,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 59.69) (xy 137.16 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9eae95c8-b740-4763-b251-06b081e8d67f")
-	)
-	(wire
-		(pts
-			(xy 137.16 59.69) (xy 137.16 60.96)
+			(xy 137.16 55.88) (xy 137.16 60.96)
 		)
 		(stroke
 			(width 0)
@@ -857,16 +851,6 @@
 			(type default)
 		)
 		(uuid "d31af8b0-2d0b-428e-a8bf-842ba7ec1be6")
-	)
-	(wire
-		(pts
-			(xy 137.16 53.34) (xy 137.16 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e3bf602a-7c19-430e-8ec3-e1eb71de3e3a")
 	)
 	(wire
 		(pts
@@ -914,9 +898,9 @@
 		)
 		(uuid "bb9e256d-4779-4979-8104-65e4a913fcc4")
 	)
-	(hierarchical_label "LIGHTS_PWM_OUT"
+	(hierarchical_label "LIGHTS_NEG"
 		(shape input)
-		(at 161.29 59.69 0)
+		(at 138.43 55.88 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -925,6 +909,18 @@
 			(justify left)
 		)
 		(uuid "c830b1b0-b12c-4349-883e-69bafc2be0b0")
+	)
+	(hierarchical_label "LIGHTS_POS"
+		(shape input)
+		(at 138.43 52.07 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d2940f97-3e34-4c86-884e-68a1622d6a6e")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -1259,72 +1255,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 137.16 53.34 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6f2b7519-2f47-4204-8e08-78973527a9e7")
-		(property "Reference" "#PWR0103"
-			(at 137.16 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VDD_BATT"
-			(at 137.16 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 137.16 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 137.16 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 137.16 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2fa2221f-2480-41f1-8b10-fabc448abf1c")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "#PWR0103")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GNDA")
 		(at 137.16 115.57 0)
 		(unit 1)
@@ -1385,6 +1315,73 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
 					(reference "#PWR089")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 138.43 52.07 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "85b7fc33-2b2a-4c24-91bf-543d95f789dc")
+		(property "Reference" "#PWR0119"
+			(at 142.24 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 134.62 52.0699 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 138.43 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 138.43 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 138.43 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4a128dd6-e9d6-4f7d-8066-3ed7c07261f3")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
+					(reference "#PWR0119")
 					(unit 1)
 				)
 			)
