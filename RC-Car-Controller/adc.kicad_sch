@@ -952,7 +952,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R68K"
+		(property "Value" "68Kohm"
 			(at 88.9 96.5199 0)
 			(effects
 				(font
@@ -1180,7 +1180,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R100K"
+		(property "Value" "100Kohm"
 			(at 88.9 86.3599 0)
 			(effects
 				(font
