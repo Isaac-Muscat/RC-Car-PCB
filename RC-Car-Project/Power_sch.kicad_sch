@@ -1604,6 +1604,12 @@
 		)
 	)
 	(junction
+		(at 161.29 163.83)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "01b3f3e5-24cc-4090-a05b-443a64c3ab2f")
+	)
+	(junction
 		(at 194.31 120.65)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1764,12 +1770,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bd3d3b67-d5e8-4add-b56b-67e4961421c8")
-	)
-	(junction
-		(at 161.29 163.83)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "caaf88e0-377a-45a2-b3ad-37fb87cdac26")
 	)
 	(junction
 		(at 185.42 120.65)
@@ -7597,72 +7597,6 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 161.29 163.83 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "66fc3351-6056-4b51-9fce-09bfad3bccb8")
-		(property "Reference" "#PWR0119"
-			(at 161.29 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 161.29 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 161.29 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 161.29 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 161.29 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3ba2ff32-6256-4fc8-8ffd-656d617287cc")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/e8cbdd69-5fc8-4583-a262-8a3c06e86dab"
-					(reference "#PWR0119")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3V3")
 		(at 227.33 107.95 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7886,7 +7820,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "100kohm"
+		(property "Value" "10kohm"
 			(at 196.85 126.9999 0)
 			(effects
 				(font
@@ -9807,6 +9741,72 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/e8cbdd69-5fc8-4583-a262-8a3c06e86dab"
 					(reference "#PWR0117")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 161.29 163.83 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e7402788-50c1-42a4-b9e4-190533cbdbe3")
+		(property "Reference" "#PWR0122"
+			(at 161.29 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 161.29 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 161.29 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 161.29 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 161.29 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "26d69700-8fc4-432a-8f5f-5aac5866a0a1")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/e8cbdd69-5fc8-4583-a262-8a3c06e86dab"
+					(reference "#PWR0122")
 					(unit 1)
 				)
 			)
