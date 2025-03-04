@@ -260,7 +260,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "0142c71e-ca7a-40ad-87e8-90d5697a0aa4")
-		(at 170.525002 108.245)
+		(at 95.055 116.13)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R10"
@@ -467,7 +467,7 @@
 	(footprint "Crystal:Crystal_SMD_Abracon_ABM3-2Pin_5.0x3.2mm"
 		(layer "F.Cu")
 		(uuid "08c0ec8d-4679-44cb-bd49-19f70807c82e")
-		(at 152.925002 130.035)
+		(at 77.455 137.92)
 		(descr "Abracon Miniature Ceramic Smd Crystal ABM3 http://www.abracon.com/Resonators/abm3.pdf, 5.0x3.2mm^2 package")
 		(tags "SMD SMT crystal")
 		(property "Reference" "Y1"
@@ -884,7 +884,7 @@
 	(footprint "Capacitor_SMD:C_1210_3225Metric"
 		(layer "F.Cu")
 		(uuid "094c1c30-489c-46dd-9de9-3bf8e6a75c8d")
-		(at 161.575002 106.745)
+		(at 86.105 114.63)
 		(descr "Capacitor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C14"
@@ -1097,7 +1097,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "0baa7b4c-0b6b-42cc-8026-5f04dc0ebe01")
-		(at 104.745002 109.645)
+		(at 29.275 117.53)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C3"
@@ -1304,7 +1304,7 @@
 	(footprint "Inductor_SMD:L_Wuerth_MAPI-4030"
 		(layer "F.Cu")
 		(uuid "0cab0d87-b3e0-4ae3-a6ba-bf9b61762236")
-		(at 166.950002 113.595)
+		(at 91.48 121.48)
 		(descr "Inductor, Wuerth Elektronik, Wuerth_MAPI-4030, 4.0mmx4.0mm")
 		(tags "inductor Wuerth smd")
 		(property "Reference" "L1"
@@ -1517,7 +1517,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "10623a41-1cf5-4e95-bf09-22013127834f")
-		(at 165.625002 101.245)
+		(at 90.155 109.13)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C1"
@@ -1724,7 +1724,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "1073eeb6-f4dd-4be8-8ecd-a331c7e015a2")
-		(at 104.745002 111.395)
+		(at 29.275 119.28)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C4"
@@ -1931,7 +1931,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "13c65f94-e46b-4ff5-83b1-81205a874a9d")
-		(at 114.375002 129.145)
+		(at 38.905 137.03)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C26"
@@ -2616,7 +2616,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "175a4dfb-d3fb-4164-b92d-396135764c46")
-		(at 116.825002 127.395)
+		(at 41.355 135.28)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C30"
@@ -2823,7 +2823,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "183d8d45-a656-4ea2-b931-46101725e325")
-		(at 165.625002 108.245)
+		(at 90.155 116.13)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C19"
@@ -3030,7 +3030,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "1967da40-8833-44c5-9f41-d4eee91358e3")
-		(at 126.165002 134.395)
+		(at 50.695 142.28)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R31"
@@ -3237,7 +3237,7 @@
 	(footprint "LED_SMD:LED_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "1bc5aab4-2d4d-4c33-86b4-273312e7099e")
-		(at 124.450002 111.395)
+		(at 48.98 119.28)
 		(descr "LED SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "LED")
 		(property "Reference" "D2"
@@ -3477,7 +3477,7 @@
 	(footprint "Inductor_SMD:L_Wuerth_MAPI-4030"
 		(layer "F.Cu")
 		(uuid "244aa858-5885-40c5-8b57-b35e2909ebda")
-		(at 172.050002 113.595)
+		(at 96.58 121.48)
 		(descr "Inductor, Wuerth Elektronik, Wuerth_MAPI-4030, 4.0mmx4.0mm")
 		(tags "inductor Wuerth smd")
 		(property "Reference" "L2"
@@ -3988,7 +3988,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "27de97df-94c2-4cf3-aa85-327ff868cca1")
-		(at 126.165002 127.395)
+		(at 50.695 135.28)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R16"
@@ -4195,7 +4195,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "2981c1e5-0dda-46c5-ae99-267da70a78d6")
-		(at 168.075002 106.495)
+		(at 92.605 114.38)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C43"
@@ -4402,7 +4402,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "2b411701-dec9-49a5-9945-baaf64714d71")
-		(at 116.825002 132.645)
+		(at 41.355 140.53)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C33"
@@ -4609,7 +4609,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "2ce71426-821d-42f6-9cfe-72dc8fcbc76d")
-		(at 150.325002 121.485)
+		(at 74.855 129.37)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C8"
@@ -4816,7 +4816,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "302a2217-27ea-4ca8-b29d-4237afa9340e")
-		(at 152.775002 121.485)
+		(at 77.305 129.37)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C21"
@@ -5023,7 +5023,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "30cbe250-e3e2-474d-af53-3026edfd7d62")
-		(at 104.745002 118.395)
+		(at 29.275 126.28)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R4"
@@ -5230,7 +5230,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "31f638c4-a1d7-4f87-80ac-1dbbf28e4f2e")
-		(at 126.895002 109.645)
+		(at 51.425 117.53)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R13"
@@ -5437,7 +5437,7 @@
 	(footprint "Capacitor_SMD:C_1210_3225Metric"
 		(layer "F.Cu")
 		(uuid "32226a8d-de8c-4cc7-8bea-1e2f32fd54b6")
-		(at 161.575002 110.995)
+		(at 86.105 118.88)
 		(descr "Capacitor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C15"
@@ -5650,7 +5650,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "34065871-faa4-4dad-a8c4-34ea337ec815")
-		(at 104.745002 114.895)
+		(at 29.275 122.78)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R2"
@@ -6650,7 +6650,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "3b1e540e-c390-4413-bc73-c47333e6d435")
-		(at 152.775002 126.735)
+		(at 77.305 134.62)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C36"
@@ -6857,7 +6857,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "3cefe1c6-b3a3-498c-8887-63a0051c5be2")
-		(at 168.075002 108.245)
+		(at 92.605 116.13)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C44"
@@ -7271,7 +7271,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "3f38c50f-a62a-4f88-8f8c-7b299f703b74")
-		(at 114.375002 125.645)
+		(at 38.905 133.53)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C24"
@@ -7478,7 +7478,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "4382d377-fbb4-40cf-9f3b-6fa43feca065")
-		(at 165.625002 109.995)
+		(at 90.155 117.88)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C20"
@@ -7685,7 +7685,7 @@
 	(footprint "footprints:MUA08A"
 		(layer "F.Cu")
 		(uuid "47f4f60b-544e-4de8-acc9-c51dddd987e1")
-		(at 117.283102 120.1696)
+		(at 41.8131 128.0546)
 		(tags "ADC082S021CIMM/NOPB ")
 		(property "Reference" "U3"
 			(at 0 0 0)
@@ -8328,7 +8328,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "4dc6f8c4-726c-4f34-93b3-8deb4b9deb9e")
-		(at 150.325002 124.985)
+		(at 74.855 132.87)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C10"
@@ -8535,7 +8535,7 @@
 	(footprint "Capacitor_SMD:C_1210_3225Metric"
 		(layer "F.Cu")
 		(uuid "5054e2c0-e59e-4e4c-9ca9-6331c75dcb49")
-		(at 161.575002 115.245)
+		(at 86.105 123.13)
 		(descr "Capacitor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C39"
@@ -8748,7 +8748,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "518c14a7-b85a-4052-9278-2b5fdfab87c0")
-		(at 170.525002 106.495)
+		(at 95.055 114.38)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R9"
@@ -8955,7 +8955,7 @@
 	(footprint "Package_QFP:LQFP-100_14x14mm_P0.5mm"
 		(layer "F.Cu")
 		(uuid "51eebe95-e18c-4e23-be6f-953af0f38636")
-		(at 141.795002 109.615)
+		(at 66.325 117.5)
 		(descr "LQFP, 100 Pin (https://www.nxp.com/docs/en/package-information/SOT407-1.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "LQFP QFP")
 		(property "Reference" "U7"
@@ -10429,7 +10429,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "532e2336-2889-4d86-ab99-0d4a3af0555b")
-		(at 150.325002 123.235)
+		(at 74.855 131.12)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C9"
@@ -10636,7 +10636,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "589a327a-e11e-4afe-95b6-4875b010d024")
-		(at 168.075002 102.995)
+		(at 92.605 110.88)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C23"
@@ -10843,7 +10843,7 @@
 	(footprint "footprints:QFN48_PQ_MCH"
 		(layer "F.Cu")
 		(uuid "59d76beb-85b7-4f8e-bc6c-ee1c4023e594")
-		(at 108.338002 129.588)
+		(at 32.868 137.473)
 		(tags "AT86RF215-ZU ")
 		(property "Reference" "U1"
 			(at 0 0 0)
@@ -14357,7 +14357,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "634f704c-4864-4ea9-ad5a-d9eaac0dd5fa")
-		(at 114.375002 132.645)
+		(at 38.905 140.53)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C28"
@@ -14564,7 +14564,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "64d996fb-02da-459d-9ac6-b37187a79ca2")
-		(at 116.825002 125.645)
+		(at 41.355 133.53)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C29"
@@ -14978,7 +14978,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "692db3a0-f6f3-40a7-a44f-9dbaaf54f6d1")
-		(at 126.165002 132.645)
+		(at 50.695 140.53)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R30"
@@ -15392,7 +15392,7 @@
 	(footprint "footprints:HTSSOP16_4P5X5P1X0P65P_STM"
 		(layer "F.Cu")
 		(uuid "6b9487c4-caeb-4ac9-b284-b0dd8df11027")
-		(at 168.887802 119.7029)
+		(at 93.4178 127.5879)
 		(tags "A6986F3V3TR ")
 		(property "Reference" "U2"
 			(at 0 0 0)
@@ -16915,7 +16915,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "6e933b1c-19d4-48de-b7a1-7ea5869f9f99")
-		(at 165.625002 102.995)
+		(at 90.155 110.88)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C16"
@@ -17708,7 +17708,7 @@
 	(footprint "Package_TO_SOT_SMD:SOT-23"
 		(layer "F.Cu")
 		(uuid "7127e948-d2e6-47a8-9570-b26d1502d91f")
-		(at 122.495002 127.17)
+		(at 47.025 135.055)
 		(descr "SOT, 3 Pin (JEDEC TO-236 Var AB https://www.jedec.org/document_search?search_api_views_fulltext=TO-236), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "SOT TO_SOT_SMD")
 		(property "Reference" "Q3"
@@ -17972,7 +17972,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "774fd6bf-9ab0-4c5b-a4b6-b60eb8a7c4e4")
-		(at 126.895002 111.395)
+		(at 51.425 119.28)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R14"
@@ -18644,7 +18644,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "8032f858-6d45-4883-97bd-2d9ece5f4dc5")
-		(at 155.225002 119.735)
+		(at 79.755 127.62)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C40"
@@ -18851,7 +18851,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "83361b16-859f-4320-8e74-1d81bec95644")
-		(at 168.075002 101.245)
+		(at 92.605 109.13)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C22"
@@ -19058,7 +19058,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "869fd2e4-5d87-4039-b914-a30f78044861")
-		(at 150.325002 126.735)
+		(at 74.855 134.62)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C11"
@@ -19265,7 +19265,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "88c49b66-c700-4434-9fbd-ff36d43e59fb")
-		(at 155.225002 121.485)
+		(at 79.755 129.37)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R11"
@@ -19472,7 +19472,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "898d203e-a0dc-4099-87a2-13620eecf2fd")
-		(at 126.165002 125.645)
+		(at 50.695 133.53)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R1"
@@ -19679,7 +19679,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "8a77a73d-c22d-44f0-817e-0a9c31923d0b")
-		(at 104.745002 116.645)
+		(at 29.275 124.53)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R3"
@@ -19886,7 +19886,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "8e95b981-fd8e-4ae4-ac14-f5f8b01d0c39")
-		(at 104.745002 120.145)
+		(at 29.275 128.03)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R23"
@@ -20093,7 +20093,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "8ffaf0a9-9a9c-4c2a-9ac8-ce6b003c4d5a")
-		(at 172.975002 106.495)
+		(at 97.505 114.38)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R29"
@@ -20300,7 +20300,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "91146dd8-3440-4e81-addf-c9dc76a4d66a")
-		(at 172.975002 101.245)
+		(at 97.505 109.13)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R22"
@@ -20507,7 +20507,7 @@
 	(footprint "footprints:2450FB15A050E_JOT"
 		(layer "F.Cu")
 		(uuid "94d0094a-6597-4b6c-9d36-c4453b0ad8a1")
-		(at 111.318402 136.2335)
+		(at 35.8484 144.1185)
 		(tags "2450FB15A050E ")
 		(property "Reference" "U6"
 			(at 0 0 0)
@@ -20857,7 +20857,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "960cb8ec-da3d-49de-8ce5-56ebc56c979b")
-		(at 170.525002 102.995)
+		(at 95.055 110.88)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R7"
@@ -21064,7 +21064,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "98ddb04a-6065-4a23-8981-71d428408f7e")
-		(at 126.165002 129.145)
+		(at 50.695 137.03)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R19"
@@ -21271,7 +21271,7 @@
 	(footprint "Capacitor_SMD:C_1210_3225Metric"
 		(layer "F.Cu")
 		(uuid "a23d021a-a3e6-41f2-a1ac-f81757b1cbe6")
-		(at 161.575002 102.495)
+		(at 86.105 110.38)
 		(descr "Capacitor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C2"
@@ -21484,7 +21484,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "a2e0141f-41cc-4a01-ab5d-ef572ba4be7e")
-		(at 104.745002 113.145)
+		(at 29.275 121.03)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C38"
@@ -21691,7 +21691,7 @@
 	(footprint "Connector_PinSocket_2.54mm:PinSocket_2x09_P2.54mm_Horizontal"
 		(layer "F.Cu")
 		(uuid "a4089b79-4c43-4c8d-a7ba-23d1d9cac241")
-		(at 139.84 141 90)
+		(at 139.84 152 90)
 		(descr "Through hole angled socket strip, 2x09, 2.54mm pitch, 8.51mm socket length, double cols (from Kicad 4.0.7), script generated")
 		(tags "Through hole angled socket strip THT 2x09 2.54mm double row")
 		(property "Reference" "J7"
@@ -23054,7 +23054,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "a66ac98f-e96f-4767-b088-b24f84a6c799")
-		(at 168.075002 109.995)
+		(at 92.605 117.88)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C45"
@@ -23468,7 +23468,7 @@
 	(footprint "footprints:WSL2726_VIS"
 		(layer "F.Cu")
 		(uuid "abc7be6d-d1b2-4b11-92e2-825efa422719")
-		(at 110.483202 113.2832)
+		(at 35.0132 121.1682)
 		(tags "WSL27262L000FEB ")
 		(property "Reference" "R15"
 			(at 0 0 0)
@@ -23703,7 +23703,7 @@
 			)
 			(polygon
 				(pts
-					(xy 109.289402 109.8796) (xy 111.677002 109.8796) (xy 111.677002 116.6868) (xy 109.289402 116.6868)
+					(xy 33.8194 117.7646) (xy 36.207 117.7646) (xy 36.207 124.5718) (xy 33.8194 124.5718)
 				)
 			)
 		)
@@ -24811,7 +24811,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "b5087357-8810-4d95-b5a5-6885b904a1f7")
-		(at 165.625002 104.745)
+		(at 90.155 112.63)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C17"
@@ -25225,7 +25225,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "b9f74a5c-0a65-40ac-8e62-df955d531b81")
-		(at 152.775002 123.235)
+		(at 77.305 131.12)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C34"
@@ -25432,7 +25432,7 @@
 	(footprint "Capacitor_SMD:C_1210_3225Metric"
 		(layer "F.Cu")
 		(uuid "bb36aa40-b5e7-41b8-ae3b-bd037e8daec4")
-		(at 161.575002 123.745)
+		(at 86.105 131.63)
 		(descr "Capacitor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C47"
@@ -25645,7 +25645,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "bde02913-8d7d-4719-9ba9-d34e5b1ff321")
-		(at 165.625002 106.495)
+		(at 90.155 114.38)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C18"
@@ -26317,7 +26317,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "c2e764e1-f488-4020-99b1-bd55d1aa1851")
-		(at 114.375002 130.895)
+		(at 38.905 138.78)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C27"
@@ -27110,7 +27110,7 @@
 	(footprint "footprints:DDA0008E_N"
 		(layer "F.Cu")
 		(uuid "c761f6f0-e6c6-4d50-9877-473593f746b2")
-		(at 177.775002 119.595)
+		(at 102.305 127.48)
 		(tags "LMR16020PDDAR ")
 		(property "Reference" "U4"
 			(at 0 0 0)
@@ -29526,7 +29526,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "d2210a01-79e5-4f63-a9d3-c25c455b3872")
-		(at 152.775002 124.985)
+		(at 77.305 132.87)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C35"
@@ -29733,7 +29733,7 @@
 	(footprint "Button_Switch_THT:SW_SPST_Omron_B3F-40xx"
 		(layer "F.Cu")
 		(uuid "d340e8b1-e820-492a-9d01-230d49180565")
-		(at 134.575002 124.135)
+		(at 59.105 132.02)
 		(descr "SW_THT_Tactile_Omron_B3F-40xx, 12x12 mm, Through hole switch from the B3F Family manufactured by Omron,  https://www.omron.com/ecb/products/pdf/en-b3f.pdf")
 		(tags "tactile switch THT button push B3F-4000 B3F-4050 B3F-4005 B3F-4055  ")
 		(property "Reference" "SW1"
@@ -29998,7 +29998,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "d408aa6d-afdb-4fd3-9293-ff02efffc92e")
-		(at 170.525002 104.745)
+		(at 95.055 112.63)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R8"
@@ -30205,7 +30205,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "d796bf68-6ace-4fb9-b02c-1a2a9a148029")
-		(at 155.225002 123.235)
+		(at 79.755 131.12)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R12"
@@ -30412,7 +30412,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "d7b7b1d0-ac8c-417c-9276-8c1a291a1b86")
-		(at 172.975002 102.995)
+		(at 97.505 110.88)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R27"
@@ -30619,7 +30619,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "d86530fb-450e-40a3-8856-caf11efb650c")
-		(at 152.775002 119.735)
+		(at 77.305 127.62)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C12"
@@ -30826,7 +30826,7 @@
 	(footprint "footprints:VSSOP10_DGS_TEX"
 		(layer "F.Cu")
 		(uuid "d8f7fcb4-c99d-4043-b046-15038ab5d207")
-		(at 109.683102 120.1696)
+		(at 34.2131 128.0546)
 		(tags "INA229AQDGSRQ1 ")
 		(property "Reference" "U8"
 			(at 0 0 0)
@@ -31688,7 +31688,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "dbcb17e4-2d33-4416-8503-1a6e5f6bdd34")
-		(at 172.975002 104.745)
+		(at 97.505 112.63)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R28"
@@ -31895,7 +31895,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "de1e321c-1f1e-4808-8705-6320276d22c2")
-		(at 168.075002 104.745)
+		(at 92.605 112.63)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C37"
@@ -32102,7 +32102,7 @@
 	(footprint "footprints:RFX2401C_SKY"
 		(layer "F.Cu")
 		(uuid "e0e4fb24-d724-43ba-853b-555d176580c5")
-		(at 106.179002 137.059)
+		(at 30.709 144.944)
 		(tags "RFX2401C ")
 		(property "Reference" "U5"
 			(at 0 0 0)
@@ -33406,7 +33406,7 @@
 	(footprint "Package_TO_SOT_SMD:SOT-23"
 		(layer "F.Cu")
 		(uuid "e3e5b165-dc3b-48d4-9e4b-b3571b84c61d")
-		(at 122.495002 131.795)
+		(at 47.025 139.68)
 		(descr "SOT, 3 Pin (JEDEC TO-236 Var AB https://www.jedec.org/document_search?search_api_views_fulltext=TO-236), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "SOT TO_SOT_SMD")
 		(property "Reference" "Q4"
@@ -33670,7 +33670,7 @@
 	(footprint "LED_SMD:LED_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "e40b5d5a-47d8-47bc-a252-d844da48f0f5")
-		(at 124.450002 109.645)
+		(at 48.98 117.53)
 		(descr "LED SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "LED")
 		(property "Reference" "D1"
@@ -33910,7 +33910,7 @@
 	(footprint "Diode_SMD:Nexperia_CFP3_SOD-123W"
 		(layer "F.Cu")
 		(uuid "e4f2db52-fca7-42c6-9820-44589b73b61d")
-		(at 177.420002 112.495)
+		(at 101.95 120.38)
 		(descr "Nexperia CFP3 (SOD-123W), https://assets.nexperia.com/documents/outline-drawing/SOD123W.pdf")
 		(tags "CFP3 SOD-123W")
 		(property "Reference" "D3"
@@ -34193,7 +34193,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "e6962280-5b60-4255-9684-60ad50815b0a")
-		(at 170.525002 101.245)
+		(at 95.055 109.13)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C48"
@@ -34400,7 +34400,7 @@
 	(footprint "Capacitor_SMD:C_1210_3225Metric"
 		(layer "F.Cu")
 		(uuid "e6e0150f-ce0f-4cc3-9681-40ce6945d854")
-		(at 161.575002 119.495)
+		(at 86.105 127.38)
 		(descr "Capacitor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C46"
@@ -34820,7 +34820,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "e9ffeb76-b920-482c-85bb-62a9128da0ce")
-		(at 116.825002 130.895)
+		(at 41.355 138.78)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C32"
@@ -35723,7 +35723,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "edf3c7e0-47ea-4f4d-9fc4-4616a8a7e790")
-		(at 116.825002 129.145)
+		(at 41.355 137.03)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C31"
@@ -35930,7 +35930,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "ee59ade7-90f9-4171-90f5-daf861fa7952")
-		(at 114.375002 127.395)
+		(at 38.905 135.28)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C25"
@@ -36137,7 +36137,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "f2c2da50-624a-4714-86b1-01d467bee555")
-		(at 104.745002 121.895)
+		(at 29.275 129.78)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R24"
@@ -36344,7 +36344,7 @@
 	(footprint "Capacitor_SMD:C_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "f6ae4b4a-adc9-4df8-bd41-a0ec13b634db")
-		(at 150.325002 119.735)
+		(at 74.855 127.62)
 		(descr "Capacitor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C7"
@@ -36551,7 +36551,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "f6c394f6-1292-4a5f-88f8-2992613e7484")
-		(at 126.165002 130.895)
+		(at 50.695 138.78)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R20"
@@ -37323,7 +37323,7 @@
 	(footprint "Resistor_SMD:R_0201_0603Metric"
 		(layer "F.Cu")
 		(uuid "fc9e8f33-dc77-49f8-a9d1-49eb1ad9406a")
-		(at 170.525002 109.995)
+		(at 95.055 117.88)
 		(descr "Resistor SMD 0201 (0603 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://www.vishay.com/docs/20052/crcw0201e3.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R21"
@@ -37530,7 +37530,7 @@
 	(footprint "Package_TO_SOT_SMD:SOT-23"
 		(layer "F.Cu")
 		(uuid "fe7672db-e205-4091-b919-9773d2c0516b")
-		(at 122.495002 136.42)
+		(at 47.025 144.305)
 		(descr "SOT, 3 Pin (JEDEC TO-236 Var AB https://www.jedec.org/document_search?search_api_views_fulltext=TO-236), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "SOT TO_SOT_SMD")
 		(property "Reference" "Q7"
