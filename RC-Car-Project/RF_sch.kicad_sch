@@ -4209,7 +4209,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0be9a616-39da-4b9b-bbe0-683422d788e4")
-		(property "Reference" "U1"
+		(property "Reference" "U4"
 			(at 82.55 57.15 0)
 			(effects
 				(font
@@ -4404,7 +4404,7 @@
 		(instances
 			(project ""
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "U1")
+					(reference "U4")
 					(unit 1)
 				)
 			)
@@ -4420,7 +4420,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "12679fae-290d-4dcf-b907-a5ed870169d7")
-		(property "Reference" "C32"
+		(property "Reference" "C39"
 			(at 270.51 95.2499 0)
 			(effects
 				(font
@@ -4438,7 +4438,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 267.6652 100.33 0)
 			(effects
 				(font
@@ -4474,7 +4474,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "C32")
+					(reference "C39")
 					(unit 1)
 				)
 			)
@@ -4490,7 +4490,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "15a49a3f-7e18-48a0-8046-11e00364587d")
-		(property "Reference" "#PWR063"
+		(property "Reference" "#PWR070"
 			(at 111.76 80.01 0)
 			(effects
 				(font
@@ -4541,7 +4541,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR063")
+					(reference "#PWR070")
 					(unit 1)
 				)
 			)
@@ -4557,7 +4557,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "17a0b7bd-2011-48b8-b492-a6d50bd23230")
-		(property "Reference" "#PWR053"
+		(property "Reference" "#PWR066"
 			(at 53.34 128.27 0)
 			(effects
 				(font
@@ -4608,7 +4608,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR053")
+					(reference "#PWR066")
 					(unit 1)
 				)
 			)
@@ -4624,7 +4624,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1901fabe-ba7d-4fcf-b502-7691b55cba12")
-		(property "Reference" "C30"
+		(property "Reference" "C37"
 			(at 104.14 151.1299 0)
 			(effects
 				(font
@@ -4642,7 +4642,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 101.2952 156.21 0)
 			(effects
 				(font
@@ -4678,7 +4678,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "C30")
+					(reference "C37")
 					(unit 1)
 				)
 			)
@@ -4694,7 +4694,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "19eb4b09-7c4f-4791-9bfd-24e84ef7c38c")
-		(property "Reference" "#PWR060"
+		(property "Reference" "#PWR076"
 			(at 111.76 115.57 0)
 			(effects
 				(font
@@ -4745,7 +4745,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR060")
+					(reference "#PWR076")
 					(unit 1)
 				)
 			)
@@ -4761,7 +4761,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "251a1076-ec19-4b74-8279-cfaec1aec27b")
-		(property "Reference" "#PWR069"
+		(property "Reference" "#PWR081"
 			(at 222.25 109.22 0)
 			(effects
 				(font
@@ -4811,7 +4811,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR069")
+					(reference "#PWR081")
 					(unit 1)
 				)
 			)
@@ -4827,7 +4827,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2720b92f-3f9d-4520-81b3-85637318c2d9")
-		(property "Reference" "#PWR037"
+		(property "Reference" "#PWR079"
 			(at 209.55 90.17 0)
 			(effects
 				(font
@@ -4878,7 +4878,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR037")
+					(reference "#PWR079")
 					(unit 1)
 				)
 			)
@@ -4894,7 +4894,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2a687cc4-f52b-47c1-ae47-ac91707898a4")
-		(property "Reference" "#PWR052"
+		(property "Reference" "#PWR060"
 			(at 63.5 97.79 0)
 			(effects
 				(font
@@ -4945,7 +4945,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR052")
+					(reference "#PWR060")
 					(unit 1)
 				)
 			)
@@ -4961,7 +4961,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2b1c77a8-fafa-4fd4-a912-6910001f2858")
-		(property "Reference" "#PWR064"
+		(property "Reference" "#PWR068"
 			(at 111.76 72.39 0)
 			(effects
 				(font
@@ -5012,7 +5012,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR064")
+					(reference "#PWR068")
 					(unit 1)
 				)
 			)
@@ -5028,7 +5028,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2d87999c-5f60-4844-8380-32a02b84e14b")
-		(property "Reference" "C25"
+		(property "Reference" "C32"
 			(at 62.23 151.1299 0)
 			(effects
 				(font
@@ -5046,7 +5046,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 59.3852 156.21 0)
 			(effects
 				(font
@@ -5082,7 +5082,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "C25")
+					(reference "C32")
 					(unit 1)
 				)
 			)
@@ -5098,7 +5098,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2fa76a05-3a35-4d2e-b052-06e231d4e5fb")
-		(property "Reference" "#PWR076"
+		(property "Reference" "#PWR074"
 			(at 101.6 95.25 0)
 			(effects
 				(font
@@ -5149,7 +5149,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR076")
+					(reference "#PWR074")
 					(unit 1)
 				)
 			)
@@ -5165,7 +5165,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2ff69879-ba2a-4cb2-8b6d-6259948e13b2")
-		(property "Reference" "#PWR061"
+		(property "Reference" "#PWR075"
 			(at 111.76 105.41 0)
 			(effects
 				(font
@@ -5216,7 +5216,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR061")
+					(reference "#PWR075")
 					(unit 1)
 				)
 			)
@@ -5232,7 +5232,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "30417189-747d-4929-838d-553b2f117bd1")
-		(property "Reference" "#PWR070"
+		(property "Reference" "#PWR084"
 			(at 270.51 91.44 0)
 			(effects
 				(font
@@ -5282,7 +5282,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR070")
+					(reference "#PWR084")
 					(unit 1)
 				)
 			)
@@ -5298,7 +5298,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "33fab08c-be29-46b1-b75b-97c1b9de9b04")
-		(property "Reference" "C27"
+		(property "Reference" "C34"
 			(at 80.01 151.1299 0)
 			(effects
 				(font
@@ -5316,7 +5316,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 77.1652 156.21 0)
 			(effects
 				(font
@@ -5352,7 +5352,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "C27")
+					(reference "C34")
 					(unit 1)
 				)
 			)
@@ -5368,7 +5368,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "498184f2-c50d-40d4-ab8e-50a9ce16ee14")
-		(property "Reference" "C29"
+		(property "Reference" "C36"
 			(at 96.52 151.1299 0)
 			(effects
 				(font
@@ -5386,7 +5386,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 93.6752 156.21 0)
 			(effects
 				(font
@@ -5422,7 +5422,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "C29")
+					(reference "C36")
 					(unit 1)
 				)
 			)
@@ -5438,7 +5438,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4f300fc4-5071-413f-bd28-0d008dd26f07")
-		(property "Reference" "#PWR067"
+		(property "Reference" "#PWR058"
 			(at 63.5 77.47 0)
 			(effects
 				(font
@@ -5489,7 +5489,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR067")
+					(reference "#PWR058")
 					(unit 1)
 				)
 			)
@@ -5505,7 +5505,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "519915f0-108f-48c0-88d6-388ae3ebe0ef")
-		(property "Reference" "#PWR073"
+		(property "Reference" "#PWR082"
 			(at 262.89 78.74 0)
 			(effects
 				(font
@@ -5555,7 +5555,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR073")
+					(reference "#PWR082")
 					(unit 1)
 				)
 			)
@@ -5571,7 +5571,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5237aa84-2baa-482d-bd71-fd656d5bdc57")
-		(property "Reference" "C31"
+		(property "Reference" "C38"
 			(at 111.76 151.1299 0)
 			(effects
 				(font
@@ -5589,7 +5589,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 108.9152 156.21 0)
 			(effects
 				(font
@@ -5625,7 +5625,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "C31")
+					(reference "C38")
 					(unit 1)
 				)
 			)
@@ -5641,7 +5641,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5ed2a671-40a7-4767-b942-b38251f14609")
-		(property "Reference" "#PWR056"
+		(property "Reference" "#PWR071"
 			(at 111.76 82.55 0)
 			(effects
 				(font
@@ -5692,7 +5692,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR056")
+					(reference "#PWR071")
 					(unit 1)
 				)
 			)
@@ -5708,7 +5708,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "607b90b0-af2d-4722-8817-928abd527732")
-		(property "Reference" "#PWR071"
+		(property "Reference" "#PWR083"
 			(at 262.89 111.76 0)
 			(effects
 				(font
@@ -5758,7 +5758,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR071")
+					(reference "#PWR083")
 					(unit 1)
 				)
 			)
@@ -5774,7 +5774,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "65d74c6a-5d0d-408f-8258-3162f86956cc")
-		(property "Reference" "#PWR079"
+		(property "Reference" "#PWR057"
 			(at 49.53 152.4 0)
 			(effects
 				(font
@@ -5824,7 +5824,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR079")
+					(reference "#PWR057")
 					(unit 1)
 				)
 			)
@@ -5840,7 +5840,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6c25e16c-2121-44ae-a3f2-96424c566b27")
-		(property "Reference" "#PWR051"
+		(property "Reference" "#PWR078"
 			(at 115.57 87.63 0)
 			(effects
 				(font
@@ -5891,7 +5891,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR051")
+					(reference "#PWR078")
 					(unit 1)
 				)
 			)
@@ -5907,7 +5907,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "74f2931f-f84f-4371-9a77-1a39d7b1f8cb")
-		(property "Reference" "#PWR074"
+		(property "Reference" "#PWR080"
 			(at 215.9 87.63 0)
 			(effects
 				(font
@@ -5958,7 +5958,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR074")
+					(reference "#PWR080")
 					(unit 1)
 				)
 			)
@@ -5974,7 +5974,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8aba6897-3b16-4321-829f-bc1603968720")
-		(property "Reference" "#PWR078"
+		(property "Reference" "#PWR067"
 			(at 76.2 162.56 0)
 			(effects
 				(font
@@ -6024,7 +6024,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR078")
+					(reference "#PWR067")
 					(unit 1)
 				)
 			)
@@ -6040,7 +6040,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8b70d9a9-4252-426d-a023-9c938fbaafad")
-		(property "Reference" "#PWR062"
+		(property "Reference" "#PWR072"
 			(at 111.76 90.17 0)
 			(effects
 				(font
@@ -6091,7 +6091,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR062")
+					(reference "#PWR072")
 					(unit 1)
 				)
 			)
@@ -6107,7 +6107,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "96856f54-aa9d-4623-b59a-425e4b720bd0")
-		(property "Reference" "#PWR068"
+		(property "Reference" "#PWR064"
 			(at 63.5 120.65 0)
 			(effects
 				(font
@@ -6158,7 +6158,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR068")
+					(reference "#PWR064")
 					(unit 1)
 				)
 			)
@@ -6174,7 +6174,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9dc0e8aa-8067-45c9-ac0b-241f519ae28e")
-		(property "Reference" "#PWR075"
+		(property "Reference" "#PWR086"
 			(at 279.4 96.52 0)
 			(effects
 				(font
@@ -6224,7 +6224,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR075")
+					(reference "#PWR086")
 					(unit 1)
 				)
 			)
@@ -6240,7 +6240,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a14a5703-8764-407d-8628-beb4771a3f7b")
-		(property "Reference" "C33"
+		(property "Reference" "C40"
 			(at 274.32 90.1699 0)
 			(effects
 				(font
@@ -6258,7 +6258,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 271.4752 95.25 0)
 			(effects
 				(font
@@ -6294,7 +6294,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "C33")
+					(reference "C40")
 					(unit 1)
 				)
 			)
@@ -6310,7 +6310,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a249e7d2-2171-4ac9-9cbc-7298b406c985")
-		(property "Reference" "#PWR054"
+		(property "Reference" "#PWR065"
 			(at 63.5 123.19 0)
 			(effects
 				(font
@@ -6361,7 +6361,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR054")
+					(reference "#PWR065")
 					(unit 1)
 				)
 			)
@@ -6377,7 +6377,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a2f3b82e-2d9d-49d4-afcf-0565b6ad52db")
-		(property "Reference" "#PWR057"
+		(property "Reference" "#PWR059"
 			(at 53.34 85.09 0)
 			(effects
 				(font
@@ -6428,7 +6428,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR057")
+					(reference "#PWR059")
 					(unit 1)
 				)
 			)
@@ -6444,7 +6444,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a6c9d7f8-3994-4c9e-8e62-59ceddc433b5")
-		(property "Reference" "C28"
+		(property "Reference" "C35"
 			(at 88.9 151.1299 0)
 			(effects
 				(font
@@ -6462,7 +6462,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 86.0552 156.21 0)
 			(effects
 				(font
@@ -6498,7 +6498,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "C28")
+					(reference "C35")
 					(unit 1)
 				)
 			)
@@ -6514,7 +6514,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "aef9cdf8-4b3b-428b-932f-d869c931ac9d")
-		(property "Reference" "C26"
+		(property "Reference" "C33"
 			(at 71.12 151.1299 0)
 			(effects
 				(font
@@ -6532,7 +6532,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 68.2752 156.21 0)
 			(effects
 				(font
@@ -6568,7 +6568,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "C26")
+					(reference "C33")
 					(unit 1)
 				)
 			)
@@ -6584,7 +6584,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "af42429d-7c1c-47b7-90df-499e7f29c6b4")
-		(property "Reference" "C24"
+		(property "Reference" "C31"
 			(at 53.34 151.1299 0)
 			(effects
 				(font
@@ -6602,7 +6602,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 50.4952 156.21 0)
 			(effects
 				(font
@@ -6638,7 +6638,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "C24")
+					(reference "C31")
 					(unit 1)
 				)
 			)
@@ -6654,7 +6654,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b40f79fe-58ca-4dc8-aa78-a50de681d21b")
-		(property "Reference" "#PWR065"
+		(property "Reference" "#PWR062"
 			(at 63.5 102.87 0)
 			(effects
 				(font
@@ -6705,7 +6705,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR065")
+					(reference "#PWR062")
 					(unit 1)
 				)
 			)
@@ -6721,7 +6721,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b7d91f8e-64cd-424f-94d2-c06c94a38e78")
-		(property "Reference" "U6"
+		(property "Reference" "U5"
 			(at 162.56 77.47 0)
 			(effects
 				(font
@@ -6787,7 +6787,7 @@
 		(instances
 			(project ""
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "U6")
+					(reference "U5")
 					(unit 1)
 				)
 			)
@@ -6803,7 +6803,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d02b9d3e-1502-4fc6-bbfe-d43298ba9a9e")
-		(property "Reference" "#PWR059"
+		(property "Reference" "#PWR063"
 			(at 53.34 118.11 0)
 			(effects
 				(font
@@ -6854,7 +6854,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR059")
+					(reference "#PWR063")
 					(unit 1)
 				)
 			)
@@ -6870,7 +6870,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d4435ea8-0d78-4db3-9121-d2f4c629b12d")
-		(property "Reference" "#PWR055"
+		(property "Reference" "#PWR077"
 			(at 111.76 123.19 0)
 			(effects
 				(font
@@ -6921,7 +6921,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR055")
+					(reference "#PWR077")
 					(unit 1)
 				)
 			)
@@ -6937,7 +6937,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d77f2595-42e3-40d4-8e23-5f441668f838")
-		(property "Reference" "#PWR066"
+		(property "Reference" "#PWR069"
 			(at 101.6 77.47 0)
 			(effects
 				(font
@@ -6988,7 +6988,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR066")
+					(reference "#PWR069")
 					(unit 1)
 				)
 			)
@@ -7004,7 +7004,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "da633919-11eb-4eb3-8499-cd0f300e3d04")
-		(property "Reference" "#PWR072"
+		(property "Reference" "#PWR085"
 			(at 278.13 106.68 0)
 			(effects
 				(font
@@ -7054,7 +7054,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR072")
+					(reference "#PWR085")
 					(unit 1)
 				)
 			)
@@ -7070,7 +7070,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e963b726-62cf-47e8-a950-e94e8499b42f")
-		(property "Reference" "#PWR058"
+		(property "Reference" "#PWR061"
 			(at 53.34 100.33 0)
 			(effects
 				(font
@@ -7121,7 +7121,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR058")
+					(reference "#PWR061")
 					(unit 1)
 				)
 			)
@@ -7137,7 +7137,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "eb082e5d-7f5e-4acc-9cdb-1be8b1b540a5")
-		(property "Reference" "U5"
+		(property "Reference" "U6"
 			(at 242.57 74.93 0)
 			(effects
 				(font
@@ -7236,7 +7236,7 @@
 		(instances
 			(project ""
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "U5")
+					(reference "U6")
 					(unit 1)
 				)
 			)
@@ -7252,7 +7252,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fc01b8a7-60d2-47d9-95a6-8fdf0405aac1")
-		(property "Reference" "#PWR077"
+		(property "Reference" "#PWR073"
 			(at 101.6 92.71 0)
 			(effects
 				(font
@@ -7303,7 +7303,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/5e5c61f8-c2b4-4906-86eb-5d3e2264a4fc"
-					(reference "#PWR077")
+					(reference "#PWR073")
 					(unit 1)
 				)
 			)
