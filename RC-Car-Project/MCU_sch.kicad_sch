@@ -3666,16 +3666,20 @@
 		(uuid "4cde890f-de79-408d-9820-370ad99ab91f")
 	)
 	(no_connect
-		(at 162.56 74.93)
-		(uuid "603a599f-802d-4487-b07a-d26981fc0c67")
-	)
-	(no_connect
 		(at 162.56 62.23)
 		(uuid "70cf8428-3cd3-4f32-8901-26f1ef74d956")
 	)
 	(no_connect
+		(at 162.56 39.37)
+		(uuid "7542e6d8-03fe-4caf-884e-94178b278d98")
+	)
+	(no_connect
 		(at 116.84 102.87)
 		(uuid "7ec4cbfc-d24f-481b-8f37-436ada7159d1")
+	)
+	(no_connect
+		(at 116.84 97.79)
+		(uuid "85918f53-18a8-4b1f-bd4a-5cdb268f5237")
 	)
 	(no_connect
 		(at 116.84 57.15)
@@ -3722,6 +3726,14 @@
 		(uuid "b4d6b77b-9b79-4af8-bc5a-dcdee2a297a3")
 	)
 	(no_connect
+		(at 162.56 85.09)
+		(uuid "b70109f2-427a-4bcb-b3e6-1fee8a2608a6")
+	)
+	(no_connect
+		(at 162.56 80.01)
+		(uuid "bb35caa8-cbed-48b6-a8af-abd38b49f333")
+	)
+	(no_connect
 		(at 162.56 95.25)
 		(uuid "be2f29fd-ed18-47f4-95c0-068907f10b2c")
 	)
@@ -3732,6 +3744,10 @@
 	(no_connect
 		(at 116.84 92.71)
 		(uuid "c838d335-b1ab-49d6-804c-97c3aeba8b23")
+	)
+	(no_connect
+		(at 116.84 130.81)
+		(uuid "c8a3a34e-fd9e-4ab9-9d51-ddba0510256f")
 	)
 	(no_connect
 		(at 116.84 107.95)
@@ -4623,18 +4639,6 @@
 		)
 		(uuid "1151bd2c-277d-4955-a596-9377b0d8a73d")
 	)
-	(hierarchical_label "RELAY_CTRL"
-		(shape input)
-		(at 116.84 97.79 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2043cf8d-e5d5-4cc3-a433-87236ce7a0d3")
-	)
 	(hierarchical_label "DCMI_D[7..0]"
 		(shape input)
 		(at 227.33 57.15 0)
@@ -4707,18 +4711,6 @@
 		)
 		(uuid "4e9501f7-8e55-4fc0-af8a-72f22a90db68")
 	)
-	(hierarchical_label "RIGHT_EN2"
-		(shape input)
-		(at 162.56 85.09 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "62a0e07d-d761-4566-83c5-e2b33e4c0d16")
-	)
 	(hierarchical_label "LEFT_PWM2"
 		(shape input)
 		(at 162.56 36.83 0)
@@ -4743,9 +4735,9 @@
 		)
 		(uuid "6d547456-8259-4f79-86b8-df90d30ac83a")
 	)
-	(hierarchical_label "LEFT_EN2"
+	(hierarchical_label "LIGHTS2_PWM"
 		(shape input)
-		(at 162.56 39.37 0)
+		(at 162.56 74.93 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4753,7 +4745,7 @@
 			)
 			(justify left)
 		)
-		(uuid "72206e96-3e42-4c2a-a96b-9360113f4fef")
+		(uuid "7ca5e4d4-6a30-4cad-8145-981a73ecc179")
 	)
 	(hierarchical_label "SPI2_SCLK_ISENSE"
 		(shape input)
@@ -4875,7 +4867,7 @@
 		)
 		(uuid "d0f6493a-d6f4-4f38-a27d-4348c28f2354")
 	)
-	(hierarchical_label "LIGHTS_PWM"
+	(hierarchical_label "LIGHTS1_PWM"
 		(shape input)
 		(at 116.84 90.17 180)
 		(fields_autoplaced yes)
@@ -4887,7 +4879,7 @@
 		)
 		(uuid "d34d68bb-16ee-475e-8904-b96dfd4cb907")
 	)
-	(hierarchical_label "LEFT_EN1"
+	(hierarchical_label "MOTOR_EN"
 		(shape input)
 		(at 162.56 34.29 0)
 		(fields_autoplaced yes)
@@ -4910,18 +4902,6 @@
 			(justify right)
 		)
 		(uuid "d4216c47-2053-426e-ae2d-3efb70727eb4")
-	)
-	(hierarchical_label "RIGHT_EN1"
-		(shape input)
-		(at 116.84 130.81 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "de5b6431-b0b8-4539-931a-1d3ceb95cd6c")
 	)
 	(hierarchical_label "NRST"
 		(shape input)

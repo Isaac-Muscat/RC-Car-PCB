@@ -2373,18 +2373,6 @@
 		)
 		(uuid "292db7fd-3111-450a-ba9b-02f0e773be64")
 	)
-	(hierarchical_label "RELAY_CTRL"
-		(shape input)
-		(at 196.85 86.36 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2fe41d2e-9b91-435d-870e-ba7bd7449ed1")
-	)
 	(hierarchical_label "DCMI_XCLK"
 		(shape input)
 		(at 148.59 48.26 180)

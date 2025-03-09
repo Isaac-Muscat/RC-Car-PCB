@@ -630,6 +630,16 @@
 	)
 	(wire
 		(pts
+			(xy 194.31 87.63) (xy 208.28 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0256c47a-c3fe-439c-93d2-f4ce6c9b29ad")
+	)
+	(wire
+		(pts
 			(xy 101.6 78.74) (xy 85.09 78.74)
 		)
 		(stroke
@@ -640,7 +650,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 147.32) (xy 113.03 147.32)
+			(xy 83.82 142.24) (xy 113.03 142.24)
 		)
 		(stroke
 			(width 0)
@@ -698,16 +708,6 @@
 		)
 		(uuid "1cd283bd-8d81-474e-b0e7-29586696fd6d")
 	)
-	(wire
-		(pts
-			(xy 83.82 139.7) (xy 113.03 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "20b4785f-1fbb-47a3-82e1-9898befad8a5")
-	)
 	(polyline
 		(pts
 			(xy 92.075 40.64) (xy 113.665 40.64)
@@ -751,6 +751,16 @@
 	)
 	(wire
 		(pts
+			(xy 194.31 90.17) (xy 208.28 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "251e54a0-083d-4043-bfc2-6ce06d5c1efa")
+	)
+	(wire
+		(pts
 			(xy 83.82 161.29) (xy 156.21 161.29)
 		)
 		(stroke
@@ -781,13 +791,13 @@
 	)
 	(wire
 		(pts
-			(xy 194.31 87.63) (xy 208.28 87.63)
+			(xy 194.31 82.55) (xy 208.28 82.55)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "322df739-4850-4045-bc61-3f5fd146ac75")
+		(uuid "30512d93-ba09-4b06-83c3-58ada3c54418")
 	)
 	(wire
 		(pts
@@ -861,7 +871,17 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 144.78) (xy 113.03 144.78)
+			(xy 148.59 83.82) (xy 157.48 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5271d3da-6a76-4e56-977b-8fe5255f19ce")
+	)
+	(wire
+		(pts
+			(xy 83.82 139.7) (xy 113.03 139.7)
 		)
 		(stroke
 			(width 0)
@@ -871,33 +891,13 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 149.86) (xy 113.03 149.86)
+			(xy 148.59 86.36) (xy 157.48 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5bc0fd38-a2d0-4176-a28f-281b56e84080")
-	)
-	(wire
-		(pts
-			(xy 83.82 152.4) (xy 113.03 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6a7bffc3-24d0-4900-8a8d-f8bdff6d263d")
-	)
-	(wire
-		(pts
-			(xy 148.59 87.63) (xy 157.48 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6af16e62-8f59-4097-a7a4-6421de597549")
+		(uuid "705d14cb-f747-4128-b03d-844c4045b67e")
 	)
 	(wire
 		(pts
@@ -928,6 +928,16 @@
 			(type default)
 		)
 		(uuid "77f69768-9530-48b4-9d5c-372fc3ffaca5")
+	)
+	(wire
+		(pts
+			(xy 194.31 80.01) (xy 208.28 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78533c27-c697-492f-bae8-5746b8a5500b")
 	)
 	(wire
 		(pts
@@ -1111,16 +1121,6 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 137.16) (xy 113.03 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ae9dd81f-30a7-4e38-9bac-063b61ffc5c2")
-	)
-	(wire
-		(pts
 			(xy 148.59 120.65) (xy 208.28 120.65)
 		)
 		(stroke
@@ -1158,16 +1158,6 @@
 			(type default)
 		)
 		(uuid "b733e6cf-e4a5-404d-a389-91f504258471")
-	)
-	(wire
-		(pts
-			(xy 148.59 85.09) (xy 157.48 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ba3ca6bd-3e86-40dc-8580-0686c3f64db0")
 	)
 	(wire
 		(pts
@@ -1221,16 +1211,6 @@
 	)
 	(wire
 		(pts
-			(xy 194.31 85.09) (xy 208.28 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d6820fa4-0ea8-411c-b406-c9cbd68c0866")
-	)
-	(wire
-		(pts
 			(xy 85.09 81.28) (xy 99.06 81.28)
 		)
 		(stroke
@@ -1238,6 +1218,16 @@
 			(type default)
 		)
 		(uuid "d9003cab-cf49-4b35-91ad-0f7becf477aa")
+	)
+	(wire
+		(pts
+			(xy 83.82 147.32) (xy 113.03 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db9345c5-6537-42ed-9cc9-8245c5fa302f")
 	)
 	(wire
 		(pts
@@ -2351,16 +2341,6 @@
 			)
 			(uuid "361cc786-a171-43da-9840-3ab2e929fa74")
 		)
-		(pin "MOTOR_1_L_EN" input
-			(at 83.82 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "d64ed343-0c20-47e9-a79d-2b1e84dbeeb9")
-		)
 		(pin "MOTOR_1_R_PWM" input
 			(at 83.82 134.62 0)
 			(effects
@@ -2370,16 +2350,6 @@
 				(justify right)
 			)
 			(uuid "3422336b-08c7-47f4-9a26-00deda1ef6ad")
-		)
-		(pin "MOTOR_1_R_EN" input
-			(at 83.82 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "03d88f05-23a5-4d36-ac53-0c9e9e3043f6")
 		)
 		(pin "MOTOR_1_L_PWM" input
 			(at 83.82 132.08 0)
@@ -2412,7 +2382,7 @@
 			(uuid "c58d03f4-e676-45f3-a24e-b69a454009bb")
 		)
 		(pin "MOTOR_2_L_PWM" input
-			(at 83.82 144.78 0)
+			(at 83.82 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2421,18 +2391,8 @@
 			)
 			(uuid "4cb20eb0-b668-44bb-9991-c49e9ee2b652")
 		)
-		(pin "MOTOR_2_R_EN" input
-			(at 83.82 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "31f49f3f-5b4f-4946-92f9-217ae424ddd1")
-		)
 		(pin "MOTOR_2_R_PWM" input
-			(at 83.82 147.32 0)
+			(at 83.82 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2441,15 +2401,15 @@
 			)
 			(uuid "326e6cf4-c6b5-4008-ab0a-1b14eefd7917")
 		)
-		(pin "MOTOR_2_L_EN" input
-			(at 83.82 149.86 0)
+		(pin "MOTOR_EN" input
+			(at 83.82 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "47f97c21-ff54-4d2b-86df-815c03b6b4b6")
+			(uuid "34683869-b21b-42aa-a8c3-551cd79ae83c")
 		)
 		(instances
 			(project "RC-Car-Project"
@@ -2488,26 +2448,6 @@
 				)
 				(justify left top)
 			)
-		)
-		(pin "RELAY_CTRL" input
-			(at 208.28 85.09 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "19776314-e676-4fad-82a1-1a4d79765847")
-		)
-		(pin "LIGHTS_PWM" input
-			(at 208.28 87.63 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "610c2e83-df03-48f6-a201-eeec7ed7cc20")
 		)
 		(pin "RF_ANT" input
 			(at 208.28 74.93 180)
@@ -2699,6 +2639,46 @@
 			)
 			(uuid "f24e52ea-4928-49c8-bafe-dceed80443ad")
 		)
+		(pin "LIGHTS1_NEG" input
+			(at 208.28 82.55 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "36ec1044-5e98-4d21-b8c5-ec0478c96b01")
+		)
+		(pin "LIGHTS1_POS" input
+			(at 208.28 80.01 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "5e6ec992-cf6f-4a86-8ba2-2da4c40b7e27")
+		)
+		(pin "LIGHTS2_POS" input
+			(at 208.28 87.63 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "06475ab5-c5c1-477a-b6a4-fe3a28a84889")
+		)
+		(pin "LIGHTS2_NEG" input
+			(at 208.28 90.17 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "909a134b-ba9c-4ecf-94f2-140a71ae0d25")
+		)
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
@@ -2816,8 +2796,8 @@
 		)
 	)
 	(sheet
-		(at 157.48 80.645)
-		(size 36.83 9.525)
+		(at 157.48 77.47)
+		(size 36.83 15.24)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -2828,7 +2808,7 @@
 		)
 		(uuid "6cd00c1a-14cd-4705-8fa1-76b1c50e2463")
 		(property "Sheetname" "MiscDriver"
-			(at 157.48 79.9334 0)
+			(at 157.48 76.7584 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2837,7 +2817,7 @@
 			)
 		)
 		(property "Sheetfile" "MiscDriver.kicad_sch"
-			(at 157.48 90.7546 0)
+			(at 157.48 93.2946 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2845,27 +2825,27 @@
 				(justify left top)
 			)
 		)
-		(pin "MCU_RELAY_IN" input
-			(at 157.48 85.09 180)
+		(pin "MCU_LIGHTS1_CTRL" input
+			(at 157.48 83.82 180)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "d4d15908-b14d-4e1f-8b61-6b3cd037e3a7")
+			(uuid "958319b9-3581-4b0c-b79d-dea8e1be2f19")
 		)
-		(pin "MCU_LIGHTS_IN" input
-			(at 157.48 87.63 180)
+		(pin "LIGHTS2_NEG" input
+			(at 194.31 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
-			(uuid "38c8ca11-0104-4bb5-a2c6-aa2e11c97b6c")
+			(uuid "05977495-8724-447e-bc51-c372d960d00e")
 		)
-		(pin "LIGHTS_PWM_OUT" input
+		(pin "LIGHTS2_POS" input
 			(at 194.31 87.63 0)
 			(effects
 				(font
@@ -2873,17 +2853,37 @@
 				)
 				(justify right)
 			)
-			(uuid "03556e4a-fefc-4bea-b211-5286c4b02bfd")
+			(uuid "e8d07f50-2d73-4df0-9ec3-ba61a9a41996")
 		)
-		(pin "RELAY_OUT" input
-			(at 194.31 85.09 0)
+		(pin "LIGHTS1_POS" input
+			(at 194.31 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "3989508b-4a64-48e8-9a0c-cc5fb6654cf8")
+			(uuid "231b1408-e8ff-469e-96be-7bddea9ea9d1")
+		)
+		(pin "LIGHTS1_NEG" input
+			(at 194.31 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "4f253373-e403-47ad-ac77-f603e2bb5cd0")
+		)
+		(pin "MCU_LIGHTS2_CTRL" input
+			(at 157.48 86.36 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "f57a83a8-d097-4b85-81ec-8dbb574245b9")
 		)
 		(instances
 			(project "RC-Car-Project"
@@ -3042,7 +3042,7 @@
 			)
 		)
 		(pin "LEFT_PWM2" input
-			(at 113.03 144.78 180)
+			(at 113.03 139.7 180)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3050,16 +3050,6 @@
 				(justify left)
 			)
 			(uuid "23eef5bc-0fe6-44e5-b3df-6de7794b0d3d")
-		)
-		(pin "LEFT_EN2" input
-			(at 113.03 149.86 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "68a17762-1d70-4837-af24-d1625725ebf9")
 		)
 		(pin "LEFT_PWM1" input
 			(at 113.03 132.08 180)
@@ -3070,16 +3060,6 @@
 				(justify left)
 			)
 			(uuid "ba74246c-7df0-4199-ac3a-d82a4a92cd8d")
-		)
-		(pin "LEFT_EN1" input
-			(at 113.03 137.16 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "6faeab2f-f9ec-4d13-889c-d4498990859c")
 		)
 		(pin "USART1_TX" input
 			(at 148.59 97.79 0)
@@ -3121,16 +3101,6 @@
 			)
 			(uuid "6f008639-2065-4e05-bc84-823a6950c111")
 		)
-		(pin "RIGHT_EN1" input
-			(at 113.03 139.7 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "d01bdab3-501f-418e-98fc-f1e171fa625a")
-		)
 		(pin "SPI2_SCLK_ISENSE" input
 			(at 113.03 110.49 180)
 			(effects
@@ -3140,16 +3110,6 @@
 				(justify left)
 			)
 			(uuid "13876f54-be08-4558-861a-bd52825aaefc")
-		)
-		(pin "RELAY_CTRL" input
-			(at 148.59 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "0c551629-6927-4ffa-975b-2aa16201f785")
 		)
 		(pin "SPI2_CS_ISENSE" input
 			(at 113.03 118.11 180)
@@ -3212,7 +3172,7 @@
 			(uuid "f8118c84-8c98-4ad0-becf-2757f8e47e2d")
 		)
 		(pin "RIGHT_PWM2" input
-			(at 113.03 147.32 180)
+			(at 113.03 142.24 180)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3220,16 +3180,6 @@
 				(justify left)
 			)
 			(uuid "9deaaf8f-3925-45b3-9709-108eaf389b4a")
-		)
-		(pin "RIGHT_EN2" input
-			(at 113.03 152.4 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "7ff0ff74-9737-4cb0-a7f4-1f0e187ff547")
 		)
 		(pin "RF_NRST" input
 			(at 113.03 93.98 180)
@@ -3240,16 +3190,6 @@
 				(justify left)
 			)
 			(uuid "f8eef27a-4786-4005-a2d1-1d442821013a")
-		)
-		(pin "LIGHTS_PWM" input
-			(at 148.59 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "6acd80b3-1c6a-4bb6-99a6-d2e58fcb15cc")
 		)
 		(pin "I2C2_CAM_SCL" input
 			(at 148.59 110.49 0)
@@ -3370,6 +3310,36 @@
 				(justify right)
 			)
 			(uuid "3d2c5747-2f90-4f87-b8e0-b5cea953061c")
+		)
+		(pin "MOTOR_EN" input
+			(at 113.03 147.32 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "ce739c1e-3aef-44c8-b43a-40bcf0a59fc4")
+		)
+		(pin "LIGHTS1_PWM" input
+			(at 148.59 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "341eaab8-57f5-4c07-8cb4-91f020338e24")
+		)
+		(pin "LIGHTS2_PWM" input
+			(at 148.59 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "f275f50b-1f94-4fd1-a23e-a668b83d08cb")
 		)
 		(instances
 			(project "RC-Car-Project"
