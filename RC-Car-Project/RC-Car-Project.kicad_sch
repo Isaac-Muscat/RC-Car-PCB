@@ -2609,26 +2609,6 @@
 			)
 			(uuid "9781ac96-df1a-461c-b47b-6dcfb7a0f0c3")
 		)
-		(pin "THERMO1" input
-			(at 208.28 67.31 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "c039cfab-072d-476f-aacc-f39c9d3cdfdd")
-		)
-		(pin "THERMO2" input
-			(at 208.28 69.85 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "7244255c-1827-4209-9a9e-4f10ac3c6de5")
-		)
 		(pin "DCMI_XCLK" input
 			(at 208.28 123.19 180)
 			(effects
@@ -2678,6 +2658,26 @@
 				(justify left)
 			)
 			(uuid "909a134b-ba9c-4ecf-94f2-140a71ae0d25")
+		)
+		(pin "THERMO1_NEG" input
+			(at 208.28 67.31 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "2bc68e3e-53e5-4384-bd77-bb7c5db8eb52")
+		)
+		(pin "THERMO2_NEG" input
+			(at 208.28 69.85 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "2077f121-9b40-4573-8b7e-7cbb24d1fad5")
 		)
 		(instances
 			(project "RC-Car-Project"

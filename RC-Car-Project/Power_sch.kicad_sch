@@ -1640,12 +1640,6 @@
 		(uuid "1bf9c8fa-106a-462e-90d1-c15cd73252ee")
 	)
 	(junction
-		(at 100.33 102.87)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "20041d3f-58cf-46b1-ab58-2b52c314a3dd")
-	)
-	(junction
 		(at 124.46 163.83)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1776,12 +1770,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d63722ae-97a3-4ca8-847b-d7465b8b2146")
-	)
-	(junction
-		(at 100.33 110.49)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "db05725d-f3ad-43aa-8d4a-ef4f95e11852")
 	)
 	(junction
 		(at 148.59 163.83)
@@ -2187,7 +2175,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 110.49) (xy 114.3 110.49)
+			(xy 71.12 110.49) (xy 114.3 110.49)
 		)
 		(stroke
 			(width 0)
@@ -2387,16 +2375,6 @@
 	)
 	(wire
 		(pts
-			(xy 85.09 102.87) (xy 100.33 102.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b3b0bcbc-45dd-4751-8a75-b5ceff77d79b")
-	)
-	(wire
-		(pts
 			(xy 60.96 168.91) (xy 71.12 168.91)
 		)
 		(stroke
@@ -2517,16 +2495,6 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 110.49) (xy 100.33 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e34d813f-9aa8-42ed-ab90-622d90e3b968")
-	)
-	(wire
-		(pts
 			(xy 40.64 156.21) (xy 55.88 156.21)
 		)
 		(stroke
@@ -2537,7 +2505,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 102.87) (xy 111.76 102.87)
+			(xy 85.09 102.87) (xy 111.76 102.87)
 		)
 		(stroke
 			(width 0)
@@ -8576,76 +8544,6 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/e8cbdd69-5fc8-4583-a262-8a3c06e86dab"
 					(reference "#PWR025")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 100.33 106.68 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "87c54f9e-8714-416c-b7ca-815d614c90d4")
-		(property "Reference" "R8"
-			(at 102.87 105.4099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "56kohm"
-			(at 102.87 107.9499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 102.108 106.68 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 100.33 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 100.33 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "bfd8fdca-faad-476a-b1c6-c7f600e161e0")
-		)
-		(pin "1"
-			(uuid "6e44e311-b581-428f-bc71-f0aa0db06854")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/e8cbdd69-5fc8-4583-a262-8a3c06e86dab"
-					(reference "R8")
 					(unit 1)
 				)
 			)

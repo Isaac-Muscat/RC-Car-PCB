@@ -2385,6 +2385,18 @@
 		)
 		(uuid "366a1c7e-9d9c-485a-b9b3-b5906fa0661a")
 	)
+	(hierarchical_label "THERMO2_NEG"
+		(shape input)
+		(at 129.54 148.59 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "410b7ae1-972d-4a64-aadf-59c866bd01f6")
+	)
 	(hierarchical_label "M2_LEFT"
 		(shape input)
 		(at 73.66 119.38 180)
@@ -2456,18 +2468,6 @@
 			(justify right)
 		)
 		(uuid "7b82917b-d952-497b-8f95-fb14dc0de8fb")
-	)
-	(hierarchical_label "THERMO1"
-		(shape input)
-		(at 129.54 138.43 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "889d8a21-79e1-413a-b22d-4d206b17f1cb")
 	)
 	(hierarchical_label "I2C2_CAM_SDA"
 		(shape input)
@@ -2553,7 +2553,7 @@
 		)
 		(uuid "ce964aaa-dc99-41d4-8742-34eb4e175031")
 	)
-	(hierarchical_label "THERMO2"
+	(hierarchical_label "THERMO1_NEG"
 		(shape input)
 		(at 129.54 140.97 180)
 		(fields_autoplaced yes)
@@ -2948,6 +2948,76 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
+		(at 134.62 146.05 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "342e72b7-22e2-4634-9508-3bb36e74b1f4")
+		(property "Reference" "J11"
+			(at 137.16 146.0499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Conn_01x02"
+			(at 137.16 148.5899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical"
+			(at 134.62 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 134.62 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 134.62 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "874a6bf8-5ac3-4a41-9f5f-1985f28f866f")
+		)
+		(pin "2"
+			(uuid "c4dae8a7-20a3-4dd0-ab18-2bfa0d585cb9")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
+					(reference "J11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
 		(at 134.62 138.43 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3148,6 +3218,73 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
 					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 129.54 146.05 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "53b4fbe0-df2d-4c62-b04f-2487281c3dc0")
+		(property "Reference" "#PWR0132"
+			(at 133.35 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 125.65 146.0499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 129.54 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 129.54 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 129.54 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6a95afc9-9393-4824-83a6-f5f004809889")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
+					(reference "#PWR0132")
 					(unit 1)
 				)
 			)
@@ -3604,6 +3741,73 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
 					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 129.54 138.43 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8d63ef49-c72e-4c58-a08c-0b008e94ce33")
+		(property "Reference" "#PWR0131"
+			(at 133.35 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 125.65 138.4299 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 129.54 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 129.54 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 129.54 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f9b2d6d2-b0d6-492f-9144-4c01bce150f6")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
+					(reference "#PWR0131")
 					(unit 1)
 				)
 			)
