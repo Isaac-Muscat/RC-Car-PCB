@@ -6910,7 +6910,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Button_Switch_THT:SW_SPST_Omron_B3F-40xx"
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm"
 			(at 59.69 83.82 0)
 			(effects
 				(font
