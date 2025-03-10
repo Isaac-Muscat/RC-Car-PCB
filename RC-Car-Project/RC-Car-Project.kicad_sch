@@ -617,6 +617,10 @@
 		(uuid "519be57c-313f-42b2-a2a6-3b65bf7f1d6c")
 	)
 	(no_connect
+		(at 115.57 34.29)
+		(uuid "662650c0-8d98-4b33-b539-7ecdd567bf4d")
+	)
+	(no_connect
 		(at 81.28 34.29)
 		(uuid "95411f75-ca8c-41c6-952d-c3911a923e80")
 	)
@@ -921,16 +925,6 @@
 	)
 	(wire
 		(pts
-			(xy 208.28 67.31) (xy 204.47 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "77f69768-9530-48b4-9d5c-372fc3ffaca5")
-	)
-	(wire
-		(pts
 			(xy 194.31 80.01) (xy 208.28 80.01)
 		)
 		(stroke
@@ -1171,6 +1165,16 @@
 	)
 	(wire
 		(pts
+			(xy 204.47 67.31) (xy 208.28 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "beb6195e-cce5-4c94-9a78-7bc354a96038")
+	)
+	(wire
+		(pts
 			(xy 113.03 86.36) (xy 99.06 86.36)
 		)
 		(stroke
@@ -1178,6 +1182,17 @@
 			(type default)
 		)
 		(uuid "bff5dfe8-5e39-4498-80f8-081586eed86e")
+	)
+	(polyline
+		(pts
+			(xy 91.44 34.29) (xy 113.665 34.29)
+		)
+		(stroke
+			(width 0)
+			(type dash_dot)
+			(color 255 5 28 1)
+		)
+		(uuid "c4b5c918-0ac5-498f-8b21-166eefcf969a")
 	)
 	(wire
 		(pts
@@ -1330,6 +1345,16 @@
 			(type none)
 		)
 		(uuid 3a9852c1-f4c8-44b8-a2fe-ab600dc57b64)
+	)
+	(text "SWITCH"
+		(exclude_from_sim no)
+		(at 102.616 33.274 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "cd54d199-50d4-485a-bb44-ff325ae170d8")
 	)
 	(text "Current Sense Resistor\n"
 		(exclude_from_sim no)
@@ -1952,6 +1977,72 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
 					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 115.57 34.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bdc27da6-2b13-4021-b1a4-cc6460b68abd")
+		(property "Reference" "#PWR0133"
+			(at 115.57 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD_BATT_PRE_SW"
+			(at 115.57 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 115.57 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 115.57 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 115.57 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "199519f4-4aa5-428d-a498-5d3104b1d9e3")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "#PWR0133")
 					(unit 1)
 				)
 			)
@@ -2679,6 +2770,16 @@
 			)
 			(uuid "2077f121-9b40-4573-8b7e-7cbb24d1fad5")
 		)
+		(pin "PWR_SW" input
+			(at 238.125 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "5ed98814-f870-4bf3-8a8a-eeb3982288aa")
+		)
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
@@ -3350,7 +3451,7 @@
 		)
 	)
 	(sheet
-		(at 191.77 31.115)
+		(at 208.915 30.48)
 		(size 24.765 15.24)
 		(fields_autoplaced yes)
 		(stroke
@@ -3362,7 +3463,7 @@
 		)
 		(uuid "e8cbdd69-5fc8-4583-a262-8a3c06e86dab")
 		(property "Sheetname" "Power"
-			(at 191.77 30.4034 0)
+			(at 208.915 29.7684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3371,13 +3472,23 @@
 			)
 		)
 		(property "Sheetfile" "Power_sch.kicad_sch"
-			(at 191.77 46.9396 0)
+			(at 208.915 46.3046 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left top)
 			)
+		)
+		(pin "PWR_SW" input
+			(at 233.68 37.465 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "18234ca8-53fa-45c3-a50d-c8307fd8d6f7")
 		)
 		(instances
 			(project "RC-Car-Project"
