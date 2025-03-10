@@ -654,6 +654,16 @@
 	)
 	(wire
 		(pts
+			(xy 233.68 38.1) (xy 246.38 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0cdc79e4-1b17-4785-bae6-dfc257616136")
+	)
+	(wire
+		(pts
 			(xy 83.82 142.24) (xy 113.03 142.24)
 		)
 		(stroke
@@ -822,6 +832,16 @@
 			(type default)
 		)
 		(uuid "3e8a8765-b53f-4a41-a5f2-60e67c550f8e")
+	)
+	(wire
+		(pts
+			(xy 246.38 38.1) (xy 246.38 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44266684-9e1b-42dd-ac76-2e1cdf2f4a87")
 	)
 	(wire
 		(pts
@@ -1253,6 +1273,16 @@
 			(type default)
 		)
 		(uuid "e25cfb4c-6e62-4de3-b092-6371a3769c8c")
+	)
+	(wire
+		(pts
+			(xy 246.38 71.12) (xy 238.76 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e7d9666f-8ddc-4a72-b403-f7ead06497bb")
 	)
 	(wire
 		(pts
@@ -2512,7 +2542,7 @@
 	)
 	(sheet
 		(at 208.28 66.04)
-		(size 29.845 76.2)
+		(size 30.48 76.2)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -2771,7 +2801,7 @@
 			(uuid "2077f121-9b40-4573-8b7e-7cbb24d1fad5")
 		)
 		(pin "PWR_SW" input
-			(at 238.125 68.58 0)
+			(at 238.76 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3481,7 +3511,7 @@
 			)
 		)
 		(pin "PWR_SW" input
-			(at 233.68 37.465 0)
+			(at 233.68 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
