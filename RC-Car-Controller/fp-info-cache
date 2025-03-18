@@ -1,4 +1,11 @@
-24598834222420178
+24614505286153567
+2inch_LCD
+2inch_LCD
+Through hole straight pin header, 1x08, 2.00mm pitch, single row
+Through hole pin header THT 1x08 2.00mm single row
+0
+8
+8
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -90509,6 +90516,13 @@ SSD1306
 0
 4
 4
+SW2_1825027-C_TEC
+SW2_1825027-C_TEC
+
+1825027-8 
+0
+4
+4
 Sensor
 ASAIR_AM2302_P2.54mm_Lead2.75mm_TabDown
 Temperature and humidity module, http://akizukidenshi.com/download/ds/aosong/AM2302.pdf
@@ -99239,6 +99253,27 @@ CONN_1805375_RSP
 4
 4
 footprints
+DDA0008E_L
+
+LMR16020PDDAR 
+0
+15
+10
+footprints
+DDA0008E_M
+
+LMR16020PDDAR 
+0
+15
+10
+footprints
+DDA0008E_N
+
+LMR16020PDDAR 
+0
+15
+10
+footprints
 HTSSOP16_4P5X5P1X0P65P_STM
 
 A6986F3V3TR 
@@ -99281,12 +99316,40 @@ BTN8982TAAUMA1
 8
 8
 footprints
+ICCAF50P160X80X70-6N
+
+
+0
+6
+6
+footprints
 LQFP100-14x14mm
 
 STM32H743VGT6 
 0
 100
 100
+footprints
+MUA08A
+
+ADC082S021CIMM/NOPB 
+0
+8
+8
+footprints
+MUA08A-L
+
+ADC082S021CIMM/NOPB 
+0
+8
+8
+footprints
+MUA08A-M
+
+ADC082S021CIMM/NOPB 
+0
+8
+8
 footprints
 OSC_J032_JAU
 

@@ -3654,10 +3654,6 @@
 		(uuid "3d8e5ea1-5fdd-4521-80f2-07b8ad2e4bbf")
 	)
 	(no_connect
-		(at 143.51 71.12)
-		(uuid "4218b9a2-e085-49a5-b46a-7a9912b38e60")
-	)
-	(no_connect
 		(at 97.79 147.32)
 		(uuid "48ed89b2-1063-40f3-97c9-2496c3da799f")
 	)
@@ -3740,10 +3736,6 @@
 	(no_connect
 		(at 97.79 104.14)
 		(uuid "99816780-9f3a-4724-be6a-f1052ac5e82a")
-	)
-	(no_connect
-		(at 143.51 73.66)
-		(uuid "9f336ae0-ab93-4412-b18c-b6d55c213783")
 	)
 	(no_connect
 		(at 97.79 139.7)
@@ -3916,16 +3908,6 @@
 			(type default)
 		)
 		(uuid "4b162918-b7cf-48bc-8301-97ed568997aa")
-	)
-	(wire
-		(pts
-			(xy 91.44 48.26) (xy 97.79 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4c527514-c8d9-4004-8c70-a8c67ae10b88")
 	)
 	(wire
 		(pts
@@ -4146,6 +4128,16 @@
 			(type default)
 		)
 		(uuid "fd5254dc-be8b-4630-a173-240dd9095151")
+	)
+	(text "Turn this into a DIP Switch.\nWant to be able to prog with USB"
+		(exclude_from_sim no)
+		(at 67.31 44.45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "cb16e053-06df-4d67-b741-3fc8d6b22050")
 	)
 	(label "OSC_OUT"
 		(at 87.63 60.96 0)
@@ -4419,6 +4411,18 @@
 		)
 		(uuid "873bc59d-9138-4470-8ac5-d8b8cfa4a993")
 	)
+	(hierarchical_label "MCU_USB_D+"
+		(shape input)
+		(at 143.51 73.66 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8766785f-d08b-41ec-b812-15c11998fcd5")
+	)
 	(hierarchical_label "NRST"
 		(shape input)
 		(at 97.79 43.18 180)
@@ -4466,6 +4470,18 @@
 			(justify left)
 		)
 		(uuid "d15f8488-8b94-4937-99c1-7d78b6051410")
+	)
+	(hierarchical_label "MCU_USB_D-"
+		(shape input)
+		(at 143.51 71.12 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d4681425-8c0f-4395-b34f-2f7ff384a29e")
 	)
 	(hierarchical_label "I2C2_SDA"
 		(shape input)

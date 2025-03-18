@@ -1139,7 +1139,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical"
+		(property "Footprint" "2inch_LCD:2inch_LCD"
 			(at 86.36 90.17 0)
 			(effects
 				(font

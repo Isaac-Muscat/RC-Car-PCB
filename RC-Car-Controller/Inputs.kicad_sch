@@ -512,49 +512,50 @@
 				)
 			)
 		)
-		(symbol "Switch:SW_Omron_B3FS"
-			(pin_numbers hide)
+		(symbol "SW2_1825027-C_TEC:1825027-8"
 			(pin_names
-				(offset 1.016) hide)
+				(offset 0.254)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "SW"
-				(at 1.27 2.54 0)
+				(at 7.62 3.81 0)
 				(effects
 					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "SW_Omron_B3FS"
-				(at 0 -1.524 0)
-				(effects
-					(font
-						(size 1.27 1.27)
+						(size 1.524 1.524)
 					)
 				)
 			)
-			(property "Footprint" ""
-				(at 0 5.08 0)
+			(property "Value" "1825027-8"
+				(at 0 0 0)
 				(effects
 					(font
-						(size 1.27 1.27)
+						(size 1.524 1.524)
 					)
-					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf"
-				(at 0 5.08 0)
+			(property "Footprint" "SW2_1825027-C_TEC"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
+						(italic yes)
 					)
 					(hide yes)
 				)
 			)
-			(property "Description" "Omron B3FS 6x6mm single pole normally-open tactile switch"
+			(property "Datasheet" "1825027-8"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -563,7 +564,15 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "switch normally-open pushbutton push-button"
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "1825027-8"
 				(at 0 0 0)
 				(effects
 					(font
@@ -572,7 +581,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "SW*Omron*B3FS*"
+			(property "ki_fp_filters" "SW2_1825027-C_TEC"
 				(at 0 0 0)
 				(effects
 					(font
@@ -581,12 +590,13 @@
 					(hide yes)
 				)
 			)
-			(symbol "SW_Omron_B3FS_0_1"
-				(circle
-					(center -2.032 0)
-					(radius 0.508)
+			(symbol "1825027-8_0_1"
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 12.7 -2.54)
+					)
 					(stroke
-						(width 0)
+						(width 0.2032)
 						(type default)
 					)
 					(fill
@@ -595,10 +605,10 @@
 				)
 				(polyline
 					(pts
-						(xy 0 1.27) (xy 0 3.048)
+						(xy 2.54 0) (xy 3.81 0)
 					)
 					(stroke
-						(width 0)
+						(width 0.2032)
 						(type default)
 					)
 					(fill
@@ -607,10 +617,82 @@
 				)
 				(polyline
 					(pts
-						(xy 2.54 1.27) (xy -2.54 1.27)
+						(xy 4.445 0) (xy 11.43 1.905)
 					)
 					(stroke
-						(width 0)
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.731 -3.81) (xy 8.509 -3.81)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.985 -4.191) (xy 8.255 -4.191)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.239 -4.572) (xy 8.001 -4.572)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.493 -4.953) (xy 7.747 -4.953)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 -2.54) (xy 7.62 -3.81)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 12.7 0) (xy 11.43 0)
+					)
+					(stroke
+						(width 0.2032)
 						(type default)
 					)
 					(fill
@@ -618,18 +700,29 @@
 					)
 				)
 				(circle
-					(center 2.032 0)
-					(radius 0.508)
+					(center 4.445 0)
+					(radius 0.635)
 					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
 						(type none)
 					)
 				)
-				(pin passive line
-					(at -5.08 0 0)
+				(circle
+					(center 10.795 0)
+					(radius 0.635)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at 0 0 0)
 					(length 2.54)
 					(name "1"
 						(effects
@@ -646,8 +739,8 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 5.08 0 180)
+				(pin unspecified line
+					(at 15.24 0 180)
 					(length 2.54)
 					(name "2"
 						(effects
@@ -657,6 +750,42 @@
 						)
 					)
 					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 0 -2.54 0)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 15.24 -2.54 180)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -884,40 +1013,192 @@
 		)
 	)
 	(junction
-		(at 114.3 95.25)
+		(at 113.03 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "0620a42e-fbe6-4beb-9ce9-655036e06cf9")
+		(uuid "0d7c0cb8-bed3-4068-aa16-5f63432fdc3d")
 	)
 	(junction
-		(at 85.09 95.25)
+		(at 151.13 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "5fd81e6c-6614-4619-805e-8b6440f9fb94")
+		(uuid "366b4193-7af7-45c5-8705-05cfe1318439")
+	)
+	(junction
+		(at 168.91 114.3)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e9dc73cc-b149-4005-a7f4-70c25dd4b3a9")
+	)
+	(junction
+		(at 130.81 114.3)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fcb20989-f792-495e-ac6a-e65c6f822df2")
 	)
 	(wire
 		(pts
-			(xy 116.84 95.25) (xy 114.3 95.25)
+			(xy 129.54 114.3) (xy 130.81 114.3)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8960b014-b5b5-4772-a49f-70da04375bf1")
+		(uuid "17ca6f22-8c33-413b-a15b-8f3cbc6a5b57")
 	)
 	(wire
 		(pts
-			(xy 87.63 95.25) (xy 85.09 95.25)
+			(xy 113.03 116.84) (xy 114.3 116.84)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "971ef1f9-fa70-461d-9ea4-8c7729a07079")
+		(uuid "18871266-edc8-43cf-90b0-95ca2763982d")
+	)
+	(wire
+		(pts
+			(xy 151.13 118.11) (xy 151.13 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3735c203-0ad6-4b85-a70f-ebd102684e05")
+	)
+	(wire
+		(pts
+			(xy 114.3 114.3) (xy 113.03 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41b7a5ef-0e97-4956-bc56-348b0bad9599")
+	)
+	(wire
+		(pts
+			(xy 113.03 114.3) (xy 113.03 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7025fcd6-c157-4e37-920f-72aaf9d83464")
+	)
+	(wire
+		(pts
+			(xy 113.03 118.11) (xy 113.03 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7faafcf0-1a89-4553-9821-bf243d507e9e")
+	)
+	(wire
+		(pts
+			(xy 152.4 114.3) (xy 151.13 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8fc0aa37-0e3f-4ff7-ad45-492f7b2761fb")
+	)
+	(wire
+		(pts
+			(xy 151.13 114.3) (xy 151.13 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90632ac0-6359-430f-825e-cb6a353226e0")
+	)
+	(wire
+		(pts
+			(xy 167.64 114.3) (xy 168.91 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9794b069-d036-48e4-8d9a-b84972ed9d06")
+	)
+	(wire
+		(pts
+			(xy 168.91 116.84) (xy 167.64 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6b6b9c1-0ae9-4de3-8db5-f863933008a3")
+	)
+	(wire
+		(pts
+			(xy 168.91 118.11) (xy 168.91 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bce04282-9d48-4148-b97b-05c307d773f5")
+	)
+	(wire
+		(pts
+			(xy 151.13 116.84) (xy 152.4 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c51bb740-8687-4ca5-8d82-a8d3d05d3e4f")
+	)
+	(wire
+		(pts
+			(xy 130.81 116.84) (xy 129.54 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e11e06bd-e9c5-457f-b07c-07c133ee98fa")
+	)
+	(wire
+		(pts
+			(xy 172.72 114.3) (xy 168.91 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb025df5-58f9-4621-8214-d373ff8297f5")
+	)
+	(wire
+		(pts
+			(xy 130.81 118.11) (xy 130.81 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "edde0d8d-d858-4d6e-9ad9-fa480e812154")
+	)
+	(wire
+		(pts
+			(xy 134.62 114.3) (xy 130.81 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef0a456d-5aa9-43b5-a603-60123082fafb")
 	)
 	(hierarchical_label "Slider_R"
 		(shape input)
-		(at 166.37 95.25 0)
+		(at 173.99 138.43 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -929,7 +1210,7 @@
 	)
 	(hierarchical_label "Button_R"
 		(shape input)
-		(at 116.84 95.25 0)
+		(at 172.72 114.3 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -941,7 +1222,7 @@
 	)
 	(hierarchical_label "Slider_L"
 		(shape input)
-		(at 142.24 95.25 0)
+		(at 135.89 138.43 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -953,7 +1234,7 @@
 	)
 	(hierarchical_label "Button_L"
 		(shape input)
-		(at 87.63 95.25 0)
+		(at 134.62 114.3 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -964,1070 +1245,16 @@
 		(uuid "c6ab1d58-96af-4501-be7f-b625c5717329")
 	)
 	(symbol
-		(lib_id "PTA6043-2015CPB103:PTA6043-2015CPB103")
-		(at 161.29 95.25 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "20fe702e-6d44-4b58-9947-88ae0ac3174b")
-		(property "Reference" "R3"
-			(at 154.94 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PTA6043-2015CPB103"
-			(at 157.48 93.726 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.digikey.ca/en/products/detail/bourns-inc/PTA6043-2015CPB103/3781230"
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "STANDARD" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "PARTREV" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MP" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Description_1" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER" ""
-			(at 161.29 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "08dbf08d-3501-45d2-b66f-1de69a47956f")
-		)
-		(pin "2"
-			(uuid "b07824b0-9335-4d5e-bc63-20fa7908033e")
-		)
-		(pin "3"
-			(uuid "9e43c1e4-38a9-4ef1-8cea-28e3190c3184")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "R3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PTA6043-2015CPB103:PTA6043-2015CPB103")
-		(at 137.16 95.25 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "31a26ac2-564a-4dbe-a5be-80e5267227ff")
-		(property "Reference" "R2"
-			(at 130.81 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PTA6043-2015CPB103"
-			(at 133.35 93.726 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.digikey.ca/en/products/detail/bourns-inc/PTA6043-2015CPB103/3781230"
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Package" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Price" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "STANDARD" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "PARTREV" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MP" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Description_1" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Availability" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER" ""
-			(at 137.16 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "d6bc30e3-8c95-426f-8c95-8660c8a5cd68")
-		)
-		(pin "2"
-			(uuid "032370ac-a3c1-4ca4-80b4-ae762f92ea3e")
-		)
-		(pin "3"
-			(uuid "47f8a7df-4cc3-44f6-bfcf-7c79521c2720")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "R2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3V3")
-		(at 85.09 102.87 180)
+		(at 168.91 130.81 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "41b3a4d3-c2bd-4b02-b1d4-66543033e236")
-		(property "Reference" "#PWR019"
-			(at 85.09 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 87.63 106.934 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 85.09 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 85.09 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 85.09 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "987e67e4-b65c-412e-9c9f-78edf804238c")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "#PWR019")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 104.14 95.25 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4a2a3828-ff99-4d7d-b831-51970b730861")
-		(property "Reference" "#PWR012"
-			(at 97.79 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND_3V3"
-			(at 105.918 98.298 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 104.14 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 104.14 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 104.14 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "cf20ef15-84d3-4fef-8f7c-27c6cbc81e0a")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "#PWR012")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 114.3 99.06 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4f84be3a-c1c3-4c6c-a11e-90961f967e9e")
-		(property "Reference" "R4"
-			(at 116.84 97.7899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10k"
-			(at 116.84 100.3299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
-			(at 112.522 99.06 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 114.3 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 114.3 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "aed2542a-737b-4131-9751-08868e26204c")
-		)
-		(pin "1"
-			(uuid "49b893b4-66a7-46af-aea4-227d41ade6fb")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "R4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Switch:SW_Omron_B3FS")
-		(at 80.01 95.25 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "55a03204-6ae1-4ad8-91c4-ab2d6449093d")
-		(property "Reference" "SW3"
-			(at 80.01 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SW_Omron_B3FS"
-			(at 80.01 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 80.01 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf"
-			(at 80.01 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Omron B3FS 6x6mm single pole normally-open tactile switch"
-			(at 80.01 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "f05c75ef-7695-465f-8132-66a5780e6fbb")
-		)
-		(pin "1"
-			(uuid "191c78f6-9f1a-4492-804c-65fc87744534")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "SW3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 74.93 95.25 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "63c8aff5-891d-48d2-ae92-69b1c9418046")
-		(property "Reference" "#PWR013"
-			(at 68.58 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND_3V3"
-			(at 76.962 98.806 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 74.93 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 74.93 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 74.93 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "815c159b-7a0d-4587-bf24-f25e2da7c5fb")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "#PWR013")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 161.29 102.87 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "91db7f6c-31a6-4b56-85d5-ab767dba2abc")
-		(property "Reference" "#PWR05"
-			(at 161.29 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND_3V3"
-			(at 156.972 107.188 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 161.29 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 161.29 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 161.29 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "33c9b8d7-2df4-456b-b233-92e978428ff0")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "#PWR05")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3V3")
-		(at 137.16 87.63 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "9d2a62cb-5cdb-45ea-9cbd-195179fd6327")
-		(property "Reference" "#PWR06"
-			(at 137.16 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 134.62 83.566 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 137.16 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 137.16 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 137.16 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "37dd0963-0f0f-44ec-8c76-8f35b0b4c3f8")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "#PWR06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Switch:SW_Omron_B3FS")
-		(at 109.22 95.25 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9d61ee5c-b1f5-48e7-9128-f24a805a87f4")
-		(property "Reference" "SW2"
-			(at 109.22 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SW_Omron_B3FS"
-			(at 109.22 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 109.22 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf"
-			(at 109.22 90.17 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Omron B3FS 6x6mm single pole normally-open tactile switch"
-			(at 109.22 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "609bb71e-77f1-4379-91c8-bad4ca93ca7e")
-		)
-		(pin "1"
-			(uuid "bd798d7c-6aaa-4348-baeb-7fedb9a1a122")
-		)
-		(instances
-			(project ""
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "SW2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 85.09 99.06 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ad48c68c-65eb-4526-b09a-a2afcd8c1e7a")
-		(property "Reference" "R5"
-			(at 87.63 97.7899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "10k"
-			(at 87.63 100.3299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
-			(at 83.312 99.06 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 85.09 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 85.09 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "0c142eb7-7caa-45ca-9884-1a297038dac3")
-		)
-		(pin "1"
-			(uuid "c2699392-d9ec-43f6-826c-ab605cbf3a69")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "R5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3V3")
-		(at 114.3 102.87 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ce0185b4-b3cc-43e5-acbc-19dedb243e54")
-		(property "Reference" "#PWR020"
-			(at 114.3 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 116.84 106.934 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 114.3 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 114.3 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 114.3 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "00b7534b-f1db-4ed9-98b5-2752cf4a771d")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
-					(reference "#PWR020")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 137.16 102.87 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ed90d007-4609-44c5-8ff5-08448d2676f1")
+		(uuid "06a8a4f7-d46b-4772-82d1-dff11dc1ae2c")
 		(property "Reference" "#PWR011"
-			(at 137.16 109.22 0)
+			(at 168.91 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2035,8 +1262,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND_3V3"
-			(at 132.842 107.188 0)
+		(property "Value" "+3V3"
+			(at 169.672 127.762 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2045,7 +1272,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 137.16 102.87 0)
+			(at 168.91 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2054,7 +1281,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 137.16 102.87 0)
+			(at 168.91 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2062,8 +1289,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 137.16 102.87 0)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 168.91 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2072,7 +1299,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "77170505-1a6f-495b-bb74-55d15d381f7c")
+			(uuid "ff634d66-c5cb-492c-955b-0527bca5fc62")
 		)
 		(instances
 			(project "RC-Car-Controller"
@@ -2084,16 +1311,16 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 161.29 87.63 0)
+		(lib_id "power:GND")
+		(at 168.91 146.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f953d8ab-6d25-4968-ada6-ee84d4fc6fd1")
-		(property "Reference" "#PWR010"
-			(at 161.29 91.44 0)
+		(uuid "1f9af600-2329-4277-8ed4-119dc890a8a7")
+		(property "Reference" "#PWR012"
+			(at 168.91 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2101,8 +1328,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 158.75 83.566 0)
+		(property "Value" "GND_3V3"
+			(at 169.672 149.352 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2111,7 +1338,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 161.29 87.63 0)
+			(at 168.91 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2120,7 +1347,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 161.29 87.63 0)
+			(at 168.91 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2128,8 +1355,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 161.29 87.63 0)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 168.91 146.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2138,12 +1365,1212 @@
 			)
 		)
 		(pin "1"
-			(uuid "cf901478-d49f-4ee1-862b-c0d25ac54473")
+			(uuid "c9d52c5c-24b3-4e33-822b-2051cd1a6ab6")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PTA6043-2015CPB103:PTA6043-2015CPB103")
+		(at 168.91 138.43 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "20bf052c-8523-4f22-a2f8-5fbc76f99966")
+		(property "Reference" "R3"
+			(at 162.56 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PTA6043-2015CPB103"
+			(at 165.1 136.906 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Potentiometer_THT:Potentiometer_Bourns_PTA6043_Single_Slide"
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.digikey.ca/en/products/detail/bourns-inc/PTA6043-2015CPB103/3781230"
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "STANDARD" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "PARTREV" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f00e77a0-d2af-4fc5-bf42-dfc9091127b1")
+		)
+		(pin "2"
+			(uuid "27c32e62-c0f2-459b-a480-c4b9cc5f28b7")
+		)
+		(pin "3"
+			(uuid "9d41a963-6423-4a0e-9acd-ecec04140281")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 130.81 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "47a1edf0-2bca-456d-8a77-4863ab8ec7d7")
+		(property "Reference" "#PWR0100"
+			(at 130.81 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 128.27 102.616 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 130.81 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0f9636e7-3d84-4748-91af-8db4cd020d97")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "#PWR0100")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 113.03 118.11 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "53731056-5cb9-445a-85e8-0e4bf8ade473")
+		(property "Reference" "#PWR097"
+			(at 113.03 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 117.348 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 113.03 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 113.03 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 113.03 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "801f88fb-1a4e-4c29-b5f0-4d303678aa39")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "#PWR097")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 168.91 118.11 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6a3de653-a1f1-40f4-ba86-9688c2123320")
+		(property "Reference" "#PWR010"
+			(at 168.91 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 173.228 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 168.91 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 168.91 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 168.91 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "176b29dd-8211-4d59-877c-afe45acb1c15")
 		)
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
 					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "SW2_1825027-C_TEC:1825027-8")
+		(at 152.4 114.3 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7b9c155f-97b0-4b84-bc59-84917b77c8ac")
+		(property "Reference" "SW2"
+			(at 160.02 107.95 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "1825027-8"
+			(at 160.02 110.49 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "SW2_1825027-C_TEC:SW2_1825027-C_TEC"
+			(at 152.4 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.digikey.ca/en/products/detail/te-connectivity-alcoswitch-switches/1825027-8/1632543"
+			(at 152.4 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cc5070c0-1962-457d-9e0d-f9e5cb0957e8")
+		)
+		(pin "3"
+			(uuid "727d9a8b-eb1c-470e-b57c-74dfc4d0b546")
+		)
+		(pin "2"
+			(uuid "7629e4fd-b0ac-426a-a30e-8ea5511a4208")
+		)
+		(pin "4"
+			(uuid "be3e2d01-d7dc-4844-9418-b37af707a057")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "SW2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 130.81 130.81 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "82b278fa-570c-4c3c-92fd-ac3de7909cfb")
+		(property "Reference" "#PWR0102"
+			(at 130.81 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 131.572 127.762 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 130.81 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9addd522-f342-49d0-b387-bfec484ba31e")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "#PWR0102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 130.81 118.11 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "aafa5e88-4acc-4588-97f1-98b415bc6ef9")
+		(property "Reference" "#PWR0101"
+			(at 130.81 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 135.128 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 130.81 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "47830813-6ae2-4b4b-b1e7-dca3d1433d5e")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "#PWR0101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 130.81 146.05 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b24c34f8-3699-4fdc-955c-d5620db5d752")
+		(property "Reference" "#PWR0103"
+			(at 130.81 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 131.572 149.352 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 130.81 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 130.81 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8bff6c89-f57e-499e-95e4-0d3fb07a3659")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "#PWR0103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PTA6043-2015CPB103:PTA6043-2015CPB103")
+		(at 130.81 138.43 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c285fe94-de4f-4eca-ae1a-0411153253f8")
+		(property "Reference" "R17"
+			(at 124.46 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PTA6043-2015CPB103"
+			(at 127 136.906 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Potentiometer_THT:Potentiometer_Bourns_PTA6043_Single_Slide"
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.digikey.ca/en/products/detail/bourns-inc/PTA6043-2015CPB103/3781230"
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Package" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Price" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "STANDARD" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "PARTREV" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MP" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Description_1" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Availability" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3d7f0820-fa76-4fdc-9076-42363a572620")
+		)
+		(pin "2"
+			(uuid "435bdb46-654c-431a-b9ab-005b81192402")
+		)
+		(pin "3"
+			(uuid "9f140dce-e318-4ffe-83c1-5bfe6046a73a")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "R17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 130.81 110.49 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d1af634e-2fdb-4209-990f-a2a3403a2af7")
+		(property "Reference" "R16"
+			(at 135.382 108.458 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 135.89 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P15.24mm_Horizontal"
+			(at 132.588 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 130.81 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 130.81 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "dfe5070e-7188-4413-ad50-d9aacc56fbe1")
+		)
+		(pin "1"
+			(uuid "a61439a2-f5c7-4eeb-a508-d981f34d911d")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "R16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "SW2_1825027-C_TEC:1825027-8")
+		(at 114.3 114.3 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e2df9623-64f4-429b-9929-7bd534f0f83e")
+		(property "Reference" "SW4"
+			(at 121.92 107.95 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Value" "1825027-8"
+			(at 121.92 110.49 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+			)
+		)
+		(property "Footprint" "SW2_1825027-C_TEC:SW2_1825027-C_TEC"
+			(at 114.3 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.digikey.ca/en/products/detail/te-connectivity-alcoswitch-switches/1825027-8/1632543"
+			(at 114.3 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 114.3 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a2fc36b9-584a-4707-b580-4f6d538472da")
+		)
+		(pin "3"
+			(uuid "efc8ffcf-e73a-4c86-a72b-db612971a842")
+		)
+		(pin "2"
+			(uuid "6f052515-372a-475b-98a5-049e39029b77")
+		)
+		(pin "4"
+			(uuid "7d8d69f1-38c2-47ae-a499-dfde4c905503")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "SW4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 168.91 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e6da33b2-459e-47dc-a514-08ca255bce65")
+		(property "Reference" "#PWR06"
+			(at 168.91 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 166.37 102.616 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 168.91 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 168.91 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 168.91 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "21f0f07b-4227-47d0-b23f-c5987e1c6a1f")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "#PWR06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 151.13 118.11 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e74b5b6f-14b6-4f30-a151-384bb4d2c176")
+		(property "Reference" "#PWR05"
+			(at 151.13 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 155.448 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 151.13 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 151.13 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 151.13 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "846f86db-6d41-46ab-a7fc-899d60dd2d58")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 168.91 110.49 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f7172997-8795-4773-863d-757210b6b377")
+		(property "Reference" "R2"
+			(at 173.482 108.458 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 173.99 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P15.24mm_Horizontal"
+			(at 170.688 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 168.91 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 168.91 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e3e30932-5c06-441f-bbcd-621b15ec6854")
+		)
+		(pin "1"
+			(uuid "d77780f1-ba9a-4481-be5a-48e10ce82a9e")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/2b1fa8b9-c985-4895-a194-2800399bdd10"
+					(reference "R2")
 					(unit 1)
 				)
 			)
