@@ -3087,7 +3087,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "VDD_BATT"
+		(property "Value" "VDD_LOAD"
 			(at 72.39 151.13 0)
 			(effects
 				(font
@@ -3485,7 +3485,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "VDD_BATT_PRE_SW"
+		(property "Value" "VDD_LOAD_PRE_SW"
 			(at 72.39 138.43 0)
 			(effects
 				(font
