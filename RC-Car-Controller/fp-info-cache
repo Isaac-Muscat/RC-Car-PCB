@@ -1,4 +1,4 @@
-24617989814964214
+24621474813632152
 2inch_LCD
 2inch_LCD
 Through hole straight pin header, 1x08, 2.00mm pitch, single row
@@ -87044,6 +87044,13 @@ Potentiometer vertical vishay
 0
 3
 3
+R1966ABLKBLKGR
+SW_R1966ABLKBLKGR
+
+
+0
+2
+2
 RF
 Skyworks_SKY13575_639LF
 http://www.skyworksinc.com/uploads/documents/SKY13575_639LF_203270D.pdf
@@ -98454,6 +98461,13 @@ igbt diode module
 0
 25
 25
+USB-C 2171790001
+2171790001_MOL
+
+2171790001 
+0
+16
+16
 Valve
 Valve_ECC-83-1
 Valve ECC-83-1 round pins
