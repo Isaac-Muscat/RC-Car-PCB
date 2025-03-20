@@ -1325,7 +1325,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "18766e65-b89e-4536-8f00-ddc8216634b0")
 		(property "Reference" "#PWR040"
 			(at 180.34 34.29 0)
@@ -1337,7 +1336,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 180.34 25.4 0)
+			(at 180.34 26.162 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1993,7 +1992,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "c0f75133-dfc8-4fdd-81be-0abcf912a611")
 		(property "Reference" "#PWR033"
 			(at 166.37 34.29 0)
@@ -2004,12 +2002,13 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "VDD_BATT"
-			(at 166.37 25.4 0)
+		(property "Value" "VDD_LOAD"
+			(at 161.544 26.162 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
