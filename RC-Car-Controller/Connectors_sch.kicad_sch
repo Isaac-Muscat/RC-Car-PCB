@@ -2023,10 +2023,10 @@
 		)
 	)
 	(junction
-		(at 111.76 71.12)
+		(at 111.76 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "35253e2a-2655-4495-8af7-6775e21b7783")
+		(uuid "30af3845-54d2-47b7-b97b-2c7668021249")
 	)
 	(junction
 		(at 60.96 76.2)
@@ -2047,10 +2047,10 @@
 		(uuid "76532c10-4ffc-4a5d-ab68-0a5b08ef9ec6")
 	)
 	(junction
-		(at 109.22 73.66)
+		(at 109.22 78.74)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "ebfb60f8-c438-48b5-9d9e-9b67ec4d86b1")
+		(uuid "907c7ad5-bfcf-47e3-a3e8-6550780f39f9")
 	)
 	(no_connect
 		(at 63.5 73.66)
@@ -2156,16 +2156,6 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 71.12) (xy 116.84 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "661e35ff-aaa5-4780-a1e2-5946f4e0742f")
-	)
-	(wire
-		(pts
 			(xy 104.14 83.82) (xy 104.14 88.9)
 		)
 		(stroke
@@ -2256,7 +2246,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 78.74) (xy 109.22 73.66)
+			(xy 109.22 64.77) (xy 109.22 78.74)
 		)
 		(stroke
 			(width 0)
@@ -2276,16 +2266,6 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 73.66) (xy 116.84 73.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a63c577f-daba-4e00-9d61-52bb69f6902a")
-	)
-	(wire
-		(pts
 			(xy 60.96 81.28) (xy 63.5 81.28)
 		)
 		(stroke
@@ -2293,16 +2273,6 @@
 			(type default)
 		)
 		(uuid "b12eb027-8430-4b57-9b77-7de91585b3ee")
-	)
-	(wire
-		(pts
-			(xy 109.22 73.66) (xy 109.22 64.77)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b83b651e-785d-4963-aed9-9de760905710")
 	)
 	(wire
 		(pts
@@ -2316,7 +2286,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 63.5) (xy 121.92 66.04)
+			(xy 121.92 71.12) (xy 121.92 73.66)
 		)
 		(stroke
 			(width 0)
@@ -2326,13 +2296,23 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 81.28) (xy 121.92 78.74)
+			(xy 121.92 88.9) (xy 121.92 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "c9d8e346-84f2-484f-8b6a-85393ac999fb")
+	)
+	(wire
+		(pts
+			(xy 111.76 81.28) (xy 116.84 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db6a0c07-5155-4897-a30d-9e20efcbe35b")
 	)
 	(wire
 		(pts
@@ -2343,6 +2323,16 @@
 			(type default)
 		)
 		(uuid "ddee1cef-5456-4de9-a18c-1c23c9a7cc8c")
+	)
+	(wire
+		(pts
+			(xy 109.22 78.74) (xy 116.84 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f12692bf-9bd3-4b74-95c7-01e76253edfa")
 	)
 	(rectangle
 		(start 41.91 121.92)
@@ -2368,7 +2358,7 @@
 	)
 	(text "ESD Protection, 1/6 and 3/4 \nMAY be interchangable"
 		(exclude_from_sim no)
-		(at 140.716 79.248 0)
+		(at 140.716 86.868 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2402,7 +2392,7 @@
 	)
 	(hierarchical_label "CON_USB_D-"
 		(shape input)
-		(at 127 73.66 0)
+		(at 127 78.74 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2426,7 +2416,7 @@
 	)
 	(hierarchical_label "CON_USB_D+"
 		(shape input)
-		(at 127 71.12 0)
+		(at 127 81.28 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2474,7 +2464,7 @@
 	)
 	(symbol
 		(lib_id "Power_Protection:USBLC6-2SC6")
-		(at 121.92 71.12 0)
+		(at 121.92 78.74 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -2482,7 +2472,7 @@
 		(dnp no)
 		(uuid "0c7a2f51-8547-4927-9b89-fd8649461292")
 		(property "Reference" "U2"
-			(at 123.444 64.516 0)
+			(at 123.444 72.136 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2491,7 +2481,7 @@
 			)
 		)
 		(property "Value" "USBLC6-2SC6"
-			(at 123.19 66.802 0)
+			(at 123.19 74.422 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2500,7 +2490,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
-			(at 123.19 77.47 0)
+			(at 123.19 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2511,7 +2501,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.digikey.ca/en/products/detail/stmicroelectronics/USBLC6-2SC6/1040559"
-			(at 123.19 79.375 0)
+			(at 123.19 86.995 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2521,7 +2511,7 @@
 			)
 		)
 		(property "Description" "Very low capacitance ESD protection diode, 2 data-line, SOT-23-6"
-			(at 121.92 71.12 0)
+			(at 121.92 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3201,7 +3191,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 121.92 81.28 0)
+		(at 121.92 88.9 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3209,7 +3199,7 @@
 		(dnp no)
 		(uuid "a50a6f89-0f39-4e8a-8f48-2a1323de69b0")
 		(property "Reference" "#PWR043"
-			(at 121.92 87.63 0)
+			(at 121.92 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3218,7 +3208,7 @@
 			)
 		)
 		(property "Value" "GND_USB"
-			(at 121.92 85.598 0)
+			(at 121.92 93.218 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3226,7 +3216,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 121.92 81.28 0)
+			(at 121.92 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3235,7 +3225,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 121.92 81.28 0)
+			(at 121.92 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3244,7 +3234,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 121.92 81.28 0)
+			(at 121.92 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3331,7 +3321,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 121.92 63.5 180)
+		(at 121.92 71.12 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3339,7 +3329,7 @@
 		(dnp no)
 		(uuid "b340f67a-f2f9-4195-8b51-b45cb3aff952")
 		(property "Reference" "#PWR042"
-			(at 121.92 57.15 0)
+			(at 121.92 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3348,7 +3338,7 @@
 			)
 		)
 		(property "Value" "VDD_USB"
-			(at 121.92 58.166 0)
+			(at 121.92 65.786 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3356,7 +3346,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 121.92 63.5 0)
+			(at 121.92 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3365,7 +3355,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 121.92 63.5 0)
+			(at 121.92 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3374,7 +3364,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 121.92 63.5 0)
+			(at 121.92 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
