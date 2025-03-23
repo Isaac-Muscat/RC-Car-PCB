@@ -3270,6 +3270,179 @@
 				)
 			)
 		)
+		(symbol "Switch:SW_SPDT"
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SW"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SW_SPDT"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Switch, single pole double throw"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "switch single-pole double-throw spdt ON-ON"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SW_SPDT_0_1"
+				(circle
+					(center -2.032 0)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.651 0.254) (xy 1.651 2.286)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 -2.54)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 2.54)
+					(radius 0.4572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SW_SPDT_1_1"
+				(rectangle
+					(start -3.175 3.81)
+					(end 3.175 -3.81)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 5.08 2.54 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 -2.54 180)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "power:+3V3"
 			(power)
 			(pin_numbers hide)
@@ -3662,14 +3835,6 @@
 		(uuid "2b2e096f-7910-4b75-b1de-ea1d18268546")
 	)
 	(no_connect
-		(at 143.51 139.7)
-		(uuid "36653366-a131-4ee6-aaa2-b0db42162385")
-	)
-	(no_connect
-		(at 143.51 58.42)
-		(uuid "366ed015-47e8-48a1-b191-c034c3df8b22")
-	)
-	(no_connect
 		(at 97.79 144.78)
 		(uuid "38df4e91-bdcc-48d9-b58d-9e8bedb761bc")
 	)
@@ -3718,10 +3883,6 @@
 		(uuid "7a4bf85a-52a8-4c83-ab3d-ed8f2fc7e59d")
 	)
 	(no_connect
-		(at 143.51 81.28)
-		(uuid "7c09e672-9321-43b3-8992-67da92d5f2fb")
-	)
-	(no_connect
 		(at 97.79 68.58)
 		(uuid "7c44bb4c-c510-4486-9074-6852a2896ff7")
 	)
@@ -3738,10 +3899,6 @@
 		(uuid "81c0266a-7cbc-4543-a2bf-a06b9d265ebc")
 	)
 	(no_connect
-		(at 143.51 142.24)
-		(uuid "881ae29d-8435-4ca2-91e0-2a1a559f0475")
-	)
-	(no_connect
 		(at 97.79 99.06)
 		(uuid "8b6db103-3e2c-46ce-83ca-b29e4351d5af")
 	)
@@ -3756,10 +3913,6 @@
 	(no_connect
 		(at 143.51 48.26)
 		(uuid "92e0c429-2d8e-4937-b5ba-a5f65102a943")
-	)
-	(no_connect
-		(at 143.51 78.74)
-		(uuid "9371c616-196e-4ddd-98e9-f1cb4149a03f")
 	)
 	(no_connect
 		(at 143.51 76.2)
@@ -3796,10 +3949,6 @@
 	(no_connect
 		(at 143.51 165.1)
 		(uuid "af6538fe-6058-429e-b06a-38f0d844ae13")
-	)
-	(no_connect
-		(at 143.51 60.96)
-		(uuid "b55b26e0-32c7-4486-8552-ca4c38ced14f")
 	)
 	(no_connect
 		(at 143.51 66.04)
@@ -4079,6 +4228,16 @@
 	)
 	(wire
 		(pts
+			(xy 88.9 48.26) (xy 97.79 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97479507-8219-4ef9-a557-b3b260fa3ee6")
+	)
+	(wire
+		(pts
 			(xy 213.36 33.02) (xy 231.14 33.02)
 		)
 		(stroke
@@ -4217,16 +4376,6 @@
 		)
 		(uuid "fd5254dc-be8b-4630-a173-240dd9095151")
 	)
-	(text "Turn this into a DIP Switch.\nWant to be able to prog with USB"
-		(exclude_from_sim no)
-		(at 67.31 44.45 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "cb16e053-06df-4d67-b741-3fc8d6b22050")
-	)
 	(label "OSC_OUT"
 		(at 87.63 60.96 0)
 		(fields_autoplaced yes)
@@ -4285,7 +4434,7 @@
 	)
 	(hierarchical_label "I2C1_SDA"
 		(shape input)
-		(at 208.28 85.09 270)
+		(at 232.41 85.09 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4321,7 +4470,7 @@
 	)
 	(hierarchical_label "SWCLK"
 		(shape input)
-		(at 163.83 80.01 0)
+		(at 143.51 78.74 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4357,7 +4506,7 @@
 	)
 	(hierarchical_label "WIPE_R"
 		(shape input)
-		(at 163.83 91.44 0)
+		(at 143.51 139.7 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4381,7 +4530,7 @@
 	)
 	(hierarchical_label "BTN_L"
 		(shape input)
-		(at 176.53 88.9 0)
+		(at 143.51 58.42 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4441,7 +4590,7 @@
 	)
 	(hierarchical_label "SWDIO"
 		(shape input)
-		(at 163.83 82.55 0)
+		(at 143.51 81.28 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4465,7 +4614,7 @@
 	)
 	(hierarchical_label "BTN_R"
 		(shape input)
-		(at 176.53 91.44 0)
+		(at 143.51 142.24 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4489,7 +4638,7 @@
 	)
 	(hierarchical_label "I2C2_SDA"
 		(shape input)
-		(at 232.41 85.09 270)
+		(at 208.28 85.09 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4501,7 +4650,7 @@
 	)
 	(hierarchical_label "I2C2_SCL"
 		(shape input)
-		(at 229.87 85.09 270)
+		(at 205.74 85.09 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4549,7 +4698,7 @@
 	)
 	(hierarchical_label "WIPE_L"
 		(shape input)
-		(at 163.83 88.9 0)
+		(at 143.51 60.96 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4597,7 +4746,7 @@
 	)
 	(hierarchical_label "I2C1_SCL"
 		(shape input)
-		(at 205.74 85.09 270)
+		(at 229.87 85.09 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4708,73 +4857,6 @@
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
 					(reference "C10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 83.82 48.26 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1313566f-3a8e-42c2-b79e-145756278e24")
-		(property "Reference" "#PWR035"
-			(at 77.47 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND_3V3"
-			(at 80.01 48.2599 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 83.82 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 83.82 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 83.82 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "24b53c74-7856-4df6-9211-1f68365e143c")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
-					(reference "#PWR035")
 					(unit 1)
 				)
 			)
@@ -5258,7 +5340,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 87.63 48.26 270)
+		(at 74.93 45.72 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5267,7 +5349,7 @@
 		(fields_autoplaced yes)
 		(uuid "4a59346b-41ac-4c1a-b9e6-1da498a925c7")
 		(property "Reference" "R12"
-			(at 87.63 41.91 90)
+			(at 74.93 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5275,7 +5357,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 87.63 44.45 90)
+			(at 74.93 41.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5283,7 +5365,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 87.63 46.482 90)
+			(at 74.93 43.942 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5292,7 +5374,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 87.63 48.26 0)
+			(at 74.93 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5301,7 +5383,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 87.63 48.26 0)
+			(at 74.93 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5787,6 +5869,77 @@
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
 					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_SPDT")
+		(at 83.82 48.26 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9111724d-3d0f-4b29-ba89-d081bf1623f6")
+		(property "Reference" "SW3"
+			(at 83.82 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_SPDT"
+			(at 83.82 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
+			(at 83.82 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 83.82 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Switch, single pole double throw"
+			(at 83.82 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e803b46d-621f-4292-883a-27f48e2b984f")
+		)
+		(pin "3"
+			(uuid "2633e50d-c214-4ff8-81b6-d7eea568ad72")
+		)
+		(pin "1"
+			(uuid "210a9082-8e52-4f4c-a77a-fc0e7dee7912")
+		)
+		(instances
+			(project ""
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "SW3")
 					(unit 1)
 				)
 			)
@@ -6340,6 +6493,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 71.12 45.72 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cd7fa0d2-0918-4356-a66d-8a35eb2618b7")
+		(property "Reference" "#PWR010"
+			(at 74.93 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 67.31 45.7199 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 71.12 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 71.12 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 71.12 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1e876f9b-a5b6-4638-9b00-378823610c4f")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 40.64 62.23 0)
 		(unit 1)
@@ -6841,6 +7061,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 74.93 50.8 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d7e3ef8f-87a0-42eb-9d26-b2b81826f90e")
+		(property "Reference" "R25"
+			(at 74.93 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 75.184 55.118 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 74.93 49.022 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 74.93 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "2fff0412-74c3-4190-b820-029ec19fecc1")
+		)
+		(pin "1"
+			(uuid "f024e59d-216b-4ee7-918a-54cb21ca75a3")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "R25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 160.02 36.83 0)
 		(unit 1)
@@ -7109,6 +7396,73 @@
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
 					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 71.12 50.8 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f47c24a5-a84d-4c93-b2c5-e87851b1889e")
+		(property "Reference" "#PWR05"
+			(at 64.77 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 67.31 50.7999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 71.12 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 71.12 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 71.12 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b570327a-f404-4958-a68f-94c85555bcd8")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
