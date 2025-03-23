@@ -11,4 +11,5 @@
   (lib (name "ADC082S021CIMM_NOPB")(type "KiCad")(uri "${KIPRJMOD}/../Libraries/ADC082S021CIMM_NOPB/KiCADv6/2025-03-01_21-21-26.kicad_sym")(options "")(descr ""))
   (lib (name "LMR16020PDDAR")(type "KiCad")(uri "${KIPRJMOD}/../Libraries/LMR16020PDDAR/KiCADv6/2025-03-01_22-44-06.kicad_sym")(options "")(descr ""))
   (lib (name "2450LP14A0100001T")(type "KiCad")(uri "${KIPRJMOD}/../Libraries/2450LP14A0100001T/2450LP14A0100001T.kicad_sym")(options "")(descr ""))
+  (lib (name "LMR16030PDDA")(type "KiCad")(uri "${KIPRJMOD}/../Libraries/LMR16030PDDA/KiCADv6/2025-03-23_03-16-15.kicad_sym")(options "")(descr ""))
 )
