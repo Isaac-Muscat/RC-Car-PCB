@@ -2593,22 +2593,10 @@
 		(uuid "bcab5368-5454-4c24-96f1-4ac8ea246d5d")
 	)
 	(junction
-		(at 189.23 60.96)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ca9fced6-7c10-46c4-bf17-e795a7334713")
-	)
-	(junction
 		(at 107.95 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cd00daf4-69b1-4c91-888a-bded61bc4953")
-	)
-	(junction
-		(at 191.77 58.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ce52b878-15e3-4dc2-b739-6a81cfa4c586")
 	)
 	(junction
 		(at 52.07 91.44)
@@ -2627,12 +2615,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e9939396-14e0-4f3d-918e-42b92de131b3")
-	)
-	(junction
-		(at 191.77 39.37)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "eb31ab19-cdbd-4e65-8865-579e1a3bed74")
 	)
 	(junction
 		(at 76.2 149.86)
@@ -2754,16 +2736,6 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 58.42) (xy 191.77 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "13b2fb21-39b8-4ce2-ba43-dfb9034f1cb2")
-	)
-	(wire
-		(pts
 			(xy 243.84 55.88) (xy 266.7 55.88)
 		)
 		(stroke
@@ -2801,16 +2773,6 @@
 			(type default)
 		)
 		(uuid "1f809b2e-b16e-4ac5-a0c9-1999bc6ec599")
-	)
-	(wire
-		(pts
-			(xy 191.77 58.42) (xy 191.77 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "23cde74c-1996-469c-a6be-726de89e1848")
 	)
 	(wire
 		(pts
@@ -2904,16 +2866,6 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 46.99) (xy 189.23 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3fc9f196-b8d2-470b-a6b7-c9cfd17fe542")
-	)
-	(wire
-		(pts
 			(xy 52.07 68.58) (xy 52.07 60.96)
 		)
 		(stroke
@@ -2921,16 +2873,6 @@
 			(type default)
 		)
 		(uuid "471296bd-1441-4753-bcd2-7cc9c74f9a59")
-	)
-	(wire
-		(pts
-			(xy 191.77 58.42) (xy 191.77 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "475596ae-c355-4547-8001-54628e7d2b81")
 	)
 	(wire
 		(pts
@@ -3124,16 +3066,6 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 60.96) (xy 189.23 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "68477e04-a5ca-47a6-8ac9-b7ccf83a9b4e")
-	)
-	(wire
-		(pts
 			(xy 76.2 147.32) (xy 76.2 149.86)
 		)
 		(stroke
@@ -3264,16 +3196,6 @@
 	)
 	(wire
 		(pts
-			(xy 191.77 36.83) (xy 191.77 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8ca5def1-3b98-466e-803e-ad2fe4da9bef")
-	)
-	(wire
-		(pts
 			(xy 52.07 73.66) (xy 52.07 68.58)
 		)
 		(stroke
@@ -3381,16 +3303,6 @@
 			(type default)
 		)
 		(uuid "ac28844f-c1c4-400a-9424-8c0cbb2aea57")
-	)
-	(wire
-		(pts
-			(xy 196.85 60.96) (xy 189.23 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c4d69617-45a9-4c93-86bf-b252e78948e7")
 	)
 	(wire
 		(pts
@@ -3554,16 +3466,6 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 39.37) (xy 191.77 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f60b33e3-4577-47dc-911c-b6ba9aeaac1d")
-	)
-	(wire
-		(pts
 			(xy 105.41 91.44) (xy 107.95 91.44)
 		)
 		(stroke
@@ -3701,7 +3603,7 @@
 	)
 	(hierarchical_label "GAS_SCL"
 		(shape input)
-		(at 189.23 67.31 270)
+		(at 196.85 60.96 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3713,7 +3615,7 @@
 	)
 	(hierarchical_label "GAS_SDA"
 		(shape input)
-		(at 191.77 67.31 270)
+		(at 196.85 58.42 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4359,73 +4261,6 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 189.23 43.18 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "2c6d76f2-724b-4d54-909d-b0bb749300dc")
-		(property "Reference" "R5"
-			(at 186.436 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10kohm"
-			(at 184.15 44.196 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 191.008 43.18 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 189.23 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 189.23 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8cb00b4e-207f-449c-8182-979df09c7939")
-		)
-		(pin "2"
-			(uuid "bf20ec5d-44f7-46d1-8500-959d51bcd267")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
 		(at 118.11 74.93 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4449,7 +4284,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 119.888 74.93 90)
 			(effects
 				(font
@@ -5710,73 +5545,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 191.77 43.18 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8e26925d-85d5-4602-852c-a5e0f1dce0d8")
-		(property "Reference" "R6"
-			(at 194.564 41.656 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10kohm"
-			(at 197.104 44.196 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 193.548 43.18 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 191.77 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 191.77 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a1bbf1a2-c435-460e-8375-20998c03f840")
-		)
-		(pin "2"
-			(uuid "e61f73ec-29b5-4a86-bfe5-b70b99843c29")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 257.81 66.04 0)
 		(unit 1)
@@ -6386,72 +6154,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 191.77 36.83 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "bc1e8a37-4a3c-43c8-8dca-38a0378789cd")
-		(property "Reference" "#PWR081"
-			(at 191.77 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 191.77 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 191.77 36.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 191.77 36.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 191.77 36.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1667b4ab-e8e4-445e-8ceb-92d9922df9a1")
-		)
-		(instances
-			(project "RC-Car-Controller"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR081")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GNDA")
 		(at 127 60.96 0)
 		(unit 1)
@@ -6608,7 +6310,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 106.172 74.93 90)
 			(effects
 				(font

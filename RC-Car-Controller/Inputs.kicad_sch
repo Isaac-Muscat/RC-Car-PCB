@@ -2257,7 +2257,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P15.24mm_Horizontal"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 132.588 110.49 90)
 			(effects
 				(font
@@ -2534,7 +2534,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P15.24mm_Horizontal"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 170.688 110.49 90)
 			(effects
 				(font

@@ -3542,6 +3542,12 @@
 		(uuid "5870e144-0e0b-4c1d-8afd-2659fc16a98a")
 	)
 	(junction
+		(at 232.41 77.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7b353141-a325-4820-9750-f9efc3cf1cba")
+	)
+	(junction
 		(at 213.36 33.02)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3601,9 +3607,11 @@
 		(color 0 0 0 0)
 		(uuid "dc28eed8-583a-42f4-ae16-106c308012fa")
 	)
-	(no_connect
-		(at 97.79 114.3)
-		(uuid "0060a082-00da-4425-98d2-db5a87ac9ea4")
+	(junction
+		(at 208.28 77.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f031c45f-7772-42f9-94a1-cd321c2907d1")
 	)
 	(no_connect
 		(at 143.51 99.06)
@@ -3626,8 +3634,16 @@
 		(uuid "1dad3f4a-4902-4641-a41d-e197d7f5540a")
 	)
 	(no_connect
+		(at 97.79 111.76)
+		(uuid "1ef7d748-2250-4ead-b422-67c151d7c0be")
+	)
+	(no_connect
 		(at 143.51 50.8)
 		(uuid "2023363b-98f7-4e14-9e4a-93332f7ef8b5")
+	)
+	(no_connect
+		(at 143.51 55.88)
+		(uuid "21b1f1a9-ae62-4867-9bc7-9f17d12ed9a2")
 	)
 	(no_connect
 		(at 143.51 45.72)
@@ -3644,6 +3660,14 @@
 	(no_connect
 		(at 143.51 86.36)
 		(uuid "2b2e096f-7910-4b75-b1de-ea1d18268546")
+	)
+	(no_connect
+		(at 143.51 139.7)
+		(uuid "36653366-a131-4ee6-aaa2-b0db42162385")
+	)
+	(no_connect
+		(at 143.51 58.42)
+		(uuid "366ed015-47e8-48a1-b191-c034c3df8b22")
 	)
 	(no_connect
 		(at 97.79 144.78)
@@ -3694,6 +3718,10 @@
 		(uuid "7a4bf85a-52a8-4c83-ab3d-ed8f2fc7e59d")
 	)
 	(no_connect
+		(at 143.51 81.28)
+		(uuid "7c09e672-9321-43b3-8992-67da92d5f2fb")
+	)
+	(no_connect
 		(at 97.79 68.58)
 		(uuid "7c44bb4c-c510-4486-9074-6852a2896ff7")
 	)
@@ -3710,12 +3738,16 @@
 		(uuid "81c0266a-7cbc-4543-a2bf-a06b9d265ebc")
 	)
 	(no_connect
+		(at 143.51 142.24)
+		(uuid "881ae29d-8435-4ca2-91e0-2a1a559f0475")
+	)
+	(no_connect
 		(at 97.79 99.06)
 		(uuid "8b6db103-3e2c-46ce-83ca-b29e4351d5af")
 	)
 	(no_connect
-		(at 143.51 160.02)
-		(uuid "906ea953-32fa-4f27-9941-500ad1fda931")
+		(at 97.79 109.22)
+		(uuid "900ec02a-961d-42e7-b63c-e93604729147")
 	)
 	(no_connect
 		(at 97.79 137.16)
@@ -3726,8 +3758,8 @@
 		(uuid "92e0c429-2d8e-4937-b5ba-a5f65102a943")
 	)
 	(no_connect
-		(at 143.51 149.86)
-		(uuid "93ce0d6d-9639-46c4-95c1-74fb8988334b")
+		(at 143.51 78.74)
+		(uuid "9371c616-196e-4ddd-98e9-f1cb4149a03f")
 	)
 	(no_connect
 		(at 143.51 76.2)
@@ -3744,10 +3776,6 @@
 	(no_connect
 		(at 97.79 139.7)
 		(uuid "a43ebd44-1f66-44aa-b311-1e4f66de7154")
-	)
-	(no_connect
-		(at 143.51 154.94)
-		(uuid "a4847fb8-6800-4740-abd4-22cc351061b3")
 	)
 	(no_connect
 		(at 143.51 119.38)
@@ -3768,6 +3796,10 @@
 	(no_connect
 		(at 143.51 165.1)
 		(uuid "af6538fe-6058-429e-b06a-38f0d844ae13")
+	)
+	(no_connect
+		(at 143.51 60.96)
+		(uuid "b55b26e0-32c7-4486-8552-ca4c38ced14f")
 	)
 	(no_connect
 		(at 143.51 66.04)
@@ -3794,12 +3826,12 @@
 		(uuid "bf637dcd-ffe8-4f00-a188-4cd0c806afd9")
 	)
 	(no_connect
-		(at 97.79 76.2)
-		(uuid "c4eaa560-5bd0-4a4b-bc01-7c0b6240c5d3")
-	)
-	(no_connect
 		(at 97.79 73.66)
 		(uuid "c54e7f06-ec9f-4d16-aa63-ea49b965b84d")
+	)
+	(no_connect
+		(at 143.51 63.5)
+		(uuid "cbd16002-016b-470d-8f26-85162151fa8c")
 	)
 	(no_connect
 		(at 143.51 167.64)
@@ -3824,10 +3856,6 @@
 	(no_connect
 		(at 97.79 101.6)
 		(uuid "edc68329-956a-411f-a241-89ab3b7c16f7")
-	)
-	(no_connect
-		(at 143.51 157.48)
-		(uuid "f0492380-b96e-4e48-ae57-bdeb291cf53e")
 	)
 	(wire
 		(pts
@@ -3891,6 +3919,16 @@
 	)
 	(wire
 		(pts
+			(xy 205.74 77.47) (xy 208.28 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31cb77ff-d198-4766-9f8d-0a5b447a9604")
+	)
+	(wire
+		(pts
 			(xy 177.8 40.64) (xy 185.42 40.64)
 		)
 		(stroke
@@ -3928,6 +3966,16 @@
 			(type default)
 		)
 		(uuid "4b162918-b7cf-48bc-8301-97ed568997aa")
+	)
+	(wire
+		(pts
+			(xy 208.28 74.93) (xy 208.28 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ce7b416-a815-45aa-84ee-812919f19ebd")
 	)
 	(wire
 		(pts
@@ -4011,6 +4059,16 @@
 	)
 	(wire
 		(pts
+			(xy 232.41 74.93) (xy 232.41 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f266eb8-686b-4f57-b2a1-acb23a17666a")
+	)
+	(wire
+		(pts
 			(xy 69.85 156.21) (xy 69.85 152.4)
 		)
 		(stroke
@@ -4048,6 +4106,16 @@
 			(type default)
 		)
 		(uuid "a33864b5-837c-495c-b177-6356f6bb87a0")
+	)
+	(wire
+		(pts
+			(xy 229.87 77.47) (xy 232.41 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad0421dc-8897-4735-9801-6744ec425f30")
 	)
 	(wire
 		(pts
@@ -4203,18 +4271,6 @@
 		)
 		(uuid "68e74c87-51a4-47e3-8932-99a33bae768a")
 	)
-	(hierarchical_label "SPI1_DC"
-		(shape input)
-		(at 143.51 142.24 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "05ff2100-e3c3-43f5-a5f0-30298c509f58")
-	)
 	(hierarchical_label "I2C1_SCL"
 		(shape input)
 		(at 143.51 101.6 0)
@@ -4227,9 +4283,33 @@
 		)
 		(uuid "08113f79-6b8d-4b7a-9483-7f361f3f69f2")
 	)
-	(hierarchical_label "I2C3_SCL"
+	(hierarchical_label "I2C1_SDA"
 		(shape input)
-		(at 143.51 63.5 0)
+		(at 208.28 85.09 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0de70495-4f95-4c64-bd4b-340373ad10c4")
+	)
+	(hierarchical_label "SPI4_CS"
+		(shape input)
+		(at 97.79 76.2 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1f93a9e2-22be-4dfa-93c3-e132af5dbb31")
+	)
+	(hierarchical_label "SDMMC1_D3"
+		(shape input)
+		(at 143.51 157.48 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4237,11 +4317,11 @@
 			)
 			(justify left)
 		)
-		(uuid "1096af57-313a-4657-8c69-e1e43f8eb075")
+		(uuid "35df231c-ee16-475d-9342-9e217d11d96e")
 	)
 	(hierarchical_label "SWCLK"
 		(shape input)
-		(at 143.51 78.74 0)
+		(at 163.83 80.01 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4277,7 +4357,7 @@
 	)
 	(hierarchical_label "WIPE_R"
 		(shape input)
-		(at 186.69 90.17 0)
+		(at 163.83 91.44 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4287,9 +4367,9 @@
 		)
 		(uuid "45d84eef-e5d1-4760-91aa-5ffcfe2fbe02")
 	)
-	(hierarchical_label "BTN_L"
+	(hierarchical_label "SPI4_DC"
 		(shape input)
-		(at 97.79 109.22 180)
+		(at 97.79 78.74 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4297,7 +4377,31 @@
 			)
 			(justify right)
 		)
+		(uuid "46f797dd-adc8-41ed-85cd-8d05b31f65a4")
+	)
+	(hierarchical_label "BTN_L"
+		(shape input)
+		(at 176.53 88.9 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
 		(uuid "5013662b-9628-4b4d-8af8-3c689646cf1a")
+	)
+	(hierarchical_label "SDMMC1_CK"
+		(shape input)
+		(at 143.51 160.02 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5c780f67-5814-4ad8-b8ca-1e9486ac22f2")
 	)
 	(hierarchical_label "I2C1_SDA"
 		(shape input)
@@ -4311,9 +4415,33 @@
 		)
 		(uuid "6a707b5d-916e-4b9c-b429-b7133cb0de7d")
 	)
+	(hierarchical_label "SDMMC1_D0"
+		(shape input)
+		(at 143.51 149.86 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "741ef84d-197f-4cbd-8136-d041375b69c4")
+	)
+	(hierarchical_label "SDMMC1_CMD"
+		(shape input)
+		(at 97.79 114.3 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7425a8ab-5845-4652-8804-fa0b62141be0")
+	)
 	(hierarchical_label "SWDIO"
 		(shape input)
-		(at 143.51 81.28 0)
+		(at 163.83 82.55 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4337,13 +4465,13 @@
 	)
 	(hierarchical_label "BTN_R"
 		(shape input)
-		(at 97.79 111.76 180)
+		(at 176.53 91.44 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "873bc59d-9138-4470-8ac5-d8b8cfa4a993")
 	)
@@ -4359,6 +4487,30 @@
 		)
 		(uuid "8766785f-d08b-41ec-b812-15c11998fcd5")
 	)
+	(hierarchical_label "I2C2_SDA"
+		(shape input)
+		(at 232.41 85.09 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "91224350-8fe5-4e00-a001-41d295c4c309")
+	)
+	(hierarchical_label "I2C2_SCL"
+		(shape input)
+		(at 229.87 85.09 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a0e27e54-22f9-419d-938b-db532110433d")
+	)
 	(hierarchical_label "NRST"
 		(shape input)
 		(at 97.79 43.18 180)
@@ -4371,19 +4523,7 @@
 		)
 		(uuid "a7e439c4-3518-4e01-befb-9a38e29ca2b1")
 	)
-	(hierarchical_label "SPI1_SCLK"
-		(shape input)
-		(at 143.51 55.88 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "a90ec77c-f8ca-4439-a1c5-1395259caf71")
-	)
-	(hierarchical_label "I2C3_SDA"
+	(hierarchical_label "SDMMC1_D1"
 		(shape input)
 		(at 143.51 152.4 0)
 		(fields_autoplaced yes)
@@ -4393,31 +4533,7 @@
 			)
 			(justify left)
 		)
-		(uuid "b5ec529a-4987-43cc-b34a-f96030ad3975")
-	)
-	(hierarchical_label "SPI1_MISO"
-		(shape input)
-		(at 143.51 58.42 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "c47b1260-709f-4701-8742-5e267d7268c7")
-	)
-	(hierarchical_label "SPI4_MISO"
-		(shape input)
-		(at 97.79 78.74 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "c8e84ae6-65ba-4c84-b3a0-3196402d3a1a")
+		(uuid "a89b40d3-5173-45ff-8c80-6f31ed1eec87")
 	)
 	(hierarchical_label "NRST"
 		(shape input)
@@ -4433,7 +4549,7 @@
 	)
 	(hierarchical_label "WIPE_L"
 		(shape input)
-		(at 186.69 87.63 0)
+		(at 163.83 88.9 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4455,18 +4571,6 @@
 		)
 		(uuid "d4681425-8c0f-4395-b34f-2f7ff384a29e")
 	)
-	(hierarchical_label "SPI1_CS"
-		(shape input)
-		(at 143.51 139.7 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "d682e7d6-caf4-46b4-b3b8-3cd35fbca860")
-	)
 	(hierarchical_label "I2C2_SDA"
 		(shape input)
 		(at 143.51 114.3 0)
@@ -4479,6 +4583,30 @@
 		)
 		(uuid "da233252-ba0c-4e7a-9882-397521923070")
 	)
+	(hierarchical_label "SDMMC1_D2"
+		(shape input)
+		(at 143.51 154.94 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e573fc8f-5b87-4f55-a4b9-4baa71c5e54b")
+	)
+	(hierarchical_label "I2C1_SCL"
+		(shape input)
+		(at 205.74 85.09 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ed47b6e8-a759-43f9-a8bb-94226eef7f34")
+	)
 	(hierarchical_label "SPI4_SCLK"
 		(shape input)
 		(at 97.79 71.12 180)
@@ -4490,18 +4618,6 @@
 			(justify right)
 		)
 		(uuid "f29e1b34-24c3-490c-8c14-8da5e24fe5bc")
-	)
-	(hierarchical_label "SPI1_MOSI"
-		(shape input)
-		(at 143.51 60.96 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "fa99a3e7-5d1b-43a8-8d49-63d00aa85741")
 	)
 	(hierarchical_label "USART1_RX"
 		(shape input)
@@ -4555,7 +4671,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 178.7652 40.64 0)
 			(effects
 				(font
@@ -4692,7 +4808,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 196.5452 40.64 0)
 			(effects
 				(font
@@ -4762,7 +4878,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 46.482 96.52 90)
 			(effects
 				(font
@@ -4799,6 +4915,73 @@
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
 					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 232.41 81.28 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "292da246-5267-4f89-9399-d5392018dbf5")
+		(property "Reference" "R20"
+			(at 235.204 79.756 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "4.7kohm"
+			(at 237.744 82.296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 234.188 81.28 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 232.41 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 232.41 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "78ee413d-54e7-4b8c-be55-5866eb3598ac")
+		)
+		(pin "2"
+			(uuid "91b5b26b-2255-45e6-b0eb-1660e55e0184")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "R20")
 					(unit 1)
 				)
 			)
@@ -4898,7 +5081,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 60.6552 66.04 0)
 			(effects
 				(font
@@ -4942,6 +5125,139 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 208.28 81.28 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "44b2c384-e5c8-4647-b34b-93854dee1720")
+		(property "Reference" "R6"
+			(at 211.074 79.756 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "4.7kohm"
+			(at 213.614 82.296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 210.058 81.28 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 208.28 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 208.28 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2d002dfe-3592-4492-bc98-531a973c33d2")
+		)
+		(pin "2"
+			(uuid "da2ffa91-f14f-4887-bbc2-a64f6e057644")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 232.41 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "484e3774-eb7b-4e36-b7da-6d81a11440cb")
+		(property "Reference" "#PWR058"
+			(at 232.41 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 232.41 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 232.41 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 232.41 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 232.41 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7c855538-41dd-49ea-8e49-8f930affaf5e")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "#PWR058")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 87.63 48.26 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4966,7 +5282,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 87.63 46.482 90)
 			(effects
 				(font
@@ -5367,7 +5683,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 249.8852 40.64 0)
 			(effects
 				(font
@@ -5404,6 +5720,140 @@
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
 					(reference "C21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 205.74 81.28 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "904b7994-bb76-46d7-8ddc-497824846124")
+		(property "Reference" "R5"
+			(at 202.946 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "4.7kohm"
+			(at 200.66 82.296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 207.518 81.28 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 205.74 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ade79d02-917f-48f2-8021-8fda180df159")
+		)
+		(pin "2"
+			(uuid "8a90325c-9932-41a1-b1a4-4cf9a2163a69")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 229.87 81.28 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9c66c6a9-a7df-4c86-a219-cbd382c1b48c")
+		(property "Reference" "R19"
+			(at 227.076 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "4.7kohm"
+			(at 224.79 82.296 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 231.648 81.28 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 229.87 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 229.87 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "79d2f988-5b3b-4c15-9fd1-0fd7c7c9c39a")
+		)
+		(pin "2"
+			(uuid "d722f7f4-4f7a-46f8-a6ec-992f4b039919")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "R19")
 					(unit 1)
 				)
 			)
@@ -5503,7 +5953,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 70.8152 163.83 0)
 			(effects
 				(font
@@ -5639,7 +6089,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 88.5952 163.83 0)
 			(effects
 				(font
@@ -5709,7 +6159,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 49.2252 107.95 0)
 			(effects
 				(font
@@ -5779,7 +6229,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 232.1052 40.64 0)
 			(effects
 				(font
@@ -5917,7 +6367,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 41.6052 66.04 0)
 			(effects
 				(font
@@ -6418,7 +6868,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 160.9852 40.64 0)
 			(effects
 				(font
@@ -6461,6 +6911,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 208.28 74.93 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e283b709-cfae-45f6-bc6d-768a9f5b84e8")
+		(property "Reference" "#PWR057"
+			(at 208.28 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 208.28 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 208.28 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 208.28 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 208.28 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "da8f3d11-39b0-4e73-8e74-3a5afad932ed")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/a5d771ee-9d16-4fd4-bdeb-bf0012c0663a"
+					(reference "#PWR057")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 213.36 36.83 0)
 		(unit 1)
@@ -6488,7 +7004,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 214.3252 40.64 0)
 			(effects
 				(font
