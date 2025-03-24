@@ -2426,6 +2426,18 @@
 		)
 		(uuid "774a1ef4-d97c-43e2-be87-48924489ae32")
 	)
+	(hierarchical_label "RF_TCK"
+		(shape input)
+		(at 123.19 157.48 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "77530641-2160-413c-b30a-507f8dae74d1")
+	)
 	(hierarchical_label "RF_ANT"
 		(shape input)
 		(at 176.53 135.89 180)
@@ -2437,6 +2449,42 @@
 			(justify right)
 		)
 		(uuid "924953c7-7087-416a-8863-e9a497028a7b")
+	)
+	(hierarchical_label "RF_nSRST"
+		(shape input)
+		(at 123.19 152.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "93697620-2d58-4640-89cf-5f90cf075587")
+	)
+	(hierarchical_label "RF_TDO"
+		(shape input)
+		(at 123.19 149.86 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "957adaf9-5e73-4d2d-86e5-78435a80802e")
+	)
+	(hierarchical_label "RF_TMS"
+		(shape input)
+		(at 123.19 162.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b9095651-40d8-4b82-bb08-87546f29ce24")
 	)
 	(hierarchical_label "USART_TX"
 		(shape input)
@@ -2461,6 +2509,30 @@
 			(justify right)
 		)
 		(uuid "cce258ad-7cf0-4785-ad56-de701e4e08dc")
+	)
+	(hierarchical_label "RF_nTRST"
+		(shape input)
+		(at 123.19 160.02 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ceacb3bd-5e85-4dc9-a03d-90a13bedf0f9")
+	)
+	(hierarchical_label "RF_TDI"
+		(shape input)
+		(at 123.19 154.94 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e6e30e10-490f-4820-84c0-90e1c48cfd07")
 	)
 	(symbol
 		(lib_id "Power_Protection:USBLC6-2SC6")
@@ -3071,6 +3143,161 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:Conn_01x08_Pin")
+		(at 128.27 160.02 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "912bba86-59a3-44b1-9a0a-2acbb0097762")
+		(property "Reference" "J2"
+			(at 129.54 157.4799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RF_IF"
+			(at 129.54 160.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_2x04_P2.54mm_Vertical"
+			(at 128.27 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 128.27 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x08, script generated"
+			(at 128.27 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "5"
+			(uuid "ad67c9ef-124b-4281-bcc5-3d57504a3b9e")
+		)
+		(pin "7"
+			(uuid "0a639e81-eda9-4ebf-9dbe-46212a0e8958")
+		)
+		(pin "3"
+			(uuid "41af12c2-45a7-4b16-adee-472d81b116e2")
+		)
+		(pin "2"
+			(uuid "8e5666b6-c34f-436b-a078-823e540d286f")
+		)
+		(pin "6"
+			(uuid "880eea96-d013-4fc3-b28c-4e11cacb0bb8")
+		)
+		(pin "1"
+			(uuid "6ba2d69c-43d0-427e-a6ca-7028d7de1f0d")
+		)
+		(pin "4"
+			(uuid "2e387968-77af-43b6-872a-eae9142f7c3d")
+		)
+		(pin "8"
+			(uuid "4b3fb2c8-a991-462f-bb2f-eb343094dc83")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 123.19 165.1 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9aa46b8a-6711-4fa4-81a4-5c1a3864f566")
+		(property "Reference" "#PWR065"
+			(at 116.84 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 119.38 165.0999 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 123.19 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 123.19 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 123.19 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f3d08778-30b1-430a-929b-e617fe3be496")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
+					(reference "#PWR065")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "R1966ABLKBLKGR:R1966ABLKBLKGR")
 		(at 62.23 152.4 0)
 		(unit 1)
@@ -3652,6 +3879,73 @@
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
 					(reference "R23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 123.19 167.64 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d433315e-47e9-4467-9572-193b60f945a3")
+		(property "Reference" "#PWR064"
+			(at 127 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 119.3 167.6399 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 123.19 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 123.19 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 123.19 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5523acd8-fb99-4363-8988-6e5b9f50bdd8")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/47812da9-b622-4bda-8507-4e09448e1ff5"
+					(reference "#PWR064")
 					(unit 1)
 				)
 			)
