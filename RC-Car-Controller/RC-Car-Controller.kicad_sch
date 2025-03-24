@@ -643,10 +643,6 @@
 		(uuid "8322b33e-666a-4691-93e5-216daf2dfbbb")
 	)
 	(no_connect
-		(at 176.53 74.93)
-		(uuid "91f19403-49f5-4513-b197-d4f8c16ff2b6")
-	)
-	(no_connect
 		(at 60.96 34.29)
 		(uuid "974dcb83-a960-4b98-94e0-3eb405a350d5")
 	)
@@ -709,6 +705,16 @@
 	)
 	(wire
 		(pts
+			(xy 96.52 86.36) (xy 176.53 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2597904a-08fe-48cd-aca5-0e1a4903c29a")
+	)
+	(wire
+		(pts
 			(xy 96.52 163.83) (xy 124.46 163.83)
 		)
 		(stroke
@@ -737,6 +743,16 @@
 			(type default)
 		)
 		(uuid "318855e4-346a-41fd-a93b-e4905be2bc04")
+	)
+	(wire
+		(pts
+			(xy 96.52 95.25) (xy 124.46 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32f102fc-2670-4939-b81a-05d02f1816f3")
 	)
 	(wire
 		(pts
@@ -920,6 +936,26 @@
 	)
 	(wire
 		(pts
+			(xy 96.52 74.93) (xy 176.53 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ec88aed-2977-4a9f-8727-05564dcd4fdc")
+	)
+	(wire
+		(pts
+			(xy 96.52 78.74) (xy 176.53 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ef0a745-8a40-4c1b-9ca6-b47e863f143e")
+	)
+	(wire
+		(pts
 			(xy 96.52 154.94) (xy 124.46 154.94)
 		)
 		(stroke
@@ -950,6 +986,16 @@
 	)
 	(wire
 		(pts
+			(xy 96.52 83.82) (xy 176.53 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "adae1d74-c028-415d-a8c6-bbd2848b9921")
+	)
+	(wire
+		(pts
 			(xy 160.02 125.73) (xy 176.53 125.73)
 		)
 		(stroke
@@ -970,13 +1016,23 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 86.36) (xy 176.53 83.82)
+			(xy 96.52 88.9) (xy 176.53 88.9)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d04c9df7-7689-488f-8a8f-464d5dd43cdf")
+		(uuid "bd78d2f8-b8f1-43d0-b2dd-2d0862502827")
+	)
+	(wire
+		(pts
+			(xy 96.52 81.28) (xy 176.53 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cff102f5-c6a2-4633-8b96-88f1c8df67d4")
 	)
 	(wire
 		(pts
@@ -987,6 +1043,16 @@
 			(type default)
 		)
 		(uuid "d3715aca-f2d1-46b3-b309-e23cd40bb1e3")
+	)
+	(wire
+		(pts
+			(xy 96.52 97.79) (xy 124.46 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d62be15a-6aa9-4398-9a8f-9ae4289a21e8")
 	)
 	(wire
 		(pts
@@ -2574,6 +2640,86 @@
 			)
 			(uuid "18802ae6-fb19-42df-81cb-a6f90ec93bde")
 		)
+		(pin "JTAG_TCK" input
+			(at 96.52 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "f971907b-6d73-43ca-b42d-a9615531ffb1")
+		)
+		(pin "JTAG_TMS" input
+			(at 96.52 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "e24c7d17-32fd-4a73-b006-2dc44b88d1fa")
+		)
+		(pin "JTAG_TRST" input
+			(at 96.52 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "15f87c1b-3bed-4d0e-884f-cfa2fd91111b")
+		)
+		(pin "JTAG_TDI" input
+			(at 96.52 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "c8b36667-b436-4355-846c-c1980cdde8b7")
+		)
+		(pin "JTAG_TDO" input
+			(at 96.52 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "09f51d53-4c0c-4c31-ae33-ba0ac0c83827")
+		)
+		(pin "BUSY" input
+			(at 96.52 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "4665e6c2-f568-45e3-85b6-0d3ce50df564")
+		)
+		(pin "RESET" input
+			(at 96.52 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "a8924eb6-43ce-4d33-94c5-958f71eba658")
+		)
+		(pin "ANT" input
+			(at 96.52 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "cb552847-527f-4187-9f92-1c6c058546dc")
+		)
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
@@ -2583,8 +2729,8 @@
 		)
 	)
 	(sheet
-		(at 124.46 99.06)
-		(size 35.56 78.74)
+		(at 124.46 91.44)
+		(size 35.56 86.36)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -2595,7 +2741,7 @@
 		)
 		(uuid "a5d771ee-9d16-4fd4-bdeb-bf0012c0663a")
 		(property "Sheetname" "MCU"
-			(at 124.46 98.3484 0)
+			(at 124.46 90.7284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2921,6 +3067,26 @@
 				(justify left)
 			)
 			(uuid "7704b28a-ea04-45b1-9329-b4bae27b7ee0")
+		)
+		(pin "RF_RESET" input
+			(at 124.46 95.25 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "9fc1850e-535b-455a-97aa-03cebaf9af01")
+		)
+		(pin "RF_BUSY" input
+			(at 124.46 97.79 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "9f46de9d-baf6-48e6-9752-40e6e910da65")
 		)
 		(instances
 			(project "RC-Car-Controller"

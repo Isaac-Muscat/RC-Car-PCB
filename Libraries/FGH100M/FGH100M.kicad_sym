@@ -208,7 +208,7 @@
 				)
 			)
 			(pin power_in line
-				(at -27.94 27.94 0)
+				(at -27.94 25.4 0)
 				(length 2.54)
 				(name "VBAT"
 					(effects
@@ -316,7 +316,7 @@
 				)
 			)
 			(pin power_in line
-				(at -27.94 25.4 0)
+				(at -27.94 27.94 0)
 				(length 2.54)
 				(name "VDD_IO"
 					(effects

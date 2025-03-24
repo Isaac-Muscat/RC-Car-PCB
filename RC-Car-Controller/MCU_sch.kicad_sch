@@ -4684,6 +4684,18 @@
 		)
 		(uuid "a89b40d3-5173-45ff-8c80-6f31ed1eec87")
 	)
+	(hierarchical_label "RF_BUSY"
+		(shape input)
+		(at 176.53 105.41 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "abf88b96-5d50-443d-b32c-1a97f351e0a5")
+	)
 	(hierarchical_label "NRST"
 		(shape input)
 		(at 53.34 100.33 0)
@@ -4743,6 +4755,18 @@
 			(justify left)
 		)
 		(uuid "e573fc8f-5b87-4f55-a4b9-4baa71c5e54b")
+	)
+	(hierarchical_label "RF_RESET"
+		(shape input)
+		(at 176.53 102.87 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e7517d48-2401-460c-9bb2-cfa077756ac1")
 	)
 	(hierarchical_label "I2C1_SCL"
 		(shape input)
