@@ -753,6 +753,10 @@
 		(uuid "b43ae814-1c6c-43e2-a702-0fe5c0fc4f46")
 	)
 	(no_connect
+		(at 96.52 97.79)
+		(uuid "dcf9a62f-872e-4434-9447-8f39bdf794d8")
+	)
+	(no_connect
 		(at 160.02 173.99)
 		(uuid "eec28147-a113-43ec-bea2-ebd43c1b24ac")
 	)
@@ -1145,16 +1149,6 @@
 			(type default)
 		)
 		(uuid "d3715aca-f2d1-46b3-b309-e23cd40bb1e3")
-	)
-	(wire
-		(pts
-			(xy 96.52 97.79) (xy 124.46 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d62be15a-6aa9-4398-9a8f-9ae4289a21e8")
 	)
 	(wire
 		(pts
@@ -4192,16 +4186,6 @@
 				(justify left)
 			)
 			(uuid "9fc1850e-535b-455a-97aa-03cebaf9af01")
-		)
-		(pin "RF_BUSY" input
-			(at 124.46 97.79 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "9f46de9d-baf6-48e6-9752-40e6e910da65")
 		)
 		(instances
 			(project "RC-Car-Controller"

@@ -3606,10 +3606,6 @@
 		(uuid "02d7cdb6-de49-45f4-990c-3f882d55af03")
 	)
 	(no_connect
-		(at 116.84 54.61)
-		(uuid "0563f6f8-539b-4b9a-8de4-8c56bcdc554c")
-	)
-	(no_connect
 		(at 162.56 130.81)
 		(uuid "0da67c6c-74ad-43b6-b202-d8beac105bbe")
 	)
@@ -3618,8 +3614,16 @@
 		(uuid "13756d88-ce3b-4379-ab0d-284f89e5576b")
 	)
 	(no_connect
+		(at 162.56 125.73)
+		(uuid "1787d18f-e744-4fad-afac-06974a300b2d")
+	)
+	(no_connect
 		(at 162.56 87.63)
 		(uuid "1feffb4b-5069-4165-bd79-d24ec354c27c")
+	)
+	(no_connect
+		(at 116.84 87.63)
+		(uuid "2ae0b569-d816-45af-a728-4af73a6dc436")
 	)
 	(no_connect
 		(at 116.84 120.65)
@@ -3632,14 +3636,6 @@
 	(no_connect
 		(at 162.56 151.13)
 		(uuid "2f2fcf08-b82c-4e8f-9fbc-0dd013fac9e0")
-	)
-	(no_connect
-		(at 162.56 156.21)
-		(uuid "336213bc-aa7b-457f-99eb-b2907db32c69")
-	)
-	(no_connect
-		(at 162.56 148.59)
-		(uuid "38a35e23-2182-40b3-a747-e614117e4df3")
 	)
 	(no_connect
 		(at 116.84 72.39)
@@ -3666,36 +3662,28 @@
 		(uuid "4cde890f-de79-408d-9820-370ad99ab91f")
 	)
 	(no_connect
-		(at 162.56 62.23)
-		(uuid "70cf8428-3cd3-4f32-8901-26f1ef74d956")
+		(at 116.84 85.09)
+		(uuid "6b824527-3c2c-48ac-9659-52bd30429cca")
 	)
 	(no_connect
 		(at 162.56 39.37)
 		(uuid "7542e6d8-03fe-4caf-884e-94178b278d98")
 	)
 	(no_connect
-		(at 116.84 102.87)
-		(uuid "7ec4cbfc-d24f-481b-8f37-436ada7159d1")
+		(at 116.84 82.55)
+		(uuid "7fc9f8d1-b76b-4ad4-be4b-5f60077120ff")
 	)
 	(no_connect
 		(at 162.56 69.85)
 		(uuid "82eb0e94-13c6-49cf-a2d1-d65ebea3d92f")
 	)
 	(no_connect
-		(at 116.84 97.79)
-		(uuid "85918f53-18a8-4b1f-bd4a-5cdb268f5237")
-	)
-	(no_connect
-		(at 116.84 57.15)
-		(uuid "8648a2be-258b-407c-a64d-030e51412c18")
+		(at 116.84 80.01)
+		(uuid "8906436e-82d4-4038-9076-0f35ded9f615")
 	)
 	(no_connect
 		(at 116.84 110.49)
 		(uuid "8c54d778-f72a-44cd-a788-7e69b0fdbdbb")
-	)
-	(no_connect
-		(at 162.56 146.05)
-		(uuid "8f8cf961-5cf5-4618-b9cc-6b870ed09118")
 	)
 	(no_connect
 		(at 116.84 59.69)
@@ -3726,10 +3714,6 @@
 		(uuid "afb357d3-9a89-4efb-83b1-8e4cee24e689")
 	)
 	(no_connect
-		(at 162.56 143.51)
-		(uuid "b4d6b77b-9b79-4af8-bc5a-dcdee2a297a3")
-	)
-	(no_connect
 		(at 162.56 85.09)
 		(uuid "b70109f2-427a-4bcb-b3e6-1fee8a2608a6")
 	)
@@ -3746,6 +3730,10 @@
 		(uuid "bed28f71-2170-4bf9-9a1f-916fbf520be2")
 	)
 	(no_connect
+		(at 162.56 128.27)
+		(uuid "c7adec00-c72e-424f-9024-1433d70b09b2")
+	)
+	(no_connect
 		(at 116.84 92.71)
 		(uuid "c838d335-b1ab-49d6-804c-97c3aeba8b23")
 	)
@@ -3760,14 +3748,6 @@
 	(no_connect
 		(at 116.84 133.35)
 		(uuid "dedaa1da-e052-45e6-bae5-4cf7ba502d06")
-	)
-	(no_connect
-		(at 162.56 59.69)
-		(uuid "e31bdee9-b9c7-4f9b-8051-b3fae8ef8856")
-	)
-	(no_connect
-		(at 162.56 153.67)
-		(uuid "e98b0d34-d89b-448c-ad08-33f8ce876077")
 	)
 	(no_connect
 		(at 162.56 44.45)
@@ -4359,14 +4339,24 @@
 		)
 		(uuid "f6420931-04b6-403a-9106-2b6c9e1be726")
 	)
+	(text "XCLK may need to be generated with SW"
+		(exclude_from_sim no)
+		(at 195.58 49.784 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "f6a698ea-b87c-4a42-9b28-f83f5610bcc8")
+	)
 	(label "DCMI_D3"
-		(at 162.56 140.97 0)
+		(at 116.84 57.15 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "091ece72-5165-434c-b59a-42f7d26b200a")
 	)
@@ -4415,13 +4405,13 @@
 		(uuid "2fdbf0e4-0d7c-4a2c-a1c7-d53b7f8fcb41")
 	)
 	(label "DCMI_D7"
-		(at 162.56 97.79 0)
+		(at 116.84 69.85 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "47a7211c-8b91-44ca-bb72-222d882447eb")
 	)
@@ -4558,13 +4548,13 @@
 		(uuid "bb43f6a5-971b-48e7-b466-18ccdd62bb08")
 	)
 	(label "DCMI_D2"
-		(at 162.56 138.43 0)
+		(at 116.84 54.61 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "e7e551e2-e57a-48d3-8f4f-3468a65572de")
 	)
@@ -4591,17 +4581,17 @@
 		)
 		(uuid "03bb1c6a-4c30-4431-a651-2bdf79873418")
 	)
-	(hierarchical_label "SWDIO"
+	(hierarchical_label "SDMMC1_CMD"
 		(shape input)
-		(at 162.56 64.77 0)
+		(at 116.84 102.87 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
-		(uuid "061dfd3a-1bac-4eb0-a26c-1b35bbd8f79a")
+		(uuid "068ae0d7-f738-4cda-a474-06333843e942")
 	)
 	(hierarchical_label "DCMI_XCLK"
 		(shape input)
@@ -4615,21 +4605,9 @@
 		)
 		(uuid "0e88579c-e00f-4ff8-a0b1-0927a512e8e1")
 	)
-	(hierarchical_label "SPI4_SCLK_RF"
+	(hierarchical_label "MCU_USB_D+"
 		(shape input)
-		(at 116.84 85.09 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "0feaabae-0511-4277-b298-20fc5af3b24d")
-	)
-	(hierarchical_label "SWCLK"
-		(shape input)
-		(at 162.56 67.31 0)
+		(at 162.56 62.23 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4637,7 +4615,7 @@
 			)
 			(justify left)
 		)
-		(uuid "1151bd2c-277d-4955-a596-9377b0d8a73d")
+		(uuid "238d949c-9577-4222-9af0-7e6efee8fbb3")
 	)
 	(hierarchical_label "DCMI_D[7..0]"
 		(shape input)
@@ -4699,18 +4677,6 @@
 		)
 		(uuid "4ac99907-e6f7-410c-8d0c-b9d0b0e6ccfd")
 	)
-	(hierarchical_label "SPI4_CS_RF"
-		(shape input)
-		(at 116.84 82.55 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "4e9501f7-8e55-4fc0-af8a-72f22a90db68")
-	)
 	(hierarchical_label "LEFT_PWM2"
 		(shape input)
 		(at 162.56 36.83 0)
@@ -4723,9 +4689,9 @@
 		)
 		(uuid "6ba75ef5-030a-4981-9b81-bf2a852b3ad7")
 	)
-	(hierarchical_label "RF_NRST"
+	(hierarchical_label "RF_RESET"
 		(shape input)
-		(at 116.84 80.01 180)
+		(at 116.84 97.79 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4734,6 +4700,18 @@
 			(justify right)
 		)
 		(uuid "6d547456-8259-4f79-86b8-df90d30ac83a")
+	)
+	(hierarchical_label "SWDIO"
+		(shape input)
+		(at 162.56 64.77 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7430b296-f12d-4603-8b75-df02383167b7")
 	)
 	(hierarchical_label "LIGHTS2_PWM"
 		(shape input)
@@ -4747,7 +4725,7 @@
 		)
 		(uuid "7ca5e4d4-6a30-4cad-8145-981a73ecc179")
 	)
-	(hierarchical_label "SPI2_SCLK_ISENSE"
+	(hierarchical_label "SPI2_CLK"
 		(shape input)
 		(at 162.56 107.95 0)
 		(fields_autoplaced yes)
@@ -4759,21 +4737,21 @@
 		)
 		(uuid "7f5177f7-4465-4bc8-a9f7-8aab09ad68f4")
 	)
-	(hierarchical_label "SPI4_MISO_RF"
+	(hierarchical_label "SDMMC1_D0"
 		(shape input)
-		(at 116.84 87.63 180)
+		(at 162.56 138.43 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
-		(uuid "844481c1-d24c-4c5e-9775-a2a03d95a7a6")
+		(uuid "88998088-4ca0-4a3c-804a-99d4aa037cb5")
 	)
 	(hierarchical_label "SPI2_CS_ISENSE"
 		(shape input)
-		(at 162.56 125.73 0)
+		(at 162.56 156.21 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4782,6 +4760,18 @@
 			(justify left)
 		)
 		(uuid "8cf3b57e-004a-4cba-a645-0396502d5732")
+	)
+	(hierarchical_label "SDMMC1_D1"
+		(shape input)
+		(at 162.56 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8fa7c733-e2ef-4881-8bcd-0442032d530e")
 	)
 	(hierarchical_label "DCMI_PIXCLK"
 		(shape input)
@@ -4795,7 +4785,7 @@
 		)
 		(uuid "915f233b-db6f-4275-8fa3-ee1e3be82b22")
 	)
-	(hierarchical_label "I2C2_CAM_SDA"
+	(hierarchical_label "I2C2_SDA"
 		(shape input)
 		(at 162.56 102.87 0)
 		(fields_autoplaced yes)
@@ -4807,7 +4797,7 @@
 		)
 		(uuid "97998999-a26c-4e66-9f55-f5688180deab")
 	)
-	(hierarchical_label "SPI2_MOSI_ISENSE"
+	(hierarchical_label "SPI2_MOSI"
 		(shape input)
 		(at 162.56 120.65 0)
 		(fields_autoplaced yes)
@@ -4831,9 +4821,9 @@
 		)
 		(uuid "ae3d6af3-5892-4a31-9ac4-f94829f6f113")
 	)
-	(hierarchical_label "THERM_ADC_CS"
+	(hierarchical_label "SPI2_CS_ADC"
 		(shape input)
-		(at 162.56 128.27 0)
+		(at 162.56 153.67 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4842,6 +4832,30 @@
 			(justify left)
 		)
 		(uuid "aefe08b6-f401-4e1e-923e-87fe782884f1")
+	)
+	(hierarchical_label "SWCLK"
+		(shape input)
+		(at 162.56 67.31 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "aff15eff-5802-48bd-83cc-b882a4c345c3")
+	)
+	(hierarchical_label "MCU_USB_D-"
+		(shape input)
+		(at 162.56 59.69 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "bb945059-dc64-4d49-a0da-0aff262d762c")
 	)
 	(hierarchical_label "DCMI_VSYNC"
 		(shape input)
@@ -4879,6 +4893,18 @@
 		)
 		(uuid "d34d68bb-16ee-475e-8904-b96dfd4cb907")
 	)
+	(hierarchical_label "SDMMC1_D3"
+		(shape input)
+		(at 162.56 146.05 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d38dd169-cb3b-4213-8fc5-578561bc1812")
+	)
 	(hierarchical_label "MOTOR_EN"
 		(shape input)
 		(at 162.56 34.29 0)
@@ -4891,17 +4917,17 @@
 		)
 		(uuid "d39cad26-fe60-48ac-8572-9d00c598ebb7")
 	)
-	(hierarchical_label "SPI4_MOSI_RF"
+	(hierarchical_label "SDMMC1_D2"
 		(shape input)
-		(at 116.84 69.85 180)
+		(at 162.56 143.51 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
-		(uuid "d4216c47-2053-426e-ae2d-3efb70727eb4")
+		(uuid "d98342bc-a344-43f3-8c8d-ec7833afb0ce")
 	)
 	(hierarchical_label "NRST"
 		(shape input)
@@ -4915,7 +4941,7 @@
 		)
 		(uuid "e2710b6f-6a43-42be-bb71-eb8b67d30e37")
 	)
-	(hierarchical_label "SPI2_MISO_ISENSE"
+	(hierarchical_label "SPI2_MISO"
 		(shape input)
 		(at 162.56 123.19 0)
 		(fields_autoplaced yes)
@@ -4926,6 +4952,18 @@
 			(justify left)
 		)
 		(uuid "e475011d-c23b-4b5b-95e2-b8a1f762b21b")
+	)
+	(hierarchical_label "SDMMC1_CK"
+		(shape input)
+		(at 162.56 148.59 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f315c152-f8d8-4f4f-8529-f0656e7d8d8c")
 	)
 	(hierarchical_label "USART1_RX"
 		(shape input)
@@ -4939,7 +4977,7 @@
 		)
 		(uuid "f42ed042-f3e1-4b56-aa15-615b31f73262")
 	)
-	(hierarchical_label "I2C2_CAM_SCL"
+	(hierarchical_label "I2C2_SCL"
 		(shape input)
 		(at 162.56 100.33 0)
 		(fields_autoplaced yes)
