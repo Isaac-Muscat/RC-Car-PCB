@@ -5,6 +5,108 @@
 	(uuid "ba870fd1-751d-4755-8e1a-1ea86ca9e2f6")
 	(paper "A4")
 	(lib_symbols
+		(symbol "Connector:TestPoint"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.762) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Device:LED"
 			(pin_numbers hide)
 			(pin_names
@@ -1167,7 +1269,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "034d99fb-36e3-41d6-8703-7f26ecd48a93")
-		(property "Reference" "#PWR015"
+		(property "Reference" "#PWR09"
 			(at 138.43 46.99 0)
 			(effects
 				(font
@@ -1217,7 +1319,139 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR015")
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 238.149 31.1872 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "059242a4-8217-49f4-ae87-93241b7f0217")
+		(property "Reference" "#PWR018"
+			(at 238.149 34.9972 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD_BATT"
+			(at 238.149 26.1072 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.149 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.149 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 238.149 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fd307272-577d-448b-95ab-82b75be6d4aa")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "#PWR018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 238.149 31.1872 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "079355a1-7feb-42ee-87c3-c673329ba2d8")
+		(property "Reference" "TP3"
+			(at 239.165 32.7112 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 233.831 37.0292 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 233.069 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 233.069 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 238.149 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cf5e5d4a-c031-45f7-9939-2815a9d0c094")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "TP3")
 					(unit 1)
 				)
 			)
@@ -1368,7 +1602,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "18766e65-b89e-4536-8f00-ddc8216634b0")
-		(property "Reference" "#PWR040"
+		(property "Reference" "#PWR012"
 			(at 180.34 34.29 0)
 			(effects
 				(font
@@ -1418,7 +1652,139 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR040")
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 227.989 45.1572 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1eeb73ef-3ed6-4602-9af7-43044ccf0829")
+		(property "Reference" "#PWR017"
+			(at 227.989 51.5072 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 227.989 50.2372 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 227.989 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 227.989 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDA\" , analog ground"
+			(at 227.989 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4ff11a09-54a8-4bb8-a051-6e189b1ec883")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "#PWR017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 238.149 45.1572 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2423662a-de84-490d-99cf-03a4e5213010")
+		(property "Reference" "TP4"
+			(at 237.133 43.6332 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 242.467 39.3152 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 243.229 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 243.229 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 238.149 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7919c877-b957-4afc-aff6-b9ef59ad5c00")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "TP4")
 					(unit 1)
 				)
 			)
@@ -1434,7 +1800,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "38e208ed-628c-47c2-876f-9dd57a579d6c")
-		(property "Reference" "#PWR031"
+		(property "Reference" "#PWR08"
 			(at 138.43 38.1 0)
 			(effects
 				(font
@@ -1484,7 +1850,73 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR031")
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 227.989 31.1872 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "40b52d88-9dc7-43ce-829c-637cb77271ba")
+		(property "Reference" "#PWR016"
+			(at 227.989 34.9972 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD_USB"
+			(at 227.989 26.1072 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 227.989 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 227.989 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 227.989 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a8db38cf-992a-4c6b-aaa5-bcae4cb48d38")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
@@ -1500,7 +1932,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "48beec8d-378c-4199-9a57-c1ad765f592e")
-		(property "Reference" "#PWR041"
+		(property "Reference" "#PWR013"
 			(at 180.34 52.07 0)
 			(effects
 				(font
@@ -1550,7 +1982,77 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR041")
+					(reference "#PWR013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 195.58 34.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5acc45f7-1db6-4e05-99d3-2338161a178d")
+		(property "Reference" "R3"
+			(at 198.12 33.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "60ohm"
+			(at 198.12 35.5599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 193.802 34.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 195.58 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 195.58 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8088a686-27ed-4b3f-a439-0174ddd3cd2f")
+		)
+		(pin "2"
+			(uuid "ca1cf368-1ffc-4e4c-8b23-69ea131549cf")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -1632,7 +2134,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6d97e940-c2b4-4923-8406-282f1c9d4f99")
-		(property "Reference" "R7"
+		(property "Reference" "R1"
 			(at 168.91 33.0199 0)
 			(effects
 				(font
@@ -1641,7 +2143,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1.5kohm"
+		(property "Value" "220ohm"
 			(at 168.91 35.5599 0)
 			(effects
 				(font
@@ -1686,7 +2188,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "R7")
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -1702,7 +2204,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "71be39c7-4a3c-4140-b436-a07af6a06276")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR07"
 			(at 113.03 38.1 0)
 			(effects
 				(font
@@ -1752,7 +2254,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR014")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -1834,7 +2336,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "789520dc-adc7-4574-9ba0-1144094bdc05")
-		(property "Reference" "#PWR0104"
+		(property "Reference" "#PWR04"
 			(at 74.93 46.99 0)
 			(effects
 				(font
@@ -1884,7 +2386,270 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR0104")
+					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 238.149 45.1572 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "879b3e67-10ad-4659-bd98-b291544bfb4a")
+		(property "Reference" "#PWR019"
+			(at 238.149 51.5072 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 238.149 50.2372 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.149 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.149 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDA\" , analog ground"
+			(at 238.149 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "922a0fb7-262b-44f8-b30f-b68c26fe9f88")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "#PWR019")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 195.58 30.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8d793ba1-586b-4bfd-b9f2-17cf140175c3")
+		(property "Reference" "#PWR014"
+			(at 195.58 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 195.58 26.162 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 195.58 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 195.58 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2d140291-ddf4-4136-b1b2-a3e7699236f3")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 227.989 45.1572 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "931c7d56-7d76-4caa-b85d-4fe5459edb86")
+		(property "Reference" "TP2"
+			(at 226.973 43.6332 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 232.307 39.3152 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 233.069 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 233.069 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 227.989 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b90abd5a-887e-4c1c-9a3d-cbf001c4df62")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 249.579 31.1872 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9950ba55-edb6-47e6-a642-20b3418fcf7f")
+		(property "Reference" "TP5"
+			(at 250.595 32.7112 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 245.261 37.0292 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 244.499 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 244.499 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 249.579 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "570ceaaf-35bd-4f41-9f31-625144422595")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "TP5")
 					(unit 1)
 				)
 			)
@@ -1970,7 +2735,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9e7f88b9-9a52-465e-a2bd-110993d3da90")
-		(property "Reference" "#PWR039"
+		(property "Reference" "#PWR011"
 			(at 166.37 52.07 0)
 			(effects
 				(font
@@ -2020,7 +2785,209 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR039")
+					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 227.989 31.1872 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ae489d90-bdd7-4c6f-b674-e6d3e3db76f8")
+		(property "Reference" "TP1"
+			(at 229.005 32.7112 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 223.671 37.0292 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 222.909 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 222.909 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 227.989 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3601708d-a388-4959-9a7a-69259d84da09")
+		)
+		(instances
+			(project ""
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 195.58 41.91 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b4f1884c-a0a5-47a2-989d-6f13d7a294e1")
+		(property "Reference" "D3"
+			(at 199.39 42.2274 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED"
+			(at 199.39 44.7674 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D5.0mm"
+			(at 195.58 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 195.58 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 195.58 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "93d70aa7-092a-4d5f-a6e6-4ef8e540eebc")
+		)
+		(pin "1"
+			(uuid "7bad74f5-f849-4a6a-b468-0635b6fd9819")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 195.58 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bdbb8978-105c-4997-b6a6-12ec1b24fb4c")
+		(property "Reference" "#PWR015"
+			(at 195.58 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 195.58 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 195.58 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 195.58 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "85319885-89cf-41eb-949b-b2346e6fb1ae")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -2035,7 +3002,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c0f75133-dfc8-4fdd-81be-0abcf912a611")
-		(property "Reference" "#PWR033"
+		(property "Reference" "#PWR010"
 			(at 166.37 34.29 0)
 			(effects
 				(font
@@ -2086,7 +3053,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR033")
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)
@@ -2102,7 +3069,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c309377a-882c-442b-bccf-5d6a2bf6e71c")
-		(property "Reference" "R8"
+		(property "Reference" "R2"
 			(at 182.88 33.0199 0)
 			(effects
 				(font
@@ -2156,7 +3123,139 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "R8")
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 249.579 45.1572 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c3bc560c-925b-4c1b-9ddc-4ccb72770d5b")
+		(property "Reference" "#PWR021"
+			(at 249.579 51.5072 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 249.579 50.2372 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 249.579 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 249.579 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GNDA\" , analog ground"
+			(at 249.579 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ac3ba1ea-511b-4682-9573-cd942ef66e26")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "#PWR021")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 249.579 31.1872 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c910992b-b9b9-4082-bb2e-efec5a7e8f20")
+		(property "Reference" "#PWR020"
+			(at 249.579 34.9972 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 249.579 26.1072 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 249.579 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 249.579 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 249.579 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ec0e328d-07da-48a8-b641-c3cec30ca9d2")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -2172,7 +3271,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ce098adf-a7d5-4171-a437-6e74727cd8f0")
-		(property "Reference" "#PWR04"
+		(property "Reference" "#PWR05"
 			(at 87.63 38.1 0)
 			(effects
 				(font
@@ -2222,7 +3321,73 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR04")
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 249.579 45.1572 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d9ad2507-2a6b-4c7a-90af-cbf301161280")
+		(property "Reference" "TP6"
+			(at 248.563 43.6332 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 253.897 39.3152 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 254.659 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 254.659 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 249.579 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "36e9ab6d-5b55-4222-9d15-fb8b29916c0e")
+		)
+		(instances
+			(project "RC-Car-Controller"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "TP6")
 					(unit 1)
 				)
 			)
@@ -2238,7 +3403,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f16b552a-26be-43d6-b68e-5a0a8bb68a26")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR06"
 			(at 87.63 46.99 0)
 			(effects
 				(font
@@ -2288,7 +3453,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR07")
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -2908,36 +4073,6 @@
 			)
 			(uuid "4f932d3d-77da-4947-9bca-ec2378fd342f")
 		)
-		(pin "SPI1_SCLK" input
-			(at 160.02 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "df261c64-86d0-4c7d-b790-ef8ada5b72bd")
-		)
-		(pin "SPI1_MISO" input
-			(at 160.02 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "3f80943b-7aef-485e-80be-5ed37f6e6df0")
-		)
-		(pin "SPI1_MOSI" input
-			(at 160.02 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "a8691068-445b-4d66-a381-ba8a4c6482f4")
-		)
 		(pin "ALERT_GPIO" input
 			(at 160.02 173.99 0)
 			(effects
@@ -2967,26 +4102,6 @@
 				(justify left)
 			)
 			(uuid "93c696f5-a665-4322-8639-7695735ddf99")
-		)
-		(pin "SPI1_CS" input
-			(at 160.02 140.97 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "124cc391-72ae-451e-8091-50ba7c8421c7")
-		)
-		(pin "SPI1_DC" input
-			(at 160.02 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-			(uuid "22587b93-4492-473e-a819-9b6c186e92d2")
 		)
 		(pin "SDMMC1_CMD" input
 			(at 124.46 101.6 180)

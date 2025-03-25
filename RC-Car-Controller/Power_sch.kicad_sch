@@ -3634,7 +3634,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0db41af3-b845-4fe3-ba00-6152a49979db")
-		(property "Reference" "R4"
+		(property "Reference" "R14"
 			(at 247.142 51.054 0)
 			(effects
 				(font
@@ -3686,7 +3686,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R4")
+					(reference "R14")
 					(unit 1)
 				)
 			)
@@ -3701,7 +3701,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "104cbff9-b527-43e3-8854-db37f8bc259d")
-		(property "Reference" "#PWR055"
+		(property "Reference" "#PWR041"
 			(at 63.5 39.37 0)
 			(effects
 				(font
@@ -3752,7 +3752,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR055")
+					(reference "#PWR041")
 					(unit 1)
 				)
 			)
@@ -3768,7 +3768,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "14b5e8ab-ee57-486b-9d1d-5823a6982ae8")
-		(property "Reference" "U8"
+		(property "Reference" "U2"
 			(at 85.09 43.18 0)
 			(effects
 				(font
@@ -3867,7 +3867,7 @@
 		(instances
 			(project ""
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "U8")
+					(reference "U2")
 					(unit 1)
 				)
 			)
@@ -3882,7 +3882,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1745ebba-084e-4525-a198-6cc95c82ab4c")
-		(property "Reference" "C14"
+		(property "Reference" "C3"
 			(at 57.912 66.802 90)
 			(effects
 				(font
@@ -3936,7 +3936,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "C14")
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -3951,7 +3951,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1c052399-7001-4ae8-a7e6-e41fcff28519")
-		(property "Reference" "U1"
+		(property "Reference" "U3"
 			(at 90.17 133.858 0)
 			(effects
 				(font
@@ -4051,7 +4051,7 @@
 		(instances
 			(project ""
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "U1")
+					(reference "U3")
 					(unit 1)
 				)
 			)
@@ -4066,7 +4066,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "290829db-bf3e-4faf-80f2-593f35324787")
-		(property "Reference" "C20"
+		(property "Reference" "C4"
 			(at 58.42 138.938 0)
 			(effects
 				(font
@@ -4120,7 +4120,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "C20")
+					(reference "C4")
 					(unit 1)
 				)
 			)
@@ -4136,7 +4136,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "292459d4-c021-4bb8-bcd4-013356b542bf")
-		(property "Reference" "#PWR054"
+		(property "Reference" "#PWR043"
 			(at 97.79 166.37 0)
 			(effects
 				(font
@@ -4186,7 +4186,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR054")
+					(reference "#PWR043")
 					(unit 1)
 				)
 			)
@@ -4201,7 +4201,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "299bab0f-461f-4b9b-b761-97b18de3a7a1")
-		(property "Reference" "R1"
+		(property "Reference" "R15"
 			(at 247.142 61.214 0)
 			(effects
 				(font
@@ -4217,7 +4217,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 245.618 62.23 90)
 			(effects
 				(font
@@ -4226,7 +4226,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.digikey.ca/en/products/detail/panasonic-electronic-components/ERJ-6CWDR020V/10261701"
 			(at 243.84 62.23 0)
 			(effects
 				(font
@@ -4253,7 +4253,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R1")
+					(reference "R15")
 					(unit 1)
 				)
 			)
@@ -4268,7 +4268,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2d771ed0-3ddd-4ad0-8386-5ea547680fc9")
-		(property "Reference" "R15"
+		(property "Reference" "R12"
 			(at 121.412 73.914 0)
 			(effects
 				(font
@@ -4320,7 +4320,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R15")
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -4405,7 +4405,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "444451a6-3db6-4fdc-afcc-3356af9139b9")
-		(property "Reference" "#PWR053"
+		(property "Reference" "#PWR046"
 			(at 125.73 156.21 0)
 			(effects
 				(font
@@ -4455,7 +4455,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR053")
+					(reference "#PWR046")
 					(unit 1)
 				)
 			)
@@ -4471,7 +4471,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4553f389-2511-408e-82f1-5c7c06b29e90")
-		(property "Reference" "U10"
+		(property "Reference" "U4"
 			(at 217.17 43.18 0)
 			(effects
 				(font
@@ -4543,7 +4543,7 @@
 		(instances
 			(project ""
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "U10")
+					(reference "U4")
 					(unit 1)
 				)
 			)
@@ -4559,7 +4559,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "45fb7f3c-a3cd-45ba-8ab4-226c76410123")
-		(property "Reference" "#PWR051"
+		(property "Reference" "#PWR042"
 			(at 87.63 166.37 0)
 			(effects
 				(font
@@ -4609,7 +4609,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR051")
+					(reference "#PWR042")
 					(unit 1)
 				)
 			)
@@ -4625,7 +4625,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5460d70f-7f5a-4afc-a885-c92593417805")
-		(property "Reference" "#PWR046"
+		(property "Reference" "#PWR044"
 			(at 107.95 101.6 0)
 			(effects
 				(font
@@ -4675,7 +4675,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR046")
+					(reference "#PWR044")
 					(unit 1)
 				)
 			)
@@ -4756,7 +4756,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5a266651-88bc-43bb-9d34-32b40059cb64")
-		(property "Reference" "#PWR050"
+		(property "Reference" "#PWR051"
 			(at 237.49 72.39 0)
 			(effects
 				(font
@@ -4806,7 +4806,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR050")
+					(reference "#PWR051")
 					(unit 1)
 				)
 			)
@@ -4821,7 +4821,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5a912658-f117-407f-aff5-a617063c323f")
-		(property "Reference" "#PWR029"
+		(property "Reference" "#PWR053"
 			(at 243.84 72.39 0)
 			(effects
 				(font
@@ -4871,7 +4871,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR029")
+					(reference "#PWR053")
 					(unit 1)
 				)
 			)
@@ -4886,7 +4886,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5ce78db8-2286-4fa0-a9bc-5377fda8d364")
-		(property "Reference" "C16"
+		(property "Reference" "C9"
 			(at 127.762 54.61 0)
 			(effects
 				(font
@@ -4940,7 +4940,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "C16")
+					(reference "C9")
 					(unit 1)
 				)
 			)
@@ -4956,7 +4956,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5d30c376-1deb-4887-86f9-00d792d88b70")
-		(property "Reference" "#PWR052"
+		(property "Reference" "#PWR040"
 			(at 60.96 166.37 0)
 			(effects
 				(font
@@ -5006,7 +5006,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR052")
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -5021,7 +5021,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "63e5ff18-772b-490f-8373-cc5828fe66bc")
-		(property "Reference" "R18"
+		(property "Reference" "R11"
 			(at 115.062 145.034 0)
 			(effects
 				(font
@@ -5073,7 +5073,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R18")
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -5088,7 +5088,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6c747c36-a44c-479c-b9f5-dae3d635fc8a")
-		(property "Reference" "#PWR020"
+		(property "Reference" "#PWR056"
 			(at 266.7 72.39 0)
 			(effects
 				(font
@@ -5138,7 +5138,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR020")
+					(reference "#PWR056")
 					(unit 1)
 				)
 			)
@@ -5153,7 +5153,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6e62ef76-535a-4489-a914-5a737f5f2ade")
-		(property "Reference" "#PWR019"
+		(property "Reference" "#PWR055"
 			(at 266.7 52.07 0)
 			(effects
 				(font
@@ -5204,7 +5204,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR019")
+					(reference "#PWR055")
 					(unit 1)
 				)
 			)
@@ -5219,7 +5219,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6eda67b7-8a73-43e5-a2e9-0eae039d179b")
-		(property "Reference" "R13"
+		(property "Reference" "R9"
 			(at 54.864 90.17 90)
 			(effects
 				(font
@@ -5271,7 +5271,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R13")
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -5286,7 +5286,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "79e42b55-703d-4898-9dcd-729e456b82ec")
-		(property "Reference" "#PWR082"
+		(property "Reference" "#PWR050"
 			(at 176.53 63.5 0)
 			(effects
 				(font
@@ -5336,7 +5336,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR082")
+					(reference "#PWR050")
 					(unit 1)
 				)
 			)
@@ -5351,7 +5351,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7b09e2d4-a4db-42a9-a17d-76799f1f6c42")
-		(property "Reference" "C19"
+		(property "Reference" "C5"
 			(at 72.39 138.176 0)
 			(effects
 				(font
@@ -5405,7 +5405,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "C19")
+					(reference "C5")
 					(unit 1)
 				)
 			)
@@ -5420,7 +5420,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "874c8bd9-6e32-485f-b8c0-dea77df6f489")
-		(property "Reference" "#PWR037"
+		(property "Reference" "#PWR039"
 			(at 60.96 133.35 0)
 			(effects
 				(font
@@ -5471,7 +5471,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR037")
+					(reference "#PWR039")
 					(unit 1)
 				)
 			)
@@ -5486,7 +5486,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "88778018-28ac-4995-9899-5031e51257fb")
-		(property "Reference" "R10"
+		(property "Reference" "R7"
 			(at 55.118 72.644 90)
 			(effects
 				(font
@@ -5538,7 +5538,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R10")
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -5553,7 +5553,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9521229b-57f8-4044-9339-26a519d6480f")
-		(property "Reference" "#PWR085"
+		(property "Reference" "#PWR054"
 			(at 257.81 72.39 0)
 			(effects
 				(font
@@ -5603,7 +5603,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR085")
+					(reference "#PWR054")
 					(unit 1)
 				)
 			)
@@ -5686,7 +5686,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9731b40f-a33f-4f92-a66b-a2c2c8752a52")
-		(property "Reference" "#PWR030"
+		(property "Reference" "#PWR049"
 			(at 146.05 67.31 0)
 			(effects
 				(font
@@ -5737,7 +5737,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR030")
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -5753,7 +5753,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a267b938-a83c-48bf-8ecf-fb4da77a7fb6")
-		(property "Reference" "L1"
+		(property "Reference" "L2"
 			(at 119.38 48.26 90)
 			(effects
 				(font
@@ -5805,7 +5805,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "L1")
+					(reference "L2")
 					(unit 1)
 				)
 			)
@@ -5896,7 +5896,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a735b782-8e72-4a70-b45e-c9969cdf3dca")
-		(property "Reference" "#PWR032"
+		(property "Reference" "#PWR052"
 			(at 243.84 34.29 0)
 			(effects
 				(font
@@ -5946,7 +5946,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR032")
+					(reference "#PWR052")
 					(unit 1)
 				)
 			)
@@ -5961,7 +5961,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b16671f6-0701-43d0-a668-ea5b3dff5703")
-		(property "Reference" "C17"
+		(property "Reference" "C10"
 			(at 244.602 41.91 0)
 			(effects
 				(font
@@ -6015,7 +6015,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "C17")
+					(reference "C10")
 					(unit 1)
 				)
 			)
@@ -6030,7 +6030,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b2992e3d-41fe-4b33-aab0-5a8849fd70e9")
-		(property "Reference" "#PWR044"
+		(property "Reference" "#PWR037"
 			(at 52.07 39.37 0)
 			(effects
 				(font
@@ -6080,7 +6080,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR044")
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)
@@ -6095,7 +6095,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bae900fe-b3e5-4a98-9870-8aaac8995a6d")
-		(property "Reference" "R22"
+		(property "Reference" "R13"
 			(at 182.118 58.42 90)
 			(effects
 				(font
@@ -6147,7 +6147,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R22")
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -6227,7 +6227,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c489b4b3-2860-4276-8867-5b14811a4256")
-		(property "Reference" "R21"
+		(property "Reference" "R6"
 			(at 41.91 43.18 0)
 			(effects
 				(font
@@ -6279,7 +6279,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R21")
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -6294,7 +6294,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c5f8a4de-e296-4d90-b8c2-108e0294cbb2")
-		(property "Reference" "R14"
+		(property "Reference" "R10"
 			(at 111.252 74.422 0)
 			(effects
 				(font
@@ -6346,7 +6346,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R14")
+					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -6497,7 +6497,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "cc3ad9f7-509d-4705-943f-1bceca9c730a")
-		(property "Reference" "#PWR049"
+		(property "Reference" "#PWR036"
 			(at 45.72 54.61 0)
 			(effects
 				(font
@@ -6547,7 +6547,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR049")
+					(reference "#PWR036")
 					(unit 1)
 				)
 			)
@@ -6563,7 +6563,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d0dd7b6d-3cea-44ac-a60f-852da0a25fb1")
-		(property "Reference" "#PWR045"
+		(property "Reference" "#PWR038"
 			(at 52.07 100.33 0)
 			(effects
 				(font
@@ -6613,7 +6613,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR045")
+					(reference "#PWR038")
 					(unit 1)
 				)
 			)
@@ -6628,7 +6628,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "da215cda-921d-4815-9ee4-f8c19d4c0895")
-		(property "Reference" "C15"
+		(property "Reference" "C7"
 			(at 112.522 54.864 0)
 			(effects
 				(font
@@ -6682,7 +6682,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "C15")
+					(reference "C7")
 					(unit 1)
 				)
 			)
@@ -6697,7 +6697,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e76d72fe-d568-4460-a84d-8702707190c4")
-		(property "Reference" "#PWR056"
+		(property "Reference" "#PWR045"
 			(at 125.73 133.35 0)
 			(effects
 				(font
@@ -6747,7 +6747,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "#PWR056")
+					(reference "#PWR045")
 					(unit 1)
 				)
 			)
@@ -6762,7 +6762,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "eb805e09-ecf8-4aab-bf6d-aece2ce5e220")
-		(property "Reference" "R9"
+		(property "Reference" "R8"
 			(at 55.372 82.55 90)
 			(effects
 				(font
@@ -6770,7 +6770,7 @@
 				)
 			)
 		)
-		(property "Value" "1kohm"
+		(property "Value" "220ohm"
 			(at 59.69 85.852 90)
 			(effects
 				(font
@@ -6814,7 +6814,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "R9")
+					(reference "R8")
 					(unit 1)
 				)
 			)
@@ -6829,7 +6829,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f051b922-4b37-461a-a9ec-164c7d52f6be")
-		(property "Reference" "C22"
+		(property "Reference" "C8"
 			(at 132.08 145.796 0)
 			(effects
 				(font
@@ -6883,7 +6883,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "C22")
+					(reference "C8")
 					(unit 1)
 				)
 			)
@@ -6898,7 +6898,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f0742eb2-c92c-4e65-8ec9-7b2e3daa24ea")
-		(property "Reference" "C3"
+		(property "Reference" "C11"
 			(at 267.462 59.69 0)
 			(effects
 				(font
@@ -6952,7 +6952,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "C3")
+					(reference "C11")
 					(unit 1)
 				)
 			)
@@ -6967,7 +6967,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f1d5ae1a-206a-41ad-be6d-e71f26a97e94")
-		(property "Reference" "C18"
+		(property "Reference" "C6"
 			(at 72.39 143.764 90)
 			(effects
 				(font
@@ -7021,7 +7021,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "C18")
+					(reference "C6")
 					(unit 1)
 				)
 			)
@@ -7037,7 +7037,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ff5c3868-4043-40db-bc2c-dfcc4312b2dd")
-		(property "Reference" "L2"
+		(property "Reference" "L1"
 			(at 101.6 137.16 90)
 			(effects
 				(font
@@ -7089,7 +7089,7 @@
 		(instances
 			(project "RC-Car-Controller"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/bba81332-1682-4e4c-969b-8a637e7ea1e0"
-					(reference "L2")
+					(reference "L1")
 					(unit 1)
 				)
 			)
