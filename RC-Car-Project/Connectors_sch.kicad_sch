@@ -2725,10 +2725,10 @@
 		(uuid "40964eff-eed4-45ac-9866-4ff2085edff6")
 	)
 	(junction
-		(at 198.12 50.8)
+		(at 195.58 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "473b0f53-672a-4a8d-9039-bc109d1922f6")
+		(uuid "6dcf0596-6c23-4f42-ad2d-3c7b3f5580d1")
 	)
 	(junction
 		(at 198.12 72.39)
@@ -2749,16 +2749,16 @@
 		(uuid "9cdddc24-3801-4933-b9d4-c962f30143fa")
 	)
 	(junction
+		(at 198.12 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "afbe2bec-2106-448c-9c1e-900a25c0f82d")
+	)
+	(junction
 		(at 193.04 66.04)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ed58043c-1f9c-4964-83c7-8663c3e5190d")
-	)
-	(junction
-		(at 195.58 53.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ff8fd4f4-ea13-4541-bb06-dcd91922dc86")
 	)
 	(no_connect
 		(at 156.21 55.88)
@@ -2869,6 +2869,16 @@
 			(type default)
 		)
 		(uuid "05f7e37a-acf6-4e11-89e5-6d96ebbe7b7f")
+	)
+	(wire
+		(pts
+			(xy 195.58 48.26) (xy 195.58 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0fa1745f-90cc-4c2e-9e7c-b84a551f4eac")
 	)
 	(wire
 		(pts
@@ -3042,16 +3052,6 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 53.34) (xy 204.47 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6899f07b-237e-4d56-a5ba-067bcdadf5b2")
-	)
-	(wire
-		(pts
 			(xy 40.64 50.8) (xy 38.1 50.8)
 		)
 		(stroke
@@ -3102,7 +3102,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 44.45) (xy 195.58 53.34)
+			(xy 195.58 44.45) (xy 195.58 48.26)
 		)
 		(stroke
 			(width 0)
@@ -3129,16 +3129,6 @@
 			(type default)
 		)
 		(uuid "82c2c841-4359-4e2c-925b-61d3df1075ff")
-	)
-	(wire
-		(pts
-			(xy 198.12 50.8) (xy 204.47 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "86314c84-c9cd-4e62-9e8d-7f2807b3c181")
 	)
 	(wire
 		(pts
@@ -3302,6 +3292,16 @@
 	)
 	(wire
 		(pts
+			(xy 195.58 48.26) (xy 204.47 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c188c7a3-769c-4696-8b56-11927d3cbb4e")
+	)
+	(wire
+		(pts
 			(xy 153.67 50.8) (xy 153.67 44.45)
 		)
 		(stroke
@@ -3329,6 +3329,16 @@
 			(type default)
 		)
 		(uuid "c69c07e5-1445-4b86-bde7-8d0a70500198")
+	)
+	(wire
+		(pts
+			(xy 198.12 50.8) (xy 204.47 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da4ae5ce-f63a-46c4-b7ff-49b9d9b82300")
 	)
 	(wire
 		(pts
@@ -3458,7 +3468,7 @@
 	)
 	(text "ESD Protection, 1/6 and 3/4 \nMAY be interchangable"
 		(exclude_from_sim no)
-		(at 228.346 58.928 0)
+		(at 228.092 55.118 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4012,7 +4022,7 @@
 	)
 	(hierarchical_label "CON_USB_D+"
 		(shape input)
-		(at 214.63 53.34 0)
+		(at 214.63 48.26 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4535,7 +4545,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 209.55 58.42 0)
+		(at 209.55 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4543,7 +4553,7 @@
 		(dnp no)
 		(uuid "33a1326f-a2b1-4a3d-825a-c51822739845")
 		(property "Reference" "#PWR075"
-			(at 209.55 64.77 0)
+			(at 209.55 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4552,7 +4562,7 @@
 			)
 		)
 		(property "Value" "GND_USB"
-			(at 209.55 62.738 0)
+			(at 209.55 60.198 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4560,7 +4570,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 209.55 58.42 0)
+			(at 209.55 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4569,7 +4579,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 209.55 58.42 0)
+			(at 209.55 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4578,7 +4588,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 209.55 58.42 0)
+			(at 209.55 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5987,7 +5997,7 @@
 	)
 	(symbol
 		(lib_id "Power_Protection:USBLC6-2SC6")
-		(at 209.55 50.8 0)
+		(at 209.55 48.26 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5995,7 +6005,7 @@
 		(dnp no)
 		(uuid "b3d8ae9f-747b-457f-a00a-447d3bb2b39e")
 		(property "Reference" "U4"
-			(at 211.074 44.196 0)
+			(at 211.074 41.656 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6004,7 +6014,7 @@
 			)
 		)
 		(property "Value" "USBLC6-2SC6"
-			(at 210.82 46.482 0)
+			(at 210.82 43.942 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6013,7 +6023,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
-			(at 210.82 57.15 0)
+			(at 210.82 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6024,7 +6034,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.digikey.ca/en/products/detail/stmicroelectronics/USBLC6-2SC6/1040559"
-			(at 210.82 59.055 0)
+			(at 210.82 56.515 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6034,7 +6044,7 @@
 			)
 		)
 		(property "Description" "Very low capacitance ESD protection diode, 2 data-line, SOT-23-6"
-			(at 209.55 50.8 0)
+			(at 209.55 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6547,7 +6557,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 209.55 45.72 180)
+		(at 209.55 43.18 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6555,7 +6565,7 @@
 		(dnp no)
 		(uuid "dfd6e6d3-2a75-456f-bed5-028d817f1259")
 		(property "Reference" "#PWR074"
-			(at 209.55 39.37 0)
+			(at 209.55 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6564,7 +6574,7 @@
 			)
 		)
 		(property "Value" "VDD_USB"
-			(at 209.55 40.386 0)
+			(at 209.55 37.846 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6572,7 +6582,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 209.55 45.72 0)
+			(at 209.55 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6581,7 +6591,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 209.55 45.72 0)
+			(at 209.55 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6590,7 +6600,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 209.55 45.72 0)
+			(at 209.55 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
