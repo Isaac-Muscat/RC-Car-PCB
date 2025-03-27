@@ -3296,16 +3296,6 @@
 	)
 	(wire
 		(pts
-			(xy 97.79 152.4) (xy 97.79 160.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ac28844f-c1c4-400a-9424-8c0cbb2aea57")
-	)
-	(wire
-		(pts
 			(xy 60.96 149.86) (xy 66.04 149.86)
 		)
 		(stroke
@@ -3463,6 +3453,16 @@
 			(type default)
 		)
 		(uuid "f1e53b66-278f-4d9b-8836-cdf85bbe3020")
+	)
+	(wire
+		(pts
+			(xy 97.79 160.02) (xy 97.79 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbb5e8d3-58fb-4129-8976-2dd2dc2c6819")
 	)
 	(wire
 		(pts
@@ -5494,7 +5494,7 @@
 				)
 			)
 		)
-		(property "Value" "20kohm"
+		(property "Value" "13kohm"
 			(at 59.69 75.946 90)
 			(effects
 				(font
@@ -6770,7 +6770,7 @@
 				)
 			)
 		)
-		(property "Value" "220ohm"
+		(property "Value" "1kohm"
 			(at 59.69 85.852 90)
 			(effects
 				(font
