@@ -3803,6 +3803,10 @@
 		(uuid "0bfec091-8a00-4c6a-9212-f9749d1f577c")
 	)
 	(no_connect
+		(at 143.51 60.96)
+		(uuid "19cb3bb6-6214-497d-9faa-8d15aae8306b")
+	)
+	(no_connect
 		(at 97.79 86.36)
 		(uuid "1dad3f4a-4902-4641-a41d-e197d7f5540a")
 	)
@@ -3813,10 +3817,6 @@
 	(no_connect
 		(at 143.51 50.8)
 		(uuid "2023363b-98f7-4e14-9e4a-93332f7ef8b5")
-	)
-	(no_connect
-		(at 143.51 55.88)
-		(uuid "21b1f1a9-ae62-4867-9bc7-9f17d12ed9a2")
 	)
 	(no_connect
 		(at 143.51 45.72)
@@ -4526,7 +4526,7 @@
 	)
 	(hierarchical_label "BTN_L"
 		(shape input)
-		(at 143.51 58.42 0)
+		(at 143.51 55.88 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4694,7 +4694,7 @@
 	)
 	(hierarchical_label "WIPE_L"
 		(shape input)
-		(at 143.51 60.96 0)
+		(at 143.51 58.42 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
