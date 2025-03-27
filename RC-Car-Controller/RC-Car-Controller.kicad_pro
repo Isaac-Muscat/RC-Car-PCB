@@ -58,24 +58,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        "copper_edge_clearance|163193000|45420377|ca9812a8-d34e-4f7e-97ba-9fbc657073b5|df5eb246-b3f8-461c-baf1-b770f84a5b67",
-        "copper_edge_clearance|163193000|48422800|645e70de-2835-4019-9fe4-a52b4d528c8b|02e8ffd4-947f-44bf-9084-5eb4777e4ae6",
-        "copper_edge_clearance|171833000|45427111|e8b447f8-d635-4226-bff7-c93f5188b5d0|41be3033-eeb1-4b90-8a31-5059510ba12a",
-        "copper_edge_clearance|171833000|49226399|8921cd05-1151-41d4-9190-28e1c12b978d|22ac474a-43e1-4453-81d0-bda275675d16",
-        "copper_edge_clearance|185988000|43000000|595f6d28-4e5f-466e-8481-a532af17148a|0aee3b35-113c-4b2a-a789-25c6039e9271",
-        "copper_edge_clearance|185988000|43000000|595f6d28-4e5f-466e-8481-a532af17148a|5f16c9a5-34e1-44d2-9480-5c539ccdc68d",
-        "copper_edge_clearance|190433000|43000000|595f6d28-4e5f-466e-8481-a532af17148a|4687272f-dd93-46a2-9030-5778a876701e",
-        "copper_edge_clearance|194748000|43000000|595f6d28-4e5f-466e-8481-a532af17148a|0c0c45db-6b95-4312-a51a-306df1202ef4",
-        "copper_edge_clearance|194748000|43000000|595f6d28-4e5f-466e-8481-a532af17148a|1775c7c8-748b-47a7-a38e-94a5aadfdd5d",
-        "courtyards_overlap|190930000|49313000|8e6d7579-2005-4c88-9324-b25abc5ddffe|a462eae9-364a-44c2-a8ca-986f3661c1f5",
-        "hole_clearance|163193000|45420377|df5eb246-b3f8-461c-baf1-b770f84a5b67|ca9812a8-d34e-4f7e-97ba-9fbc657073b5",
-        "hole_clearance|163193000|48422800|02e8ffd4-947f-44bf-9084-5eb4777e4ae6|645e70de-2835-4019-9fe4-a52b4d528c8b",
-        "hole_clearance|171833000|45427111|41be3033-eeb1-4b90-8a31-5059510ba12a|e8b447f8-d635-4226-bff7-c93f5188b5d0",
-        "hole_clearance|171833000|49226399|22ac474a-43e1-4453-81d0-bda275675d16|8921cd05-1151-41d4-9190-28e1c12b978d",
-        "starved_thermal|187198000|48456000|729c0f6a-3195-44aa-937c-76e39181eaca|a3691ef4-4f20-4695-ae4d-dfb7bfa30bd6|F.Cu",
-        "starved_thermal|195958000|48456000|729c0f6a-3195-44aa-937c-76e39181eaca|0f4db503-d293-45c9-ac9a-1c0a6a3184ce|F.Cu"
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },

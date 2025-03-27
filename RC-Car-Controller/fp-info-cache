@@ -1,4 +1,4 @@
-24630188031490201
+24637160293673646
 2inch_LCD
 2inch_LCD
 Through hole straight pin header, 1x08, 2.00mm pitch, single row
@@ -98496,6 +98496,13 @@ USB-C 2171790001
 0
 16
 16
+USB4120-03-C
+GCT_USB4120-03-C_REVA
+
+
+0
+20
+20
 Valve
 Valve_ECC-83-1
 Valve ECC-83-1 round pins
@@ -99282,6 +99289,27 @@ Varistor VF
 2
 _LOGOS
 Overtime_Large
+
+
+0
+0
+0
+_LOGOS
+Overtime_Medium
+
+
+0
+0
+0
+_LOGOS
+Overtime_Small
+
+
+0
+0
+0
+_LOGOS
+Overtime_XSmall
 
 
 0
