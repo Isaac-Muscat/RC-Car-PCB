@@ -576,9 +576,9 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
-      "svg": "",
-      "vrml": ""
+      "step": "RC-Car-Project.step",
+      "svg": "./",
+      "vrml": "RC-Car-Project.wrl"
     },
     "page_layout_descr_file": ""
   },
