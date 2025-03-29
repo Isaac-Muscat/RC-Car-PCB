@@ -4508,9 +4508,9 @@
 		)
 		(uuid "f6420931-04b6-403a-9106-2b6c9e1be726")
 	)
-	(text "XCLK may need to be generated with SW"
+	(text "TIM Clock"
 		(exclude_from_sim no)
-		(at 195.58 49.784 0)
+		(at 179.832 49.784 0)
 		(effects
 			(font
 				(size 1.27 1.27)
