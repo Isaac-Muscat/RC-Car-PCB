@@ -1825,10 +1825,6 @@
 		(uuid "68aabf05-9f43-420a-acab-8feeca597598")
 	)
 	(no_connect
-		(at 205.74 138.43)
-		(uuid "8445ebfa-c6f8-4201-a7b1-0bdb388129ef")
-	)
-	(no_connect
 		(at 69.85 91.44)
 		(uuid "84a6cfad-3aea-47fc-a4e6-5169468dde5c")
 	)
@@ -1847,18 +1843,6 @@
 	(no_connect
 		(at 130.81 83.82)
 		(uuid "e49216f3-ea0a-4637-838f-c4e0626c9922")
-	)
-	(no_connect
-		(at 205.74 69.85)
-		(uuid "fa3a5256-9f1c-4870-a319-cf15c921f77f")
-	)
-	(no_connect
-		(at 205.74 106.68)
-		(uuid "fa95a31c-0eeb-406d-9208-e31fc126332d")
-	)
-	(no_connect
-		(at 205.74 31.75)
-		(uuid "fbacf067-8276-4c7d-999e-ac2aa685c558")
 	)
 	(wire
 		(pts
@@ -2242,7 +2226,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 71.12) (xy 69.85 71.12)
+			(xy 63.5 71.12) (xy 69.85 71.12)
 		)
 		(stroke
 			(width 0)
@@ -2314,7 +2298,7 @@
 	)
 	(hierarchical_label "MOTOR_EN"
 		(shape input)
-		(at 58.42 71.12 180)
+		(at 63.5 71.12 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2480,16 +2464,16 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 205.74 130.81 90)
+		(at 198.12 130.81 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "0dca01b6-50c5-4326-871a-8d75b30d7452")
+		(uuid "0c086da8-ee51-498f-8d72-8006a7626d85")
 		(property "Reference" "#PWR0114"
-			(at 209.55 130.81 0)
+			(at 201.93 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2498,7 +2482,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 201.93 130.8099 90)
+			(at 194.31 130.8099 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2507,7 +2491,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 205.74 130.81 0)
+			(at 198.12 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2516,7 +2500,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 205.74 130.81 0)
+			(at 198.12 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2525,7 +2509,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 205.74 130.81 0)
+			(at 198.12 130.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2534,7 +2518,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "d1203052-333b-4fd1-8e4d-e34770e0b6c4")
+			(uuid "06f6f1c0-cadc-4adb-ada7-4c2f0a56b03e")
 		)
 		(instances
 			(project "RC-Car-Project"
@@ -2672,6 +2656,73 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
 					(reference "#PWR0106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 201.93 106.68 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "12f3c394-6a6f-4d25-a4bb-50c3654a5c98")
+		(property "Reference" "R70"
+			(at 201.93 102.616 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 201.93 104.394 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 201.93 104.902 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 201.93 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 201.93 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c3534b0d-5148-4ca9-8260-82f636bc1455")
+		)
+		(pin "1"
+			(uuid "1460f226-f00a-47c3-9a59-c4e5c5554fa6")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "R70")
 					(unit 1)
 				)
 			)
@@ -3085,73 +3136,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 205.74 99.06 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "26a0e13e-0724-4480-8c33-390f8eb9d704")
-		(property "Reference" "#PWR0113"
-			(at 209.55 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 201.93 99.0599 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 205.74 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 205.74 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 205.74 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "403085ac-1b11-4c7b-b0c9-49fd7b4efa9b")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
-					(reference "#PWR0113")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 182.88 105.41 180)
 		(unit 1)
@@ -3229,10 +3213,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "30f34356-92e0-41c0-907b-2943f6a6b425")
 		(property "Reference" "C45"
-			(at 194.31 74.9299 0)
+			(at 191.008 74.168 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3241,7 +3224,7 @@
 			)
 		)
 		(property "Value" "0.1uF/25V"
-			(at 194.31 77.4699 0)
+			(at 191.262 78.486 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3514,6 +3497,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 198.12 99.06 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "44e91b8f-5cec-4e3b-ae3c-6aaefc0b1433")
+		(property "Reference" "#PWR0113"
+			(at 201.93 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 194.31 99.0599 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 198.12 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 198.12 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1839a68f-1461-4b99-8ad8-5703c579fd6d")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "#PWR0113")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GNDA")
 		(at 215.9 77.47 0)
 		(unit 1)
@@ -3574,6 +3624,140 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
 					(reference "#PWR0116")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 201.93 138.43 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4ede6af2-b138-4149-af13-7eb77d1bcb93")
+		(property "Reference" "R71"
+			(at 201.93 134.366 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 201.93 136.144 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 201.93 136.652 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 201.93 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 201.93 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "8ac65bf9-9b83-40d1-b635-ce4262f014cb")
+		)
+		(pin "1"
+			(uuid "a610e5e8-81a8-4e5b-9c31-81037e8ac331")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "R71")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 201.93 130.81 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4f73cca9-48e0-46d3-8b1b-aa43f8ce09e8")
+		(property "Reference" "R67"
+			(at 201.93 126.746 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 201.93 128.524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 201.93 129.032 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 201.93 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 201.93 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "cb569fe5-49dc-4459-bbda-35c6ae5346f7")
+		)
+		(pin "1"
+			(uuid "73b237d5-0e52-44bb-a991-ed50adef74f0")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "R67")
 					(unit 1)
 				)
 			)
@@ -3647,7 +3831,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 130.81 73.66 270)
+		(at 138.43 73.66 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3656,7 +3840,7 @@
 		(fields_autoplaced yes)
 		(uuid "52047572-620a-4346-9931-8f69b6735e64")
 		(property "Reference" "#PWR0100"
-			(at 127 73.66 0)
+			(at 134.62 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3665,7 +3849,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 134.62 73.6599 90)
+			(at 142.24 73.6599 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3674,7 +3858,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 130.81 73.66 0)
+			(at 138.43 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3683,7 +3867,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 130.81 73.66 0)
+			(at 138.43 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3692,7 +3876,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 130.81 73.66 0)
+			(at 138.43 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4004,7 +4188,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "62213c32-9e63-4b54-9e95-41866984249d")
 		(property "Reference" "#PWR0102"
 			(at 144.78 74.93 0)
@@ -4016,7 +4199,7 @@
 			)
 		)
 		(property "Value" "GND_3V3"
-			(at 144.78 73.66 0)
+			(at 155.194 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4150,7 +4333,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 205.74 24.13 90)
+		(at 198.12 24.13 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4159,7 +4342,7 @@
 		(fields_autoplaced yes)
 		(uuid "6975e2c1-118c-4135-9fc7-48fd5d8a1b13")
 		(property "Reference" "#PWR0112"
-			(at 209.55 24.13 0)
+			(at 201.93 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4168,7 +4351,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 201.93 24.1299 90)
+			(at 194.31 24.1299 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4177,7 +4360,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 205.74 24.13 0)
+			(at 198.12 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4186,7 +4369,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 205.74 24.13 0)
+			(at 198.12 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4195,7 +4378,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 205.74 24.13 0)
+			(at 198.12 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4210,6 +4393,73 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
 					(reference "#PWR0112")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 201.93 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "732b1e3e-30f2-41fd-b3e6-7a01c2f1226b")
+		(property "Reference" "R68"
+			(at 201.93 65.786 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 201.93 67.564 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 201.93 68.072 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 201.93 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 201.93 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "dbaf3214-6419-4400-bcd1-fcadbbdeee64")
+		)
+		(pin "1"
+			(uuid "25f2c551-2b9b-45f5-92c0-b71dfff78260")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "R68")
 					(unit 1)
 				)
 			)
@@ -4368,73 +4618,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 205.74 62.23 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "7a9cd3ae-ca1c-44bf-8f6d-2232f9697a77")
-		(property "Reference" "#PWR0111"
-			(at 209.55 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 201.93 62.2299 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 205.74 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 205.74 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 205.74 62.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b48edbd0-e388-4485-9703-fce23bf32b07")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
-					(reference "#PWR0111")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 182.88 72.39 0)
 		(unit 1)
@@ -4565,6 +4748,72 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
 					(reference "R27")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 198.12 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "880fc72c-2c73-43e5-8d1f-95776b99f20a")
+		(property "Reference" "#PWR0143"
+			(at 191.77 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 198.628 67.31 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 198.12 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 198.12 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d871f18e-a66f-4fb0-8990-d9ff20bc51aa")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "#PWR0143")
 					(unit 1)
 				)
 			)
@@ -4704,6 +4953,73 @@
 	)
 	(symbol
 		(lib_id "Device:R")
+		(at 201.93 24.13 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9b9aaaa7-f2fd-4033-bc03-478da646d129")
+		(property "Reference" "R64"
+			(at 201.93 20.066 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 201.93 21.844 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 201.93 22.352 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 201.93 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 201.93 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "bc45219b-18d9-415f-a531-c11fec2a7f81")
+		)
+		(pin "1"
+			(uuid "a0420af7-c4b3-4983-bb3b-2cda25527597")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "R64")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
 		(at 182.88 30.48 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4808,7 +5124,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "SN74HC244PWR"
+		(property "Datasheet" "https://www.digikey.ca/en/products/detail/texas-instruments/SN74HC244PWR/377021"
 			(at 69.85 71.12 0)
 			(effects
 				(font
@@ -4891,6 +5207,72 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
 					(reference "U9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 198.12 138.43 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a6dc6c66-33a8-4979-8585-4218174f469f")
+		(property "Reference" "#PWR0146"
+			(at 191.77 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 198.628 135.89 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 198.12 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 198.12 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "eb35ca32-8ee3-4d40-a1fa-e2929abb9094")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "#PWR0146")
 					(unit 1)
 				)
 			)
@@ -5235,6 +5617,142 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 198.12 62.23 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c8692f09-e4dd-44b2-8e35-575ab794c200")
+		(property "Reference" "#PWR0111"
+			(at 201.93 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 194.31 62.2299 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 198.12 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 198.12 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a316c683-ee7d-4326-9c38-e897f5b04314")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "#PWR0111")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 134.62 73.66 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "cd11115c-dc9a-481b-9b06-ee70bd6f4233")
+		(property "Reference" "R72"
+			(at 133.35 72.136 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10k"
+			(at 135.382 71.882 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 134.62 71.882 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 134.62 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 134.62 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4b016fc4-7720-4430-bd57-a884152a4287")
+		)
+		(pin "1"
+			(uuid "b0333fb0-e469-4ea9-a357-ae8f066b7bcb")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "R72")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 190.5 38.1 0)
 		(unit 1)
@@ -5305,6 +5823,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 201.93 62.23 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "dbd64dc3-5a0f-46ce-b2c6-3d157ab5c790")
+		(property "Reference" "R65"
+			(at 201.93 58.166 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 201.93 59.944 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 201.93 60.452 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 201.93 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 201.93 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e92d28f6-a4cc-4315-9f71-5c8c6a535d13")
+		)
+		(pin "1"
+			(uuid "fa212ac1-c452-44a0-9ced-53ab1a60c2b7")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "R65")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 190.5 144.78 0)
 		(unit 1)
@@ -5369,6 +5954,205 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
 					(reference "C48")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 201.93 99.06 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e655cdac-611b-4249-a28e-8c46708323b1")
+		(property "Reference" "R66"
+			(at 201.93 94.996 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 201.93 96.774 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 201.93 97.282 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 201.93 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 201.93 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4d856946-0628-428d-967b-e2f206c5462d")
+		)
+		(pin "1"
+			(uuid "86bc2ba6-bf30-4f05-84c8-8e10c5269c8a")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "R66")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 198.12 106.68 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e6eddff3-37fa-4235-ba7a-799e21b9b450")
+		(property "Reference" "#PWR0145"
+			(at 191.77 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 198.628 104.14 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 198.12 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 198.12 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4496b007-d09b-4a8d-b58c-20f5e29cfaab")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "#PWR0145")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 198.12 31.75 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e74efdbc-283d-48fb-b655-417a15b9003e")
+		(property "Reference" "#PWR0144"
+			(at 191.77 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND_3V3"
+			(at 198.628 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 198.12 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 198.12 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1d06055c-3d61-41f3-946d-eef090a5f36b")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "#PWR0144")
 					(unit 1)
 				)
 			)
@@ -5505,6 +6289,73 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
 					(reference "R23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 201.93 31.75 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "faf59fed-ae58-4a08-b956-b2df7d3362f7")
+		(property "Reference" "R69"
+			(at 201.93 27.686 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 201.93 29.464 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 201.93 29.972 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 201.93 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 201.93 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "611da5ce-4ff4-461d-9e7f-95f6c16d8e9a")
+		)
+		(pin "1"
+			(uuid "6386491a-845b-42e0-be98-e1ed6fa1d802")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/15913cf9-3929-404b-bf1a-e176e0fdf251"
+					(reference "R69")
 					(unit 1)
 				)
 			)

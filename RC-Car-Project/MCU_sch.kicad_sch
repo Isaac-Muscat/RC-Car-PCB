@@ -6653,7 +6653,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 96.774 43.688 90)
+			(at 96.52 44.45 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7398,10 +7398,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "f2e24f3c-60d0-436a-9dd3-fdadd8cf5574")
 		(property "Reference" "R15"
-			(at 96.52 27.94 90)
+			(at 96.52 29.718 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7409,7 +7408,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 96.52 30.48 90)
+			(at 96.52 32.004 90)
 			(effects
 				(font
 					(size 1.27 1.27)

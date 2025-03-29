@@ -1559,7 +1559,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2N7002E"
+		(property "Value" "PMF250XNE"
 			(at 140.97 100.3299 0)
 			(effects
 				(font
@@ -1579,7 +1579,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.diodes.com/assets/Datasheets/ds30376.pdf"
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PMF250XNE.pdf"
 			(at 139.7 102.87 0)
 			(effects
 				(font
@@ -1973,7 +1973,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2N7002E"
+		(property "Value" "PMF250XNE"
 			(at 199.39 100.3299 0)
 			(effects
 				(font
@@ -1993,7 +1993,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.diodes.com/assets/Datasheets/ds30376.pdf"
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PMF250XNE.pdf"
 			(at 198.12 102.87 0)
 			(effects
 				(font
@@ -2049,7 +2049,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2N7002E"
+		(property "Value" "PMF250XNE"
 			(at 140.97 67.3099 0)
 			(effects
 				(font
@@ -2069,7 +2069,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.diodes.com/assets/Datasheets/ds30376.pdf"
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PMF250XNE.pdf"
 			(at 139.7 69.85 0)
 			(effects
 				(font
@@ -2191,7 +2191,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2N7002E"
+		(property "Value" "PMF250XNE"
 			(at 199.39 67.3099 0)
 			(effects
 				(font
@@ -2211,7 +2211,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.diodes.com/assets/Datasheets/ds30376.pdf"
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/PMF250XNE.pdf"
 			(at 198.12 69.85 0)
 			(effects
 				(font
