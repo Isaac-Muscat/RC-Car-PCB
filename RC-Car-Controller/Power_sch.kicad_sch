@@ -6558,7 +6558,7 @@
 				)
 			)
 		)
-		(property "Value" "SK36A-LTP"
+		(property "Value" "SK54A-LTP"
 			(at 124.46 37.592 0)
 			(effects
 				(font
@@ -6593,7 +6593,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "SK36A-LTP"
+		(property "MANUF_PN" "SK54A-LTP"
 			(at 128.27 40.64 0)
 			(effects
 				(font

@@ -31177,7 +31177,7 @@
 				)
 			)
 		)
-		(property "Value" "SK36A-LTP"
+		(property "Value" "SK54A-LTP"
 			(at 0 2.6 90)
 			(layer "F.Fab")
 			(uuid "a39e61ae-485f-4152-b1a7-67d5ce1139ae")
@@ -31227,7 +31227,7 @@
 				)
 			)
 		)
-		(property "MANUF_PN" "SK36A-LTP"
+		(property "MANUF_PN" "SK54A-LTP"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
