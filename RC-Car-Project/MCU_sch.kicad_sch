@@ -6403,7 +6403,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 67.31 85.09 0)
 			(effects
 				(font
@@ -6759,7 +6759,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 96.52 39.37 0)
 			(effects
 				(font
@@ -7595,7 +7595,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 96.52 34.29 0)
 			(effects
 				(font
