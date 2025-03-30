@@ -3432,7 +3432,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "SS24FL"
 			(at 162.56 92.71 0)
 			(effects
 				(font
@@ -3795,7 +3795,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "SS24FL"
 			(at 163.83 143.51 0)
 			(effects
 				(font
@@ -5410,7 +5410,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CL10A106KP8NNNC"
 			(at 189.23 139.7 0)
 			(effects
 				(font
@@ -5921,7 +5921,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CL10A106KP8NNNC"
 			(at 201.93 139.7 0)
 			(effects
 				(font

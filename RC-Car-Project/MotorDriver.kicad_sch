@@ -3535,7 +3535,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "BTN8982TAAUMA1"
 			(at 213.36 29.21 0)
 			(effects
 				(font
@@ -4246,7 +4246,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "BTN8982TAAUMA1"
 			(at 213.36 104.14 0)
 			(effects
 				(font
@@ -4406,7 +4406,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "BTN8982TAAUMA1"
 			(at 213.36 67.31 0)
 			(effects
 				(font
@@ -4710,7 +4710,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "BTN8982TAAUMA1"
 			(at 213.36 135.89 0)
 			(effects
 				(font
@@ -5305,7 +5305,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "SN74HC244PWR"
 			(at 69.85 71.12 0)
 			(effects
 				(font

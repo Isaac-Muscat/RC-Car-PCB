@@ -2097,7 +2097,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "LTST-C190GKT"
 			(at 124.46 43.18 0)
 			(effects
 				(font
@@ -2241,7 +2241,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "LTST-C190GKT"
 			(at 148.59 43.18 0)
 			(effects
 				(font
@@ -4309,7 +4309,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "LTST-C190GKT"
 			(at 160.02 43.18 0)
 			(effects
 				(font
@@ -4387,7 +4387,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "LTST-C190GKT"
 			(at 137.16 43.18 0)
 			(effects
 				(font

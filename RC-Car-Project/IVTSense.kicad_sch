@@ -4687,6 +4687,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "SF-3812F6000T-2"
+			(at 195.58 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a70761c9-ea22-42fc-8b46-d040a60da84c")
 		)

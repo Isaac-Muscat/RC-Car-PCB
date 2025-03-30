@@ -5435,7 +5435,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "USB4120-03-C"
 			(at 173.99 50.8 0)
 			(effects
 				(font
