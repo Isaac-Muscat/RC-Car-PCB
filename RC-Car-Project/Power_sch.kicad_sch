@@ -3838,7 +3838,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47uF/16V"
+		(property "Value" "47uF/10V"
 			(at 204.47 90.1699 0)
 			(effects
 				(font
@@ -3995,7 +3995,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1uF/16V"
+		(property "Value" "1uF/10V"
 			(at 217.17 90.1699 0)
 			(effects
 				(font
@@ -4766,7 +4766,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47uF/16V"
+		(property "Value" "47uF/10V"
 			(at 191.77 90.1699 0)
 			(effects
 				(font
@@ -5530,7 +5530,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1uF/16V"
+		(property "Value" "1uF/10V"
 			(at 224.79 90.1699 0)
 			(effects
 				(font
