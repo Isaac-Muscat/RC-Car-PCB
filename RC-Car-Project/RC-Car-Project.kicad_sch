@@ -2566,7 +2566,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1.5kohm"
+		(property "Value" "2kohm"
 			(at 126.238 36.322 0)
 			(effects
 				(font
@@ -2602,7 +2602,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "RC0603JR-071K5L"
+		(property "MANUF_PN" "ERJ-2RKF2001X"
 			(at 161.29 35.56 0)
 			(effects
 				(font
@@ -2930,7 +2930,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1.5kohm"
+		(property "Value" "5kohm"
 			(at 151.13 36.8299 0)
 			(effects
 				(font
@@ -2966,7 +2966,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "RC0603JR-071K5L"
+		(property "MANUF_PN" "RT0603BRE075KL"
 			(at 148.59 35.56 0)
 			(effects
 				(font
@@ -3423,7 +3423,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "220ohm"
+		(property "Value" "600ohm"
 			(at 139.7 36.8299 0)
 			(effects
 				(font
@@ -3459,7 +3459,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "RMCF0603FT220R"
+		(property "MANUF_PN" "ERJ-3EKF5600V"
 			(at 173.99 35.56 0)
 			(effects
 				(font
