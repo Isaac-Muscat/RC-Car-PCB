@@ -881,6 +881,18 @@
 		(uuid "1b21e46b-8415-452a-810c-c40a99f4df13")
 	)
 	(junction
+		(at 104.14 43.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "75206103-1274-4e9e-a764-f5a0c87aadf0")
+	)
+	(junction
+		(at 104.14 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "78250913-17bc-4c57-8fac-64f5496cf930")
+	)
+	(junction
 		(at 97.79 43.18)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1310,6 +1322,16 @@
 		)
 		(uuid "8c034355-83f8-4857-81ea-471183e58cc5")
 	)
+	(wire
+		(pts
+			(xy 104.14 35.56) (xy 110.49 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8cad1f8b-1144-4eaf-83e7-14c591e19113")
+	)
 	(bus
 		(pts
 			(xy 149.86 144.78) (xy 209.55 144.78)
@@ -1650,6 +1672,16 @@
 			(type default)
 		)
 		(uuid "fc4d05d2-e219-467f-8e82-f186991fa5b4")
+	)
+	(wire
+		(pts
+			(xy 104.14 43.18) (xy 110.49 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcb6fe9e-8d54-447e-b7ff-4ce47cec2451")
 	)
 	(wire
 		(pts
@@ -3810,7 +3842,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "UHE2A101MPD1TD"
+		(property "MANUF_PN" "EEU-FS2A151LB"
 			(at 134.62 38.1 0)
 			(effects
 				(font
@@ -3829,6 +3861,84 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
 					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Polarized")
+		(at 110.49 39.37 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "baa6a730-461d-41c6-b91d-ad1e86dca529")
+		(property "Reference" "C46"
+			(at 111.76 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "C_Polarized"
+			(at 110.998 42.418 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Inductor_THT:L_Radial_D12.0mm_P5.00mm_Neosid_SD12k_style2"
+			(at 111.4552 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 110.49 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Polarized capacitor"
+			(at 110.49 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "100ZLJ330M12.5X35"
+			(at 147.32 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d6d62e1f-15c5-4be1-ae2a-21733cc05173")
+		)
+		(pin "2"
+			(uuid "757e9e73-6365-4f0d-834a-e3dc846ce9b5")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "C46")
 					(unit 1)
 				)
 			)
@@ -4106,10 +4216,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "cd8d9085-3428-4cbf-8a09-a248de6114bb")
 		(property "Reference" "C2"
-			(at 107.95 37.2109 0)
+			(at 104.902 37.084 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4118,7 +4227,7 @@
 			)
 		)
 		(property "Value" "C_Polarized"
-			(at 107.95 39.7509 0)
+			(at 99.822 44.704 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4153,7 +4262,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "UHE2A101MPD1TD"
+		(property "MANUF_PN" "EEU-FS2A151LB"
 			(at 140.97 38.1 0)
 			(effects
 				(font

@@ -593,7 +593,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "OUT/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "RC-Car-Project.step",
