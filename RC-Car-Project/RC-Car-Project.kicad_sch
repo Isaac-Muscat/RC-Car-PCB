@@ -1798,6 +1798,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 161.29 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "0b4a731c-e2a1-4329-95f4-28fcd75e7595")
 		)
@@ -1926,6 +1935,15 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
+			(at 185.42 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 185.42 43.18 0)
 			(effects
 				(font
@@ -2070,6 +2088,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 161.29 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b8705e09-0c85-41eb-a90b-5e709c9eb0ff")
 		)
@@ -2132,6 +2159,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 196.85 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 196.85 35.56 0)
 			(effects
 				(font
@@ -2342,6 +2378,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 185.42 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0d99044d-9176-4558-a536-0c79ce86288e")
 		)
@@ -2536,6 +2581,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 173.99 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 173.99 35.56 0)
 			(effects
 				(font
@@ -2803,6 +2857,15 @@
 			)
 		)
 		(property "Description" "Polarized capacitor"
+			(at 134.62 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 134.62 38.1 0)
 			(effects
 				(font
@@ -3079,6 +3142,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 140.97 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1a95865d-608f-4cc7-aeed-3e546511e17b")
 		)
@@ -3215,6 +3287,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 196.85 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d1043321-9f9d-4795-b886-6040758e4bc0")
 		)
@@ -3277,6 +3358,15 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
+			(at 173.99 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 173.99 43.18 0)
 			(effects
 				(font

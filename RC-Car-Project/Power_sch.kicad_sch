@@ -2855,6 +2855,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 123.19 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d9423c23-a8fb-41c4-8446-7282f90bfc60")
 		)
@@ -2915,6 +2924,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 163.83 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 163.83 128.27 0)
 			(effects
 				(font
@@ -3125,6 +3143,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 113.03 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "0a6fd0a5-718e-4d07-96b5-94df78aeff94")
 		)
@@ -3326,6 +3353,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 176.53 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "7b11a512-9ce8-42ac-b907-ca0109083ae5")
 		)
@@ -3396,6 +3432,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 162.56 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3e378dc5-5fac-49fa-ad3a-8de8fdad1099")
 		)
@@ -3457,6 +3502,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 120.65 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 120.65 77.47 0)
 			(effects
 				(font
@@ -3662,6 +3716,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 171.45 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6fc56198-9494-43ca-8221-8346f9464dec")
 		)
@@ -3724,6 +3787,15 @@
 			)
 		)
 		(property "Description" "Schottky diode"
+			(at 163.83 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 163.83 143.51 0)
 			(effects
 				(font
@@ -3802,6 +3874,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 200.66 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d3e9a7fd-da6b-470b-a02d-ecc7c4d8f3f0")
 		)
@@ -3863,6 +3944,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 177.8 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 177.8 139.7 0)
 			(effects
 				(font
@@ -3941,6 +4031,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 213.36 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bfbb610b-5687-4bad-bb90-27c8aed160fe")
 		)
@@ -4003,6 +4102,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 77.47 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 77.47 132.08 0)
 			(effects
 				(font
@@ -4147,6 +4255,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 76.2 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a03a963f-375f-4879-9d0c-e0b8ddf4ed7d")
 		)
@@ -4283,6 +4400,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 214.63 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3748c077-7bfc-4b99-83ec-234c2f633adf")
 		)
@@ -4345,6 +4471,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 92.71 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 92.71 81.28 0)
 			(effects
 				(font
@@ -4489,6 +4624,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 109.22 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b3915ae6-9e5a-4dc7-938e-fe74098b0e6f")
 		)
@@ -4550,6 +4694,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 142.24 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 142.24 138.43 0)
 			(effects
 				(font
@@ -4649,6 +4802,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 93.98 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "fe9ea1c6-72b5-457a-9f8e-a4488041867f")
 		)
@@ -4711,6 +4873,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 187.96 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 187.96 88.9 0)
 			(effects
 				(font
@@ -4847,6 +5018,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 114.3 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 114.3 144.78 0)
 			(effects
 				(font
@@ -5055,6 +5235,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 172.72 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d595217a-1913-434c-bd14-3c5a63c348bb")
 		)
@@ -5218,6 +5407,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 146.05 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c2f1e99a-72cf-4a56-826a-684a6769d40c")
 		)
@@ -5283,6 +5481,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 189.23 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 189.23 139.7 0)
 			(effects
 				(font
@@ -5359,6 +5566,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 162.56 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b8220ce3-7c39-4b0f-9d55-538fa04423ca")
 		)
@@ -5421,6 +5637,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 220.98 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 220.98 88.9 0)
 			(effects
 				(font
@@ -5696,6 +5921,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 177.8 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "5ec1260a-0c5d-463e-b726-e620f352bcf8")
 		)
@@ -5766,6 +6000,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 201.93 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3d81ee85-10c8-43b2-afaf-b9655b540f8c")
 		)
@@ -5828,6 +6071,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 124.46 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 124.46 152.4 0)
 			(effects
 				(font
@@ -6302,6 +6554,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 107.95 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "49a6a57d-7c7b-4fa4-b10d-10b98a9d44bf")
 		)
@@ -6363,6 +6624,15 @@
 			)
 		)
 		(property "Description" "60V, 10A low Vf MEGA Schottky barrier rectifier, SOT-1289"
+			(at 107.95 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 107.95 73.66 0)
 			(effects
 				(font
@@ -6443,6 +6713,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 176.53 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "f7e01436-1d0f-4a4d-9bcc-c077e77632c5")
 		)
@@ -6504,6 +6783,15 @@
 			)
 		)
 		(property "Description" "60V, 10A low Vf MEGA Schottky barrier rectifier, SOT-1289"
+			(at 92.71 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 92.71 73.66 0)
 			(effects
 				(font
@@ -6709,6 +6997,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 140.97 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 140.97 87.63 0)
 			(effects
 				(font
