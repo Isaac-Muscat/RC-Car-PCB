@@ -3414,7 +3414,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.digikey.ca/en/products/detail/onsemi/SS24FL/5305066"
+		(property "Datasheet" ""
 			(at 162.56 92.71 0)
 			(effects
 				(font
@@ -3432,7 +3432,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "SS24FL"
+		(property "MANUF_PN" "PMEG60T30ELR-QX"
 			(at 162.56 92.71 0)
 			(effects
 				(font
@@ -3777,7 +3777,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.digikey.ca/en/products/detail/onsemi/SS24FL/5305066"
+		(property "Datasheet" ""
 			(at 163.83 143.51 0)
 			(effects
 				(font
@@ -3795,7 +3795,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "SS24FL"
+		(property "MANUF_PN" "PMEG60T30ELR-QX"
 			(at 163.83 143.51 0)
 			(effects
 				(font
