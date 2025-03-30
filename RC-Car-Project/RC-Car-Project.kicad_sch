@@ -1854,7 +1854,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0ba1ad73-48c2-45e2-9e8e-04f10568ab7f")
-		(property "Reference" "#PWR07"
+		(property "Reference" "TP6"
 			(at 209.296 33.274 0)
 			(effects
 				(font
@@ -2051,10 +2051,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "1f96bf2a-f07f-46f5-b381-4a0fcd4988e7")
 		(property "Reference" "D11"
-			(at 128.27 43.4974 90)
+			(at 128.524 43.688 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2063,7 +2062,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 128.27 46.0374 90)
+			(at 128.27 45.72 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2190,14 +2189,14 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 185.42 43.18 90)
+		(at 148.59 43.18 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "21b61fae-5146-41d3-b0cc-388a43fca4e2")
+		(uuid "21b61fae-5146-41d3-b0cc-388a43fca4e3")
 		(property "Reference" "D1"
 			(at 189.23 43.4974 90)
 			(effects
@@ -2205,6 +2204,7 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Value" "LED"
@@ -2214,6 +2214,7 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
@@ -2245,164 +2246,6 @@
 		)
 		(property "MANUF_PN" ""
 			(at 185.42 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "c94a90b2-1698-46fd-ac71-026b914f3407")
-		)
-		(pin "1"
-			(uuid "f2b8850d-c3b6-4293-9321-615427be3a3a")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:LED")
-		(at 148.59 43.18 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "21b61fae-5146-41d3-b0cc-388a43fca4e2")
-		(property "Reference" "D1"
-			(at 189.23 43.4974 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "LED"
-			(at 189.23 46.0374 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 185.42 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 185.42 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Light emitting diode"
-			(at 185.42 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
-			(at 185.42 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "c94a90b2-1698-46fd-ac71-026b914f3407")
-		)
-		(pin "1"
-			(uuid "f2b8850d-c3b6-4293-9321-615427be3a3a")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:LED")
-		(at 148.59 43.18 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "21b61fae-5146-41d3-b0cc-388a43fca4e2")
-		(property "Reference" "D1"
-			(at 152.4 43.4974 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "LED"
-			(at 152.4 46.0374 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 148.59 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 148.59 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Light emitting diode"
-			(at 148.59 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
-			(at 148.59 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2415,6 +2258,84 @@
 		)
 		(pin "1"
 			(uuid "f2b8850d-c3b6-4293-9321-615427be3a3b")
+		)
+		(instances
+			(project "RC-Car-Project"
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 148.59 43.18 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "21b61fae-5146-41d3-b0cc-388a43fca4e4")
+		(property "Reference" "D1"
+			(at 152.146 43.434 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED"
+			(at 152.4 45.72 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
+			(at 148.59 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 148.59 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 148.59 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
+			(at 148.59 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c94a90b2-1698-46fd-ac71-026b914f3409")
+		)
+		(pin "1"
+			(uuid "f2b8850d-c3b6-4293-9321-615427be3a3c")
 		)
 		(instances
 			(project "RC-Car-Project"
@@ -2493,14 +2414,14 @@
 	)
 	(symbol
 		(lib_id "power:GNDA")
-		(at 71.12 40.64 0)
+		(at 40.64 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "38f8499b-eab8-4851-ab78-1df642666c2f")
+		(uuid "38f8499b-eab8-4851-ab78-1df642666c30")
 		(property "Reference" "#PWR077"
 			(at 71.12 46.99 0)
 			(effects
@@ -2516,6 +2437,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -2546,7 +2468,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "4c8b08d9-092d-41d5-bb84-4f133bfd1a98")
+			(uuid "4c8b08d9-092d-41d5-bb84-4f133bfd1a99")
 		)
 		(instances
 			(project "RC-Car-Project"
@@ -2566,73 +2488,7 @@
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "38f8499b-eab8-4851-ab78-1df642666c2f")
-		(property "Reference" "#PWR077"
-			(at 71.12 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND_USB"
-			(at 71.12 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 71.12 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 71.12 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GNDA\" , analog ground"
-			(at 71.12 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4c8b08d9-092d-41d5-bb84-4f133bfd1a98")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR077")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GNDA")
-		(at 40.64 41.91 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "38f8499b-eab8-4851-ab78-1df642666c2f")
+		(uuid "38f8499b-eab8-4851-ab78-1df642666c31")
 		(property "Reference" "#PWR077"
 			(at 40.64 48.26 0)
 			(effects
@@ -2678,7 +2534,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "4c8b08d9-092d-41d5-bb84-4f133bfd1a99")
+			(uuid "4c8b08d9-092d-41d5-bb84-4f133bfd1a9a")
 		)
 		(instances
 			(project "RC-Car-Project"
@@ -2757,16 +2613,15 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 161.29 35.56 0)
+		(at 124.46 35.56 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "50e60d6a-ffbf-448b-adfa-2da7ecb6593e")
+		(uuid "50e60d6a-ffbf-448b-adfa-2da7ecb6593f")
 		(property "Reference" "R60"
-			(at 163.83 34.2899 0)
+			(at 126.238 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2775,7 +2630,7 @@
 			)
 		)
 		(property "Value" "1.5kohm"
-			(at 163.83 36.8299 0)
+			(at 126.238 36.322 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2820,10 +2675,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "b8705e09-0c85-41eb-a90b-5e709c9eb0ff")
+			(uuid "b8705e09-0c85-41eb-a90b-5e709c9eb100")
 		)
 		(pin "2"
-			(uuid "dfa9c361-c14a-478c-9fd1-da7a200f0722")
+			(uuid "dfa9c361-c14a-478c-9fd1-da7a200f0723")
 		)
 		(instances
 			(project "RC-Car-Project"
@@ -2843,86 +2698,7 @@
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "50e60d6a-ffbf-448b-adfa-2da7ecb6593e")
-		(property "Reference" "R60"
-			(at 163.83 34.2899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1.5kohm"
-			(at 163.83 36.8299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 159.512 35.56 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 161.29 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 161.29 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" "RC0603JR-071K5L"
-			(at 161.29 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b8705e09-0c85-41eb-a90b-5e709c9eb0ff")
-		)
-		(pin "2"
-			(uuid "dfa9c361-c14a-478c-9fd1-da7a200f0722")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "R60")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 124.46 35.56 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "50e60d6a-ffbf-448b-adfa-2da7ecb6593e")
+		(uuid "50e60d6a-ffbf-448b-adfa-2da7ecb65940")
 		(property "Reference" "R60"
 			(at 127 34.2899 0)
 			(effects
@@ -2930,6 +2706,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Value" "1.5kohm"
@@ -2939,6 +2716,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
@@ -2978,94 +2756,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "b8705e09-0c85-41eb-a90b-5e709c9eb100")
+			(uuid "b8705e09-0c85-41eb-a90b-5e709c9eb101")
 		)
 		(pin "2"
-			(uuid "dfa9c361-c14a-478c-9fd1-da7a200f0723")
+			(uuid "dfa9c361-c14a-478c-9fd1-da7a200f0724")
 		)
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
 					(reference "R60")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 196.85 35.56 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "520e9d54-18f4-43eb-b63a-a579ef30084e")
-		(property "Reference" "R2"
-			(at 199.39 34.2899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "220ohm"
-			(at 199.39 36.8299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 195.072 35.56 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 196.85 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" "RMCF0603FT220R"
-			(at 196.85 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a6f46df6-efca-4bfd-a82a-bc437898e7af")
-		)
-		(pin "2"
-			(uuid "effbdd71-ff93-4da8-b8b8-542d1bc96253")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "R2")
 					(unit 1)
 				)
 			)
@@ -3079,7 +2778,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "520e9d54-18f4-43eb-b63a-a579ef30084f")
 		(property "Reference" "R2"
 			(at 162.56 34.2899 0)
@@ -3091,7 +2789,7 @@
 			)
 		)
 		(property "Value" "220ohm"
-			(at 162.56 36.8299 0)
+			(at 162.052 36.576 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3218,14 +2916,14 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 196.85 46.99 0)
+		(at 160.02 46.99 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "677935cf-7538-434d-bb6d-6e3b36222fca")
+		(uuid "677935cf-7538-434d-bb6d-6e3b36222fcb")
 		(property "Reference" "#PWR010"
 			(at 196.85 53.34 0)
 			(effects
@@ -3241,6 +2939,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -3271,7 +2970,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "07266b7f-b051-47aa-a651-4192d199e9a1")
+			(uuid "07266b7f-b051-47aa-a651-4192d199e9a2")
 		)
 		(instances
 			(project "RC-Car-Project"
@@ -3291,73 +2990,7 @@
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "677935cf-7538-434d-bb6d-6e3b36222fca")
-		(property "Reference" "#PWR010"
-			(at 196.85 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND_3V3"
-			(at 196.85 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 196.85 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 196.85 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 196.85 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "07266b7f-b051-47aa-a651-4192d199e9a1")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 160.02 46.99 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "677935cf-7538-434d-bb6d-6e3b36222fca")
+		(uuid "677935cf-7538-434d-bb6d-6e3b36222fcc")
 		(property "Reference" "#PWR010"
 			(at 160.02 53.34 0)
 			(effects
@@ -3403,78 +3036,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "07266b7f-b051-47aa-a651-4192d199e9a2")
+			(uuid "07266b7f-b051-47aa-a651-4192d199e9a3")
 		)
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
 					(reference "#PWR010")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3V3")
-		(at 85.09 34.29 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6da0f441-fef3-471e-a31d-ade17b4bc44f")
-		(property "Reference" "#PWR04"
-			(at 85.09 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VDD_BATT"
-			(at 85.09 29.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 85.09 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 85.09 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 85.09 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "845f4212-4246-461c-b74d-6aca0190d6b1")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -3541,85 +3108,6 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
 					(reference "#PWR04")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 185.42 35.56 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6dbcdc0d-f2a6-4712-8716-bdf4ee12f95b")
-		(property "Reference" "R1"
-			(at 187.96 34.2899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1.5kohm"
-			(at 187.96 36.8299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 183.642 35.56 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 185.42 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 185.42 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" "RC0603JR-071K5L"
-			(at 185.42 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0d99044d-9176-4558-a536-0c79ce86288e")
-		)
-		(pin "2"
-			(uuid "dc2efb71-eaca-4dab-9b61-605a8aabb43b")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -5004,10 +4492,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "de3e00cb-48e2-4db1-9c9d-709437408aa1")
 		(property "Reference" "D2"
-			(at 163.83 43.4974 90)
+			(at 164.084 43.18 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5016,7 +4503,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 163.83 46.0374 90)
+			(at 163.83 45.466 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5083,10 +4570,9 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "ea4d5e81-58b8-441c-9af4-fbfcfa411a92")
 		(property "Reference" "D10"
-			(at 140.97 43.4974 90)
+			(at 140.97 43.688 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5095,7 +4581,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 140.97 46.0374 90)
+			(at 141.224 45.466 90)
 			(effects
 				(font
 					(size 1.27 1.27)
