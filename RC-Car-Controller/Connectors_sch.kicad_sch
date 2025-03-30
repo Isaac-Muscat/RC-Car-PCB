@@ -2591,7 +2591,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "USBLC6-2SC6"
 			(at 121.92 78.74 0)
 			(effects
 				(font
@@ -2990,7 +2990,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "2171790001"
 			(at 104.14 83.82 0)
 			(effects
 				(font
@@ -3446,7 +3446,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "R1966ABLKBLKGR"
 			(at 62.23 152.4 0)
 			(effects
 				(font

@@ -5089,7 +5089,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "ERA-3ARW472V"
 			(at 232.41 81.28 0)
 			(effects
 				(font
@@ -5310,7 +5310,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "ERA-3ARW472V"
 			(at 208.28 81.28 0)
 			(effects
 				(font
@@ -5939,7 +5939,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "ERA-3ARW472V"
 			(at 205.74 81.28 0)
 			(effects
 				(font
@@ -6095,7 +6095,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "ERA-3ARW472V"
 			(at 229.87 81.28 0)
 			(effects
 				(font

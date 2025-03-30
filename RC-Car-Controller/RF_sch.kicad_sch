@@ -3592,7 +3592,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "ESD9B5.0ST5G"
 			(at 147.32 35.56 0)
 			(effects
 				(font
@@ -5909,7 +5909,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "ESD9B5.0ST5G"
 			(at 139.7 35.56 0)
 			(effects
 				(font
@@ -6053,7 +6053,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "ESD9B5.0ST5G"
 			(at 143.51 35.56 0)
 			(effects
 				(font
@@ -6207,7 +6207,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "HCB 1608KF-181T20"
 			(at 196.85 29.21 0)
 			(effects
 				(font

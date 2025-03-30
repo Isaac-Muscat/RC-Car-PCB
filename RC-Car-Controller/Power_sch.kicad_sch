@@ -3822,7 +3822,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "BQ25303JRTER"
 			(at 85.09 71.12 0)
 			(effects
 				(font
@@ -4024,7 +4024,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "TPS62132RGTR"
 			(at 87.63 147.32 0)
 			(effects
 				(font
@@ -4588,7 +4588,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "STC3100IST"
 			(at 196.85 53.34 0)
 			(effects
 				(font
@@ -5646,7 +5646,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0713KL"
 			(at 59.69 73.66 0)
 			(effects
 				(font
@@ -6013,7 +6013,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "DMG2301L-7"
 			(at 137.16 40.64 0)
 			(effects
 				(font
@@ -6593,7 +6593,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "SK36A-LTP"
 			(at 128.27 40.64 0)
 			(effects
 				(font
