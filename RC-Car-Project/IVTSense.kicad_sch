@@ -3773,7 +3773,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "10f2f9ed-df01-4839-8116-62b094deeb74")
-		(property "Reference" "#PWR096"
+		(property "Reference" "#PWR0116"
 			(at 195.58 71.12 0)
 			(effects
 				(font
@@ -3823,7 +3823,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR096")
+					(reference "#PWR0116")
 					(unit 1)
 				)
 			)
@@ -3839,7 +3839,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2bc83beb-b2ec-4b90-821e-4739bce023d0")
-		(property "Reference" "R16"
+		(property "Reference" "R41"
 			(at 90.17 128.2699 0)
 			(effects
 				(font
@@ -3902,7 +3902,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "R16")
+					(reference "R41")
 					(unit 1)
 				)
 			)
@@ -3918,7 +3918,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2e2352c6-fd12-41b9-a24d-a3e41f7a1255")
-		(property "Reference" "R20"
+		(property "Reference" "R45"
 			(at 200.66 85.0899 90)
 			(effects
 				(font
@@ -3989,7 +3989,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "R20")
+					(reference "R45")
 					(unit 1)
 				)
 			)
@@ -4005,7 +4005,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3026167e-949b-4ba7-8cfd-1dd09ddca28a")
-		(property "Reference" "R19"
+		(property "Reference" "R44"
 			(at 186.69 85.09 90)
 			(effects
 				(font
@@ -4066,7 +4066,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "R19")
+					(reference "R44")
 					(unit 1)
 				)
 			)
@@ -4082,7 +4082,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "45f9b40a-6c30-45eb-b6d9-b30c5d467ab7")
-		(property "Reference" "#PWR089"
+		(property "Reference" "#PWR0109"
 			(at 148.59 91.44 0)
 			(effects
 				(font
@@ -4133,7 +4133,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR089")
+					(reference "#PWR0109")
 					(unit 1)
 				)
 			)
@@ -4149,7 +4149,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "503d0a81-599a-42cb-a1f7-efe308f14a37")
-		(property "Reference" "#PWR088"
+		(property "Reference" "#PWR0108"
 			(at 96.52 86.36 0)
 			(effects
 				(font
@@ -4199,7 +4199,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR088")
+					(reference "#PWR0108")
 					(unit 1)
 				)
 			)
@@ -4215,7 +4215,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5b30c22d-985f-447d-b4dc-87f8b67effa7")
-		(property "Reference" "#PWR090"
+		(property "Reference" "#PWR0110"
 			(at 160.02 93.98 0)
 			(effects
 				(font
@@ -4266,7 +4266,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR090")
+					(reference "#PWR0110")
 					(unit 1)
 				)
 			)
@@ -4282,7 +4282,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6564d880-3b14-4116-856c-9b7e1f3e5585")
-		(property "Reference" "C43"
+		(property "Reference" "C40"
 			(at 189.23 132.0799 0)
 			(effects
 				(font
@@ -4345,7 +4345,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "C43")
+					(reference "C40")
 					(unit 1)
 				)
 			)
@@ -4361,7 +4361,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6c333831-ff20-4b93-8710-c14fd67d5a95")
-		(property "Reference" "#PWR091"
+		(property "Reference" "#PWR0111"
 			(at 156.21 110.49 0)
 			(effects
 				(font
@@ -4411,7 +4411,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR091")
+					(reference "#PWR0111")
 					(unit 1)
 				)
 			)
@@ -4427,7 +4427,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "73616c82-2342-4041-afb3-ad64239bab93")
-		(property "Reference" "#PWR095"
+		(property "Reference" "#PWR0115"
 			(at 184.15 129.54 0)
 			(effects
 				(font
@@ -4478,7 +4478,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR095")
+					(reference "#PWR0115")
 					(unit 1)
 				)
 			)
@@ -4494,7 +4494,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8901cafa-81f1-4f1f-a3f1-c38db2555c3e")
-		(property "Reference" "#PWR093"
+		(property "Reference" "#PWR0113"
 			(at 170.18 127 0)
 			(effects
 				(font
@@ -4545,7 +4545,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR093")
+					(reference "#PWR0113")
 					(unit 1)
 				)
 			)
@@ -4561,7 +4561,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8a6f541d-3750-4fc2-9350-f346ce95f80f")
-		(property "Reference" "R21"
+		(property "Reference" "R46"
 			(at 203.2 126.9999 0)
 			(effects
 				(font
@@ -4624,7 +4624,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "R21")
+					(reference "R46")
 					(unit 1)
 				)
 			)
@@ -4712,7 +4712,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b5eda797-5967-4413-b665-a5f019afb893")
-		(property "Reference" "C42"
+		(property "Reference" "C39"
 			(at 172.72 85.0899 0)
 			(effects
 				(font
@@ -4775,7 +4775,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "C42")
+					(reference "C39")
 					(unit 1)
 				)
 			)
@@ -4791,7 +4791,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ba489689-5514-4534-96fa-21e7d592d56e")
-		(property "Reference" "#PWR097"
+		(property "Reference" "#PWR0117"
 			(at 195.58 111.76 0)
 			(effects
 				(font
@@ -4841,7 +4841,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR097")
+					(reference "#PWR0117")
 					(unit 1)
 				)
 			)
@@ -4857,7 +4857,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c85dbc73-be66-4997-8661-40bb2a1034ff")
-		(property "Reference" "U7"
+		(property "Reference" "U6"
 			(at 133.35 76.2 0)
 			(effects
 				(font
@@ -4944,7 +4944,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "U7")
+					(reference "U6")
 					(unit 1)
 				)
 			)
@@ -4960,7 +4960,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c9292b55-fe6a-4e99-8079-be2a33e219c5")
-		(property "Reference" "#PWR094"
+		(property "Reference" "#PWR0114"
 			(at 185.42 143.51 0)
 			(effects
 				(font
@@ -5010,7 +5010,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR094")
+					(reference "#PWR0114")
 					(unit 1)
 				)
 			)
@@ -5026,7 +5026,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d64b4886-37e6-4c82-9511-2a26bc43ecbc")
-		(property "Reference" "#PWR092"
+		(property "Reference" "#PWR0112"
 			(at 156.21 96.52 0)
 			(effects
 				(font
@@ -5077,7 +5077,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR092")
+					(reference "#PWR0112")
 					(unit 1)
 				)
 			)
@@ -5093,7 +5093,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ebe70ce3-5c3e-48ca-be9a-56189bf63ad8")
-		(property "Reference" "R18"
+		(property "Reference" "R43"
 			(at 186.69 76.2 90)
 			(effects
 				(font
@@ -5154,7 +5154,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "R18")
+					(reference "R43")
 					(unit 1)
 				)
 			)
@@ -5170,7 +5170,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ecb8ad49-80ff-40f2-8ae1-adc7387b98f8")
-		(property "Reference" "U8"
+		(property "Reference" "U7"
 			(at 135.89 114.3 0)
 			(effects
 				(font
@@ -5251,7 +5251,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "U8")
+					(reference "U7")
 					(unit 1)
 				)
 			)
@@ -5267,7 +5267,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ed4c12cc-7c92-485c-b87b-f54f46aa9dac")
-		(property "Reference" "#PWR098"
+		(property "Reference" "#PWR0118"
 			(at 200.66 138.43 0)
 			(effects
 				(font
@@ -5317,7 +5317,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR098")
+					(reference "#PWR0118")
 					(unit 1)
 				)
 			)
@@ -5333,7 +5333,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fc05e26a-2c29-456e-bc90-ec648c9eb566")
-		(property "Reference" "R17"
+		(property "Reference" "R42"
 			(at 99.06 86.3599 0)
 			(effects
 				(font
@@ -5396,7 +5396,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "R17")
+					(reference "R42")
 					(unit 1)
 				)
 			)
@@ -5412,7 +5412,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fc0c71c1-f5a4-4d2c-81c9-0b4193782fa4")
-		(property "Reference" "#PWR087"
+		(property "Reference" "#PWR0107"
 			(at 87.63 139.7 0)
 			(effects
 				(font
@@ -5462,7 +5462,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "#PWR087")
+					(reference "#PWR0107")
 					(unit 1)
 				)
 			)
@@ -5478,7 +5478,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fd9f9961-6179-4e6d-9eff-48f14f8a9280")
-		(property "Reference" "C41"
+		(property "Reference" "C38"
 			(at 160.02 99.0599 0)
 			(effects
 				(font
@@ -5541,7 +5541,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "C41")
+					(reference "C38")
 					(unit 1)
 				)
 			)

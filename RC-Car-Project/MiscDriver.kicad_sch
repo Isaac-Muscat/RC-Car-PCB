@@ -944,7 +944,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "04b4b8ed-88fa-46ed-8fd2-64b16e7dc6f3")
-		(property "Reference" "R57"
+		(property "Reference" "R70"
 			(at 179.07 92.71 90)
 			(effects
 				(font
@@ -1005,7 +1005,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "R57")
+					(reference "R70")
 					(unit 1)
 				)
 			)
@@ -1021,7 +1021,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "05c9f319-95ee-48fb-b765-3574723a7b32")
-		(property "Reference" "#PWR0123"
+		(property "Reference" "#PWR0148"
 			(at 127 80.01 0)
 			(effects
 				(font
@@ -1071,7 +1071,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "#PWR0123")
+					(reference "#PWR0148")
 					(unit 1)
 				)
 			)
@@ -1087,7 +1087,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0ef4408b-8920-40e6-9f7e-426979795436")
-		(property "Reference" "#PWR0125"
+		(property "Reference" "#PWR0150"
 			(at 137.16 81.28 0)
 			(effects
 				(font
@@ -1137,7 +1137,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "#PWR0125")
+					(reference "#PWR0150")
 					(unit 1)
 				)
 			)
@@ -1153,7 +1153,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "14ee9a0f-9d20-4a3e-9cce-39732deb42e7")
-		(property "Reference" "R30"
+		(property "Reference" "R65"
 			(at 120.65 59.69 90)
 			(effects
 				(font
@@ -1214,7 +1214,7 @@
 		(instances
 			(project ""
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "R30")
+					(reference "R65")
 					(unit 1)
 				)
 			)
@@ -1230,7 +1230,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1d9f5f3a-33bf-408e-8f82-b7238c8c36ae")
-		(property "Reference" "R33"
+		(property "Reference" "R68"
 			(at 129.54 101.5999 0)
 			(effects
 				(font
@@ -1293,7 +1293,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "R33")
+					(reference "R68")
 					(unit 1)
 				)
 			)
@@ -1309,7 +1309,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "228abe4c-620e-4792-805d-9dfaab450600")
-		(property "Reference" "R31"
+		(property "Reference" "R66"
 			(at 120.65 92.71 90)
 			(effects
 				(font
@@ -1370,7 +1370,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "R31")
+					(reference "R66")
 					(unit 1)
 				)
 			)
@@ -1386,7 +1386,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4db5e98a-87ec-4b54-b1b7-ea748795bd43")
-		(property "Reference" "R56"
+		(property "Reference" "R69"
 			(at 179.07 59.69 90)
 			(effects
 				(font
@@ -1447,7 +1447,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "R56")
+					(reference "R69")
 					(unit 1)
 				)
 			)
@@ -1463,7 +1463,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6b54c48e-1fde-4ca2-ba2f-1f5a6688dffc")
-		(property "Reference" "#PWR0128"
+		(property "Reference" "#PWR0153"
 			(at 185.42 113.03 0)
 			(effects
 				(font
@@ -1513,7 +1513,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "#PWR0128")
+					(reference "#PWR0153")
 					(unit 1)
 				)
 			)
@@ -1529,7 +1529,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "733f4b2b-44fd-45be-8f9d-3fae913f2834")
-		(property "Reference" "#PWR0129"
+		(property "Reference" "#PWR0154"
 			(at 195.58 81.28 0)
 			(effects
 				(font
@@ -1579,7 +1579,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "#PWR0129")
+					(reference "#PWR0154")
 					(unit 1)
 				)
 			)
@@ -1595,7 +1595,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7944779f-af75-4e3c-8d2d-4965f9aab2d7")
-		(property "Reference" "Q6"
+		(property "Reference" "Q7"
 			(at 140.97 97.7899 0)
 			(effects
 				(font
@@ -1664,7 +1664,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "Q6")
+					(reference "Q7")
 					(unit 1)
 				)
 			)
@@ -1680,7 +1680,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7e2d5b07-2461-44c9-a595-391853b0d82e")
-		(property "Reference" "#PWR0127"
+		(property "Reference" "#PWR0152"
 			(at 185.42 80.01 0)
 			(effects
 				(font
@@ -1730,7 +1730,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "#PWR0127")
+					(reference "#PWR0152")
 					(unit 1)
 				)
 			)
@@ -1746,7 +1746,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "81337d5b-0639-41e2-a5e4-8963b4020f1b")
-		(property "Reference" "#PWR0126"
+		(property "Reference" "#PWR0151"
 			(at 137.16 114.3 0)
 			(effects
 				(font
@@ -1796,7 +1796,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "#PWR0126")
+					(reference "#PWR0151")
 					(unit 1)
 				)
 			)
@@ -1812,7 +1812,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "96a256bf-6edf-46ee-83ac-e95add3aaf7b")
-		(property "Reference" "R32"
+		(property "Reference" "R67"
 			(at 129.54 68.5799 0)
 			(effects
 				(font
@@ -1875,7 +1875,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "R32")
+					(reference "R67")
 					(unit 1)
 				)
 			)
@@ -1891,7 +1891,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a1d3f7ba-7272-4bb6-a28f-ce76ad9ffe76")
-		(property "Reference" "R58"
+		(property "Reference" "R71"
 			(at 187.96 68.5799 0)
 			(effects
 				(font
@@ -1954,7 +1954,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "R58")
+					(reference "R71")
 					(unit 1)
 				)
 			)
@@ -1970,7 +1970,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a8e4e9c8-0165-43eb-b45d-e7f452eb40f6")
-		(property "Reference" "#PWR0130"
+		(property "Reference" "#PWR0155"
 			(at 195.58 114.3 0)
 			(effects
 				(font
@@ -2020,7 +2020,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "#PWR0130")
+					(reference "#PWR0155")
 					(unit 1)
 				)
 			)
@@ -2121,7 +2121,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dfcf3e66-031b-4073-87d4-b9f8b66bc079")
-		(property "Reference" "Q5"
+		(property "Reference" "Q6"
 			(at 140.97 64.7699 0)
 			(effects
 				(font
@@ -2190,7 +2190,7 @@
 		(instances
 			(project ""
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "Q5")
+					(reference "Q6")
 					(unit 1)
 				)
 			)
@@ -2206,7 +2206,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e1868cfe-8740-498d-bfe7-ab9bada46569")
-		(property "Reference" "#PWR0124"
+		(property "Reference" "#PWR0149"
 			(at 127 113.03 0)
 			(effects
 				(font
@@ -2256,7 +2256,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "#PWR0124")
+					(reference "#PWR0149")
 					(unit 1)
 				)
 			)
@@ -2357,7 +2357,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "eec25ad9-db7c-4f67-b1f9-115d239151f2")
-		(property "Reference" "R59"
+		(property "Reference" "R72"
 			(at 187.96 101.5999 0)
 			(effects
 				(font
@@ -2420,7 +2420,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/6cd00c1a-14cd-4705-8fa1-76b1c50e2463"
-					(reference "R59")
+					(reference "R72")
 					(unit 1)
 				)
 			)
