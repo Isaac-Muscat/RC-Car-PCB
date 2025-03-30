@@ -844,209 +844,6 @@
 				)
 			)
 		)
-		(symbol "SF-3812F6000T-2:SF-3812F6000T-2"
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "F"
-				(at 5.08 3.175 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-				)
-			)
-			(property "Value" "SF-3812F6000T-2"
-				(at 5.08 -3.175 0)
-				(effects
-					(font
-						(size 1.524 1.524)
-					)
-				)
-			)
-			(property "Footprint" "FUS_SF-3812F_BRN"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-						(italic yes)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "SF-3812F6000T-2"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-						(italic yes)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_locked" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "SF-3812F6000T-2"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "FUS_SF-3812F_BRN FUS_SF-3812F_BRN-M FUS_SF-3812F_BRN-L"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "SF-3812F6000T-2_1_1"
-				(arc
-					(start 5.08 0)
-					(mid 3.81 1.2645)
-					(end 2.54 0)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 5.08 0)
-					(mid 6.35 -1.2645)
-					(end 7.62 0)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin unspecified line
-					(at 0 0 0)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 10.16 0 180)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "SF-3812F6000T-2_1_2"
-				(arc
-					(start 0 5.08)
-					(mid -1.2645 3.81)
-					(end 0 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 5.08)
-					(mid 1.2645 6.35)
-					(end 0 7.62)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin unspecified line
-					(at 0 0 90)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 0 10.16 270)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "WSL27262L000FEB:WSL27262L000FEB"
 			(pin_names
 				(offset 0.254)
@@ -3613,7 +3410,7 @@
 	)
 	(text_box "Low Side Current Sense\n"
 		(exclude_from_sim no)
-		(at 154.94 113.03 0)
+		(at 175.895 103.505 0)
 		(size 26.035 4.445)
 		(stroke
 			(width 0)
@@ -3830,78 +3627,6 @@
 		)
 	)
 	(symbol
-		(lib_id "SF-3812F6000T-2:SF-3812F6000T-2")
-		(at 195.58 105.41 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "168485ea-0fc3-4c7a-b55f-411c5702ac34")
-		(property "Reference" "F1"
-			(at 198.12 99.0599 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "SF-3812F6000T-2"
-			(at 198.12 101.5999 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "FUS_SF-3812F_BRN"
-			(at 195.58 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "SF-3812F6000T-2"
-			(at 195.58 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 195.58 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "bf5809e5-8879-47a3-8514-de1921efbb2e")
-		)
-		(pin "1"
-			(uuid "85529c6d-3230-44bd-bd85-39de7b786cc1")
-		)
-		(instances
-			(project "RC-Car-Project"
-				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
-					(reference "F1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 87.63 129.54 180)
 		(unit 1)
@@ -3948,6 +3673,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 87.63 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 87.63 129.54 0)
 			(effects
 				(font
@@ -4028,6 +3762,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 195.58 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d9294d56-4fb9-4c18-8ed7-9e7b4104dd38")
 		)
@@ -4094,6 +3837,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 186.69 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 186.69 91.44 0)
 			(effects
 				(font
@@ -4372,6 +4124,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 185.42 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "1063ff71-485d-4aee-9ff5-a909fb7e7147")
 		)
@@ -4642,6 +4403,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 200.66 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a90c790e-f3e0-4425-bcae-902150d0354a")
 		)
@@ -4712,6 +4482,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 168.91 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "782ee145-e69a-470f-b159-c1677d2192d8")
 		)
@@ -4729,7 +4508,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 195.58 105.41 0)
+		(at 195.58 95.25 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4738,7 +4517,7 @@
 		(fields_autoplaced yes)
 		(uuid "ba489689-5514-4534-96fa-21e7d592d56e")
 		(property "Reference" "#PWR097"
-			(at 195.58 111.76 0)
+			(at 195.58 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4747,7 +4526,7 @@
 			)
 		)
 		(property "Value" "GND_BATT"
-			(at 195.58 110.49 0)
+			(at 195.58 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4755,7 +4534,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 195.58 105.41 0)
+			(at 195.58 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4764,7 +4543,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 195.58 105.41 0)
+			(at 195.58 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4773,7 +4552,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 195.58 105.41 0)
+			(at 195.58 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4840,6 +4619,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 113.03 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 113.03 86.36 0)
 			(effects
 				(font
@@ -5073,6 +4861,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 186.69 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "dfbbbe55-14b6-4010-af0c-f8e236847d4e")
 		)
@@ -5135,6 +4932,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 163.83 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 163.83 132.08 0)
 			(effects
 				(font
@@ -5297,6 +5103,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 96.52 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f37baac8-abf8-4a0a-9271-c8f4980dc519")
 		)
@@ -5425,6 +5240,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 156.21 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 156.21 100.33 0)
 			(effects
 				(font
