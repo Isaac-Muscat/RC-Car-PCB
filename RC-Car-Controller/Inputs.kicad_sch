@@ -1737,6 +1737,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 168.91 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f00e77a0-d2af-4fc5-bf42-dfc9091127b1")
 		)
@@ -1934,6 +1943,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 148.59 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 148.59 93.98 0)
 			(effects
 				(font
@@ -2334,6 +2352,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 130.81 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3d7f0820-fa76-4fdc-9076-42363a572620")
 		)
@@ -2399,6 +2426,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 168.91 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 168.91 97.79 0)
 			(effects
 				(font
@@ -2477,6 +2513,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 168.91 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "04b6287d-3662-4e15-9507-00a733db53b6")
 		)
@@ -2538,6 +2583,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 168.91 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 168.91 52.07 0)
 			(effects
 				(font
@@ -2682,6 +2736,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 148.59 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a2fc36b9-584a-4707-b580-4f6d538472da")
 		)
@@ -2815,6 +2878,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 168.91 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 168.91 90.17 0)
 			(effects
 				(font

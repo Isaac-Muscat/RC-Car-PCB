@@ -1439,6 +1439,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 238.149 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "cf5e5d4a-c031-45f7-9939-2815a9d0c094")
 		)
@@ -1498,6 +1507,15 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
+			(at 180.34 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 180.34 41.91 0)
 			(effects
 				(font
@@ -1772,6 +1790,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 238.149 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7919c877-b957-4afc-aff6-b9ef59ad5c00")
 		)
@@ -2037,6 +2064,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RMCF0603FT62R0"
+			(at 195.58 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8088a686-27ed-4b3f-a439-0174ddd3cd2f")
 		)
@@ -2165,6 +2201,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 166.37 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RMCF0603FT220R"
 			(at 166.37 34.29 0)
 			(effects
 				(font
@@ -2571,6 +2616,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 227.989 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b90abd5a-887e-4c1c-9a3d-cbf001c4df62")
 		)
@@ -2629,6 +2683,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 249.579 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 249.579 31.1872 0)
 			(effects
 				(font
@@ -2696,6 +2759,15 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
+			(at 166.37 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 166.37 41.91 0)
 			(effects
 				(font
@@ -2839,6 +2911,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 227.989 31.1872 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3601708d-a388-4959-9a7a-69259d84da09")
 		)
@@ -2898,6 +2979,15 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
+			(at 195.58 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 195.58 41.91 0)
 			(effects
 				(font
@@ -3100,6 +3190,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 180.34 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RMCF0603FT220R"
 			(at 180.34 34.29 0)
 			(effects
 				(font
@@ -3367,6 +3466,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 249.579 45.1572 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 249.579 45.1572 0)
 			(effects
 				(font

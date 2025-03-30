@@ -3677,6 +3677,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RMCF0603FT1K00"
+			(at 243.84 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6039ccb4-e134-403f-a11c-e4d30734d0f8")
 		)
@@ -3813,6 +3822,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 85.09 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "4"
 			(uuid "45b56a52-d9aa-4f6b-823e-7698ed3ef2e6")
 		)
@@ -3927,6 +3945,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 59.69 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "566fb08d-d7fa-4803-9129-925cca270957")
 		)
@@ -3989,6 +4016,15 @@
 			)
 		)
 		(property "Description" "3A Step-Down Converter with DCS-Control, Fixed 3.3V Output Voltage, 3-17V Input Voltage, QFN-16"
+			(at 87.63 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 87.63 147.32 0)
 			(effects
 				(font
@@ -4103,6 +4139,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 60.96 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 60.96 138.43 0)
 			(effects
 				(font
@@ -4244,6 +4289,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "ERJ-6CWDR020V"
+			(at 243.84 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9442b98d-7e9c-4a00-b750-017e9e76394f")
 		)
@@ -4303,6 +4357,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 118.11 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 118.11 74.93 0)
 			(effects
 				(font
@@ -4372,6 +4435,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 59.69 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 59.69 60.96 0)
 			(effects
 				(font
@@ -4508,6 +4580,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 196.85 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 196.85 53.34 0)
 			(effects
 				(font
@@ -4931,6 +5012,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 127 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f6a77e48-7a29-43f8-ba60-9024f4fc3684")
 		)
@@ -5056,6 +5146,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 111.76 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RMCF0603FT100K"
 			(at 111.76 146.05 0)
 			(effects
 				(font
@@ -5262,6 +5361,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RMCF0603FT220R"
+			(at 59.69 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2092b319-d90c-4825-a508-4765f898e2c8")
 		)
@@ -5388,6 +5496,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 66.04 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 66.04 138.43 0)
 			(effects
 				(font
@@ -5529,6 +5646,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 59.69 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "be0ed87f-564b-4f28-aae5-d6d757b87a6d")
 		)
@@ -5654,6 +5780,15 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
+			(at 43.18 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 43.18 83.82 0)
 			(effects
 				(font
@@ -5796,6 +5931,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 119.38 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c6935632-dcdb-4852-8a37-02d6db38fd60")
 		)
@@ -5861,6 +6005,15 @@
 			)
 		)
 		(property "Description" "-3A Id, -20V Vds, P-Channel MOSFET, SOT-23"
+			(at 137.16 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 137.16 40.64 0)
 			(effects
 				(font
@@ -6006,6 +6159,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 243.84 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0c79d39b-6174-4c10-a52d-75802e0a5c0c")
 		)
@@ -6130,6 +6292,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 181.61 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RG1608N-204-W-T1"
 			(at 181.61 55.88 0)
 			(effects
 				(font
@@ -6270,6 +6441,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RMCF0603FT100K"
+			(at 45.72 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "aa2442b8-0201-4554-b1aa-94a58c135794")
 		)
@@ -6329,6 +6509,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 107.95 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 107.95 74.93 0)
 			(effects
 				(font
@@ -6404,6 +6593,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 128.27 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7290abe2-b445-4094-ad01-65c15b7488e7")
 		)
@@ -6465,6 +6663,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 52.07 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 52.07 57.15 0)
 			(effects
 				(font
@@ -6673,6 +6880,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 111.76 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c33b0ec3-51da-4ebb-8a3f-2c55bb75e8cb")
 		)
@@ -6805,6 +7021,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RMCF0603FT1K00"
+			(at 59.69 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bb9bcce3-463a-4a3c-8e86-29865c3982cb")
 		)
@@ -6866,6 +7091,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 125.73 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 125.73 146.05 0)
 			(effects
 				(font
@@ -6943,6 +7177,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 266.7 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "79207339-93ff-4852-b967-26d9d8515d11")
 		)
@@ -7012,6 +7255,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 73.66 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "feb281ae-21d2-4af6-87f4-04bc5b623a40")
 		)
@@ -7072,6 +7324,15 @@
 			)
 		)
 		(property "Description" "Inductor"
+			(at 101.6 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 101.6 142.24 0)
 			(effects
 				(font

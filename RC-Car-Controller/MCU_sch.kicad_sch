@@ -4855,6 +4855,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 177.8 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9d523ed6-200c-4e14-8dca-75452b4647c6")
 		)
@@ -4917,6 +4926,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 195.58 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 195.58 36.83 0)
 			(effects
 				(font
@@ -4995,6 +5013,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 48.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "5032fbac-844d-473d-84af-24fe274f7ea9")
 		)
@@ -5054,6 +5081,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 232.41 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 232.41 81.28 0)
 			(effects
 				(font
@@ -5198,6 +5234,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 59.69 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5716217b-bc77-4fa3-a6f6-b122f22e700c")
 		)
@@ -5257,6 +5302,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 208.28 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 208.28 81.28 0)
 			(effects
 				(font
@@ -5391,6 +5445,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 74.93 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 74.93 45.72 0)
 			(effects
 				(font
@@ -5800,6 +5863,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 248.92 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e81e9c26-2e8b-4c40-a046-a145d0011ef1")
 		)
@@ -5859,6 +5931,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 205.74 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 205.74 81.28 0)
 			(effects
 				(font
@@ -5935,6 +6016,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 83.82 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e803b46d-621f-4292-883a-27f48e2b984f")
 		)
@@ -5997,6 +6087,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 229.87 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 229.87 81.28 0)
 			(effects
 				(font
@@ -6141,6 +6240,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 69.85 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "26501029-fba1-43eb-9158-1c5b7ee8d2fc")
 		)
@@ -6277,6 +6385,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 87.63 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3e2826e4-e6d0-4487-a2fa-61aa143a449b")
 		)
@@ -6339,6 +6456,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 48.26 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 48.26 104.14 0)
 			(effects
 				(font
@@ -6417,6 +6543,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 231.14 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e102d544-a5bd-4933-929f-31741bc1a7e6")
 		)
@@ -6477,6 +6612,15 @@
 			)
 		)
 		(property "Description" "Two pin crystal (ABM7-25.000MHZ-D2Y-T)"
+			(at 50.8 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 50.8 58.42 0)
 			(effects
 				(font
@@ -6622,6 +6766,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 40.64 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "00dd50d3-149d-4615-9e3b-9c80dd07da96")
 		)
@@ -6751,6 +6904,15 @@
 			)
 		)
 		(property "Description" "STMicroelectronics Arm Cortex-M7 MCU, 1024KB flash, 1024KB RAM, 480 MHz, 1.71-3.6V, 82 GPIO, LQFP100"
+			(at 120.65 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 120.65 106.68 0)
 			(effects
 				(font
@@ -7120,6 +7282,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 74.93 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "2fff0412-74c3-4190-b820-029ec19fecc1")
 		)
@@ -7182,6 +7353,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 160.02 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 160.02 36.83 0)
 			(effects
 				(font
@@ -7326,6 +7506,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 213.36 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "988f1b13-6de8-4e97-8332-62b3eff7c5eb")
 		)
@@ -7386,6 +7575,15 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 40.64 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 40.64 100.33 0)
 			(effects
 				(font

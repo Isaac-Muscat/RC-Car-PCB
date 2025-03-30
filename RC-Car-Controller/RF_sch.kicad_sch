@@ -3513,6 +3513,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 238.76 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "888c5c40-0956-4095-b822-6929fc663741")
 		)
@@ -3575,6 +3584,15 @@
 			)
 		)
 		(property "Description" "ESD protection diode, 5.0Vrwm, SOD-923"
+			(at 147.32 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 147.32 35.56 0)
 			(effects
 				(font
@@ -3652,6 +3670,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 171.45 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e136a941-f41d-4a11-8304-e44ef0326bcc")
 		)
@@ -3713,6 +3740,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 218.44 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 218.44 35.56 0)
 			(effects
 				(font
@@ -3790,6 +3826,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 113.03 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "2e89d299-d86c-4ca8-9478-b8f51b38084f")
 		)
@@ -3851,6 +3896,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 113.03 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 113.03 91.44 0)
 			(effects
 				(font
@@ -3928,6 +3982,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 223.52 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "4bc922a6-8f00-49d3-b36c-201e95ba4bad")
 		)
@@ -3989,6 +4052,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 228.6 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 228.6 82.55 0)
 			(effects
 				(font
@@ -4066,6 +4138,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 203.2 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "00733972-26ce-44fb-b4db-ee39eb7be5b5")
 		)
@@ -4126,6 +4207,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 151.13 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 151.13 88.9 0)
 			(effects
 				(font
@@ -4309,6 +4399,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 119.38 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 119.38 99.06 0)
 			(effects
 				(font
@@ -4517,6 +4616,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 113.03 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e56cc92d-507c-4814-8370-d2e66eb24981")
 		)
@@ -4652,6 +4760,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 207.01 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2a6b068b-10b2-45ea-b49a-5206dc28b4e8")
 		)
@@ -4713,6 +4830,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 119.38 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 119.38 68.58 0)
 			(effects
 				(font
@@ -5053,6 +5179,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 187.96 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "87d21462-c1e4-4ded-aa86-0439aa70510c")
 		)
@@ -5122,6 +5257,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 119.38 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "44c65cde-59f2-4b62-93ab-eee7497a4a5f")
 		)
@@ -5183,6 +5327,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 193.04 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 193.04 114.3 0)
 			(effects
 				(font
@@ -5326,6 +5479,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 243.84 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "9dbc0c90-17a0-4a6a-ae9b-e3471b14f821")
 		)
@@ -5452,6 +5614,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
+			(at 208.28 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 208.28 60.96 0)
 			(effects
 				(font
@@ -5595,6 +5766,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 198.12 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "fe1203cf-7574-4389-810a-15cb08b58cfd")
 		)
@@ -5721,6 +5901,15 @@
 			)
 		)
 		(property "Description" "ESD protection diode, 5.0Vrwm, SOD-923"
+			(at 139.7 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 139.7 35.56 0)
 			(effects
 				(font
@@ -5864,6 +6053,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 143.51 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "79c428c8-d9e1-4966-bd2e-a3c92a03e3c5")
 		)
@@ -5933,6 +6131,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 160.02 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bc096da7-9ecf-4400-8396-0757cc26b4c0")
 		)
@@ -5992,6 +6199,15 @@
 			)
 		)
 		(property "Description" "Ferrite bead"
+			(at 196.85 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 196.85 29.21 0)
 			(effects
 				(font
@@ -6069,6 +6285,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 119.38 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "92f54b36-8c48-44d8-982a-3e89facd05a2")
 		)
@@ -6130,6 +6355,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 201.93 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RMCF0603ZT0R00"
 			(at 201.93 57.15 0)
 			(effects
 				(font
@@ -6207,6 +6441,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 186.69 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "11b544c8-b458-4a9f-9081-3815b516842c")
 		)
@@ -6268,6 +6511,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 119.38 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 119.38 83.82 0)
 			(effects
 				(font
@@ -6345,6 +6597,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 195.58 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "47c7d37e-7f72-4381-86bd-7084168e6d98")
 		)
@@ -6406,6 +6667,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 119.38 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 119.38 78.74 0)
 			(effects
 				(font
@@ -6483,6 +6753,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 102.87 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "55956261-f072-4730-83c5-8be2f796e031")
 		)
@@ -6552,6 +6831,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
+			(at 113.03 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "1d48e651-8d6d-4a78-a757-7b221a793863")
 		)
@@ -6613,6 +6901,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 102.87 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 102.87 67.31 0)
 			(effects
 				(font
@@ -6748,6 +7045,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 233.68 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 233.68 82.55 0)
 			(effects
 				(font

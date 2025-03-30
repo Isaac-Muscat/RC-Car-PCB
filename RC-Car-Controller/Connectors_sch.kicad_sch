@@ -2591,6 +2591,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 121.92 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a3931383-6b59-469f-9a24-ed5b95587458")
 		)
@@ -2732,6 +2741,15 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x08, script generated"
+			(at 128.27 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 128.27 137.16 0)
 			(effects
 				(font
@@ -2893,6 +2911,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "CRCW06035K11FKEAC"
+			(at 104.14 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3f5048c5-38d9-4ae9-9f19-cafff2a7f8ea")
 		)
@@ -2955,6 +2982,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 104.14 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 104.14 83.82 0)
 			(effects
 				(font
@@ -3197,6 +3233,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 128.27 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "ad67c9ef-124b-4281-bcc5-3d57504a3b9e")
 		)
@@ -3398,6 +3443,15 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
+			(at 62.23 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -3733,6 +3787,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" ""
+			(at 60.96 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0d5ac9dc-0945-4645-8172-091c5a212ceb")
 		)
@@ -3861,6 +3924,15 @@
 			)
 		)
 		(property "Description" "Resistor"
+			(at 106.68 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "CRCW06035K11FKEAC"
 			(at 106.68 92.71 0)
 			(effects
 				(font
@@ -4195,6 +4267,15 @@
 			)
 		)
 		(property "Description" "small coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+			(at 179.07 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" ""
 			(at 179.07 135.89 0)
 			(effects
 				(font
