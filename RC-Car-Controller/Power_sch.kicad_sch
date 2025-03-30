@@ -3945,7 +3945,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C225K4PACTU"
 			(at 59.69 68.58 0)
 			(effects
 				(font
@@ -5504,7 +5504,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 66.04 138.43 0)
 			(effects
 				(font
@@ -6123,7 +6123,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "220nF/16V"
+		(property "Value" "0.22F/10V"
 			(at 244.856 47.244 0)
 			(effects
 				(font
@@ -6635,7 +6635,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2.2uF/16V"
+		(property "Value" "2.2uF/10V"
 			(at 38.862 57.912 0)
 			(effects
 				(font
@@ -6671,7 +6671,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C225K4PACTU"
 			(at 52.07 57.15 0)
 			(effects
 				(font
@@ -7099,7 +7099,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CL21A226MPQNNNE"
 			(at 125.73 146.05 0)
 			(effects
 				(font
@@ -7141,7 +7141,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1uF/16V"
+		(property "Value" "1uF/10V"
 			(at 267.716 65.024 0)
 			(effects
 				(font
@@ -7177,7 +7177,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CL10B105KO8NNNC"
 			(at 266.7 62.23 0)
 			(effects
 				(font

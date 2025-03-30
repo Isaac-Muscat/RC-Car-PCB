@@ -2749,7 +2749,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "PH2-08-UA"
 			(at 128.27 137.16 0)
 			(effects
 				(font
@@ -3233,7 +3233,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "PH2-08-UA"
 			(at 128.27 160.02 0)
 			(effects
 				(font
@@ -3787,7 +3787,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "B2B-XH-AM"
 			(at 60.96 129.54 0)
 			(effects
 				(font
@@ -4275,7 +4275,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "0732511153"
 			(at 179.07 135.89 0)
 			(effects
 				(font

@@ -3634,7 +3634,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF/10V"
+		(property "Value" "0.1uF/10V"
 			(at 172.466 38.354 0)
 			(effects
 				(font
@@ -3670,7 +3670,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 171.45 35.56 0)
 			(effects
 				(font
@@ -3712,7 +3712,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF/10V"
+		(property "Value" "0.1uF/10V"
 			(at 219.456 38.354 0)
 			(effects
 				(font
@@ -3748,7 +3748,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 218.44 35.56 0)
 			(effects
 				(font
@@ -4215,7 +4215,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "FGH100MABMD"
 			(at 151.13 88.9 0)
 			(effects
 				(font
@@ -5622,7 +5622,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 208.28 60.96 0)
 			(effects
 				(font
@@ -6405,7 +6405,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF/10V"
+		(property "Value" "0.1uF/10V"
 			(at 187.706 38.354 0)
 			(effects
 				(font
@@ -6441,7 +6441,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 186.69 35.56 0)
 			(effects
 				(font
@@ -6597,7 +6597,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 195.58 60.96 0)
 			(effects
 				(font

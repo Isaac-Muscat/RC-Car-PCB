@@ -1166,7 +1166,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 86.36 90.17 0)
 			(effects
 				(font
@@ -1461,7 +1461,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 139.7 99.06 0)
 			(effects
 				(font
@@ -1612,7 +1612,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 139.7 83.82 0)
 			(effects
 				(font

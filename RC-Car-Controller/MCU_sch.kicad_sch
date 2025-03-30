@@ -4855,7 +4855,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 177.8 36.83 0)
 			(effects
 				(font
@@ -4934,7 +4934,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 195.58 36.83 0)
 			(effects
 				(font
@@ -5234,7 +5234,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C180J5GACTU"
 			(at 59.69 62.23 0)
 			(effects
 				(font
@@ -5863,7 +5863,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 248.92 36.83 0)
 			(effects
 				(font
@@ -6016,7 +6016,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 83.82 48.26 0)
 			(effects
 				(font
@@ -6240,7 +6240,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C225K4PACTU"
 			(at 69.85 160.02 0)
 			(effects
 				(font
@@ -6385,7 +6385,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C225K4PACTU"
 			(at 87.63 160.02 0)
 			(effects
 				(font
@@ -6464,7 +6464,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C180J5GACTU"
 			(at 48.26 104.14 0)
 			(effects
 				(font
@@ -6543,7 +6543,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 231.14 36.83 0)
 			(effects
 				(font
@@ -6766,7 +6766,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C180J5GACTU"
 			(at 40.64 62.23 0)
 			(effects
 				(font
@@ -6912,7 +6912,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "STM32H743VGT6"
 			(at 120.65 106.68 0)
 			(effects
 				(font
@@ -7361,7 +7361,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 160.02 36.83 0)
 			(effects
 				(font
@@ -7506,7 +7506,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 213.36 36.83 0)
 			(effects
 				(font
