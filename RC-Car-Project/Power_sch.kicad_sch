@@ -5842,7 +5842,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 177.8 149.86 0)
 			(effects
 				(font

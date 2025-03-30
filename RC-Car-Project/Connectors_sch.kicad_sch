@@ -5119,7 +5119,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CRCW06035K11FKEAC"
 			(at 198.12 64.77 0)
 			(effects
 				(font
@@ -6824,7 +6824,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CRCW06035K11FKEAC"
 			(at 200.66 64.77 0)
 			(effects
 				(font
@@ -7380,7 +7380,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 96.52 60.96 0)
 			(effects
 				(font
@@ -7669,7 +7669,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 76.2 60.96 0)
 			(effects
 				(font

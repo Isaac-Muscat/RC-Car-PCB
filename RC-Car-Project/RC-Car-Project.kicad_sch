@@ -2088,7 +2088,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603JR-071K5L"
 			(at 161.29 35.56 0)
 			(effects
 				(font
@@ -2167,7 +2167,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RMCF0603FT220R"
 			(at 196.85 35.56 0)
 			(effects
 				(font
@@ -2378,7 +2378,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603JR-071K5L"
 			(at 185.42 35.56 0)
 			(effects
 				(font
@@ -2589,7 +2589,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RMCF0603FT220R"
 			(at 173.99 35.56 0)
 			(effects
 				(font
