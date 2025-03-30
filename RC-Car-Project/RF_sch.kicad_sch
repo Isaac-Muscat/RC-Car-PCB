@@ -3565,7 +3565,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 199.39 102.87 0)
 			(effects
 				(font
@@ -3709,7 +3709,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 81.28 111.76 0)
 			(effects
 				(font
@@ -3787,7 +3787,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 71.12 87.63 0)
 			(effects
 				(font
@@ -3865,7 +3865,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 81.28 101.6 0)
 			(effects
 				(font
@@ -4217,7 +4217,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "252e3535-816b-4dce-96ff-8f4dc5cb9be0")
 		(property "Reference" "C34"
 			(at 179.07 81.28 0)
@@ -4342,7 +4342,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 204.47 102.87 0)
 			(effects
 				(font
@@ -4420,7 +4420,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 171.45 134.62 0)
 			(effects
 				(font
@@ -4498,7 +4498,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 87.63 88.9 0)
 			(effects
 				(font
@@ -4576,7 +4576,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 209.55 102.87 0)
 			(effects
 				(font
@@ -4683,7 +4683,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF/10V"
+		(property "Value" "0.1uF/10V"
 			(at 187.706 58.674 0)
 			(effects
 				(font
@@ -4719,7 +4719,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 186.69 55.88 0)
 			(effects
 				(font
@@ -4797,7 +4797,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 189.23 102.87 0)
 			(effects
 				(font
@@ -5072,7 +5072,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 81.28 116.84 0)
 			(effects
 				(font
@@ -5150,7 +5150,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 87.63 99.06 0)
 			(effects
 				(font
@@ -5228,7 +5228,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 194.31 102.87 0)
 			(effects
 				(font
@@ -5306,7 +5306,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RMCF0603ZT0R00"
 			(at 170.18 77.47 0)
 			(effects
 				(font
@@ -5450,7 +5450,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CL10A106KP8NNNC"
 			(at 175.26 55.88 0)
 			(effects
 				(font
@@ -5528,7 +5528,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 87.63 104.14 0)
 			(effects
 				(font
@@ -5685,7 +5685,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 214.63 102.87 0)
 			(effects
 				(font
@@ -5828,7 +5828,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 87.63 109.22 0)
 			(effects
 				(font
@@ -6047,7 +6047,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 87.63 119.38 0)
 			(effects
 				(font
@@ -6089,7 +6089,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF/10V"
+		(property "Value" "0.1uF/10V"
 			(at 155.956 58.674 0)
 			(effects
 				(font
@@ -6125,7 +6125,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 154.94 55.88 0)
 			(effects
 				(font
@@ -6203,7 +6203,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 87.63 114.3 0)
 			(effects
 				(font
@@ -6281,7 +6281,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 156.21 134.62 0)
 			(effects
 				(font
@@ -6437,7 +6437,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CL10A106KP8NNNC"
 			(at 128.27 55.88 0)
 			(effects
 				(font
@@ -6534,7 +6534,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "c94ebe83-cc62-4fa3-8688-cb77d9f4578e")
 		(property "Reference" "C32"
 			(at 166.624 81.534 0)
@@ -6702,7 +6702,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF/10V"
+		(property "Value" "0.1uF/10V"
 			(at 140.716 58.674 0)
 			(effects
 				(font
@@ -6738,7 +6738,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 139.7 55.88 0)
 			(effects
 				(font
@@ -6816,7 +6816,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 71.12 97.79 0)
 			(effects
 				(font
@@ -6960,7 +6960,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 161.29 134.62 0)
 			(effects
 				(font
@@ -7104,7 +7104,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 166.37 134.62 0)
 			(effects
 				(font
@@ -7182,7 +7182,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 81.28 106.68 0)
 			(effects
 				(font

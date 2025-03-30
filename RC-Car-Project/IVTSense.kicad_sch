@@ -3927,7 +3927,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "WSL27262L000FEB"
+		(property "Value" "0.002 OHM"
 			(at 200.66 87.6299 90)
 			(effects
 				(font
@@ -3965,7 +3965,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "WSL27262L000FEB"
 			(at 195.58 80.01 0)
 			(effects
 				(font
@@ -4048,7 +4048,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RMCF0603FT10R0"
 			(at 186.69 91.44 0)
 			(effects
 				(font
@@ -4327,7 +4327,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 185.42 133.35 0)
 			(effects
 				(font
@@ -4721,7 +4721,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.1uF/25V"
+		(property "Value" "0.1uF/10V"
 			(at 172.72 87.6299 0)
 			(effects
 				(font
@@ -4757,7 +4757,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 168.91 86.36 0)
 			(effects
 				(font
@@ -5136,7 +5136,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RMCF0603FT10R0"
 			(at 186.69 82.55 0)
 			(effects
 				(font
@@ -5378,7 +5378,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RC0603FR-0710KL"
 			(at 96.52 87.63 0)
 			(effects
 				(font
@@ -5523,7 +5523,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 156.21 100.33 0)
 			(effects
 				(font
