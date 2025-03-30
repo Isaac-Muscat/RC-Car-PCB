@@ -3613,7 +3613,7 @@
 	)
 	(text_box "Low Side Current Sense\n"
 		(exclude_from_sim no)
-		(at 154.94 113.03 0)
+		(at 162.56 105.41 0)
 		(size 26.035 4.445)
 		(stroke
 			(width 0)
@@ -4902,7 +4902,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "INA229AQDGSRQ1"
 			(at 113.03 86.36 0)
 			(effects
 				(font
@@ -5206,7 +5206,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "IC ADC 8BIT SAR 8VSSOP"
 			(at 163.83 132.08 0)
 			(effects
 				(font
@@ -5215,7 +5215,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "ADC082S021CIMM/NOPB"
 			(at 163.83 132.08 0)
 			(effects
 				(font

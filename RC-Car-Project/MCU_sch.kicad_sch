@@ -5951,7 +5951,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "STM32H743VGT6"
 			(at 139.7 95.25 0)
 			(effects
 				(font

@@ -4375,7 +4375,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "PH2-08-UA"
 			(at 128.27 100.33 0)
 			(effects
 				(font
@@ -4748,7 +4748,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "B2B-XH-AM"
 			(at 80.01 179.07 0)
 			(effects
 				(font
@@ -4827,7 +4827,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "B2B-XH-AM"
 			(at 80.01 171.45 0)
 			(effects
 				(font
@@ -5405,7 +5405,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER" "GCT"
+		(property "MANUFACTURER" "USB4120-03-C"
 			(at 173.99 50.8 0)
 			(effects
 				(font
@@ -5635,7 +5635,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "B2B-XH-AM"
 			(at 80.01 153.67 0)
 			(effects
 				(font
@@ -5848,7 +5848,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "B2B-XH-AM"
 			(at 80.01 138.43 0)
 			(effects
 				(font
@@ -5925,7 +5925,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "PPPC092LFBN-RC"
 			(at 85.09 44.45 0)
 			(effects
 				(font
@@ -6265,7 +6265,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "PH2-08-UA"
 			(at 128.27 123.19 0)
 			(effects
 				(font
@@ -6362,7 +6362,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "B2B-XH-AM"
 			(at 80.01 161.29 0)
 			(effects
 				(font
@@ -6443,7 +6443,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "USBLC6-2SC6"
 			(at 209.55 48.26 0)
 			(effects
 				(font
@@ -6613,7 +6613,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "B2B-XH-AM"
 			(at 181.61 110.49 0)
 			(effects
 				(font
@@ -7236,7 +7236,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "B2B-XH-AM"
 			(at 80.01 146.05 0)
 			(effects
 				(font
@@ -7590,7 +7590,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "0732511153"
 			(at 179.07 99.06 0)
 			(effects
 				(font
