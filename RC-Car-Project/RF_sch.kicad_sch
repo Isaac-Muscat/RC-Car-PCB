@@ -4007,7 +4007,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "FGH100MABMD"
 			(at 119.38 109.22 0)
 			(effects
 				(font
@@ -5904,7 +5904,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "HCB 1608KF-181T20"
 			(at 165.1 49.53 0)
 			(effects
 				(font
