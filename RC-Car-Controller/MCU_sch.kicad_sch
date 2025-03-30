@@ -7583,7 +7583,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "1825910-6"
 			(at 40.64 100.33 0)
 			(effects
 				(font

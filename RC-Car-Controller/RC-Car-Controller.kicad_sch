@@ -1515,7 +1515,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "LTST-C190GKT"
 			(at 180.34 41.91 0)
 			(effects
 				(font
@@ -2028,7 +2028,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "60ohm"
+		(property "Value" "220ohm"
 			(at 198.12 35.5599 0)
 			(effects
 				(font
@@ -2064,7 +2064,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "RMCF0603FT62R0"
+		(property "MANUF_PN" "RMCF0603FT220R"
 			(at 195.58 34.29 0)
 			(effects
 				(font
@@ -2767,7 +2767,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "LTST-C190GKT"
 			(at 166.37 41.91 0)
 			(effects
 				(font
@@ -2987,7 +2987,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "LTL-4293"
 			(at 195.58 41.91 0)
 			(effects
 				(font

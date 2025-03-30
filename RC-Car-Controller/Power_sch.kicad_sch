@@ -2557,6 +2557,12 @@
 		(uuid "87f61921-1b80-45ea-8add-d0b70f054690")
 	)
 	(junction
+		(at 266.7 55.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "966f59b7-f6e2-4390-a89b-3283ea13bea8")
+	)
+	(junction
 		(at 64.77 68.58)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2609,12 +2615,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "db20204e-055e-40c6-b919-1a5a4963348e")
-	)
-	(junction
-		(at 266.7 55.88)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e9939396-14e0-4f3d-918e-42b92de131b3")
 	)
 	(junction
 		(at 76.2 149.86)
@@ -2733,16 +2733,6 @@
 			(type default)
 		)
 		(uuid "1380951a-fc8f-4043-9e39-69fead305fca")
-	)
-	(wire
-		(pts
-			(xy 243.84 55.88) (xy 266.7 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1c366262-e03f-4b5a-8820-76844f145411")
 	)
 	(wire
 		(pts
@@ -3116,6 +3106,16 @@
 	)
 	(wire
 		(pts
+			(xy 243.84 55.88) (xy 266.7 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78520834-9f38-47e2-bbf5-02d30a2521f2")
+	)
+	(wire
+		(pts
 			(xy 69.85 149.86) (xy 76.2 149.86)
 		)
 		(stroke
@@ -3276,16 +3276,6 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 55.88) (xy 266.7 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aa453008-199c-410f-bfa7-9b20614f0b58")
-	)
-	(wire
-		(pts
 			(xy 63.5 83.82) (xy 64.77 83.82)
 		)
 		(stroke
@@ -3333,6 +3323,16 @@
 			(type default)
 		)
 		(uuid "cb79c48c-dfa8-43ba-8709-8442384e49db")
+	)
+	(wire
+		(pts
+			(xy 266.7 40.64) (xy 266.7 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d27e07a5-5cef-4767-a807-b4ff2ef3bf00")
 	)
 	(wire
 		(pts
@@ -3406,6 +3406,16 @@
 	)
 	(wire
 		(pts
+			(xy 52.07 35.56) (xy 52.07 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea3611b7-8b12-49fd-ba09-8ae0dda22a5f")
+	)
+	(wire
+		(pts
 			(xy 176.53 55.88) (xy 177.8 55.88)
 		)
 		(stroke
@@ -3413,16 +3423,6 @@
 			(type default)
 		)
 		(uuid "eb8827a6-2c4d-471c-870e-2896ff2b0064")
-	)
-	(wire
-		(pts
-			(xy 52.07 40.64) (xy 52.07 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ecdf45f3-3970-4506-8ffe-834e4edd0437")
 	)
 	(wire
 		(pts
@@ -5245,7 +5245,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 266.7 48.26 0)
+		(at 266.7 40.64 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5253,7 +5253,7 @@
 		(dnp no)
 		(uuid "6e62ef76-535a-4489-a914-5a737f5f2ade")
 		(property "Reference" "#PWR055"
-			(at 266.7 52.07 0)
+			(at 266.7 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5262,7 +5262,7 @@
 			)
 		)
 		(property "Value" "VDD_BATT"
-			(at 262.128 44.196 0)
+			(at 262.128 36.576 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5271,7 +5271,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 266.7 48.26 0)
+			(at 266.7 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5280,7 +5280,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 266.7 48.26 0)
+			(at 266.7 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5289,7 +5289,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3V3\""
-			(at 266.7 48.26 0)
+			(at 266.7 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5788,7 +5788,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "LTST-C190GKT"
 			(at 43.18 83.82 0)
 			(effects
 				(font
@@ -6986,7 +6986,7 @@
 				)
 			)
 		)
-		(property "Value" "1kohm"
+		(property "Value" "220ohm"
 			(at 59.69 85.852 90)
 			(effects
 				(font
@@ -7021,7 +7021,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "RMCF0603FT1K00"
+		(property "MANUF_PN" "RMCF0603FT220R"
 			(at 59.69 83.82 0)
 			(effects
 				(font

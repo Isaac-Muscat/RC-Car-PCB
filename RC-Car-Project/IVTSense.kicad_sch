@@ -1308,6 +1308,329 @@
 				)
 			)
 		)
+		(symbol "WSLP59312L000FEA:WSLP59312L000FEA"
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 5.715 3.81 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Value" "WSLP59312L000FEA"
+				(at 6.35 -3.81 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(property "Footprint" "RES_WSLP5931_.002OHM_VIS"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "WSLP59312L000FEA"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "WSLP59312L000FEA"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "RES_WSLP5931_.002OHM_VIS RES_WSLP5931_.002OHM_VIS-M RES_WSLP5931_.002OHM_VIS-L"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "WSLP59312L000FEA_1_1"
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 3.175 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.175 1.27) (xy 4.445 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.445 -1.27) (xy 5.715 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.715 1.27) (xy 6.985 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.985 -1.27) (xy 8.255 1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 8.255 1.27) (xy 9.525 -1.27)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 9.525 -1.27) (xy 10.16 0)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at 0 0 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 12.7 0 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "WSLP59312L000FEA_1_2"
+				(polyline
+					(pts
+						(xy -1.27 3.175) (xy 1.27 4.445)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 5.715) (xy 1.27 6.985)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 8.255) (xy 1.27 9.525)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy -1.27 3.175)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 4.445) (xy -1.27 5.715)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 6.985) (xy -1.27 8.255)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 9.525) (xy 0 10.16)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at 0 12.7 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 0 0 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "power:+3V3"
 			(power)
 			(pin_numbers hide)
@@ -1622,22 +1945,16 @@
 		)
 	)
 	(junction
-		(at 168.91 91.44)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0118844b-a070-410f-930a-cbf469c8c02a")
-	)
-	(junction
-		(at 168.91 82.55)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3c096889-2b5c-41c4-8a65-be2a5790034f")
-	)
-	(junction
 		(at 87.63 124.46)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7691647f-fd7d-45a5-9235-5fba4812a47d")
+	)
+	(junction
+		(at 168.91 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7c98ac0c-c95c-41a3-b37d-5a2d97a9bffe")
 	)
 	(junction
 		(at 185.42 129.54)
@@ -1646,10 +1963,28 @@
 		(uuid "7d5bcdbd-a00d-4467-8ded-323e9a326462")
 	)
 	(junction
+		(at 168.91 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "877173fe-26b1-4532-a093-729460324610")
+	)
+	(junction
+		(at 195.58 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ada4c27b-f3a3-4fdc-a167-9f9e956272b2")
+	)
+	(junction
 		(at 156.21 96.52)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b1f20b5a-4c9f-40ee-b638-60b9b64446da")
+	)
+	(junction
+		(at 195.58 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b677c889-e28b-44c5-ba7a-2a44fbc36ff1")
 	)
 	(junction
 		(at 96.52 91.44)
@@ -1675,13 +2010,13 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 82.55) (xy 195.58 82.55)
+			(xy 168.91 81.28) (xy 168.91 83.82)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "0baa5c10-2904-483b-8f33-2f51284cc1ad")
+		(uuid "07855d9c-d341-49de-b61d-d2c3ff91454c")
 	)
 	(wire
 		(pts
@@ -1695,6 +2030,16 @@
 	)
 	(wire
 		(pts
+			(xy 168.91 81.28) (xy 182.88 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fdd526e-4a7c-4e14-a489-6af26a9383e3")
+	)
+	(wire
+		(pts
 			(xy 153.67 86.36) (xy 166.37 86.36)
 		)
 		(stroke
@@ -1702,16 +2047,6 @@
 			(type default)
 		)
 		(uuid "294ba10c-2eb1-492a-9ebf-69b6840e9df4")
-	)
-	(wire
-		(pts
-			(xy 190.5 91.44) (xy 195.58 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2a4db191-1f20-4d84-92b6-b34358821e8e")
 	)
 	(wire
 		(pts
@@ -1735,6 +2070,16 @@
 	)
 	(wire
 		(pts
+			(xy 195.58 77.47) (xy 195.58 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "35e41751-a397-4430-afe4-1662de998436")
+	)
+	(wire
+		(pts
 			(xy 153.67 88.9) (xy 166.37 88.9)
 		)
 		(stroke
@@ -1755,7 +2100,7 @@
 	)
 	(wire
 		(pts
-			(xy 168.91 91.44) (xy 182.88 91.44)
+			(xy 168.91 93.98) (xy 182.88 93.98)
 		)
 		(stroke
 			(width 0)
@@ -1805,16 +2150,6 @@
 	)
 	(wire
 		(pts
-			(xy 168.91 82.55) (xy 182.88 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a2fbd83a-a2a9-44aa-985e-d26042a1725e")
-	)
-	(wire
-		(pts
 			(xy 163.83 124.46) (xy 200.66 124.46)
 		)
 		(stroke
@@ -1835,17 +2170,7 @@
 	)
 	(wire
 		(pts
-			(xy 168.91 90.17) (xy 168.91 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cc8fd900-6027-4619-ab64-fe10fa41ddf0")
-	)
-	(wire
-		(pts
-			(xy 166.37 88.9) (xy 166.37 91.44)
+			(xy 166.37 88.9) (xy 166.37 93.98)
 		)
 		(stroke
 			(width 0)
@@ -1865,7 +2190,17 @@
 	)
 	(wire
 		(pts
-			(xy 166.37 86.36) (xy 166.37 82.55)
+			(xy 168.91 91.44) (xy 168.91 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e81d4e2a-c5da-4140-bc3b-25773ce65b80")
+	)
+	(wire
+		(pts
+			(xy 166.37 86.36) (xy 166.37 81.28)
 		)
 		(stroke
 			(width 0)
@@ -1875,7 +2210,27 @@
 	)
 	(wire
 		(pts
-			(xy 166.37 91.44) (xy 168.91 91.44)
+			(xy 190.5 81.28) (xy 195.58 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eed38ab7-6697-4279-b8da-4e1271f40051")
+	)
+	(wire
+		(pts
+			(xy 190.5 93.98) (xy 195.58 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f136fe44-5bda-41f2-a2b0-539922df7503")
+	)
+	(wire
+		(pts
+			(xy 166.37 93.98) (xy 168.91 93.98)
 		)
 		(stroke
 			(width 0)
@@ -1885,7 +2240,7 @@
 	)
 	(wire
 		(pts
-			(xy 166.37 82.55) (xy 168.91 82.55)
+			(xy 166.37 81.28) (xy 168.91 81.28)
 		)
 		(stroke
 			(width 0)
@@ -1902,16 +2257,6 @@
 			(type default)
 		)
 		(uuid "faa06470-a1fc-40bc-9fea-8c76fa2fb1df")
-	)
-	(wire
-		(pts
-			(xy 195.58 91.44) (xy 195.58 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ffcf675f-ed79-4b30-9fd6-b5547ed91bab")
 	)
 	(image
 		(at 151.765 48.895)
@@ -3910,16 +4255,16 @@
 	)
 	(symbol
 		(lib_id "WSL27262L000FEB:WSL27262L000FEB")
-		(at 195.58 80.01 270)
+		(at 245.11 80.01 270)
 		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "2e2352c6-fd12-41b9-a24d-a3e41f7a1255")
 		(property "Reference" "R45"
-			(at 200.66 85.0899 90)
+			(at 250.19 85.0899 90)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -3928,7 +4273,7 @@
 			)
 		)
 		(property "Value" "0.002 OHM"
-			(at 200.66 87.6299 90)
+			(at 250.19 87.6299 90)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -3937,7 +4282,7 @@
 			)
 		)
 		(property "Footprint" "footprints:WSL2726_VIS"
-			(at 195.58 80.01 0)
+			(at 245.11 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3947,7 +4292,7 @@
 			)
 		)
 		(property "Datasheet" "WSL27262L000FEB"
-			(at 195.58 80.01 0)
+			(at 245.11 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3957,7 +4302,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 195.58 80.01 0)
+			(at 245.11 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3966,7 +4311,7 @@
 			)
 		)
 		(property "MANUF_PN" "WSL27262L000FEB"
-			(at 195.58 80.01 0)
+			(at 245.11 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3997,7 +4342,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 186.69 91.44 90)
+		(at 186.69 93.98 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4006,14 +4351,6 @@
 		(fields_autoplaced yes)
 		(uuid "3026167e-949b-4ba7-8cfd-1dd09ddca28a")
 		(property "Reference" "R44"
-			(at 186.69 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10ohm"
 			(at 186.69 87.63 90)
 			(effects
 				(font
@@ -4021,8 +4358,16 @@
 				)
 			)
 		)
+		(property "Value" "10ohm"
+			(at 186.69 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 186.69 93.218 90)
+			(at 186.69 95.758 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4031,7 +4376,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 186.69 91.44 0)
+			(at 186.69 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4040,7 +4385,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 186.69 91.44 0)
+			(at 186.69 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4049,7 +4394,7 @@
 			)
 		)
 		(property "MANUF_PN" "RMCF0603FT10R0"
-			(at 186.69 91.44 0)
+			(at 186.69 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4134,6 +4479,87 @@
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
 					(reference "#PWR0109")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "WSLP59312L000FEA:WSLP59312L000FEA")
+		(at 195.58 81.28 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4b31fc35-c4be-43ef-9955-83ed71754028")
+		(property "Reference" "R73"
+			(at 198.12 86.3599 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0.002 OHM"
+			(at 198.12 88.8999 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "RES_WSLP5931_.002OHM_VIS"
+			(at 195.58 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "WSLP59312L000FEA"
+			(at 195.58 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 195.58 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "WSLP59312L000FEA"
+			(at 195.58 81.28 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b2bb56cf-38e4-415d-823e-245630b0c351")
+		)
+		(pin "2"
+			(uuid "344c7df5-b446-408c-8548-d2589aeef074")
+		)
+		(instances
+			(project ""
+				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6/9035ce50-cc35-47ce-85b3-06db8b07dac9"
+					(reference "R73")
 					(unit 1)
 				)
 			)
@@ -4632,7 +5058,7 @@
 	)
 	(symbol
 		(lib_id "SF-3812F6000T-2:SF-3812F6000T-2")
-		(at 195.58 105.41 90)
+		(at 195.58 104.14 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4641,7 +5067,7 @@
 		(fields_autoplaced yes)
 		(uuid "a15fb048-a1cc-4248-9037-20a3366e34cf")
 		(property "Reference" "F1"
-			(at 198.12 99.0599 90)
+			(at 198.12 97.7899 90)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -4650,7 +5076,7 @@
 			)
 		)
 		(property "Value" "SF-3812F6000T-2"
-			(at 198.12 101.5999 90)
+			(at 198.12 100.3299 90)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -4659,7 +5085,7 @@
 			)
 		)
 		(property "Footprint" "FUS_SF-3812F_BRN"
-			(at 195.58 105.41 0)
+			(at 195.58 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4669,7 +5095,7 @@
 			)
 		)
 		(property "Datasheet" "SF-3812F6000T-2"
-			(at 195.58 105.41 0)
+			(at 195.58 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4679,7 +5105,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 195.58 105.41 0)
+			(at 195.58 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4688,7 +5114,7 @@
 			)
 		)
 		(property "MANUF_PN" "SF-3812F6000T-2"
-			(at 195.58 105.41 0)
+			(at 195.58 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4713,7 +5139,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 168.91 86.36 0)
+		(at 168.91 87.63 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4722,7 +5148,7 @@
 		(fields_autoplaced yes)
 		(uuid "b5eda797-5967-4413-b665-a5f019afb893")
 		(property "Reference" "C39"
-			(at 172.72 85.0899 0)
+			(at 172.72 86.3599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4731,7 +5157,7 @@
 			)
 		)
 		(property "Value" "0.1uF/10V"
-			(at 172.72 87.6299 0)
+			(at 172.72 88.8999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4740,7 +5166,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 169.8752 90.17 0)
+			(at 169.8752 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4749,7 +5175,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 168.91 86.36 0)
+			(at 168.91 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4758,7 +5184,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 168.91 86.36 0)
+			(at 168.91 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4767,7 +5193,7 @@
 			)
 		)
 		(property "MANUF_PN" "C0603C104K5RAC7411"
-			(at 168.91 86.36 0)
+			(at 168.91 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4792,7 +5218,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 195.58 105.41 0)
+		(at 195.58 104.14 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4801,7 +5227,7 @@
 		(fields_autoplaced yes)
 		(uuid "ba489689-5514-4534-96fa-21e7d592d56e")
 		(property "Reference" "#PWR0117"
-			(at 195.58 111.76 0)
+			(at 195.58 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4810,7 +5236,7 @@
 			)
 		)
 		(property "Value" "GND_BATT"
-			(at 195.58 110.49 0)
+			(at 195.58 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4818,7 +5244,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 195.58 105.41 0)
+			(at 195.58 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4827,7 +5253,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 195.58 105.41 0)
+			(at 195.58 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4836,7 +5262,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 195.58 105.41 0)
+			(at 195.58 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5094,7 +5520,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 186.69 82.55 90)
+		(at 186.69 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5103,7 +5529,7 @@
 		(fields_autoplaced yes)
 		(uuid "ebe70ce3-5c3e-48ca-be9a-56189bf63ad8")
 		(property "Reference" "R43"
-			(at 186.69 76.2 90)
+			(at 186.69 74.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5111,7 +5537,7 @@
 			)
 		)
 		(property "Value" "10ohm"
-			(at 186.69 78.74 90)
+			(at 186.69 77.47 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5119,7 +5545,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 186.69 84.328 90)
+			(at 186.69 83.058 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5128,7 +5554,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 186.69 82.55 0)
+			(at 186.69 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5137,7 +5563,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 186.69 82.55 0)
+			(at 186.69 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5146,7 +5572,7 @@
 			)
 		)
 		(property "MANUF_PN" "RMCF0603FT10R0"
-			(at 186.69 82.55 0)
+			(at 186.69 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
