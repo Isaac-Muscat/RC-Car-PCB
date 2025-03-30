@@ -688,12 +688,6 @@
           "label": "Sim.Device",
           "name": "Sim.Device",
           "show": false
-        },
-        {
-          "group_by": false,
-          "label": "MANUF_PN",
-          "name": "MANUF_PN",
-          "show": true
         }
       ],
       "filter_string": "",

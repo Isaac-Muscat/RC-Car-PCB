@@ -5303,15 +5303,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 232.41 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "ee6c14d5-e236-4622-8880-436bec16d062")
 		)
@@ -5515,15 +5506,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 179.07 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "5be71009-f3a1-491a-85b3-3c4116ea46a0")
 		)
@@ -5652,15 +5634,6 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 196.85 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 196.85 25.4 0)
 			(effects
 				(font
@@ -5871,15 +5844,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 214.63 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "43c405f4-5e8c-4f43-be34-ed84f34b4e99")
 		)
@@ -5943,15 +5907,6 @@
 			)
 		)
 		(property "Description" "STMicroelectronics Arm Cortex-M7 MCU, 1024KB flash, 1024KB RAM, 480 MHz, 1.71-3.6V, 82 GPIO, LQFP100"
-			(at 139.7 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 139.7 95.25 0)
 			(effects
 				(font
@@ -6324,15 +6279,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 106.68 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "669e94e2-ce3e-4589-86f6-b9446252c434")
 		)
@@ -6395,15 +6341,6 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 67.31 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 67.31 85.09 0)
 			(effects
 				(font
@@ -6680,15 +6617,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 105.41 36.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "8e4bb357-968b-4cda-8471-2d7f18aec405")
 		)
@@ -6759,15 +6687,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 96.52 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "ba4d7652-e91a-4108-8575-949b43c46f9c")
 		)
@@ -6830,15 +6749,6 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 88.9 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 88.9 148.59 0)
 			(effects
 				(font
@@ -6983,15 +6893,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 78.74 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "eb58c86f-3a03-40a9-b123-71228fa67255")
 		)
@@ -7062,15 +6963,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 59.69 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "6191c76a-8a8c-4a67-af6a-998f96ebbfd9")
 		)
@@ -7131,15 +7023,6 @@
 			)
 		)
 		(property "Description" "Two pin crystal (ABM7-25.000MHZ-D2Y-T)"
-			(at 69.85 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 69.85 46.99 0)
 			(effects
 				(font
@@ -7284,15 +7167,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 67.31 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "960533c3-d6ea-4309-9f5a-c46e37058430")
 		)
@@ -7363,15 +7237,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 250.19 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "9c6e98a5-0885-49d4-9382-e22309ae87cc")
 		)
@@ -7432,15 +7297,6 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 59.69 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 59.69 88.9 0)
 			(effects
 				(font
@@ -7519,15 +7375,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 267.97 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "9a8b545f-ea89-4fdb-93b6-8762ba0ed53a")
 		)
@@ -7587,15 +7434,6 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 96.52 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 96.52 34.29 0)
 			(effects
 				(font

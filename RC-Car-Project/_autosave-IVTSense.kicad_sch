@@ -3857,7 +3857,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "FUS_SF-3812F_BRN"
+		(property "Footprint" "SF-3812F6000T-2:FUS_SF-3812F_BRN"
 			(at 195.58 105.41 0)
 			(effects
 				(font

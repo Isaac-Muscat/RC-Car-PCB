@@ -4375,15 +4375,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 128.27 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "5"
 			(uuid "d94e3e1d-2514-449c-abd4-eef856f32f5d")
 		)
@@ -4464,15 +4455,6 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated"
-			(at 78.74 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 78.74 119.38 0)
 			(effects
 				(font
@@ -4748,15 +4730,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 80.01 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "874a6bf8-5ac3-4a41-9f5f-1985f28f866f")
 		)
@@ -4819,15 +4792,6 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 80.01 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 80.01 171.45 0)
 			(effects
 				(font
@@ -4973,15 +4937,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 78.74 128.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "3736c924-da91-45ea-89d7-e57b507ee53d")
 		)
@@ -5111,15 +5066,6 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 198.12 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 198.12 64.77 0)
 			(effects
 				(font
@@ -5435,15 +5381,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 173.99 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "A4"
 			(uuid "b7274371-57ba-4949-a6a8-94e2e68c3707")
 		)
@@ -5627,15 +5564,6 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 80.01 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 80.01 153.67 0)
 			(effects
 				(font
@@ -5848,15 +5776,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 80.01 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "e239a618-b4d3-4c4f-910c-f8013cc335d5")
 		)
@@ -5917,15 +5836,6 @@
 			)
 		)
 		(property "Description" "Generic connector, double row, 02x09, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 85.09 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 85.09 44.45 0)
 			(effects
 				(font
@@ -6044,15 +5954,6 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated"
-			(at 78.74 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 78.74 104.14 0)
 			(effects
 				(font
@@ -6265,15 +6166,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 128.27 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "5"
 			(uuid "079ed3c4-46a5-408f-b916-932dbfb00624")
 		)
@@ -6362,15 +6254,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 80.01 161.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "5e5b8b21-48ef-4932-b0d1-5af9cddeee0b")
 		)
@@ -6435,15 +6318,6 @@
 			)
 		)
 		(property "Description" "Very low capacitance ESD protection diode, 2 data-line, SOT-23-6"
-			(at 209.55 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 209.55 48.26 0)
 			(effects
 				(font
@@ -6534,15 +6408,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 78.74 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "bcb6c08c-d519-4a32-81f9-6ce8ab0fb3b4")
 		)
@@ -6605,15 +6470,6 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 181.61 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 181.61 110.49 0)
 			(effects
 				(font
@@ -6816,15 +6672,6 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 200.66 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 200.66 64.77 0)
 			(effects
 				(font
@@ -7236,15 +7083,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 80.01 146.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "1af3e0d5-249c-47ee-ab14-7e929ed949a0")
 		)
@@ -7372,15 +7210,6 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 96.52 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 96.52 60.96 0)
 			(effects
 				(font
@@ -7590,15 +7419,6 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
-			(at 179.07 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "9a2a66dc-8289-48a6-8a7c-4f5d5ecbb631")
 		)
@@ -7661,15 +7481,6 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 76.2 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MANUF_PN" ""
 			(at 76.2 60.96 0)
 			(effects
 				(font
