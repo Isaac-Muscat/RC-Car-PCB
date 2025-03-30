@@ -3838,7 +3838,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47uF/16V"
+		(property "Value" "47uF/10V"
 			(at 204.47 90.1699 0)
 			(effects
 				(font
@@ -4176,7 +4176,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "C1210X7S101-475KNE"
+		(property "MANUF_PN" "CL32B475KCVZW6E"
 			(at 76.2 81.28 0)
 			(effects
 				(font
@@ -4766,7 +4766,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47uF/16V"
+		(property "Value" "47uF/10V"
 			(at 191.77 90.1699 0)
 			(effects
 				(font
@@ -5374,7 +5374,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF/50V"
+		(property "Value" "10uF/10V"
 			(at 193.04 140.9699 0)
 			(effects
 				(font
@@ -5885,7 +5885,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF/50V"
+		(property "Value" "10uF/10V"
 			(at 205.74 140.9699 0)
 			(effects
 				(font
@@ -6409,7 +6409,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" "C1210X7S101-475KNE"
+		(property "MANUF_PN" "CL32B475KCVZW6E"
 			(at 77.47 132.08 0)
 			(effects
 				(font
