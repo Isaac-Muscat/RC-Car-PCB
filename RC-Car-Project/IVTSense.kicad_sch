@@ -3848,7 +3848,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "100kohm"
 			(at 90.17 130.8099 0)
 			(effects
 				(font
@@ -3884,7 +3884,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RMCF0603FT100K"
 			(at 87.63 129.54 0)
 			(effects
 				(font
@@ -4570,7 +4570,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "100kohm"
 			(at 203.2 129.5399 0)
 			(effects
 				(font
@@ -4606,7 +4606,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "RMCF0603FT100K"
 			(at 200.66 128.27 0)
 			(effects
 				(font

@@ -1905,7 +1905,7 @@
 		(instances
 			(project "RC-Car-Project"
 				(path "/ba870fd1-751d-4755-8e1a-1ea86ca9e2f6"
-					(reference "#PWR07")
+					(reference "TP6")
 					(unit 1)
 				)
 			)
@@ -2197,7 +2197,7 @@
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "21b61fae-5146-41d3-b0cc-388a43fca4e1")
+		(uuid "21b61fae-5146-41d3-b0cc-388a43fca4e2")
 		(property "Reference" "D1"
 			(at 189.23 43.4974 90)
 			(effects
@@ -2421,7 +2421,7 @@
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "38f8499b-eab8-4851-ab78-1df642666c2e")
+		(uuid "38f8499b-eab8-4851-ab78-1df642666c2f")
 		(property "Reference" "#PWR077"
 			(at 71.12 46.99 0)
 			(effects
@@ -2619,7 +2619,7 @@
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "50e60d6a-ffbf-448b-adfa-2da7ecb6593d")
+		(uuid "50e60d6a-ffbf-448b-adfa-2da7ecb6593e")
 		(property "Reference" "R60"
 			(at 163.83 34.2899 0)
 			(effects
@@ -3001,7 +3001,7 @@
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "677935cf-7538-434d-bb6d-6e3b36222fc9")
+		(uuid "677935cf-7538-434d-bb6d-6e3b36222fca")
 		(property "Reference" "#PWR010"
 			(at 196.85 53.34 0)
 			(effects
@@ -4163,7 +4163,7 @@
 		(dnp no)
 		(uuid "ba1f5d87-f2d7-46a7-ac6a-0881413d917b")
 		(property "Reference" "C56"
-			(at 101.6 37.2109 0)
+			(at 90.678 37.338 0)
 			(effects
 				(font
 					(size 1.27 1.27)
