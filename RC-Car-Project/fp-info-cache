@@ -1,4 +1,4 @@
-24635417408017118
+24640649726003821
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -90530,6 +90530,27 @@ rotary encoder illuminated switch vertical
 0
 9
 8
+SF-3812F6000T-2
+FUS_SF-3812F_BRN
+
+SF-3812F6000T-2 
+0
+2
+2
+SF-3812F6000T-2
+FUS_SF-3812F_BRN-L
+
+SF-3812F6000T-2 
+0
+2
+2
+SF-3812F6000T-2
+FUS_SF-3812F_BRN-M
+
+SF-3812F6000T-2 
+0
+2
+2
 SSD1306
 128x64OLED
 
@@ -99356,7 +99377,7 @@ DDA0008E_N
 LMR16020PDDAR 
 0
 15
-10
+9
 footprints
 HTSSOP16_4P5X5P1X0P65P_STM
 

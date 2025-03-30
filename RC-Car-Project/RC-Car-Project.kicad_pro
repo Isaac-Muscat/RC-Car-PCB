@@ -58,7 +58,13 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "copper_edge_clearance|175893000|159708000|010e26f1-d273-4116-b759-1782714b8f08|f524e41a-631c-4edd-bed6-5f6d3181defd",
+        "copper_edge_clearance|175893000|159708000|010e26f1-d273-4116-b759-1782714b8f08|f8e8b306-56bb-42da-b923-8b79b57ebf44",
+        "copper_edge_clearance|180338000|159708000|010e26f1-d273-4116-b759-1782714b8f08|58c5f066-2ebc-4d23-8e11-a0b153684fdb",
+        "copper_edge_clearance|184653000|159708000|010e26f1-d273-4116-b759-1782714b8f08|22a782cc-a7e9-426b-af54-5c5e8dd4a2ed",
+        "copper_edge_clearance|184653000|159708000|010e26f1-d273-4116-b759-1782714b8f08|8585d09b-505b-4984-9d12-92e87b066df2"
+      ],
       "meta": {
         "version": 2
       },
@@ -511,7 +517,7 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.1016,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
