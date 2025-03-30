@@ -4217,7 +4217,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "252e3535-816b-4dce-96ff-8f4dc5cb9be0")
 		(property "Reference" "C34"
 			(at 179.07 81.28 0)
@@ -4683,7 +4683,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF/10V"
+		(property "Value" "0.1uF/10V"
 			(at 187.706 58.674 0)
 			(effects
 				(font
@@ -4719,7 +4719,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 186.69 55.88 0)
 			(effects
 				(font
@@ -5450,7 +5450,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CL10A106KP8NNNC"
 			(at 175.26 55.88 0)
 			(effects
 				(font
@@ -6089,7 +6089,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF/10V"
+		(property "Value" "0.1uF/10V"
 			(at 155.956 58.674 0)
 			(effects
 				(font
@@ -6125,7 +6125,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 154.94 55.88 0)
 			(effects
 				(font
@@ -6437,7 +6437,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CL10A106KP8NNNC"
 			(at 128.27 55.88 0)
 			(effects
 				(font
@@ -6534,7 +6534,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "c94ebe83-cc62-4fa3-8688-cb77d9f4578e")
 		(property "Reference" "C32"
 			(at 166.624 81.534 0)
@@ -6702,7 +6702,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF/10V"
+		(property "Value" "0.1uF/10V"
 			(at 140.716 58.674 0)
 			(effects
 				(font
@@ -6738,7 +6738,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 139.7 55.88 0)
 			(effects
 				(font

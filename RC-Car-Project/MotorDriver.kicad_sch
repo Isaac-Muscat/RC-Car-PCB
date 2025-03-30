@@ -3077,7 +3077,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 144.78 64.77 0)
 			(effects
 				(font
@@ -3277,7 +3277,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.1uF/25V"
+		(property "Value" "0.1uF/10V"
 			(at 191.262 78.486 0)
 			(effects
 				(font
@@ -3313,7 +3313,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 190.5 76.2 0)
 			(effects
 				(font
@@ -5679,7 +5679,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.1uF/25V"
+		(property "Value" "0.1uF/10V"
 			(at 194.31 114.2999 0)
 			(effects
 				(font
@@ -5715,7 +5715,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 190.5 113.03 0)
 			(effects
 				(font
@@ -5969,7 +5969,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.1uF/25V"
+		(property "Value" "0.1uF/10V"
 			(at 194.31 39.3699 0)
 			(effects
 				(font
@@ -6005,7 +6005,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 190.5 38.1 0)
 			(effects
 				(font
@@ -6124,7 +6124,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.1uF/25V"
+		(property "Value" "0.1uF/10V"
 			(at 194.31 146.0499 0)
 			(effects
 				(font
@@ -6160,7 +6160,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "C0603C104K5RAC7411"
 			(at 190.5 144.78 0)
 			(effects
 				(font
