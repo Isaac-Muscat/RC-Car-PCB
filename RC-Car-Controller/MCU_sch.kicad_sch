@@ -6620,7 +6620,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "ABM7-25.000MHZ-D2Y-T"
 			(at 50.8 58.42 0)
 			(effects
 				(font

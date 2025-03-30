@@ -4760,7 +4760,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CL10A106KP8NNNC"
 			(at 207.01 35.56 0)
 			(effects
 				(font
@@ -6131,7 +6131,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "CL10A106KP8NNNC"
 			(at 160.02 35.56 0)
 			(effects
 				(font
