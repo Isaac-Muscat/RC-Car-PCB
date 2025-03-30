@@ -4264,7 +4264,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 176.53 81.28 0)
 			(effects
 				(font
@@ -5607,7 +5607,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 115.57 55.88 0)
 			(effects
 				(font
@@ -6359,7 +6359,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 107.95 55.88 0)
 			(effects
 				(font
@@ -6581,7 +6581,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 163.83 81.28 0)
 			(effects
 				(font
@@ -6660,7 +6660,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 111.76 55.88 0)
 			(effects
 				(font

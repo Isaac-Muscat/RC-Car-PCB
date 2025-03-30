@@ -6680,7 +6680,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 105.41 36.83 0)
 			(effects
 				(font

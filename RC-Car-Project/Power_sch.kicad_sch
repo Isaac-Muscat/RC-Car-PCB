@@ -3510,7 +3510,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUF_PN" ""
+		(property "MANUF_PN" "N/A"
 			(at 120.65 77.47 0)
 			(effects
 				(font

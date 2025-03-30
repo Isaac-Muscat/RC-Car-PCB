@@ -1899,6 +1899,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "N/A"
+			(at 208.28 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3a4abe86-b5bd-4885-ad86-7407dbe5042c")
 		)
@@ -2311,6 +2320,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 186.69 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "N/A"
 			(at 186.69 31.75 0)
 			(effects
 				(font
@@ -2740,6 +2758,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "N/A"
+			(at 196.85 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7bac76c1-f90e-4311-84a5-08bca1ee411a")
 		)
@@ -3017,6 +3044,15 @@
 				(hide yes)
 			)
 		)
+		(property "MANUF_PN" "N/A"
+			(at 176.53 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e53d9011-0320-41d8-9d2d-89833a50e1c6")
 		)
@@ -3207,6 +3243,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 208.28 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "N/A"
 			(at 208.28 45.72 0)
 			(effects
 				(font
@@ -3616,6 +3661,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 186.69 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "N/A"
 			(at 186.69 45.72 0)
 			(effects
 				(font
@@ -4721,6 +4775,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 196.85 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUF_PN" "N/A"
 			(at 196.85 45.72 0)
 			(effects
 				(font
