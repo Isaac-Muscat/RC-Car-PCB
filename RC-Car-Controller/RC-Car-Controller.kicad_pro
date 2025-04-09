@@ -549,7 +549,7 @@
       "plot": "OUT/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "RC-Car-Controller.step",
       "svg": "",
       "vrml": ""
     },
