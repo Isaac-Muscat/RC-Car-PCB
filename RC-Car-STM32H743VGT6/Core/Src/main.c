@@ -185,6 +185,10 @@ int main(void)
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4); // LEFT_PWM_2
 
   // Setup lights
+  TIM1->CCR4 = 1000;
+  TIM3->CCR4 = 1000;
+  TIM3->CCR3 = 1000;
+  TIM2->CCR4 = 1000;
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4); // LIGHTS_PWM_1
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4); // LIGHTS_PWM_2
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3); // LIGHTS_PWM_3
