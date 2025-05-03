@@ -1,0 +1,12 @@
+../Core/Src/main.c:88:5:main	3
+../Core/Src/main.c:198:6:SystemClock_Config	4
+../Core/Src/main.c:257:13:MX_DCMI_Init	2
+../Core/Src/main.c:294:13:MX_I2C2_Init	4
+../Core/Src/main.c:342:13:MX_TIM14_Init	4
+../Core/Src/main.c:388:13:MX_USART1_UART_Init	5
+../Core/Src/main.c:434:13:MX_DMA_Init	1
+../Core/Src/main.c:455:13:MX_GPIO_Init	1
+../Core/Src/main.c:476:19:CAM_GetRegister	5
+../Core/Src/main.c:509:19:CAM_SetRegister	7
+../Core/Src/main.c:562:6:MPU_Config	1
+../Core/Src/main.c:593:6:Error_Handler	1
