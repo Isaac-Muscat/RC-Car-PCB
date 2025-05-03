@@ -137,58 +137,64 @@ int main(void)
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 
-
+  //HAL_Delay(3000);
   // SETUP CAMERA STREAM
-  HAL_TIM_PWM_Start(&htim14, TIM_CHANNEL_1);
-  uint8_t camera_mem[CAM_WIDTH * CAM_HEIGHT * CAM_BYTES_PER_PIXEL];
-  uint8_t usb_msg[100] = {0};
-
-
-  // SET CAMERA REGISTERS
-  // See: https://web.mit.edu/6.111/www/f2016/tools/OV7670_2006.pdf
-  // (0x0C) COM3  [3] = 1 (Enable Scaling)
-  // (0x12) COM7  [0] = 0 (RGB Selection 1)
-  //        COM7  [2] = 1 (RGB Selection 2)
-  //        COM7  [4] = 1 (QVGA Resolution)
-  // (0x15) COM10 [6] = 1 (Switch HREF to HSYNC)
-  uint8_t cam_regCache;
-
-  cam_regCache = 0x00;
-  CAM_GetRegister(0x0C, &cam_regCache, 1);
-  cam_regCache |= 0b00001000;
-  CAM_SetRegister(0x0C, cam_regCache, 1);
-
-  cam_regCache = 0x00;
-  CAM_GetRegister(0x12, &cam_regCache, 1);
-  cam_regCache &= 0b11000000;
-  cam_regCache |= 0b00010100;
-  CAM_SetRegister(0x12, cam_regCache, 1);
-
-  cam_regCache = 0x00;
-  CAM_GetRegister(0x15, &cam_regCache, 1);
-  cam_regCache |= 0b01000000;
-  CAM_SetRegister(0x15, cam_regCache, 1);
+//  HAL_TIM_PWM_Start(&htim14, TIM_CHANNEL_1);
+//  uint8_t camera_mem[CAM_WIDTH * CAM_HEIGHT * CAM_BYTES_PER_PIXEL];
+//  uint8_t usb_msg[100] = {0};
+//
+//
+//  // SET CAMERA REGISTERS
+//  // See: https://web.mit.edu/6.111/www/f2016/tools/OV7670_2006.pdf
+//  // (0x0C) COM3  [3] = 1 (Enable Scaling)
+//  // (0x12) COM7  [0] = 0 (RGB Selection 1)
+//  //        COM7  [2] = 1 (RGB Selection 2)
+//  //        COM7  [4] = 1 (QVGA Resolution)
+//  // (0x15) COM10 [6] = 1 (Switch HREF to HSYNC)
+//  uint8_t cam_regCache;
+//
+//  cam_regCache = 0x00;
+//  CAM_GetRegister(0x0C, &cam_regCache, 1);
+//  cam_regCache |= 0b00001000;
+//  CAM_SetRegister(0x0C, cam_regCache, 1);
+//
+//  cam_regCache = 0x00;
+//  CAM_GetRegister(0x12, &cam_regCache, 1);
+//  cam_regCache &= 0b11000000;
+//  cam_regCache |= 0b00010100;
+//  CAM_SetRegister(0x12, cam_regCache, 1);
+//
+//  cam_regCache = 0x00;
+//  CAM_GetRegister(0x15, &cam_regCache, 1);
+//  cam_regCache |= 0b01000000;
+//  CAM_SetRegister(0x15, cam_regCache, 1);
 
   // Setup Motor
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); //Motor_en
-  TIM2->CCR1 = 400;
+  TIM2->CCR1 = 0;
   TIM2->CCR2 = 400;
+
+  TIM4->CCR4 = 0;
   TIM4->CCR3 = 400;
-  TIM4->CCR4 = 400;
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); // LEFT_PWM_1
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2); // RIGHT_PWM_1
-  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3); // RIGHT_PWM_2
+
   HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4); // LEFT_PWM_2
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3); // RIGHT_PWM_2
 
   // Setup lights
-  TIM1->CCR4 = 1000;
-  TIM3->CCR4 = 1000;
-  TIM3->CCR3 = 1000;
-  TIM2->CCR4 = 1000;
-  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4); // LIGHTS_PWM_1
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4); // LIGHTS_PWM_2
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3); // LIGHTS_PWM_3
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3); // LIGHTS_PWM_4
+//  TIM1->CCR4 = 1000;
+//  TIM3->CCR4 = 1000;
+//  TIM3->CCR3 = 1000;
+//  TIM2->CCR4 = 1000;
+//  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4); // LIGHTS_PWM_1
+//  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4); // LIGHTS_PWM_2
+//  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3); // LIGHTS_PWM_3
+//  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3); // LIGHTS_PWM_4
+
+  // Delay for goofiness
+  HAL_Delay(3000);
+
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); //Motor_en
 
 
   /* USER CODE END 2 */
@@ -200,30 +206,30 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-	  // I2C CMD example
-	  // HAL_StatusTypeDef tx_result = HAL_I2C_Master_Transmit(&hi2c2, OV7670_ADDR_READ, &ov7670_CMD_PID, 1, 100);
-	  // HAL_StatusTypeDef rx_result = HAL_I2C_Master_Receive(&hi2c2, OV7670_ADDR_READ, i2c_readback, 1, 100);
-
-	  // TESTING
-	  HAL_StatusTypeDef ovStat = HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_SNAPSHOT, camera_mem, (CAM_WIDTH * CAM_HEIGHT * CAM_BYTES_PER_PIXEL) / 4);
-	  if (ovStat) {
-		  // ERROR
-		  sprintf(usb_msg, "DCMI/DMA ERROR - Code 0x%X\r\n", ovStat);
-		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-	  }
-	  HAL_Delay(2000);
-
-	  // Get the first byte of the DMA field
-	  for (int i = 0; i < 32; i++) {
-		  uint32_t pixbuf_0 = (camera_mem[i*4]<<24) | (camera_mem[i*4+1]<<16) | (camera_mem[i*4+2]<<8) | (camera_mem[i*4+3]);
-		  sprintf(usb_msg, "%d - 0x%X\r\n", i, pixbuf_0);
-		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-		  HAL_Delay(5);
-	  }
-	  HAL_Delay(500);
-
-	  HAL_DCMI_Stop(&hdcmi);
+//
+//	  // I2C CMD example
+//	  // HAL_StatusTypeDef tx_result = HAL_I2C_Master_Transmit(&hi2c2, OV7670_ADDR_READ, &ov7670_CMD_PID, 1, 100);
+//	  // HAL_StatusTypeDef rx_result = HAL_I2C_Master_Receive(&hi2c2, OV7670_ADDR_READ, i2c_readback, 1, 100);
+//
+//	  // TESTING
+//	  HAL_StatusTypeDef ovStat = HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_SNAPSHOT, camera_mem, (CAM_WIDTH * CAM_HEIGHT * CAM_BYTES_PER_PIXEL) / 4);
+//	  if (ovStat) {
+//		  // ERROR
+//		  sprintf(usb_msg, "DCMI/DMA ERROR - Code 0x%X\r\n", ovStat);
+//		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+//	  }
+//	  HAL_Delay(2000);
+//
+//	  // Get the first byte of the DMA field
+//	  for (int i = 0; i < 32; i++) {
+//		  uint32_t pixbuf_0 = (camera_mem[i*4]<<24) | (camera_mem[i*4+1]<<16) | (camera_mem[i*4+2]<<8) | (camera_mem[i*4+3]);
+//		  sprintf(usb_msg, "%d - 0x%X\r\n", i, pixbuf_0);
+//		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+//		  HAL_Delay(5);
+//	  }
+//	  HAL_Delay(500);
+//
+//	  HAL_DCMI_Stop(&hdcmi);
   }
   /* USER CODE END 3 */
 }
@@ -785,7 +791,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_0, GPIO_PIN_RESET);
