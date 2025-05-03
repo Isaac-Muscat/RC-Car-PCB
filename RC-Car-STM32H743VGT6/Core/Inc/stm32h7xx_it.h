@@ -61,7 +61,6 @@ void I2C2_ER_IRQHandler(void);
 void TIM8_TRG_COM_TIM14_IRQHandler(void);
 void DCMI_IRQHandler(void);
 void OTG_FS_IRQHandler(void);
-void DMAMUX1_OVR_IRQHandler(void);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
