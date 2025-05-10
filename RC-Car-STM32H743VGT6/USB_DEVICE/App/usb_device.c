@@ -27,7 +27,7 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN Includes */
-
+#include <string.h>
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN PV */
@@ -47,13 +47,34 @@ USBD_HandleTypeDef hUsbDeviceFS;
  * -- Insert your variables declaration here --
  */
 /* USER CODE BEGIN 0 */
-
+USBD_CDC_HandleTypeDef* hcdc;
 /* USER CODE END 0 */
 
 /*
  * -- Insert your external function declaration here --
  */
 /* USER CODE BEGIN 1 */
+
+extern uint8_t usb_device_rxFlag;
+
+#define MIN(a,b) (((a)<(b))?(a):(b))
+
+uint8_t SendDataWithCorrection(uint8_t* pData, uint32_t dLen, uint16_t packetSize) {
+	hcdc = (USBD_CDC_HandleTypeDef *)hUsbDeviceFS.pClassDataCmsit[hUsbDeviceFS.classId];
+	for (int i = 0; i < dLen/packetSize; i++) {
+		usb_device_rxFlag = 0x00; // Reset flag
+		// Keep transmitting data as long as received does not match sent
+		while (usb_device_rxFlag == 0) {// || !memcmp(hcdc->RxBuffer, pData + i*packetSize, MIN(hcdc->RxLength, packetSize))) {
+			// Transmit byte number, preserves ordering on host side
+			while (CDC_Transmit_FS(&i, 4)) { HAL_Delay(5); }
+			HAL_Delay(2);
+			// Transmit packet
+			while (CDC_Transmit_FS(pData + i*packetSize, packetSize)) { HAL_Delay(1); }
+			HAL_Delay(5);
+		}
+	}
+	return 0;
+}
 
 /* USER CODE END 1 */
 
@@ -87,6 +108,8 @@ void MX_USB_DEVICE_Init(void)
 
   /* USER CODE BEGIN USB_DEVICE_Init_PostTreatment */
   HAL_PWREx_EnableUSBVoltageDetector();
+
+  hcdc = (USBD_CDC_HandleTypeDef *)hUsbDeviceFS.pClassDataCmsit[hUsbDeviceFS.classId];
 
   /* USER CODE END USB_DEVICE_Init_PostTreatment */
 }

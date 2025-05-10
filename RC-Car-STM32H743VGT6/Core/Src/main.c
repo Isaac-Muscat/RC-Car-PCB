@@ -35,9 +35,18 @@
 #define OV7670_ADDR_READ 0x43
 #define OV7670_ADDR_WRITE 0x42
 
-#define CAM_WIDTH 320
-#define CAM_HEIGHT 240
+// CAMERA SETTINGS
+#define CAM_WIDTH 315
+#define CAM_HEIGHT 120
 #define CAM_BYTES_PER_PIXEL 2
+
+// JPEG SETTINGS
+#define JPEG_QUALITY 20
+#define JPEG_OUTBUF_SIZE 128
+
+#define CAM_GRAYSIZE CAM_WIDTH * CAM_HEIGHT
+#define CAM_422SIZE CAM_WIDTH * CAM_HEIGHT * 2
+#define CAM_444SIZE CAM_WIDTH * CAM_HEIGHT * 3
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -51,6 +60,10 @@ DCMI_HandleTypeDef hdcmi;
 DMA_HandleTypeDef hdma_dcmi;
 
 I2C_HandleTypeDef hi2c2;
+
+JPEG_HandleTypeDef hjpeg;
+MDMA_HandleTypeDef hmdma_jpeg_infifo_th;
+MDMA_HandleTypeDef hmdma_jpeg_outfifo_ne;
 
 SPI_HandleTypeDef hspi2;
 
@@ -71,6 +84,7 @@ void SystemClock_Config(void);
 static void MPU_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
+static void MX_MDMA_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_DCMI_Init(void);
 static void MX_I2C2_Init(void);
@@ -79,16 +93,32 @@ static void MX_TIM2_Init(void);
 static void MX_TIM4_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_TIM3_Init(void);
+static void MX_JPEG_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
 
 HAL_StatusTypeDef CAM_GetRegister(uint8_t addr, uint8_t* pData, uint8_t haltOnError);
 HAL_StatusTypeDef CAM_SetRegister(uint8_t addr, uint8_t data, uint8_t haltOnError);
+uint8_t GenerateJPEGMCUBlock();
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+// EXTERN IN USBD_CDC_IF
+uint8_t usb_device_rxFlag = 0x00;
+
+// CAMERA VARIABLES
+uint8_t camera_mem[CAM_GRAYSIZE];	// Reserve u8 array for camera DMA transfer
+
+// JPEG VARIABLES
+uint8_t jpeg_mcu[64];				// Reserve u8 array for JPEG MCU block
+uint32_t jpeg_block = 0;			// Current JPEG MCU block being processed
+
+uint8_t jpeg_out[CAM_GRAYSIZE];		// Reserve u8 array for JPEG result
+uint8_t jpeg_ready = 1;				// JPEG status (ready to start?)
+uint32_t jpeg_size = 0;				// Current size of the JPEG result
 
 /* USER CODE END 0 */
 
@@ -125,6 +155,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
+  MX_MDMA_Init();
   MX_USART1_UART_Init();
   MX_USB_DEVICE_Init();
   MX_DCMI_Init();
@@ -134,52 +165,83 @@ int main(void)
   MX_TIM4_Init();
   MX_TIM1_Init();
   MX_TIM3_Init();
+  MX_JPEG_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 
   //HAL_Delay(3000);
-  // SETUP CAMERA STREAM
-//  HAL_TIM_PWM_Start(&htim14, TIM_CHANNEL_1);
-//  uint8_t camera_mem[CAM_WIDTH * CAM_HEIGHT * CAM_BYTES_PER_PIXEL];
-//  uint8_t usb_msg[100] = {0};
-//
-//
-//  // SET CAMERA REGISTERS
-//  // See: https://web.mit.edu/6.111/www/f2016/tools/OV7670_2006.pdf
-//  // (0x0C) COM3  [3] = 1 (Enable Scaling)
-//  // (0x12) COM7  [0] = 0 (RGB Selection 1)
-//  //        COM7  [2] = 1 (RGB Selection 2)
-//  //        COM7  [4] = 1 (QVGA Resolution)
-//  // (0x15) COM10 [6] = 1 (Switch HREF to HSYNC)
-//  uint8_t cam_regCache;
-//
-//  cam_regCache = 0x00;
-//  CAM_GetRegister(0x0C, &cam_regCache, 1);
-//  cam_regCache |= 0b00001000;
-//  CAM_SetRegister(0x0C, cam_regCache, 1);
-//
-//  cam_regCache = 0x00;
-//  CAM_GetRegister(0x12, &cam_regCache, 1);
-//  cam_regCache &= 0b11000000;
-//  cam_regCache |= 0b00010100;
-//  CAM_SetRegister(0x12, cam_regCache, 1);
-//
-//  cam_regCache = 0x00;
-//  CAM_GetRegister(0x15, &cam_regCache, 1);
-//  cam_regCache |= 0b01000000;
-//  CAM_SetRegister(0x15, cam_regCache, 1);
 
-  // Setup Motor
-  TIM2->CCR1 = 0;
-  TIM2->CCR2 = 400;
+  // ------------------------------------------------------------ SETUP USB MESSAGING -- //
+  uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB Debug messages
 
-  TIM4->CCR4 = 0;
-  TIM4->CCR3 = 400;
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); // LEFT_PWM_1
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2); // RIGHT_PWM_1
+  // ------------------------------------------------------------ SETUP CAMERA INTERFACE -- //
+  HAL_TIM_PWM_Start(&htim14, TIM_CHANNEL_1);	// XCLK - Start the camera's core clock
 
-  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4); // LEFT_PWM_2
-  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3); // RIGHT_PWM_2
+  // SET CAMERA REGISTERS
+  // See: https://web.mit.edu/6.111/www/f2016/tools/OV7670_2006.pdf
+
+  // (0x0C) COM3  [3] = 1 (Enable Scaling)
+
+  // (0x12) COM7  [4] = 1 (QVGA Resolution)
+  //	    COM7  [2] = 0 (YUV Format)
+  //        COM7  [0] = 0 (YUV Format)
+
+  // (0x17) HSTART
+  // (0x18) HSTOP
+
+  // (0x32) HREF [7:6] = 10  (Default value)
+  //        HREF [2:0] = 110 (increase LSB of HSTART by 6 to get rid of black bar)
+
+  // UNUSED
+
+  // X (0x15) COM10 [6] = 1 (Switch HREF to HSYNC)
+
+  // X (0x40) COM15 [7] = 1 (Data range [00-FF])
+  // X 		  COM15 [6] = 1 (Data range [00-FF])
+  // X 		  COM15 [5] = 0 (RGB 565)
+  // X 		  COM15 [4] = 1 (RGB 565)
+  uint8_t cam_regCache;
+
+  cam_regCache = 0b00001000;
+  while (CAM_SetRegister(0x0C, cam_regCache, 0)) {}
+
+  cam_regCache = 0b00010000;
+  while (CAM_SetRegister(0x12, cam_regCache, 0)) {}
+
+  cam_regCache = 0b10000110;
+  while (CAM_SetRegister(0x32, cam_regCache, 0)) {}
+
+  //cam_regCache = 0b01000000;
+  //while (CAM_SetRegister(0x15, cam_regCache, 0)) {}
+
+  //cam_regCache = 0b11010000;
+  //while (CAM_SetRegister(0x40, cam_regCache, 0)) {}
+
+  // ------------------------------------------------------------ SETUP JPEG ENCODING -- //
+  // Set the CONFIG
+  JPEG_ConfTypeDef* jpeg_config;
+  jpeg_config->ColorSpace = JPEG_GRAYSCALE_COLORSPACE;
+  //jpeg_config->ColorSpace = JPEG_YCBCR_COLORSPACE;
+  //jpeg_config->ChromaSubsampling = JPEG_422_SUBSAMPLING;
+  jpeg_config->ImageWidth = CAM_WIDTH;
+  jpeg_config->ImageHeight = CAM_HEIGHT;
+  jpeg_config->ImageQuality = JPEG_QUALITY;
+  HAL_JPEG_ConfigEncoding(&hjpeg, jpeg_config);
+
+  //TODO: Implement all JPEG Callbacks
+  //TODO: Try to Interleave CAM/JPEG DMAs using JPEG GetDataCallback
+
+  // SETUP MOTOR
+  //TIM2->CCR1 = 0;
+  //TIM2->CCR2 = 400;
+
+  //TIM4->CCR4 = 0;
+  //TIM4->CCR3 = 400;
+  //HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); // LEFT_PWM_1
+  //HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2); // RIGHT_PWM_1
+
+  //HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4); // LEFT_PWM_2
+  //HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3); // RIGHT_PWM_2
 
   // Setup lights
 //  TIM1->CCR4 = 1000;
@@ -192,10 +254,9 @@ int main(void)
 //  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3); // LIGHTS_PWM_4
 
   // Delay for goofiness
-  HAL_Delay(3000);
+  //HAL_Delay(3000);
 
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); //Motor_en
-
+  //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); //Motor_en
 
   /* USER CODE END 2 */
 
@@ -206,30 +267,73 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//
-//	  // I2C CMD example
-//	  // HAL_StatusTypeDef tx_result = HAL_I2C_Master_Transmit(&hi2c2, OV7670_ADDR_READ, &ov7670_CMD_PID, 1, 100);
-//	  // HAL_StatusTypeDef rx_result = HAL_I2C_Master_Receive(&hi2c2, OV7670_ADDR_READ, i2c_readback, 1, 100);
-//
-//	  // TESTING
-//	  HAL_StatusTypeDef ovStat = HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_SNAPSHOT, camera_mem, (CAM_WIDTH * CAM_HEIGHT * CAM_BYTES_PER_PIXEL) / 4);
-//	  if (ovStat) {
-//		  // ERROR
-//		  sprintf(usb_msg, "DCMI/DMA ERROR - Code 0x%X\r\n", ovStat);
-//		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-//	  }
-//	  HAL_Delay(2000);
-//
-//	  // Get the first byte of the DMA field
+
+	  //sprintf(usb_msg, "TEST\r\n");
+	  //CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+	  //HAL_Delay(1000);
+
+	  // I2C CMD example
+	  // HAL_StatusTypeDef tx_result = HAL_I2C_Master_Transmit(&hi2c2, OV7670_ADDR_READ, &ov7670_CMD_PID, 1, 100);
+	  // HAL_StatusTypeDef rx_result = HAL_I2C_Master_Receive(&hi2c2, OV7670_ADDR_READ, i2c_readback, 1, 100);
+
+
+	  // Only perform the following if the JPEG encoder is ready!
+
+	  // TAKE A SNAPSHOT
+	  if (jpeg_ready) {
+
+		  // FIRST TRANSMIT IF PENDING, THIS PREVENTS DMA FROM CORRUPTING DATA MID TRANSFER
+		  // rxFlag is defined in usbd_cdc_if - turns to 0x01 on RX MSG
+		  if (usb_device_rxFlag == 0x01) {
+			  //sprintf(usb_msg, "STARTING TX\r\n");
+			  //CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+			  //HAL_Delay(100);
+			  SendDataWithCorrection(jpeg_out, jpeg_size, 8);
+			  //SendDataWithCorrection(camera_mem, CAM_GRAYSIZE, 16);
+			  HAL_Delay(2000);
+			  usb_device_rxFlag = 0x00;	// Reset flag
+		  }
+
+		  HAL_StatusTypeDef ovStat = HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_SNAPSHOT, camera_mem, CAM_GRAYSIZE / 4);
+		  if (ovStat) {
+			  while (1) {
+				  sprintf(usb_msg, "DCMI/DMA ERROR - Code 0x%X\r\n", ovStat);
+				  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+				  HAL_Delay(1000);
+			  }
+		  }
+
+		  // TODO: Use a DCMI completion interrupt to stop the snapshot
+		  // Delay for snapshot DMA to complete
+		  HAL_Delay(500);
+		  HAL_DCMI_Stop(&hdcmi);
+
+		  // We have a raw image buffer in camera_mem, grayscale format
+		  // ENCODE JPEG
+
+		  jpeg_ready = 0;
+		  jpeg_block = 0;
+		  jpeg_size = 0;
+
+		  GenerateJPEGMCUBlock();
+		  HAL_JPEG_Encode_DMA(&hjpeg, jpeg_mcu, 64, jpeg_out, JPEG_OUTBUF_SIZE);
+		  HAL_Delay(500);
+
+		  //sprintf(usb_msg, "LOOPING\r\n");
+		  //CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+		  //HAL_Delay(1000);
+	  }
+
+	  // Delay for encode DMA to complete
+	  HAL_Delay(500);
+
+	  // Get the first byte of the DMA field
 //	  for (int i = 0; i < 32; i++) {
 //		  uint32_t pixbuf_0 = (camera_mem[i*4]<<24) | (camera_mem[i*4+1]<<16) | (camera_mem[i*4+2]<<8) | (camera_mem[i*4+3]);
 //		  sprintf(usb_msg, "%d - 0x%X\r\n", i, pixbuf_0);
 //		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-//		  HAL_Delay(5);
+//		  HAL_Delay(10);
 //	  }
-//	  HAL_Delay(500);
-//
-//	  HAL_DCMI_Stop(&hdcmi);
   }
   /* USER CODE END 3 */
 }
@@ -249,7 +353,7 @@ void SystemClock_Config(void)
 
   /** Configure the main internal regulator output voltage
   */
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
   while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
 
@@ -261,12 +365,12 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 2;
-  RCC_OscInitStruct.PLL.PLLN = 12;
+  RCC_OscInitStruct.PLL.PLLN = 24;
   RCC_OscInitStruct.PLL.PLLP = 2;
-  RCC_OscInitStruct.PLL.PLLQ = 3;
+  RCC_OscInitStruct.PLL.PLLQ = 6;
   RCC_OscInitStruct.PLL.PLLR = 2;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_3;
-  RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOMEDIUM;
+  RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
   RCC_OscInitStruct.PLL.PLLFRACN = 0;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -281,12 +385,12 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV1;
-  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV1;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV4;
-  RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV1;
+  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
+  RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
   {
     Error_Handler();
   }
@@ -309,15 +413,15 @@ static void MX_DCMI_Init(void)
   /* USER CODE END DCMI_Init 1 */
   hdcmi.Instance = DCMI;
   hdcmi.Init.SynchroMode = DCMI_SYNCHRO_HARDWARE;
-  hdcmi.Init.PCKPolarity = DCMI_PCKPOLARITY_RISING;
+  hdcmi.Init.PCKPolarity = DCMI_PCKPOLARITY_FALLING;
   hdcmi.Init.VSPolarity = DCMI_VSPOLARITY_HIGH;
   hdcmi.Init.HSPolarity = DCMI_HSPOLARITY_LOW;
   hdcmi.Init.CaptureRate = DCMI_CR_ALL_FRAME;
   hdcmi.Init.ExtendedDataMode = DCMI_EXTEND_DATA_8B;
   hdcmi.Init.JPEGMode = DCMI_JPEG_DISABLE;
-  hdcmi.Init.ByteSelectMode = DCMI_BSM_ALL;
-  hdcmi.Init.ByteSelectStart = DCMI_OEBS_ODD;
-  hdcmi.Init.LineSelectMode = DCMI_LSM_ALL;
+  hdcmi.Init.ByteSelectMode = DCMI_BSM_OTHER;
+  hdcmi.Init.ByteSelectStart = DCMI_OEBS_EVEN;
+  hdcmi.Init.LineSelectMode = DCMI_LSM_ALTERNATE_2;
   hdcmi.Init.LineSelectStart = DCMI_OELS_ODD;
   if (HAL_DCMI_Init(&hdcmi) != HAL_OK)
   {
@@ -374,6 +478,32 @@ static void MX_I2C2_Init(void)
   /* USER CODE BEGIN I2C2_Init 2 */
 
   /* USER CODE END I2C2_Init 2 */
+
+}
+
+/**
+  * @brief JPEG Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_JPEG_Init(void)
+{
+
+  /* USER CODE BEGIN JPEG_Init 0 */
+
+  /* USER CODE END JPEG_Init 0 */
+
+  /* USER CODE BEGIN JPEG_Init 1 */
+
+  /* USER CODE END JPEG_Init 1 */
+  hjpeg.Instance = JPEG;
+  if (HAL_JPEG_Init(&hjpeg) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN JPEG_Init 2 */
+
+  /* USER CODE END JPEG_Init 2 */
 
 }
 
@@ -691,7 +821,7 @@ static void MX_TIM14_Init(void)
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
   sConfigOC.Pulse = 3;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  sConfigOC.OCFastMode = TIM_OCFAST_ENABLE;
   if (HAL_TIM_PWM_ConfigChannel(&htim14, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
   {
     Error_Handler();
@@ -764,6 +894,23 @@ static void MX_DMA_Init(void)
   /* DMA1_Stream0_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
+
+}
+
+/**
+  * Enable MDMA controller clock
+  */
+static void MX_MDMA_Init(void)
+{
+
+  /* MDMA controller clock enable */
+  __HAL_RCC_MDMA_CLK_ENABLE();
+  /* Local variables */
+
+  /* MDMA interrupt initialization */
+  /* MDMA_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(MDMA_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(MDMA_IRQn);
 
 }
 
@@ -912,6 +1059,68 @@ HAL_StatusTypeDef CAM_SetRegister(uint8_t addr, uint8_t data, uint8_t haltOnErro
 	  return HAL_OK;
 }
 
+// GENERATE JPEG MCU BLOCK
+uint8_t GenerateJPEGMCUBlock() {
+	if (jpeg_block >= 600) { return 1; }
+	int xStart = (jpeg_block % 40) * 8;
+	int yStart = (jpeg_block / 40) * 8;
+	int i = 0;
+	for (int y = yStart; y < yStart + 8; y++) {
+		for (int x = xStart; x < xStart + 8; x++) {
+			// Pad to 8x8
+			if (x >= CAM_WIDTH) {
+				jpeg_mcu[i] = 0x00;
+			} else {
+				jpeg_mcu[i] = camera_mem[x + y * CAM_WIDTH];
+			}
+			i++;
+		}
+	}
+	jpeg_block++;
+	return 0;
+}
+
+// OVERRIDE THE JPEG CALLBACKS
+void HAL_JPEG_GetDataCallback(JPEG_HandleTypeDef *hjpeg, uint32_t NbDecodedData) {
+
+	//HAL_JPEG_Pause(hjpeg, JPEG_PAUSE_RESUME_INPUT);
+
+	//if (jpeg_block % 64 == 0) {
+	//	uint8_t usb_msg[100] = {0};
+	//	sprintf(usb_msg, "JPEG: Block: %d\r\n", jpeg_block);
+	//	CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+	//}
+
+	// Restock the input buffer with new MCU
+	if (GenerateJPEGMCUBlock()) {
+		// ERROR - recover JPEG peripheral by restarting
+		jpeg_ready = 1;
+		//jpeg_size = 0;
+		jpeg_block = 0;
+	}
+	else {
+		HAL_JPEG_ConfigInputBuffer(hjpeg, jpeg_mcu, 64);
+	}
+	//HAL_JPEG_Resume(hjpeg, JPEG_PAUSE_RESUME_INPUT);
+}
+
+void HAL_JPEG_DataReadyCallback(JPEG_HandleTypeDef *hjpeg, uint8_t *pDataOut, uint32_t OutDataLength) {
+	// Setup new output buffer loc
+	jpeg_size += JPEG_OUTBUF_SIZE;
+	HAL_JPEG_ConfigOutputBuffer(hjpeg, jpeg_out + jpeg_size, JPEG_OUTBUF_SIZE);
+	// Debug MSG
+	//uint8_t usb_msg[100] = {0};
+	//sprintf(usb_msg, "JPEG: DataReady - output: %d\r\n", jpeg_size);
+	//CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+}
+
+void HAL_JPEG_EncodeCpltCallback(JPEG_HandleTypeDef *hjpeg) {
+	jpeg_ready = 1;
+	jpeg_block = 0;
+	//uint8_t usb_msg[100] = {0};
+	//sprintf(usb_msg, "JPEG: Finished encode\r\n");
+	//CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+}
 /* USER CODE END 4 */
 
  /* MPU Configuration */

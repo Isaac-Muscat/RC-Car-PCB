@@ -82,6 +82,8 @@ void MX_USB_DEVICE_Init(void);
  */
 /* USER CODE BEGIN FD */
 
+uint8_t SendDataWithCorrection(uint8_t* pData, uint32_t length, uint16_t packetSize);
+
 /* USER CODE END FD */
 /**
   * @}

@@ -9,6 +9,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include Utilities/JPEG/subdir.mk
 -include USB_DEVICE/Target/subdir.mk
 -include USB_DEVICE/App/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk
@@ -64,8 +65,8 @@ all: main-build
 main-build: RC-Car-STM32H743VGT6.elf secondary-outputs
 
 # Tool invocations
-RC-Car-STM32H743VGT6.elf RC-Car-STM32H743VGT6.map: $(OBJS) $(USER_OBJS) C:\Users\garage-B\Documents\GitHub\RC-Car-PCB\RC-Car-STM32H743VGT6\STM32H743VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "RC-Car-STM32H743VGT6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\Users\garage-B\Documents\GitHub\RC-Car-PCB\RC-Car-STM32H743VGT6\STM32H743VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RC-Car-STM32H743VGT6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+RC-Car-STM32H743VGT6.elf RC-Car-STM32H743VGT6.map: $(OBJS) $(USER_OBJS) D:\8_Tank_MINI\Electronics\RC-Car-PCB\RC-Car-PCB\RC-Car-STM32H743VGT6\STM32H743VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "RC-Car-STM32H743VGT6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\8_Tank_MINI\Electronics\RC-Car-PCB\RC-Car-PCB\RC-Car-STM32H743VGT6\STM32H743VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RC-Car-STM32H743VGT6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
