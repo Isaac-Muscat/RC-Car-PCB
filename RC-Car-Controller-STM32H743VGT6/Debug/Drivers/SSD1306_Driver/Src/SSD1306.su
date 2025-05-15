@@ -1,0 +1,4 @@
+../Drivers/SSD1306_Driver/Src/SSD1306.c:41:9:SSD1306_SendCommand	32	static
+../Drivers/SSD1306_Driver/Src/SSD1306.c:49:9:SSD1306_Init	24	static
+../Drivers/SSD1306_Driver/Src/SSD1306.c:74:9:SSD1306_Clear	16	static
+../Drivers/SSD1306_Driver/Src/SSD1306.c:81:9:SSD1306_Update	16	static

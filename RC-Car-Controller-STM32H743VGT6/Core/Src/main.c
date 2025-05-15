@@ -23,6 +23,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "SSD1306.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -42,9 +44,12 @@
 
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
+DMA_HandleTypeDef hdma_adc1;
 
 I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
+DMA_HandleTypeDef hdma_i2c1_tx;
+DMA_HandleTypeDef hdma_i2c2_tx;
 
 JPEG_HandleTypeDef hjpeg;
 MDMA_HandleTypeDef hmdma_jpeg_infifo_th;
@@ -58,6 +63,18 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 
+// SSD1306 VARIABLES
+SSD1306_HandleTypeDef hssd1;
+SSD1306_HandleTypeDef hssd2;
+
+uint8_t ssd1_vram[CACHE_SIZE_MEM] = {0};
+uint8_t ssd2_vram[CACHE_SIZE_MEM] = {0};
+
+uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB Debug messages
+
+uint16_t adc_buffer[20];
+uint16_t adc_average[2];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -66,13 +83,14 @@ void PeriphCommonClock_Config(void);
 static void MPU_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_MDMA_Init(void);
+static void MX_DMA_Init(void);
 static void MX_USART1_UART_Init(void);
-static void MX_I2C2_Init(void);
-static void MX_TIM14_Init(void);
 static void MX_JPEG_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_SPI4_Init(void);
 static void MX_ADC1_Init(void);
+static void MX_TIM14_Init(void);
+static void MX_I2C2_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -121,20 +139,50 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_MDMA_Init();
+  MX_DMA_Init();
   MX_USART1_UART_Init();
   MX_USB_DEVICE_Init();
-  MX_I2C2_Init();
-  MX_TIM14_Init();
   MX_JPEG_Init();
   MX_I2C1_Init();
   MX_SPI4_Init();
   MX_ADC1_Init();
+  MX_TIM14_Init();
+  MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 
   //HAL_Delay(3000);
 
-  // ------------------------------------------------------------ SETUP USB MESSAGING -- //
-  uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB Debug messages
+  // ------------------------------------------------------------ SETUP ADC DMA -- //
+
+  HAL_ADC_Start_DMA(&hadc1, adc_buffer, 20);
+
+  // ------------------------------------------------------------ SETUP SSD1306 -- //
+
+  hssd1.i2c_handle = &hi2c2;
+  hssd1.address = OLED_ADDR;
+  hssd1.vram = ssd1_vram;
+  uint8_t ssd_initres = SSD1306_Init(&hssd1);
+  if (ssd_initres) {
+	  while (1) {
+		  sprintf(usb_msg, "Failed to Init SSD1: %d\r\n", ssd_initres);
+		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+		  HAL_Delay(1000);
+	  }
+  }
+
+  hssd2.i2c_handle = &hi2c1;
+  hssd2.address = OLED_ADDR;
+  hssd2.vram = ssd2_vram;
+  ssd_initres = SSD1306_Init(&hssd2);
+  if (ssd_initres) {
+	  while (1) {
+		  sprintf(usb_msg, "Failed to Init SSD2: %d\r\n", ssd_initres);
+		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+		  HAL_Delay(1000);
+	  }
+  }
+
+  uint8_t anim_test = 1;
 
   /* USER CODE END 2 */
 
@@ -145,10 +193,32 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  SSD1306_Clear(&hssd1);
+	  SSD1306_Clear(&hssd2);
+	  ssd1_vram[anim_test        ] = 0xFF;
+	  ssd1_vram[anim_test + 128  ] = 0xFF;
+	  ssd1_vram[anim_test + 128*2] = 0xFF;
+	  ssd1_vram[anim_test + 128*3] = 0xFF;
+	  ssd1_vram[anim_test + 128*4] = 0xFF;
+	  ssd1_vram[anim_test + 128*5] = 0xFF;
+	  ssd1_vram[anim_test + 128*6] = 0xFF;
+	  ssd1_vram[anim_test + 128*7] = 0xFF;
 
-	  sprintf(usb_msg, "TEST\r\n");
-	  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-	  HAL_Delay(1000);
+	  ssd2_vram[anim_test        ] = 0xFF;
+	  ssd2_vram[anim_test + 128  ] = 0xFF;
+	  ssd2_vram[anim_test + 128*2] = 0xFF;
+	  ssd2_vram[anim_test + 128*3] = 0xFF;
+	  ssd2_vram[anim_test + 128*4] = 0xFF;
+	  ssd2_vram[anim_test + 128*5] = 0xFF;
+	  ssd2_vram[anim_test + 128*6] = 0xFF;
+	  ssd2_vram[anim_test + 128*7] = 0xFF;
+	  SSD1306_Update(&hssd1);
+	  SSD1306_Update(&hssd2);
+	  HAL_Delay(20);
+
+	  anim_test += 1;
+	  if (anim_test >= 128) anim_test = 1;
+
   }
   /* USER CODE END 3 */
 }
@@ -259,17 +329,17 @@ static void MX_ADC1_Init(void)
   /** Common config
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV16;
   hadc1.Init.Resolution = ADC_RESOLUTION_16B;
-  hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
-  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
+  hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
   hadc1.Init.LowPowerAutoWait = DISABLE;
-  hadc1.Init.ContinuousConvMode = DISABLE;
-  hadc1.Init.NbrOfConversion = 1;
+  hadc1.Init.ContinuousConvMode = ENABLE;
+  hadc1.Init.NbrOfConversion = 2;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-  hadc1.Init.ConversionDataManagement = ADC_CONVERSIONDATA_DR;
+  hadc1.Init.ConversionDataManagement = ADC_CONVERSIONDATA_DMA_CIRCULAR;
   hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
   hadc1.Init.LeftBitShift = ADC_LEFTBITSHIFT_NONE;
   hadc1.Init.OversamplingMode = DISABLE;
@@ -289,13 +359,22 @@ static void MX_ADC1_Init(void)
 
   /** Configure Regular Channel
   */
-  sConfig.Channel = ADC_CHANNEL_4;
+  sConfig.Channel = ADC_CHANNEL_3;
   sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
+  sConfig.SamplingTime = ADC_SAMPLETIME_810CYCLES_5;
   sConfig.SingleDiff = ADC_SINGLE_ENDED;
   sConfig.OffsetNumber = ADC_OFFSET_NONE;
   sConfig.Offset = 0;
   sConfig.OffsetSignedSaturation = DISABLE;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Configure Regular Channel
+  */
+  sConfig.Channel = ADC_CHANNEL_4;
+  sConfig.Rank = ADC_REGULAR_RANK_2;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -322,7 +401,7 @@ static void MX_I2C1_Init(void)
 
   /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
-  hi2c1.Init.Timing = 0x00C0EAFF;
+  hi2c1.Init.Timing = 0x00401959;
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -370,7 +449,7 @@ static void MX_I2C2_Init(void)
 
   /* USER CODE END I2C2_Init 1 */
   hi2c2.Instance = I2C2;
-  hi2c2.Init.Timing = 0x00C0EAFF;
+  hi2c2.Init.Timing = 0x00401959;
   hi2c2.Init.OwnAddress1 = 0;
   hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -556,6 +635,28 @@ static void MX_USART1_UART_Init(void)
 }
 
 /**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
+  /* DMA1_Stream1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
+  /* DMA1_Stream2_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream2_IRQn);
+
+}
+
+/**
   * Enable MDMA controller clock
   */
 static void MX_MDMA_Init(void)
@@ -610,6 +711,22 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+// ------------------------------------------------------------ OVERRIDE ADC DMA CALLBACKS -- //
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+	// Roll the blunt (rolling average)
+	adc_average[0] = 0;
+	adc_average[1] = 0;
+	for (int i = 0; i < 20; i++) {
+		// Have to pre-divide so the result fits in a uint16
+		adc_average[i%2] += adc_buffer[i]/10;
+	}
+
+	// present it
+	//sprintf(usb_msg, "%d, %d\r\n", adc_average[0], adc_average[1]);
+	//CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+	//HAL_Delay(50);
+}
 /* USER CODE END 4 */
 
  /* MPU Configuration */
