@@ -1,4 +1,6 @@
-../Drivers/SSD1306_Driver/Src/SSD1306.c:41:9:SSD1306_SendCommand	2
-../Drivers/SSD1306_Driver/Src/SSD1306.c:49:9:SSD1306_Init	5
-../Drivers/SSD1306_Driver/Src/SSD1306.c:74:9:SSD1306_Clear	1
-../Drivers/SSD1306_Driver/Src/SSD1306.c:81:9:SSD1306_Update	1
+../Drivers/SSD1306_Driver/Src/SSD1306.c:123:9:SSD1306_SendCommand	2
+../Drivers/SSD1306_Driver/Src/SSD1306.c:131:9:SSD1306_Init	5
+../Drivers/SSD1306_Driver/Src/SSD1306.c:158:9:SSD1306_Clear	1
+../Drivers/SSD1306_Driver/Src/SSD1306.c:165:9:SSD1306_Update	1
+../Drivers/SSD1306_Driver/Src/SSD1306.c:170:9:SSD1306_DrawChar	6
+../Drivers/SSD1306_Driver/Src/SSD1306.c:183:9:SSD1306_DrawString	3

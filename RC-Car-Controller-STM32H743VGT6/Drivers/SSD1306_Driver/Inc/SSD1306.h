@@ -92,4 +92,7 @@
 	uint8_t SSD1306_Clear(SSD1306_HandleTypeDef *hssd);
 	uint8_t SSD1306_Update(SSD1306_HandleTypeDef *hssd);
 
+	uint8_t SSD1306_DrawChar(SSD1306_HandleTypeDef *hssd, char ch);
+	uint8_t SSD1306_DrawString(SSD1306_HandleTypeDef *hssd, char *str, uint8_t length);
+
 #endif /* SSD1306_DRIVER_INC_SSD1306_H_ */

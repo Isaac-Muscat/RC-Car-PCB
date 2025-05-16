@@ -57,8 +57,6 @@ MDMA_HandleTypeDef hmdma_jpeg_outfifo_ne;
 
 SPI_HandleTypeDef hspi4;
 
-TIM_HandleTypeDef htim14;
-
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
@@ -69,6 +67,7 @@ SSD1306_HandleTypeDef hssd2;
 
 uint8_t ssd1_vram[CACHE_SIZE_MEM] = {0};
 uint8_t ssd2_vram[CACHE_SIZE_MEM] = {0};
+uint8_t ssd_msg[100] = {0};	// Reserve 100 bytes for SSD1306 text
 
 uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB Debug messages
 
@@ -89,9 +88,10 @@ static void MX_JPEG_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_SPI4_Init(void);
 static void MX_ADC1_Init(void);
-static void MX_TIM14_Init(void);
 static void MX_I2C2_Init(void);
 /* USER CODE BEGIN PFP */
+
+void WriteDebug(uint8_t *str_ptr, uint8_t str_len);
 
 /* USER CODE END PFP */
 
@@ -146,7 +146,6 @@ int main(void)
   MX_I2C1_Init();
   MX_SPI4_Init();
   MX_ADC1_Init();
-  MX_TIM14_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 
@@ -182,8 +181,6 @@ int main(void)
 	  }
   }
 
-  uint8_t anim_test = 1;
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -193,31 +190,27 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  SSD1306_Clear(&hssd1);
-	  SSD1306_Clear(&hssd2);
-	  ssd1_vram[anim_test        ] = 0xFF;
-	  ssd1_vram[anim_test + 128  ] = 0xFF;
-	  ssd1_vram[anim_test + 128*2] = 0xFF;
-	  ssd1_vram[anim_test + 128*3] = 0xFF;
-	  ssd1_vram[anim_test + 128*4] = 0xFF;
-	  ssd1_vram[anim_test + 128*5] = 0xFF;
-	  ssd1_vram[anim_test + 128*6] = 0xFF;
-	  ssd1_vram[anim_test + 128*7] = 0xFF;
 
-	  ssd2_vram[anim_test        ] = 0xFF;
-	  ssd2_vram[anim_test + 128  ] = 0xFF;
-	  ssd2_vram[anim_test + 128*2] = 0xFF;
-	  ssd2_vram[anim_test + 128*3] = 0xFF;
-	  ssd2_vram[anim_test + 128*4] = 0xFF;
-	  ssd2_vram[anim_test + 128*5] = 0xFF;
-	  ssd2_vram[anim_test + 128*6] = 0xFF;
-	  ssd2_vram[anim_test + 128*7] = 0xFF;
-	  SSD1306_Update(&hssd1);
-	  SSD1306_Update(&hssd2);
-	  HAL_Delay(20);
+	  HAL_Delay(2000);
 
-	  anim_test += 1;
-	  if (anim_test >= 128) anim_test = 1;
+	  sprintf(ssd_msg, " Writing to XBEE...");
+	  WriteDebug(ssd_msg, strlen(ssd_msg));
+
+	  uint8_t at_enter[] = "+++";
+	  uint8_t at_test[] = "AT\r";
+	  uint8_t recv_buf[2] = {0};
+	  HAL_UART_Transmit(&huart1, at_enter, 3, 1000);
+	  //HAL_Delay(3000);
+	  //HAL_UART_Transmit(&huart1, at_test, strlen(at_test), 1000);
+	  if (HAL_UART_Receive(&huart1, recv_buf, 2, 6000)) {
+		  sprintf(ssd_msg, " READ TIMEOUT");
+		  WriteDebug(ssd_msg, strlen(ssd_msg));
+	  } else {
+		  sprintf(ssd_msg, " GOT: %c%c", recv_buf[0], recv_buf[1]);
+		  WriteDebug(ssd_msg, strlen(ssd_msg));
+	  }
+
+	  HAL_Delay(1000);
 
   }
   /* USER CODE END 3 */
@@ -556,37 +549,6 @@ static void MX_SPI4_Init(void)
 }
 
 /**
-  * @brief TIM14 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_TIM14_Init(void)
-{
-
-  /* USER CODE BEGIN TIM14_Init 0 */
-
-  /* USER CODE END TIM14_Init 0 */
-
-  /* USER CODE BEGIN TIM14_Init 1 */
-
-  /* USER CODE END TIM14_Init 1 */
-  htim14.Instance = TIM14;
-  htim14.Init.Prescaler = 0;
-  htim14.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim14.Init.Period = 5;
-  htim14.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim14.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
-  if (HAL_TIM_Base_Init(&htim14) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN TIM14_Init 2 */
-
-  /* USER CODE END TIM14_Init 2 */
-
-}
-
-/**
   * @brief USART1 Initialization Function
   * @param None
   * @retval None
@@ -602,7 +564,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
+  huart1.Init.BaudRate = 9600;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
@@ -727,6 +689,17 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 	//CDC_Transmit_FS(usb_msg, strlen(usb_msg));
 	//HAL_Delay(50);
 }
+
+// TEMP
+void WriteDebug(uint8_t *str_ptr, uint8_t str_len) {
+	  SSD1306_Clear(&hssd1);
+	  SSD1306_Clear(&hssd2);
+	  SSD1306_DrawString(&hssd1, str_ptr, str_len);
+	  SSD1306_DrawString(&hssd2, str_ptr, str_len);
+	  SSD1306_Update(&hssd1);
+	  SSD1306_Update(&hssd2);
+}
+
 /* USER CODE END 4 */
 
  /* MPU Configuration */
