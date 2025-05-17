@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 
 #include "SSD1306.h"
+#include "ST7789.h"
 
 /* USER CODE END Includes */
 
@@ -56,6 +57,7 @@ MDMA_HandleTypeDef hmdma_jpeg_infifo_th;
 MDMA_HandleTypeDef hmdma_jpeg_outfifo_ne;
 
 SPI_HandleTypeDef hspi4;
+DMA_HandleTypeDef hdma_spi4_tx;
 
 UART_HandleTypeDef huart1;
 
@@ -71,8 +73,19 @@ uint8_t ssd_msg[100] = {0};	// Reserve 100 bytes for SSD1306 text
 
 uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB Debug messages
 
-uint16_t adc_buffer[20];
-uint16_t adc_average[2];
+// ST7789 VARIABLES
+ST7789_HandleTypeDef hst7789;
+
+uint16_t st7789_vram[LCD_WIDTH*LCD_HEIGHT] = {0};
+// ADC VARIABLES
+uint16_t adc_buffer[20] = {0};
+uint16_t adc_average[2] = {0};
+uint8_t slider_magnitude[2] = {0};
+uint8_t slider_direction[2] = {0};
+
+//uint16_t slider_midpoint[2] = {0x80, 0x80};	// Define midpoints for sliders
+uint8_t slider_min_deadzone = 16;	// Slider deadzone at min
+uint8_t slider_max_deadzone = 12;	// Slider deadzone at max
 
 /* USER CODE END PV */
 
@@ -91,6 +104,8 @@ static void MX_ADC1_Init(void);
 static void MX_I2C2_Init(void);
 /* USER CODE BEGIN PFP */
 
+// SSD drawing funcs
+void Draw_Slider(uint8_t slider_id);
 void WriteDebug(uint8_t *str_ptr, uint8_t str_len);
 
 /* USER CODE END PFP */
@@ -157,13 +172,15 @@ int main(void)
 
   // ------------------------------------------------------------ SETUP SSD1306 -- //
 
+  uint8_t init_result = 0;
+
   hssd1.i2c_handle = &hi2c2;
   hssd1.address = OLED_ADDR;
-  hssd1.vram = ssd1_vram;
-  uint8_t ssd_initres = SSD1306_Init(&hssd1);
-  if (ssd_initres) {
+  hssd1.vram_full = ssd1_vram;
+  init_result = SSD1306_Init(&hssd1);
+  if (init_result) {
 	  while (1) {
-		  sprintf(usb_msg, "Failed to Init SSD1: %d\r\n", ssd_initres);
+		  sprintf(usb_msg, "Failed to Init SSD1: %d\r\n", init_result);
 		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
 		  HAL_Delay(1000);
 	  }
@@ -171,15 +188,83 @@ int main(void)
 
   hssd2.i2c_handle = &hi2c1;
   hssd2.address = OLED_ADDR;
-  hssd2.vram = ssd2_vram;
-  ssd_initres = SSD1306_Init(&hssd2);
-  if (ssd_initres) {
+  hssd2.vram_full = ssd2_vram;
+  init_result = SSD1306_Init(&hssd2);
+  if (init_result) {
 	  while (1) {
-		  sprintf(usb_msg, "Failed to Init SSD2: %d\r\n", ssd_initres);
+		  sprintf(usb_msg, "Failed to Init SSD2: %d\r\n", init_result);
 		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
 		  HAL_Delay(1000);
 	  }
   }
+
+  HAL_Delay(1000);
+
+  // ------------------------------------------------------------ SETUP ST7789 -- //
+  hst7789.spi_handle = &hspi4;
+  hst7789.cs_gpio_handle = SPI4_CS_GPIO_Port;
+  hst7789.cs_gpio_pin = SPI4_CS_Pin;
+  hst7789.dc_gpio_handle = SPI4_DC_GPIO_Port;
+  hst7789.dc_gpio_pin = SPI4_DC_Pin;
+  hst7789.vram = st7789_vram;
+  init_result = ST7789_Init(&hst7789);
+  if (init_result) {
+	  while (1) {
+		  sprintf(usb_msg, "Failed to Init ST7789: %d\r\n", init_result);
+		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+		  HAL_Delay(1000);
+	  }
+  }
+
+  // ------------------------------------------------------------ PROGRAM THE XBEE -- //
+  uint8_t at_buffer[20] = {0};	// Reserve 20 bytes for writing AT commands
+
+  // Enter command mode
+//  HAL_Delay(2000);
+//  sprintf(at_buffer, "+++");
+//  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+//  WriteDebug(at_buffer, strlen(at_buffer));
+//  HAL_Delay(1500);
+//
+//  // Change the BAUD rate to 115200
+//  sprintf(at_buffer, "ATBD 7\r");
+//  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+//  WriteDebug(at_buffer, strlen(at_buffer));
+//  HAL_Delay(1500);
+//
+//  // Write changes
+//  sprintf(at_buffer, "ATWR\r");
+//  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+//  WriteDebug(at_buffer, strlen(at_buffer));
+//  HAL_Delay(1500);
+//
+//  // Exit CMD mode
+//  sprintf(at_buffer, "ATCN\r");
+//  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+//  WriteDebug(at_buffer, strlen(at_buffer));
+//  HAL_Delay(1500);
+//
+//  // Hang
+//  while (1) {}
+
+  // ------------------------------------------------------------ CHECK IF THE XBEE RESPONDS -- //
+//	// Enter command mode
+//	HAL_Delay(2000);
+//	sprintf(at_buffer, "+++");
+//	HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+//	WriteDebug(at_buffer, strlen(at_buffer));
+//
+//	memset(at_buffer, 0x00, 20);
+//	if (HAL_UART_Receive(&huart1, at_buffer, 2, 6000)) {
+//		sprintf(ssd_msg, " READ TIMEOUT");
+//	} else {
+//		sprintf(ssd_msg, " %s", at_buffer);
+//	}
+//	WriteDebug(ssd_msg, strlen(ssd_msg));
+//
+//	while (1) { }
+
+  uint8_t col = 0x00;
 
   /* USER CODE END 2 */
 
@@ -191,26 +276,20 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	  HAL_Delay(2000);
+	  SSD1306_Clear(&hssd1);
+	  SSD1306_Clear(&hssd2);
+	  Draw_Slider(0);
+	  Draw_Slider(1);
+	  SSD1306_Update(&hssd1);
+	  SSD1306_Update(&hssd2);
 
-	  sprintf(ssd_msg, " Writing to XBEE...");
-	  WriteDebug(ssd_msg, strlen(ssd_msg));
+	  HAL_Delay(200);
 
-	  uint8_t at_enter[] = "+++";
-	  uint8_t at_test[] = "AT\r";
-	  uint8_t recv_buf[2] = {0};
-	  HAL_UART_Transmit(&huart1, at_enter, 3, 1000);
-	  //HAL_Delay(3000);
-	  //HAL_UART_Transmit(&huart1, at_test, strlen(at_test), 1000);
-	  if (HAL_UART_Receive(&huart1, recv_buf, 2, 6000)) {
-		  sprintf(ssd_msg, " READ TIMEOUT");
-		  WriteDebug(ssd_msg, strlen(ssd_msg));
-	  } else {
-		  sprintf(ssd_msg, " GOT: %c%c", recv_buf[0], recv_buf[1]);
-		  WriteDebug(ssd_msg, strlen(ssd_msg));
-	  }
-
-	  HAL_Delay(1000);
+	  ST7789_Clear(&hst7789, col);
+	  if (col == 0xFF)
+		  col = 0x00;
+	  else
+		  col = 0xFF;
 
   }
   /* USER CODE END 3 */
@@ -284,7 +363,16 @@ void PeriphCommonClock_Config(void)
 
   /** Initializes the peripherals clock
   */
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2C2|RCC_PERIPHCLK_I2C1;
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_ADC|RCC_PERIPHCLK_I2C2
+                              |RCC_PERIPHCLK_I2C1|RCC_PERIPHCLK_SPI4;
+  PeriphClkInitStruct.PLL2.PLL2M = 16;
+  PeriphClkInitStruct.PLL2.PLL2N = 128;
+  PeriphClkInitStruct.PLL2.PLL2P = 20;
+  PeriphClkInitStruct.PLL2.PLL2Q = 2;
+  PeriphClkInitStruct.PLL2.PLL2R = 2;
+  PeriphClkInitStruct.PLL2.PLL2RGE = RCC_PLL2VCIRANGE_0;
+  PeriphClkInitStruct.PLL2.PLL2VCOSEL = RCC_PLL2VCOWIDE;
+  PeriphClkInitStruct.PLL2.PLL2FRACN = 0;
   PeriphClkInitStruct.PLL3.PLL3M = 2;
   PeriphClkInitStruct.PLL3.PLL3N = 12;
   PeriphClkInitStruct.PLL3.PLL3P = 2;
@@ -293,7 +381,9 @@ void PeriphCommonClock_Config(void)
   PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_3;
   PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOMEDIUM;
   PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
+  PeriphClkInitStruct.Spi45ClockSelection = RCC_SPI45CLKSOURCE_PLL2;
   PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_PLL3;
+  PeriphClkInitStruct.AdcClockSelection = RCC_ADCCLKSOURCE_PLL2;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -518,12 +608,12 @@ static void MX_SPI4_Init(void)
   /* SPI4 parameter configuration*/
   hspi4.Instance = SPI4;
   hspi4.Init.Mode = SPI_MODE_MASTER;
-  hspi4.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi4.Init.DataSize = SPI_DATASIZE_4BIT;
+  hspi4.Init.Direction = SPI_DIRECTION_2LINES_TXONLY;
+  hspi4.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi4.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi4.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi4.Init.NSS = SPI_NSS_SOFT;
-  hspi4.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi4.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
   hspi4.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi4.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi4.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -564,7 +654,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 9600;
+  huart1.Init.BaudRate = 111111;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
@@ -586,7 +676,7 @@ static void MX_USART1_UART_Init(void)
   {
     Error_Handler();
   }
-  if (HAL_UARTEx_DisableFifoMode(&huart1) != HAL_OK)
+  if (HAL_UARTEx_EnableFifoMode(&huart1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -604,6 +694,7 @@ static void MX_DMA_Init(void)
 
   /* DMA controller clock enable */
   __HAL_RCC_DMA1_CLK_ENABLE();
+  __HAL_RCC_DMA2_CLK_ENABLE();
 
   /* DMA interrupt init */
   /* DMA1_Stream0_IRQn interrupt configuration */
@@ -615,6 +706,9 @@ static void MX_DMA_Init(void)
   /* DMA1_Stream2_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream2_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream2_IRQn);
+  /* DMA2_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
 
 }
 
@@ -654,6 +748,23 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOE, SPI4_CS_Pin|SPI4_DC_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : SPI4_CS_Pin */
+  GPIO_InitStruct.Pin = SPI4_CS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(SPI4_CS_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : SPI4_DC_Pin */
+  GPIO_InitStruct.Pin = SPI4_DC_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  HAL_GPIO_Init(SPI4_DC_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pin : BTN_L_Pin */
   GPIO_InitStruct.Pin = BTN_L_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
@@ -677,20 +788,83 @@ static void MX_GPIO_Init(void)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
 	// Roll the blunt (rolling average)
-	adc_average[0] = 0;
-	adc_average[1] = 0;
+	//adc_average[0] = 0;
+	//adc_average[1] = 0;
+	uint16_t adc_newavg[2] = {0, 0};
 	for (int i = 0; i < 20; i++) {
+		// Accumulate the samples
 		// Have to pre-divide so the result fits in a uint16
-		adc_average[i%2] += adc_buffer[i]/10;
+		adc_newavg[i%2] += (adc_buffer[i])/10;	// DIV 10*4, this includes the 4 for the interp. process
 	}
 
-	// present it
-	//sprintf(usb_msg, "%d, %d\r\n", adc_average[0], adc_average[1]);
-	//CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-	//HAL_Delay(50);
+	for (int i = 0; i < 2; i++) {
+		// Interpolate for smoother control
+		adc_average[i] *= 0.4;
+		adc_average[i] += adc_newavg[i]*0.6;
+
+		slider_direction[i] = !(adc_average[i] >> 15); // shift right to only keep 1 MSB (sign bit)
+		slider_magnitude[i] = adc_average[i] >> 7;	// shift right to chop off 1 MSB and 7 LSB
+		if (slider_direction[i]) slider_magnitude[i] = 0xFF - slider_magnitude[i];	// Flip the magnitude if the slider is inverted
+
+		if (slider_magnitude[i] < slider_min_deadzone)
+			slider_magnitude[i] = 0;
+
+		if (slider_magnitude[i] > 0xFF-slider_max_deadzone)
+				slider_magnitude[i] = 0xFF;
+
+	}
 }
 
-// TEMP
+// ------------------------------------------------------------ DRAW COMMANDS -- //
+void Draw_Slider(uint8_t slider_id) {
+	uint8_t byte_sel = slider_magnitude[slider_id] >> 5;					// Byte threshold
+	uint8_t bit_sel = (slider_magnitude[slider_id] >> 2) & 0b00000111;		// Partial byte threshold
+	uint8_t subbit_sel = (slider_magnitude[slider_id]) & 0b00000111;	// Fine control display
+
+	uint8_t slider_vram[8] = {0};
+
+	if (slider_direction[slider_id]) {
+		for (int i = 0; i < 8; i++) {
+			if (i < byte_sel) slider_vram[7-i] = 0xFF;	// Before partial byte, fill
+			if (i > byte_sel) slider_vram[7-i] = 0x00;	// After partial byte, empty
+			if (i == byte_sel) slider_vram[7-i] = 0xFF << (7-bit_sel);	// Partial byte
+		}
+	} else {
+		for (int i = 0; i < 8; i++) {
+			if (i < byte_sel) slider_vram[i] = 0xFF;
+			if (i > byte_sel) slider_vram[i] = 0x00;
+			if (i == byte_sel) slider_vram[i] = 0xFF >> (7-bit_sel);
+		}
+	}
+
+	uint8_t slider_str[4] = {0};
+	sprintf(slider_str, "%03d", (uint8_t)(slider_magnitude[slider_id] / 2.55));
+
+	if (slider_id == 0) {
+		uint16_t curs = 1;
+		for (int y = 0; y < 8; y++) {
+			for (int x = 3; x < 8; x++)
+				ssd1_vram[curs + y*128 + x] = slider_vram[y];	// Set large bar
+			ssd1_vram[curs + y*128 + 0] = 0xC0 >> subbit_sel;	// Set the fine control disp.
+			ssd1_vram[curs + y*128 + 1] = 0xC0 >> subbit_sel;
+		}
+		hssd1.str_cursor = 9;
+		SSD1306_DrawString(&hssd1, slider_str, strlen(slider_str));
+
+	} else {
+		uint16_t curs = 120;
+		for (int y = 0; y < 8; y++) {
+			for (int x = 0; x < 5; x++)
+				ssd2_vram[curs + y*128 + x] = slider_vram[y];	// Set large bar
+			ssd2_vram[curs + y*128 + 6] = 0xC0 >> subbit_sel;	// Set the fine control disp.
+			ssd2_vram[curs + y*128 + 7] = 0xC0 >> subbit_sel;
+		}
+		hssd2.str_cursor = 100;
+		SSD1306_DrawString(&hssd2, slider_str, strlen(slider_str));
+	}
+}
+
+// Debug
 void WriteDebug(uint8_t *str_ptr, uint8_t str_len) {
 	  SSD1306_Clear(&hssd1);
 	  SSD1306_Clear(&hssd2);

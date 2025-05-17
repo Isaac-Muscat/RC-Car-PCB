@@ -130,7 +130,8 @@ uint8_t SSD1306_SendCommand(SSD1306_HandleTypeDef *hssd, uint8_t command) {
 
 uint8_t SSD1306_Init(SSD1306_HandleTypeDef *hssd) {
 	// Set the cursor
-	hssd->str_cursor = 1;
+	hssd->str_cursor = 0;
+	hssd->vram = hssd->vram_full + 1;
 	// Some control variables
 	uint16_t n_commands = SSD1306_INITCMDS[0];
 	uint16_t n_arguments;
@@ -156,15 +157,15 @@ uint8_t SSD1306_Init(SSD1306_HandleTypeDef *hssd) {
 }
 
 uint8_t SSD1306_Clear(SSD1306_HandleTypeDef *hssd) {
-	hssd->str_cursor = 1;							// Reset the cursor to top-left
-	memset(hssd->vram, 0x00, CACHE_SIZE_MEM + 1);	// set all bytes to 0
+	hssd->str_cursor = 0;						// Reset the cursor to top-left
+	memset(hssd->vram, 0x00, CACHE_SIZE_MEM);	// clear vram
 	return 0;
 }
 
 
 uint8_t SSD1306_Update(SSD1306_HandleTypeDef *hssd) {
-	hssd->vram[0] = DATA_STREAM; // Identify the outgoing data as a stream
-	return HAL_I2C_Master_Transmit_DMA(hssd->i2c_handle, (hssd->address) << 1, hssd->vram, CACHE_SIZE_MEM + 1);
+	hssd->vram_full[0] = DATA_STREAM; 			// Identify the outgoing data as a stream
+	return HAL_I2C_Master_Transmit_DMA(hssd->i2c_handle, (hssd->address) << 1, hssd->vram_full, CACHE_SIZE_MEM + 1);
 }
 
 uint8_t SSD1306_DrawChar(SSD1306_HandleTypeDef *hssd, char ch) {

@@ -1,0 +1,7 @@
+../Drivers/ST7789_Driver/Src/ST7789.c:46:9:ST7789_SendByte_Command	2
+../Drivers/ST7789_Driver/Src/ST7789.c:59:9:ST7789_SendByte_Data	2
+../Drivers/ST7789_Driver/Src/ST7789.c:71:9:ST7789_SendWord_Data	2
+../Drivers/ST7789_Driver/Src/ST7789.c:83:9:ST7789_Init	5
+../Drivers/ST7789_Driver/Src/ST7789.c:110:6:ST7789_SetCursor	1
+../Drivers/ST7789_Driver/Src/ST7789.c:127:6:ST7789_SetWindow	1
+../Drivers/ST7789_Driver/Src/ST7789.c:144:9:ST7789_Clear	1

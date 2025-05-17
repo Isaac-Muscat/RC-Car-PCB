@@ -10,12 +10,6 @@
 
 #include "stm32h7xx_hal.h"
 
-
-	// Success / Error
-    // ------------------------------------------------------------------------------------
-    #define SUCCESS           0
-    #define ERROR             1
-
     // Command definition
     // ------------------------------------------------------------------------------------
     #define COMMAND           0x80  // Continuation bit=1, D/C=0; 1000 0000
@@ -77,6 +71,8 @@
 		I2C_HandleTypeDef 	*i2c_handle;	// ptr to I2C_HandleTypeDef which interfaces with the SSD1306
 
 		uint8_t				address;		// address of the SSD1306, usually 0x3C
+
+		uint8_t				*vram_full;		// ptr to the MCU side copy of SSD1306 VRAM including the data type byte
 
 		uint8_t				*vram;			// ptr to the MCU side copy of SSD1306 VRAM
 
