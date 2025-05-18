@@ -226,35 +226,54 @@ int main(void)
   }
 
   // ------------------------------------------------------------ PROGRAM THE XBEE -- //
-  uint8_t at_buffer[20] = {0};	// Reserve 20 bytes for writing AT commands
+  uint8_t at_buffer[100] = {0};	// Reserve 20 bytes for writing AT commands
 
   // Enter command mode
-//  HAL_Delay(2000);
-//  sprintf(at_buffer, "+++");
+  HAL_Delay(2000);
+  sprintf(at_buffer, "+++");
+  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+  WriteDebug(at_buffer, strlen(at_buffer));
+  HAL_Delay(1500);
+
+  // SH: 0013A200
+  // SL: 42684020
+  // Get the MAC Address
+//  sprintf(at_buffer, "ATSH\r");
 //  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
-//  WriteDebug(at_buffer, strlen(at_buffer));
+//  if (HAL_UART_Receive(&huart1, at_buffer, 10, 5000)) {
+//	  sprintf(ssd_msg, " ERROR: SH");
+//  } else {
+//	  sprintf(ssd_msg, " %s", at_buffer);
+//  }
+//  WriteDebug(ssd_msg, strlen(ssd_msg));
 //  HAL_Delay(1500);
-//
-//  // Change the BAUD rate to 115200
+
+  // Change the BAUD rate to 115200
 //  sprintf(at_buffer, "ATBD 7\r");
 //  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
 //  WriteDebug(at_buffer, strlen(at_buffer));
 //  HAL_Delay(1500);
-//
-//  // Write changes
-//  sprintf(at_buffer, "ATWR\r");
-//  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
-//  WriteDebug(at_buffer, strlen(at_buffer));
-//  HAL_Delay(1500);
-//
-//  // Exit CMD mode
-//  sprintf(at_buffer, "ATCN\r");
-//  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
-//  WriteDebug(at_buffer, strlen(at_buffer));
-//  HAL_Delay(1500);
-//
-//  // Hang
-//  while (1) {}
+
+  sprintf(at_buffer, "ATNI ROVERTIME_CON\r");
+  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+  WriteDebug(at_buffer, strlen(at_buffer));
+  HAL_Delay(1500);
+
+
+  // Write changes
+  sprintf(at_buffer, "ATWR\r");
+  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+  WriteDebug(at_buffer, strlen(at_buffer));
+  HAL_Delay(1500);
+
+  // Exit CMD mode
+  sprintf(at_buffer, "ATCN\r");
+  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+  WriteDebug(at_buffer, strlen(at_buffer));
+  HAL_Delay(1500);
+
+  // Hang
+  while (1) {}
 
   // ------------------------------------------------------------ CHECK IF THE XBEE RESPONDS -- //
 //	// Enter command mode
@@ -292,26 +311,35 @@ int main(void)
 	  // Queue up the Screen updates
 	  //SSD1306_Update(&hssd1);
 	  //SSD1306_Update(&hssd2);
-	  if (hst7789.spi_ready) {
-		  uint32_t new_t = HAL_GetTick();
-		  if (new_t > old_t) { // Check for timer overflow
-			  uint32_t delta_t = new_t - old_t;
-			  if (fill_byte % 16 == 0) {
-				  sprintf(ssd_msg, " DMA ms: %d", delta_t);
-				  WriteDebug(ssd_msg, strlen(ssd_msg));
-				  HAL_Delay(20);
-			  }
-		  }
-		  //HAL_Delay(20);
-		  if (!screen_portion) {
-			  ST7789_Clear(&hst7789, fill_byte);
-			  fill_byte++;
-			  if (fill_byte == 0xFF) fill_byte = 0;
-		  }
-		  old_t = HAL_GetTick();
-		  ST7789_Update(&hst7789, screen_portion);		// DMA half of screen
-		  screen_portion = !screen_portion;
+//	  if (hst7789.spi_ready) {
+//		  uint32_t new_t = HAL_GetTick();
+//		  if (new_t > old_t) { // Check for timer overflow
+//			  uint32_t delta_t = new_t - old_t;
+//			  if (fill_byte % 16 == 0) {
+//				  sprintf(ssd_msg, " DMA ms: %d", delta_t);
+//				  WriteDebug(ssd_msg, strlen(ssd_msg));
+//				  HAL_Delay(20);
+//			  }
+//		  }
+//		  //HAL_Delay(20);
+//		  if (!screen_portion) {
+//			  ST7789_Clear(&hst7789, fill_byte);
+//			  fill_byte++;
+//			  if (fill_byte == 0xFF) fill_byte = 0;
+//		  }
+//		  old_t = HAL_GetTick();
+//		  ST7789_Update(&hst7789, screen_portion);		// DMA half of screen
+//		  screen_portion = !screen_portion;
+//	  }
+
+	  uint8_t xbee_recv_buff[1] = {0};
+	  if (HAL_UART_Receive(&huart1, xbee_recv_buff, 1, 1000)) {
+	  	sprintf(ssd_msg, " NO RECV");
+	  } else {
+	  	sprintf(ssd_msg, " GOT: 0x%X", xbee_recv_buff[0]);
 	  }
+	  WriteDebug(ssd_msg, strlen(ssd_msg));
+
 
 //	  ST7789_Clear(&hst7789, fill_byte);
 //	  fill_byte++;

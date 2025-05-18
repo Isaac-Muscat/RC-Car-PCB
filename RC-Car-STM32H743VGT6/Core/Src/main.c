@@ -96,6 +96,7 @@ static void MX_TIM3_Init(void);
 static void MX_JPEG_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
+void WriteDebug(uint8_t *str_ptr, uint8_t str_len);
 
 HAL_StatusTypeDef CAM_GetRegister(uint8_t addr, uint8_t* pData, uint8_t haltOnError);
 HAL_StatusTypeDef CAM_SetRegister(uint8_t addr, uint8_t data, uint8_t haltOnError);
@@ -169,10 +170,64 @@ int main(void)
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 
-  //HAL_Delay(3000);
+  // ------------------------------------------------------------ PROGRAM THE XBEE -- //
+  uint8_t at_buffer[100] = {0};	// Reserve 20 bytes for writing AT commands
+  uint8_t usb_msg[100] = {0};	// Reserve 20 bytes for writing AT commands
+
+  // Enter command mode
+  HAL_Delay(2000);
+  sprintf(at_buffer, "+++");
+  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+  WriteDebug(at_buffer, strlen(at_buffer));
+  if (HAL_UART_Receive(&huart1, at_buffer, 10, 5000)) {
+  	  sprintf(usb_msg, " ERROR: SH");
+    } else {
+  	  sprintf(usb_msg, " %s", at_buffer);
+    }
+  WriteDebug(usb_msg, strlen(usb_msg));
+
+  while (1) {}
+  HAL_Delay(1500);
+
+  // SH: 0013A200
+  // SL: 42684020
+  // Get the MAC Address
+//  sprintf(at_buffer, "ATSH\r");
+//  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+//  if (HAL_UART_Receive(&huart1, at_buffer, 10, 5000)) {
+//	  sprintf(ssd_msg, " ERROR: SH");
+//  } else {
+//	  sprintf(ssd_msg, " %s", at_buffer);
+//  }
+//  WriteDebug(ssd_msg, strlen(ssd_msg));
+//  HAL_Delay(1500);
+
+  // Change the BAUD rate to 115200
+//  sprintf(at_buffer, "ATBD 7\r");
+//  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+//  WriteDebug(at_buffer, strlen(at_buffer));
+//  HAL_Delay(1500);
+
+  sprintf(at_buffer, "ATNI ROVERTIME_CAR\r");
+  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+  WriteDebug(at_buffer, strlen(at_buffer));
+  HAL_Delay(1500);
+
+
+  // Write changes
+  sprintf(at_buffer, "ATWR\r");
+  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+  WriteDebug(at_buffer, strlen(at_buffer));
+  HAL_Delay(1500);
+
+  // Exit CMD mode
+  sprintf(at_buffer, "ATCN\r");
+  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
+  WriteDebug(at_buffer, strlen(at_buffer));
+  HAL_Delay(1500);
 
   // ------------------------------------------------------------ SETUP USB MESSAGING -- //
-  uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB Debug messages
+  //uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB Debug messages
 
   // ------------------------------------------------------------ SETUP CAMERA INTERFACE -- //
   HAL_TIM_PWM_Start(&htim14, TIM_CHANNEL_1);	// XCLK - Start the camera's core clock
@@ -976,6 +1031,11 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+// Debug
+void WriteDebug(uint8_t *str_ptr, uint8_t str_len) {
+	CDC_Transmit_FS(str_ptr, str_len);
+}
 
 HAL_StatusTypeDef CAM_GetRegister(uint8_t addr, uint8_t* pData, uint8_t haltOnError) {
 	  HAL_StatusTypeDef ov_result;
