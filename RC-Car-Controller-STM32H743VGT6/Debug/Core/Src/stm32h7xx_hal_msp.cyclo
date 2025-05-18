@@ -6,6 +6,6 @@
 ../Core/Src/stm32h7xx_hal_msp.c:362:6:HAL_JPEG_MspInit	6
 ../Core/Src/stm32h7xx_hal_msp.c:446:6:HAL_JPEG_MspDeInit	2
 ../Core/Src/stm32h7xx_hal_msp.c:475:6:HAL_SPI_MspInit	3
-../Core/Src/stm32h7xx_hal_msp.c:534:6:HAL_SPI_MspDeInit	2
-../Core/Src/stm32h7xx_hal_msp.c:568:6:HAL_UART_MspInit	3
-../Core/Src/stm32h7xx_hal_msp.c:619:6:HAL_UART_MspDeInit	2
+../Core/Src/stm32h7xx_hal_msp.c:542:6:HAL_SPI_MspDeInit	2
+../Core/Src/stm32h7xx_hal_msp.c:577:6:HAL_UART_MspInit	3
+../Core/Src/stm32h7xx_hal_msp.c:628:6:HAL_UART_MspDeInit	2

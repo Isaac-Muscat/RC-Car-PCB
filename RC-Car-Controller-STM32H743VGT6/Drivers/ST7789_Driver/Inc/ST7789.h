@@ -19,15 +19,13 @@ typedef struct
 {
 	SPI_HandleTypeDef 	*spi_handle;	// ptr to I2C_HandleTypeDef which interfaces with the ST7789
 
-	GPIO_TypeDef		*cs_gpio_handle;// ptr to GPIO handle of CS line
-
-	uint16_t			cs_gpio_pin;	// GPIO pin no. of CS line
+	uint8_t 			spi_ready;		// flag for whether spi is busy or not
 
 	GPIO_TypeDef		*dc_gpio_handle;// ptr to GPIO handle of DC line
 
 	uint16_t			dc_gpio_pin;	// GPIO pin no. of DC line
 
-	uint16_t			*vram;			// ptr to the MCU side copy of ST7789 VRAM
+	uint8_t				*vram;			// ptr to the MCU side copy of ST7789 VRAM
 
 } ST7789_HandleTypeDef;
 
@@ -42,7 +40,9 @@ typedef struct
 	void ST7789_SetCursor(ST7789_HandleTypeDef *hst7789, uint16_t x, uint16_t y);
 	void ST7789_SetWindow(ST7789_HandleTypeDef *hst7789, uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t  yEnd);
 	uint8_t ST7789_Clear(ST7789_HandleTypeDef *hst7789, uint8_t col);
-	uint8_t ST7789_Update(ST7789_HandleTypeDef *hst7789);
+	uint8_t ST7789_Update(ST7789_HandleTypeDef *hst7789, uint8_t screen_section);
+
+	void ST7789_DMATransmitCplt(ST7789_HandleTypeDef *hst7789);
 
 
 #endif /* ST7789_DRIVER_INC_ST7789_H_ */

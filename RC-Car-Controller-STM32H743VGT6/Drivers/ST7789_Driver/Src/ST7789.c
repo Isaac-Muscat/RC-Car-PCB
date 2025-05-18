@@ -44,43 +44,38 @@ const uint8_t ST7789_INITCMDS[] = {
 
 // Writes a single command byte to the LCD
 uint8_t ST7789_SendByte_Command(ST7789_HandleTypeDef *hst7789, uint8_t command) {
-	HAL_GPIO_WritePin(hst7789->cs_gpio_handle, hst7789->cs_gpio_pin, GPIO_PIN_RESET);	// assert CS LO
 	HAL_GPIO_WritePin(hst7789->dc_gpio_handle, hst7789->dc_gpio_pin, GPIO_PIN_RESET);	// assert DC LO (~CMD)
 
 	// Write the data
 	if (HAL_SPI_Transmit(hst7789->spi_handle, &command, 1, 500))
 		return ERROR;
 	return SUCCESS;
-
-	// Don't reassert CS (This is how it's done in the example code)
-	// See: https://www.waveshare.com/wiki/2inch_LCD_Module#Software_description
 }
 
 uint8_t ST7789_SendByte_Data(ST7789_HandleTypeDef *hst7789, uint8_t data) {
-	HAL_GPIO_WritePin(hst7789->cs_gpio_handle, hst7789->cs_gpio_pin, GPIO_PIN_RESET);	// assert CS LO
 	HAL_GPIO_WritePin(hst7789->dc_gpio_handle, hst7789->dc_gpio_pin, GPIO_PIN_SET);		// assert DC HI (DATA)
 
 	// Write the data
 	if (HAL_SPI_Transmit(hst7789->spi_handle, &data, 1, 500))
 		return ERROR;
-
-	HAL_GPIO_WritePin(hst7789->cs_gpio_handle, hst7789->cs_gpio_pin, GPIO_PIN_SET);	// assert CS HI
 	return SUCCESS;
 }
 
 uint8_t ST7789_SendWord_Data(ST7789_HandleTypeDef *hst7789, uint16_t data) {
-	HAL_GPIO_WritePin(hst7789->cs_gpio_handle, hst7789->cs_gpio_pin, GPIO_PIN_RESET);	// assert CS LO
 	HAL_GPIO_WritePin(hst7789->dc_gpio_handle, hst7789->dc_gpio_pin, GPIO_PIN_SET);		// assert DC HI (DATA)
 
 	// Write the data
 	if (HAL_SPI_Transmit(hst7789->spi_handle, (uint8_t*)(&data), 2, 500))
 		return ERROR;
-
-	HAL_GPIO_WritePin(hst7789->cs_gpio_handle, hst7789->cs_gpio_pin, GPIO_PIN_SET);	// assert CS HI
 	return SUCCESS;
 }
 
 uint8_t ST7789_Init(ST7789_HandleTypeDef *hst7789) {
+
+	// Wake up the SPI line
+	uint8_t dummy = 0x00;
+	HAL_SPI_Transmit_DMA(hst7789->spi_handle, &dummy, 1);
+	HAL_Delay(10);
 
 	// Some control variables
 	uint16_t n_commands = ST7789_INITCMDS[0];
@@ -99,8 +94,8 @@ uint8_t ST7789_Init(ST7789_HandleTypeDef *hst7789) {
 
 	    // Send argumemts
 	    while (n_arguments--) {
-	    if (ST7789_SendByte_Data(hst7789, ST7789_INITCMDS[cmd_idx])) return cmd_idx;
-	        cmd_idx++;
+			if (ST7789_SendByte_Data(hst7789, ST7789_INITCMDS[cmd_idx])) return cmd_idx;
+				cmd_idx++;
 	    }
 	}
 	return SUCCESS;
@@ -143,20 +138,27 @@ void ST7789_SetWindow(ST7789_HandleTypeDef *hst7789, uint16_t xStart, uint16_t y
 
 uint8_t ST7789_Clear(ST7789_HandleTypeDef *hst7789, uint8_t col) {
 	// fill VRAM with white
-	memset(hst7789->vram, col, LCD_WIDTH*LCD_HEIGHT*4);
+	memset(hst7789->vram, col, LCD_WIDTH*LCD_HEIGHT*2);
+	return SUCCESS;
+}
 
-	ST7789_SetWindow(hst7789, 0, 0, LCD_WIDTH, LCD_HEIGHT);
+uint8_t ST7789_Update(ST7789_HandleTypeDef *hst7789, uint8_t screen_section) {
+	// Flag busy
+	hst7789->spi_ready = 0;
 
-	HAL_GPIO_WritePin(hst7789->dc_gpio_handle, hst7789->dc_gpio_pin, GPIO_PIN_SET);	// assert DC HI (~CMD)
-	HAL_GPIO_WritePin(hst7789->cs_gpio_handle, hst7789->cs_gpio_pin, GPIO_PIN_RESET);	// assert CS LO
+	// Set the window based on the vram offset
+	ST7789_SetWindow(hst7789, 0, (screen_section*0xEA60)/(LCD_WIDTH*2), LCD_WIDTH, LCD_HEIGHT);
 
-	// Push the screen
-	//HAL_SPI_Transmit_DMA(hst7789->spi_handle, hst7789->vram, LCD_WIDTH*LCD_HEIGHT*2);
-	//for(uint16_t i = 0; i < LCD_HEIGHT/64; i++){
-		//HAL_SPI_Transmit(hst7789->spi_handle, hst7789->vram + i*LCD_WIDTH*8, LCD_WIDTH*8, 1000);
-	HAL_SPI_Transmit_DMA(hst7789->spi_handle, hst7789->vram, 0xFFFF);
-		//HAL_Delay(10);
-	 //}
+	HAL_GPIO_WritePin(hst7789->dc_gpio_handle, hst7789->dc_gpio_pin, GPIO_PIN_SET);		// assert DC HI (~CMD)
 
-	//HAL_GPIO_WritePin(hst7789->cs_gpio_handle, hst7789->cs_gpio_pin, GPIO_PIN_SET);	// assert CS HI
+
+	if (HAL_SPI_Transmit_DMA(hst7789->spi_handle, hst7789->vram, 0xEA60))
+		return ERROR;
+//	return SUCCESS;
+	//HAL_SPI_Transmit(hst7789->spi_handle, hst7789->vram, 0xEA60, 500);
+	return SUCCESS;
+}
+
+void ST7789_DMATransmitCplt(ST7789_HandleTypeDef *hst7789) {
+	hst7789->spi_ready = 1;	// Flag ready
 }

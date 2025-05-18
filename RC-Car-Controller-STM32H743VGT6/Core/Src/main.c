@@ -76,7 +76,7 @@ uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB Debug messages
 // ST7789 VARIABLES
 ST7789_HandleTypeDef hst7789;
 
-uint16_t st7789_vram[LCD_WIDTH*LCD_HEIGHT] = {0};
+uint8_t st7789_vram[LCD_WIDTH*LCD_HEIGHT*2] = {0};
 // ADC VARIABLES
 uint16_t adc_buffer[20] = {0};
 uint16_t adc_average[2] = {0};
@@ -86,6 +86,15 @@ uint8_t slider_direction[2] = {0};
 //uint16_t slider_midpoint[2] = {0x80, 0x80};	// Define midpoints for sliders
 uint8_t slider_min_deadzone = 16;	// Slider deadzone at min
 uint8_t slider_max_deadzone = 12;	// Slider deadzone at max
+
+// SCHEDULING VARIABLES
+// Displays use DMA STREAM 1
+// ORDER: SSD1 -> ST7789(1/2) -> SSD2 -> ST7789(1/2)
+// When do we have clocks to spare?
+// SSD	  DMA takes ~1K  clocks
+// ST7789 DMA takes ~65K clocks
+
+uint8_t st7789_ready = 1;
 
 /* USER CODE END PV */
 
@@ -164,8 +173,6 @@ int main(void)
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 
-  //HAL_Delay(3000);
-
   // ------------------------------------------------------------ SETUP ADC DMA -- //
 
   HAL_ADC_Start_DMA(&hadc1, adc_buffer, 20);
@@ -198,12 +205,9 @@ int main(void)
 	  }
   }
 
-  HAL_Delay(1000);
-
   // ------------------------------------------------------------ SETUP ST7789 -- //
   hst7789.spi_handle = &hspi4;
-  hst7789.cs_gpio_handle = SPI4_CS_GPIO_Port;
-  hst7789.cs_gpio_pin = SPI4_CS_Pin;
+  hst7789.spi_ready = 1;
   hst7789.dc_gpio_handle = SPI4_DC_GPIO_Port;
   hst7789.dc_gpio_pin = SPI4_DC_Pin;
   hst7789.vram = st7789_vram;
@@ -264,7 +268,11 @@ int main(void)
 //
 //	while (1) { }
 
-  uint8_t col = 0x00;
+  uint8_t col = 0xF0;
+  uint8_t screen_portion = 0;
+  uint8_t fill_byte = 0;
+
+  uint32_t old_t = HAL_GetTick();
 
   /* USER CODE END 2 */
 
@@ -276,20 +284,50 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	  SSD1306_Clear(&hssd1);
-	  SSD1306_Clear(&hssd2);
-	  Draw_Slider(0);
-	  Draw_Slider(1);
-	  SSD1306_Update(&hssd1);
-	  SSD1306_Update(&hssd2);
+	  // Queue up the Screen updates
+	  //SSD1306_Update(&hssd1);
+	  //SSD1306_Update(&hssd2);
+	  if (hst7789.spi_ready) {
+		  uint32_t new_t = HAL_GetTick();
+		  if (new_t > old_t) { // Check for timer overflow
+			  uint32_t delta_t = new_t - old_t;
+			  if (fill_byte % 16 == 0) {
+				  sprintf(ssd_msg, " DMA ms: %d", delta_t);
+				  WriteDebug(ssd_msg, strlen(ssd_msg));
+				  HAL_Delay(20);
+			  }
+		  }
+		  //HAL_Delay(20);
+		  if (!screen_portion) {
+			  ST7789_Clear(&hst7789, fill_byte);
+			  fill_byte++;
+			  if (fill_byte == 0xFF) fill_byte = 0;
+		  }
+		  old_t = HAL_GetTick();
+		  ST7789_Update(&hst7789, screen_portion);		// DMA half of screen
+		  screen_portion = !screen_portion;
+	  }
 
-	  HAL_Delay(200);
+//	  ST7789_Clear(&hst7789, fill_byte);
+//	  fill_byte++;
+//	  if (fill_byte == 0xFF) fill_byte = 0;
+//	  ST7789_Update(&hst7789, 0);		// DMA half of screen
+//	  HAL_Delay(1000);
 
-	  ST7789_Clear(&hst7789, col);
-	  if (col == 0xFF)
-		  col = 0x00;
-	  else
-		  col = 0xFF;
+
+
+	  //HAL_Delay(50);
+	  //ST7789_Update(&hst7789, 1);	// DMA second half of screen
+
+	  //HAL_Delay(200);
+
+
+
+//	  SSD1306_Clear(&hssd1);
+//	  SSD1306_Clear(&hssd2);
+//	  Draw_Slider(0);
+//	  Draw_Slider(1);
+
 
   }
   /* USER CODE END 3 */
@@ -612,8 +650,8 @@ static void MX_SPI4_Init(void)
   hspi4.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi4.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi4.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi4.Init.NSS = SPI_NSS_SOFT;
-  hspi4.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi4.Init.NSS = SPI_NSS_HARD_OUTPUT;
+  hspi4.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi4.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi4.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi4.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -693,8 +731,8 @@ static void MX_DMA_Init(void)
 {
 
   /* DMA controller clock enable */
-  __HAL_RCC_DMA1_CLK_ENABLE();
   __HAL_RCC_DMA2_CLK_ENABLE();
+  __HAL_RCC_DMA1_CLK_ENABLE();
 
   /* DMA interrupt init */
   /* DMA1_Stream0_IRQn interrupt configuration */
@@ -749,14 +787,10 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOE, SPI4_CS_Pin|SPI4_DC_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(SPI4_DC_GPIO_Port, SPI4_DC_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pin : SPI4_CS_Pin */
-  GPIO_InitStruct.Pin = SPI4_CS_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(SPI4_CS_GPIO_Port, &GPIO_InitStruct);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(SPI4_RST_GPIO_Port, SPI4_RST_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin : SPI4_DC_Pin */
   GPIO_InitStruct.Pin = SPI4_DC_Pin;
@@ -777,12 +811,24 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(BTN_R_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : SPI4_RST_Pin */
+  GPIO_InitStruct.Pin = SPI4_RST_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(SPI4_RST_GPIO_Port, &GPIO_InitStruct);
+
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
   /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
+
+// ------------------------------------------------------------ OVERRIDE SPI DMA CALLBACKS -- //
+void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi) {
+	ST7789_DMATransmitCplt(&hst7789);
+}
 
 // ------------------------------------------------------------ OVERRIDE ADC DMA CALLBACKS -- //
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
