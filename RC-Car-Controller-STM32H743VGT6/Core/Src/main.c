@@ -1,20 +1,20 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2025 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file           : main.c
+ * @brief          : Main program body
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2025 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -37,9 +37,13 @@
 /* USER CODE BEGIN PD */
 #define OLED_ADDR 0x3C
 
-#define SCHED_FREQ_SSD1 	20 // 50FPS
-#define SCHED_FREQ_SSD2 	20 // 50FPS
-#define SCHED_FREQ_
+#define UART_BUFFERSIZE 67
+
+#define JPEG_WIDTH  315
+#define JPEG_HEIGHT 120
+
+#define JPEG_MCU_WIDTH  40
+#define JPEG_MCU_HEIGHT 15
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -80,8 +84,9 @@ uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB Debug messages
 
 // ST7789 VARIABLES
 ST7789_HandleTypeDef hst7789;
-
 uint8_t st7789_vram[LCD_WIDTH*LCD_HEIGHT*2] = {0};
+uint8_t st7789_ready = 1;
+
 // ADC VARIABLES
 uint16_t adc_buffer[20] = {0};
 uint16_t adc_average[2] = {0};
@@ -92,14 +97,35 @@ uint8_t slider_direction[2] = {0};
 uint8_t slider_min_deadzone = 16;	// Slider deadzone at min
 uint8_t slider_max_deadzone = 12;	// Slider deadzone at max
 
+// UART VARIABLES
+uint8_t uart_rxDMA_buffer[UART_BUFFERSIZE] = {0};	// Circular RX Buffer
+uint8_t uart_rxDMA_readHead = 0;
+
+uint8_t uart_rx_packetPartBuffer[UART_BUFFERSIZE] = {0};	// half packet - buffer
+uint8_t uart_rx_packetFullBuffer[UART_BUFFERSIZE] = {0};	// complete packet - buffer
+uint8_t uart_rx_packetState = 0;							// packet - state
+uint16_t uart_rx_lastPacketNum = 0;
+uint8_t uart_rx_skippedPackets = 0;
+// ----------------------------------- 0: GOOD
+// ----------------------------------- 1: MALFORMED
+// ----------------------------------- 2: BUSY
+
+// JPEG VARIABLES
+uint8_t  jpeg_raw[JPEG_WIDTH*JPEG_HEIGHT] = {0};
+uint8_t  jpeg_out[JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64] = {0};
+uint16_t jpeg_size = 0;
+uint8_t  jpeg_state = 0; // JPEG State
+// ------------------------ 0: JPEG Idle
+// ------------------------ 1: JPEG DMA Busy
+// ------------------------ 2: JPEG Decoded
+uint8_t current_mcu_y = 0;
+
 // SCHEDULING VARIABLES
 // Displays use DMA STREAM 1
 // ORDER: SSD1 -> ST7789(1/2) -> SSD2 -> ST7789(1/2)
 // When do we have clocks to spare?
 // SSD	  DMA takes ~1K  clocks
 // ST7789 DMA takes ~65K clocks
-
-uint8_t st7789_ready = 1;
 
 /* USER CODE END PV */
 
@@ -129,737 +155,850 @@ void WriteDebug(uint8_t *str_ptr, uint8_t str_len);
 
 // EXTERN IN USBD_CDC_IF
 uint8_t usb_device_rxFlag = 0x00;
+uint16_t uart_rx_len = 0;
 
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
 
-  /* USER CODE BEGIN 1 */
+	/* USER CODE BEGIN 1 */
 
-  /* USER CODE END 1 */
+	/* USER CODE END 1 */
 
-  /* MPU Configuration--------------------------------------------------------*/
-  MPU_Config();
+	/* MPU Configuration--------------------------------------------------------*/
+	MPU_Config();
 
-  /* MCU Configuration--------------------------------------------------------*/
+	/* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+	HAL_Init();
 
-  /* USER CODE BEGIN Init */
+	/* USER CODE BEGIN Init */
 
-  /* USER CODE END Init */
+	/* USER CODE END Init */
 
-  /* Configure the system clock */
-  SystemClock_Config();
+	/* Configure the system clock */
+	SystemClock_Config();
 
-  /* Configure the peripherals common clocks */
-  PeriphCommonClock_Config();
+	/* Configure the peripherals common clocks */
+	PeriphCommonClock_Config();
 
-  /* USER CODE BEGIN SysInit */
+	/* USER CODE BEGIN SysInit */
 
-  /* USER CODE END SysInit */
+	/* USER CODE END SysInit */
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_MDMA_Init();
-  MX_DMA_Init();
-  MX_USART1_UART_Init();
-  MX_USB_DEVICE_Init();
-  MX_JPEG_Init();
-  MX_I2C1_Init();
-  MX_SPI4_Init();
-  MX_ADC1_Init();
-  MX_I2C2_Init();
-  /* USER CODE BEGIN 2 */
+	/* Initialize all configured peripherals */
+	MX_GPIO_Init();
+	MX_MDMA_Init();
+	MX_DMA_Init();
+	MX_USART1_UART_Init();
+	MX_USB_DEVICE_Init();
+	MX_JPEG_Init();
+	MX_I2C1_Init();
+	MX_SPI4_Init();
+	MX_ADC1_Init();
+	MX_I2C2_Init();
+	/* USER CODE BEGIN 2 */
 
-  // ------------------------------------------------------------ SETUP ADC DMA -- //
+	// ------------------------------------------------------------ SETUP ADC DMA -- //
 
-  HAL_ADC_Start_DMA(&hadc1, adc_buffer, 20);
+	HAL_ADC_Start_DMA(&hadc1, adc_buffer, 20);
 
-  // ------------------------------------------------------------ SETUP SSD1306 -- //
+	// ------------------------------------------------------------ SETUP SSD1306 -- //
 
-  uint8_t init_result = 0;
+	uint8_t init_result = 0;
 
-  hssd1.i2c_handle = &hi2c2;
-  hssd1.address = OLED_ADDR;
-  hssd1.vram_full = ssd1_vram;
-  init_result = SSD1306_Init(&hssd1);
-  if (init_result) {
-	  while (1) {
-		  sprintf(usb_msg, "Failed to Init SSD1: %d\r\n", init_result);
-		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-		  HAL_Delay(1000);
-	  }
-  }
+	hssd1.i2c_handle = &hi2c2;
+	hssd1.address = OLED_ADDR;
+	hssd1.vram_full = ssd1_vram;
+	init_result = SSD1306_Init(&hssd1);
+	if (init_result) {
+		while (1) {
+			sprintf(usb_msg, "Failed to Init SSD1: %d\r\n", init_result);
+			CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+			HAL_Delay(1000);
+		}
+	}
 
-  hssd2.i2c_handle = &hi2c1;
-  hssd2.address = OLED_ADDR;
-  hssd2.vram_full = ssd2_vram;
-  init_result = SSD1306_Init(&hssd2);
-  if (init_result) {
-	  while (1) {
-		  sprintf(usb_msg, "Failed to Init SSD2: %d\r\n", init_result);
-		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-		  HAL_Delay(1000);
-	  }
-  }
+	hssd2.i2c_handle = &hi2c1;
+	hssd2.address = OLED_ADDR;
+	hssd2.vram_full = ssd2_vram;
+	init_result = SSD1306_Init(&hssd2);
+	if (init_result) {
+		while (1) {
+			sprintf(usb_msg, "Failed to Init SSD2: %d\r\n", init_result);
+			CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+			HAL_Delay(1000);
+		}
+	}
 
-  // ------------------------------------------------------------ SETUP ST7789 -- //
-  hst7789.spi_handle = &hspi4;
-  hst7789.spi_ready = 1;
-  hst7789.dc_gpio_handle = SPI4_DC_GPIO_Port;
-  hst7789.dc_gpio_pin = SPI4_DC_Pin;
-  hst7789.vram = st7789_vram;
-  init_result = ST7789_Init(&hst7789);
-  if (init_result) {
-	  while (1) {
-		  sprintf(usb_msg, "Failed to Init ST7789: %d\r\n", init_result);
-		  CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-		  HAL_Delay(1000);
-	  }
-  }
+	// ------------------------------------------------------------ SETUP ST7789 -- //
+	hst7789.spi_handle = &hspi4;
+	hst7789.spi_ready = 1;
+	hst7789.dc_gpio_handle = SPI4_DC_GPIO_Port;
+	hst7789.dc_gpio_pin = SPI4_DC_Pin;
+	hst7789.vram = st7789_vram;
+	init_result = ST7789_Init(&hst7789);
+	if (init_result) {
+		while (1) {
+			sprintf(usb_msg, "Failed to Init ST7789: %d\r\n", init_result);
+			CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+			HAL_Delay(1000);
+		}
+	}
 
-  // ------------------------------------------------------------ PROGRAM THE XBEE -- //
-  uint8_t at_buffer[100] = {0};	// Reserve 20 bytes for writing AT commands
+	// Clear the screen
+	ST7789_Clear(&hst7789, 0x00);
+	ST7789_Update(&hst7789, 0);
+	HAL_Delay(50);
+	ST7789_Update(&hst7789, 1);
 
-  // Enter command mode
-  HAL_Delay(2000);
-  sprintf(at_buffer, "+++");
-  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
-  WriteDebug(at_buffer, strlen(at_buffer));
-  HAL_Delay(1500);
+	// ------------------------------------------------------------ SETUP JPEG ENCODING -- //
+	// Set the CONFIG
+	JPEG_ConfTypeDef* jpeg_config;
+	jpeg_config->ColorSpace = JPEG_GRAYSCALE_COLORSPACE;
+	//jpeg_config->ColorSpace = JPEG_YCBCR_COLORSPACE;
+	//jpeg_config->ChromaSubsampling = JPEG_422_SUBSAMPLING;
+	jpeg_config->ImageWidth = JPEG_WIDTH;
+	jpeg_config->ImageHeight = JPEG_HEIGHT;
+	//jpeg_config->ImageQuality = JPEG_QUALITY;
+	//HAL_JPEG_ConfigDecoding(&hjpeg, jpeg_config);
 
-  // SH: 0013A200
-  // SL: 42684020
-  // Get the MAC Address
-//  sprintf(at_buffer, "ATSH\r");
-//  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
-//  if (HAL_UART_Receive(&huart1, at_buffer, 10, 5000)) {
-//	  sprintf(ssd_msg, " ERROR: SH");
-//  } else {
-//	  sprintf(ssd_msg, " %s", at_buffer);
-//  }
-//  WriteDebug(ssd_msg, strlen(ssd_msg));
-//  HAL_Delay(1500);
+	// ------------------------------------------------------------ SETUP UART -- //
+	// TODO: Move this into a class
+	// TODO: Register a callback instead of using the legacy one
 
-  // Change the BAUD rate to 115200
-//  sprintf(at_buffer, "ATBD 7\r");
-//  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
-//  WriteDebug(at_buffer, strlen(at_buffer));
-//  HAL_Delay(1500);
+	uint8_t col = 0xF0;
+	uint8_t screen_portion = 0;
+	uint8_t fill_byte = 0;
 
-  sprintf(at_buffer, "ATNI ROVERTIME_CON\r");
-  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
-  WriteDebug(at_buffer, strlen(at_buffer));
-  HAL_Delay(1500);
+	uint32_t old_t = HAL_GetTick();
+	uint8_t debug_live = 0;
+
+	sprintf(ssd_msg, " JPEG X");
+	WriteDebug(ssd_msg, strlen(ssd_msg));
+
+	// Begin a UART capture
+	uart_rx_packetState = 2;
+	HAL_UART_Receive_DMA(&huart1, uart_rxDMA_buffer, UART_BUFFERSIZE);
+
+	/* USER CODE END 2 */
+
+	/* Infinite loop */
+	/* USER CODE BEGIN WHILE */
+	while (1)
+	{
+		/* USER CODE END WHILE */
+
+		/* USER CODE BEGIN 3 */
+
+		// If there's a packet, process it
+		// If the packet is good, push it to the screen
+		if (uart_rx_packetState == 0) {
+			uint16_t rx_byte = 0;
+			rx_byte += uart_rx_packetFullBuffer[1];
+			rx_byte *= 256;
+			rx_byte += uart_rx_packetFullBuffer[2];
+
+			if (rx_byte <= JPEG_WIDTH*JPEG_HEIGHT/64 + 1) {
+				//				if (rx_byte % 10 == 0) {
+				//					sprintf(ssd_msg, " RX %d", rx_byte);
+				//					WriteDebug(ssd_msg, strlen(ssd_msg));
+				//				}
+
+				if (rx_byte > uart_rx_lastPacketNum + 1) {
+					uart_rx_skippedPackets += (rx_byte - uart_rx_lastPacketNum) - 1;
+				}
+
+				// Data was fully sent
+				if (rx_byte < uart_rx_lastPacketNum) {
+					// Data good, process
+					if (uart_rx_skippedPackets == 0 && jpeg_state == 0) {
+						// Start the jpeg decode
+						jpeg_size = uart_rx_lastPacketNum*64;
+						ST7789_Update(&hst7789, 0);
+						//sprintf(ssd_msg, " JPEG SZ %d", jpeg_size);
+						//WriteDebug(ssd_msg, strlen(ssd_msg));
+						HAL_StatusTypeDef ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw, jpeg_size, jpeg_out, JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64);
+						if (ret) {
+							sprintf(ssd_msg, " JPEG FAIL %d", ret);
+							WriteDebug(ssd_msg, strlen(ssd_msg));
+						} else {
+							jpeg_state = 1;
+						}
+					} else {
+						// Packets skipped
+						uart_rx_skippedPackets = 0;
+					}
+				}
+				// flag the packet as processed
+				uart_rx_lastPacketNum = rx_byte;
+				uart_rx_packetState = 2;
+
+				// fill in the received data
+				//memcpy(hst7789.vram + rx_byte * 64, uart_rx_packetFullBuffer + 3, 64);
+				memcpy(jpeg_raw + rx_byte * 64, uart_rx_packetFullBuffer + 3, 64);
+				// log time
+				uint32_t delta_t = HAL_GetTick() - old_t;
+				sprintf(ssd_msg, " MS: %d", delta_t);
+				WriteDebug(ssd_msg, strlen(ssd_msg));
+				old_t = HAL_GetTick();
+			}
+		}
+
+		// If the JPEG is decoded, process it
+		if (jpeg_state == 2) {
+			// TODO: Make this an async loop
+			// TODO: Turn these screen dimensions into defines
+
+			// Loop through every mcu block
+			for (uint16_t mcu_x = 0; mcu_x < JPEG_MCU_WIDTH; mcu_x++) {
+				uint16_t mcu_idx = current_mcu_y*JPEG_MCU_WIDTH + mcu_x;
+
+				for (uint16_t y = 0; y < 8; y++) {
+					for (uint16_t x = 0; x < 8; x++) {
+						// Bounds check
+						if ((mcu_x*8 + x) > LCD_WIDTH) continue;
+						// COLOR FORMAT
+						// |RRRRR GGG|GGG BBBBB|
+						// TODO: stop transmitting overscan to save bandwidth
+						uint8_t sample = jpeg_out[mcu_idx*64 + y*8 + x];
+
+						uint32_t pix_x = (LCD_WIDTH-(mcu_x*8 + x))*2;
+						uint32_t pix_y = (current_mcu_y*16 + y*2)*LCD_WIDTH*2;
+
+						hst7789.vram[pix_y + pix_x] = (sample & 0b11111000) | ((sample & 0b11100000)>>5);
+						hst7789.vram[pix_y + pix_x + 1] = ((sample & 0b11111000) >> 3) | ((sample & 0b00011100)<<3);
+						//hst7789.vram[(mcu_y*16 + y*2 + 1) * LCD_WIDTH*2 + (LCD_WIDTH-(mcu_x*8 + x))*2    ] = (sample & 0b11111000) | ((sample & 0b11100000)>>5);
+						//hst7789.vram[(mcu_y*16 + y*2 + 1) * LCD_WIDTH*2 + (LCD_WIDTH-(mcu_x*8 + x))*2 + 1] = ((sample & 0b11111000) >> 3) | ((sample & 0b00011100)<<3);
+					}
+				}
+			}
+
+			current_mcu_y++;
+
+			if (current_mcu_y == JPEG_MCU_HEIGHT/2 + 1) {
+				ST7789_Update(&hst7789, 0);
+			}
+
+			if (current_mcu_y >= JPEG_MCU_HEIGHT) {
+				ST7789_Update(&hst7789, 1);
+				current_mcu_y = 0;
+				// Flag JPEG as idle
+				jpeg_state = 0;
+			}
+			//HAL_Delay(10);
+			//ST7789_Update(&hst7789, 1);
+
+		}
 
 
-  // Write changes
-  sprintf(at_buffer, "ATWR\r");
-  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
-  WriteDebug(at_buffer, strlen(at_buffer));
-  HAL_Delay(1500);
+		// Queue up the Screen updates
+		//SSD1306_Update(&hssd1);
+		//SSD1306_Update(&hssd2);
+		//	  if (hst7789.spi_ready) {
+		//		  uint32_t new_t = HAL_GetTick();
+		//		  if (new_t > old_t) { // Check for timer overflow
+		//			  uint32_t delta_t = new_t - old_t;
+		//			  if (fill_byte % 16 == 0) {
+		//				  sprintf(ssd_msg, " DMA ms: %d", delta_t);
+		//				  WriteDebug(ssd_msg, strlen(ssd_msg));
+		//				  HAL_Delay(20);
+		//			  }
+		//		  }
+		//		  //HAL_Delay(20);
+		//		  if (!screen_portion) {
+		//			  ST7789_Clear(&hst7789, fill_byte);
+		//			  fill_byte++;
+		//			  if (fill_byte == 0xFF) fill_byte = 0;
+		//		  }
+		//		  old_t = HAL_GetTick();
+		//		  ST7789_Update(&hst7789, screen_portion);		// DMA half of screen
+		//		  screen_portion = !screen_portion;
+		//	  }
 
-  // Exit CMD mode
-  sprintf(at_buffer, "ATCN\r");
-  HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
-  WriteDebug(at_buffer, strlen(at_buffer));
-  HAL_Delay(1500);
-
-  // Hang
-  while (1) {}
-
-  // ------------------------------------------------------------ CHECK IF THE XBEE RESPONDS -- //
-//	// Enter command mode
-//	HAL_Delay(2000);
-//	sprintf(at_buffer, "+++");
-//	HAL_UART_Transmit(&huart1, at_buffer, strlen(at_buffer), 1000);
-//	WriteDebug(at_buffer, strlen(at_buffer));
-//
-//	memset(at_buffer, 0x00, 20);
-//	if (HAL_UART_Receive(&huart1, at_buffer, 2, 6000)) {
-//		sprintf(ssd_msg, " READ TIMEOUT");
-//	} else {
-//		sprintf(ssd_msg, " %s", at_buffer);
-//	}
-//	WriteDebug(ssd_msg, strlen(ssd_msg));
-//
-//	while (1) { }
-
-  uint8_t col = 0xF0;
-  uint8_t screen_portion = 0;
-  uint8_t fill_byte = 0;
-
-  uint32_t old_t = HAL_GetTick();
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-
-	  // Queue up the Screen updates
-	  //SSD1306_Update(&hssd1);
-	  //SSD1306_Update(&hssd2);
-//	  if (hst7789.spi_ready) {
-//		  uint32_t new_t = HAL_GetTick();
-//		  if (new_t > old_t) { // Check for timer overflow
-//			  uint32_t delta_t = new_t - old_t;
-//			  if (fill_byte % 16 == 0) {
-//				  sprintf(ssd_msg, " DMA ms: %d", delta_t);
-//				  WriteDebug(ssd_msg, strlen(ssd_msg));
-//				  HAL_Delay(20);
-//			  }
-//		  }
-//		  //HAL_Delay(20);
-//		  if (!screen_portion) {
-//			  ST7789_Clear(&hst7789, fill_byte);
-//			  fill_byte++;
-//			  if (fill_byte == 0xFF) fill_byte = 0;
-//		  }
-//		  old_t = HAL_GetTick();
-//		  ST7789_Update(&hst7789, screen_portion);		// DMA half of screen
-//		  screen_portion = !screen_portion;
-//	  }
-
-	  uint8_t xbee_recv_buff[1] = {0};
-	  if (HAL_UART_Receive(&huart1, xbee_recv_buff, 1, 1000)) {
-	  	sprintf(ssd_msg, " NO RECV");
-	  } else {
-	  	sprintf(ssd_msg, " GOT: 0x%X", xbee_recv_buff[0]);
-	  }
-	  WriteDebug(ssd_msg, strlen(ssd_msg));
-
-
-//	  ST7789_Clear(&hst7789, fill_byte);
-//	  fill_byte++;
-//	  if (fill_byte == 0xFF) fill_byte = 0;
-//	  ST7789_Update(&hst7789, 0);		// DMA half of screen
-//	  HAL_Delay(1000);
-
-
-
-	  //HAL_Delay(50);
-	  //ST7789_Update(&hst7789, 1);	// DMA second half of screen
-
-	  //HAL_Delay(200);
-
-
-
-//	  SSD1306_Clear(&hssd1);
-//	  SSD1306_Clear(&hssd2);
-//	  Draw_Slider(0);
-//	  Draw_Slider(1);
-
-
-  }
-  /* USER CODE END 3 */
+		//	  ST7789_Clear(&hst7789, fill_byte);
+		//	  fill_byte++;
+		//	  if (fill_byte == 0xFF) fill_byte = 0;
+		//	  ST7789_Update(&hst7789, 0);		// DMA half of screen
+		//	  HAL_Delay(1000);
+	}
+	/* USER CODE END 3 */
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+	RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+	RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  /** Supply configuration update enable
-  */
-  HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
+	/** Supply configuration update enable
+	 */
+	HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
 
-  /** Configure the main internal regulator output voltage
-  */
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+	/** Configure the main internal regulator output voltage
+	 */
+	__HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-  while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
+	while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
 
-  /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = 2;
-  RCC_OscInitStruct.PLL.PLLN = 24;
-  RCC_OscInitStruct.PLL.PLLP = 2;
-  RCC_OscInitStruct.PLL.PLLQ = 6;
-  RCC_OscInitStruct.PLL.PLLR = 2;
-  RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_3;
-  RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
-  RCC_OscInitStruct.PLL.PLLFRACN = 0;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	/** Initializes the RCC Oscillators according to the specified parameters
+	 * in the RCC_OscInitTypeDef structure.
+	 */
+	RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+	RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+	RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+	RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+	RCC_OscInitStruct.PLL.PLLM = 2;
+	RCC_OscInitStruct.PLL.PLLN = 24;
+	RCC_OscInitStruct.PLL.PLLP = 2;
+	RCC_OscInitStruct.PLL.PLLQ = 6;
+	RCC_OscInitStruct.PLL.PLLR = 2;
+	RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_3;
+	RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
+	RCC_OscInitStruct.PLL.PLLFRACN = 0;
+	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+	{
+		Error_Handler();
+	}
 
-  /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
-                              |RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV1;
-  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
-  RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
+	/** Initializes the CPU, AHB and APB buses clocks
+	 */
+	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+			|RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
+			|RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;
+	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+	RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
+	RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV1;
+	RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
+	RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
+	RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
+	RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+	{
+		Error_Handler();
+	}
 }
 
 /**
-  * @brief Peripherals Common Clock Configuration
-  * @retval None
-  */
+ * @brief Peripherals Common Clock Configuration
+ * @retval None
+ */
 void PeriphCommonClock_Config(void)
 {
-  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+	RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
-  /** Initializes the peripherals clock
-  */
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_ADC|RCC_PERIPHCLK_I2C2
-                              |RCC_PERIPHCLK_I2C1|RCC_PERIPHCLK_SPI4;
-  PeriphClkInitStruct.PLL2.PLL2M = 16;
-  PeriphClkInitStruct.PLL2.PLL2N = 128;
-  PeriphClkInitStruct.PLL2.PLL2P = 20;
-  PeriphClkInitStruct.PLL2.PLL2Q = 2;
-  PeriphClkInitStruct.PLL2.PLL2R = 2;
-  PeriphClkInitStruct.PLL2.PLL2RGE = RCC_PLL2VCIRANGE_0;
-  PeriphClkInitStruct.PLL2.PLL2VCOSEL = RCC_PLL2VCOWIDE;
-  PeriphClkInitStruct.PLL2.PLL2FRACN = 0;
-  PeriphClkInitStruct.PLL3.PLL3M = 2;
-  PeriphClkInitStruct.PLL3.PLL3N = 12;
-  PeriphClkInitStruct.PLL3.PLL3P = 2;
-  PeriphClkInitStruct.PLL3.PLL3Q = 2;
-  PeriphClkInitStruct.PLL3.PLL3R = 3;
-  PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_3;
-  PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOMEDIUM;
-  PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
-  PeriphClkInitStruct.Spi45ClockSelection = RCC_SPI45CLKSOURCE_PLL2;
-  PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_PLL3;
-  PeriphClkInitStruct.AdcClockSelection = RCC_ADCCLKSOURCE_PLL2;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	/** Initializes the peripherals clock
+	 */
+	PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_ADC|RCC_PERIPHCLK_I2C2
+			|RCC_PERIPHCLK_I2C1|RCC_PERIPHCLK_SPI4;
+	PeriphClkInitStruct.PLL2.PLL2M = 16;
+	PeriphClkInitStruct.PLL2.PLL2N = 128;
+	PeriphClkInitStruct.PLL2.PLL2P = 20;
+	PeriphClkInitStruct.PLL2.PLL2Q = 2;
+	PeriphClkInitStruct.PLL2.PLL2R = 2;
+	PeriphClkInitStruct.PLL2.PLL2RGE = RCC_PLL2VCIRANGE_0;
+	PeriphClkInitStruct.PLL2.PLL2VCOSEL = RCC_PLL2VCOWIDE;
+	PeriphClkInitStruct.PLL2.PLL2FRACN = 0;
+	PeriphClkInitStruct.PLL3.PLL3M = 2;
+	PeriphClkInitStruct.PLL3.PLL3N = 12;
+	PeriphClkInitStruct.PLL3.PLL3P = 2;
+	PeriphClkInitStruct.PLL3.PLL3Q = 2;
+	PeriphClkInitStruct.PLL3.PLL3R = 3;
+	PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_3;
+	PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOMEDIUM;
+	PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
+	PeriphClkInitStruct.Spi45ClockSelection = RCC_SPI45CLKSOURCE_PLL2;
+	PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_PLL3;
+	PeriphClkInitStruct.AdcClockSelection = RCC_ADCCLKSOURCE_PLL2;
+	if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+	{
+		Error_Handler();
+	}
 }
 
 /**
-  * @brief ADC1 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief ADC1 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_ADC1_Init(void)
 {
 
-  /* USER CODE BEGIN ADC1_Init 0 */
+	/* USER CODE BEGIN ADC1_Init 0 */
 
-  /* USER CODE END ADC1_Init 0 */
+	/* USER CODE END ADC1_Init 0 */
 
-  ADC_MultiModeTypeDef multimode = {0};
-  ADC_ChannelConfTypeDef sConfig = {0};
+	ADC_MultiModeTypeDef multimode = {0};
+	ADC_ChannelConfTypeDef sConfig = {0};
 
-  /* USER CODE BEGIN ADC1_Init 1 */
+	/* USER CODE BEGIN ADC1_Init 1 */
 
-  /* USER CODE END ADC1_Init 1 */
+	/* USER CODE END ADC1_Init 1 */
 
-  /** Common config
-  */
-  hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV16;
-  hadc1.Init.Resolution = ADC_RESOLUTION_16B;
-  hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
-  hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
-  hadc1.Init.LowPowerAutoWait = DISABLE;
-  hadc1.Init.ContinuousConvMode = ENABLE;
-  hadc1.Init.NbrOfConversion = 2;
-  hadc1.Init.DiscontinuousConvMode = DISABLE;
-  hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-  hadc1.Init.ConversionDataManagement = ADC_CONVERSIONDATA_DMA_CIRCULAR;
-  hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
-  hadc1.Init.LeftBitShift = ADC_LEFTBITSHIFT_NONE;
-  hadc1.Init.OversamplingMode = DISABLE;
-  hadc1.Init.Oversampling.Ratio = 1;
-  if (HAL_ADC_Init(&hadc1) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	/** Common config
+	 */
+	hadc1.Instance = ADC1;
+	hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV16;
+	hadc1.Init.Resolution = ADC_RESOLUTION_16B;
+	hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
+	hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
+	hadc1.Init.LowPowerAutoWait = DISABLE;
+	hadc1.Init.ContinuousConvMode = ENABLE;
+	hadc1.Init.NbrOfConversion = 2;
+	hadc1.Init.DiscontinuousConvMode = DISABLE;
+	hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+	hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+	hadc1.Init.ConversionDataManagement = ADC_CONVERSIONDATA_DMA_CIRCULAR;
+	hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
+	hadc1.Init.LeftBitShift = ADC_LEFTBITSHIFT_NONE;
+	hadc1.Init.OversamplingMode = DISABLE;
+	hadc1.Init.Oversampling.Ratio = 1;
+	if (HAL_ADC_Init(&hadc1) != HAL_OK)
+	{
+		Error_Handler();
+	}
 
-  /** Configure the ADC multi-mode
-  */
-  multimode.Mode = ADC_MODE_INDEPENDENT;
-  if (HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	/** Configure the ADC multi-mode
+	 */
+	multimode.Mode = ADC_MODE_INDEPENDENT;
+	if (HAL_ADCEx_MultiModeConfigChannel(&hadc1, &multimode) != HAL_OK)
+	{
+		Error_Handler();
+	}
 
-  /** Configure Regular Channel
-  */
-  sConfig.Channel = ADC_CHANNEL_3;
-  sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_810CYCLES_5;
-  sConfig.SingleDiff = ADC_SINGLE_ENDED;
-  sConfig.OffsetNumber = ADC_OFFSET_NONE;
-  sConfig.Offset = 0;
-  sConfig.OffsetSignedSaturation = DISABLE;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	/** Configure Regular Channel
+	 */
+	sConfig.Channel = ADC_CHANNEL_3;
+	sConfig.Rank = ADC_REGULAR_RANK_1;
+	sConfig.SamplingTime = ADC_SAMPLETIME_810CYCLES_5;
+	sConfig.SingleDiff = ADC_SINGLE_ENDED;
+	sConfig.OffsetNumber = ADC_OFFSET_NONE;
+	sConfig.Offset = 0;
+	sConfig.OffsetSignedSaturation = DISABLE;
+	if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+	{
+		Error_Handler();
+	}
 
-  /** Configure Regular Channel
-  */
-  sConfig.Channel = ADC_CHANNEL_4;
-  sConfig.Rank = ADC_REGULAR_RANK_2;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN ADC1_Init 2 */
+	/** Configure Regular Channel
+	 */
+	sConfig.Channel = ADC_CHANNEL_4;
+	sConfig.Rank = ADC_REGULAR_RANK_2;
+	if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	/* USER CODE BEGIN ADC1_Init 2 */
 
-  /* USER CODE END ADC1_Init 2 */
+	/* USER CODE END ADC1_Init 2 */
 
 }
 
 /**
-  * @brief I2C1 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief I2C1 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_I2C1_Init(void)
 {
 
-  /* USER CODE BEGIN I2C1_Init 0 */
+	/* USER CODE BEGIN I2C1_Init 0 */
 
-  /* USER CODE END I2C1_Init 0 */
+	/* USER CODE END I2C1_Init 0 */
 
-  /* USER CODE BEGIN I2C1_Init 1 */
+	/* USER CODE BEGIN I2C1_Init 1 */
 
-  /* USER CODE END I2C1_Init 1 */
-  hi2c1.Instance = I2C1;
-  hi2c1.Init.Timing = 0x00401959;
-  hi2c1.Init.OwnAddress1 = 0;
-  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
-  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-  hi2c1.Init.OwnAddress2 = 0;
-  hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
-  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
-  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	/* USER CODE END I2C1_Init 1 */
+	hi2c1.Instance = I2C1;
+	hi2c1.Init.Timing = 0x00401959;
+	hi2c1.Init.OwnAddress1 = 0;
+	hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+	hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+	hi2c1.Init.OwnAddress2 = 0;
+	hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+	hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+	hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+	if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+	{
+		Error_Handler();
+	}
 
-  /** Configure Analogue filter
-  */
-  if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	/** Configure Analogue filter
+	 */
+	if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+	{
+		Error_Handler();
+	}
 
-  /** Configure Digital filter
-  */
-  if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN I2C1_Init 2 */
+	/** Configure Digital filter
+	 */
+	if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	/* USER CODE BEGIN I2C1_Init 2 */
 
-  /* USER CODE END I2C1_Init 2 */
+	/* USER CODE END I2C1_Init 2 */
 
 }
 
 /**
-  * @brief I2C2 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief I2C2 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_I2C2_Init(void)
 {
 
-  /* USER CODE BEGIN I2C2_Init 0 */
+	/* USER CODE BEGIN I2C2_Init 0 */
 
-  /* USER CODE END I2C2_Init 0 */
+	/* USER CODE END I2C2_Init 0 */
 
-  /* USER CODE BEGIN I2C2_Init 1 */
+	/* USER CODE BEGIN I2C2_Init 1 */
 
-  /* USER CODE END I2C2_Init 1 */
-  hi2c2.Instance = I2C2;
-  hi2c2.Init.Timing = 0x00401959;
-  hi2c2.Init.OwnAddress1 = 0;
-  hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
-  hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-  hi2c2.Init.OwnAddress2 = 0;
-  hi2c2.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
-  hi2c2.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-  hi2c2.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
-  if (HAL_I2C_Init(&hi2c2) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	/* USER CODE END I2C2_Init 1 */
+	hi2c2.Instance = I2C2;
+	hi2c2.Init.Timing = 0x00401959;
+	hi2c2.Init.OwnAddress1 = 0;
+	hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+	hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+	hi2c2.Init.OwnAddress2 = 0;
+	hi2c2.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+	hi2c2.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+	hi2c2.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+	if (HAL_I2C_Init(&hi2c2) != HAL_OK)
+	{
+		Error_Handler();
+	}
 
-  /** Configure Analogue filter
-  */
-  if (HAL_I2CEx_ConfigAnalogFilter(&hi2c2, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	/** Configure Analogue filter
+	 */
+	if (HAL_I2CEx_ConfigAnalogFilter(&hi2c2, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+	{
+		Error_Handler();
+	}
 
-  /** Configure Digital filter
-  */
-  if (HAL_I2CEx_ConfigDigitalFilter(&hi2c2, 0) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN I2C2_Init 2 */
+	/** Configure Digital filter
+	 */
+	if (HAL_I2CEx_ConfigDigitalFilter(&hi2c2, 0) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	/* USER CODE BEGIN I2C2_Init 2 */
 
-  /* USER CODE END I2C2_Init 2 */
+	/* USER CODE END I2C2_Init 2 */
 
 }
 
 /**
-  * @brief JPEG Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief JPEG Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_JPEG_Init(void)
 {
 
-  /* USER CODE BEGIN JPEG_Init 0 */
+	/* USER CODE BEGIN JPEG_Init 0 */
 
-  /* USER CODE END JPEG_Init 0 */
+	/* USER CODE END JPEG_Init 0 */
 
-  /* USER CODE BEGIN JPEG_Init 1 */
+	/* USER CODE BEGIN JPEG_Init 1 */
 
-  /* USER CODE END JPEG_Init 1 */
-  hjpeg.Instance = JPEG;
-  if (HAL_JPEG_Init(&hjpeg) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN JPEG_Init 2 */
+	/* USER CODE END JPEG_Init 1 */
+	hjpeg.Instance = JPEG;
+	if (HAL_JPEG_Init(&hjpeg) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	/* USER CODE BEGIN JPEG_Init 2 */
 
-  /* USER CODE END JPEG_Init 2 */
+	/* USER CODE END JPEG_Init 2 */
 
 }
 
 /**
-  * @brief SPI4 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief SPI4 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_SPI4_Init(void)
 {
 
-  /* USER CODE BEGIN SPI4_Init 0 */
+	/* USER CODE BEGIN SPI4_Init 0 */
 
-  /* USER CODE END SPI4_Init 0 */
+	/* USER CODE END SPI4_Init 0 */
 
-  /* USER CODE BEGIN SPI4_Init 1 */
+	/* USER CODE BEGIN SPI4_Init 1 */
 
-  /* USER CODE END SPI4_Init 1 */
-  /* SPI4 parameter configuration*/
-  hspi4.Instance = SPI4;
-  hspi4.Init.Mode = SPI_MODE_MASTER;
-  hspi4.Init.Direction = SPI_DIRECTION_2LINES_TXONLY;
-  hspi4.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi4.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi4.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi4.Init.NSS = SPI_NSS_HARD_OUTPUT;
-  hspi4.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
-  hspi4.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi4.Init.TIMode = SPI_TIMODE_DISABLE;
-  hspi4.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  hspi4.Init.CRCPolynomial = 0x0;
-  hspi4.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
-  hspi4.Init.NSSPolarity = SPI_NSS_POLARITY_LOW;
-  hspi4.Init.FifoThreshold = SPI_FIFO_THRESHOLD_01DATA;
-  hspi4.Init.TxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
-  hspi4.Init.RxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
-  hspi4.Init.MasterSSIdleness = SPI_MASTER_SS_IDLENESS_00CYCLE;
-  hspi4.Init.MasterInterDataIdleness = SPI_MASTER_INTERDATA_IDLENESS_00CYCLE;
-  hspi4.Init.MasterReceiverAutoSusp = SPI_MASTER_RX_AUTOSUSP_DISABLE;
-  hspi4.Init.MasterKeepIOState = SPI_MASTER_KEEP_IO_STATE_DISABLE;
-  hspi4.Init.IOSwap = SPI_IO_SWAP_DISABLE;
-  if (HAL_SPI_Init(&hspi4) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN SPI4_Init 2 */
+	/* USER CODE END SPI4_Init 1 */
+	/* SPI4 parameter configuration*/
+	hspi4.Instance = SPI4;
+	hspi4.Init.Mode = SPI_MODE_MASTER;
+	hspi4.Init.Direction = SPI_DIRECTION_2LINES_TXONLY;
+	hspi4.Init.DataSize = SPI_DATASIZE_8BIT;
+	hspi4.Init.CLKPolarity = SPI_POLARITY_LOW;
+	hspi4.Init.CLKPhase = SPI_PHASE_1EDGE;
+	hspi4.Init.NSS = SPI_NSS_HARD_OUTPUT;
+	hspi4.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+	hspi4.Init.FirstBit = SPI_FIRSTBIT_MSB;
+	hspi4.Init.TIMode = SPI_TIMODE_DISABLE;
+	hspi4.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+	hspi4.Init.CRCPolynomial = 0x0;
+	hspi4.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+	hspi4.Init.NSSPolarity = SPI_NSS_POLARITY_LOW;
+	hspi4.Init.FifoThreshold = SPI_FIFO_THRESHOLD_01DATA;
+	hspi4.Init.TxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
+	hspi4.Init.RxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
+	hspi4.Init.MasterSSIdleness = SPI_MASTER_SS_IDLENESS_00CYCLE;
+	hspi4.Init.MasterInterDataIdleness = SPI_MASTER_INTERDATA_IDLENESS_00CYCLE;
+	hspi4.Init.MasterReceiverAutoSusp = SPI_MASTER_RX_AUTOSUSP_DISABLE;
+	hspi4.Init.MasterKeepIOState = SPI_MASTER_KEEP_IO_STATE_DISABLE;
+	hspi4.Init.IOSwap = SPI_IO_SWAP_DISABLE;
+	if (HAL_SPI_Init(&hspi4) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	/* USER CODE BEGIN SPI4_Init 2 */
 
-  /* USER CODE END SPI4_Init 2 */
+	/* USER CODE END SPI4_Init 2 */
 
 }
 
 /**
-  * @brief USART1 Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief USART1 Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_USART1_UART_Init(void)
 {
 
-  /* USER CODE BEGIN USART1_Init 0 */
+	/* USER CODE BEGIN USART1_Init 0 */
 
-  /* USER CODE END USART1_Init 0 */
+	/* USER CODE END USART1_Init 0 */
 
-  /* USER CODE BEGIN USART1_Init 1 */
+	/* USER CODE BEGIN USART1_Init 1 */
 
-  /* USER CODE END USART1_Init 1 */
-  huart1.Instance = USART1;
-  huart1.Init.BaudRate = 111111;
-  huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
-  huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
-  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  huart1.Init.ClockPrescaler = UART_PRESCALER_DIV1;
-  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_SetTxFifoThreshold(&huart1, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_SetRxFifoThreshold(&huart1, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_UARTEx_EnableFifoMode(&huart1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART1_Init 2 */
+	/* USER CODE END USART1_Init 1 */
+	huart1.Instance = USART1;
+	huart1.Init.BaudRate = 111111;
+	huart1.Init.WordLength = UART_WORDLENGTH_8B;
+	huart1.Init.StopBits = UART_STOPBITS_1;
+	huart1.Init.Parity = UART_PARITY_NONE;
+	huart1.Init.Mode = UART_MODE_TX_RX;
+	huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+	huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+	huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+	huart1.Init.ClockPrescaler = UART_PRESCALER_DIV1;
+	huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_DMADISABLEONERROR_INIT;
+	huart1.AdvancedInit.DMADisableonRxError = UART_ADVFEATURE_DMA_DISABLEONRXERROR;
+	if (HAL_UART_Init(&huart1) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	if (HAL_UARTEx_SetTxFifoThreshold(&huart1, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	if (HAL_UARTEx_SetRxFifoThreshold(&huart1, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	if (HAL_UARTEx_EnableFifoMode(&huart1) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	/* USER CODE BEGIN USART1_Init 2 */
 
-  /* USER CODE END USART1_Init 2 */
+	/* USER CODE END USART1_Init 2 */
 
 }
 
 /**
-  * Enable DMA controller clock
-  */
+ * Enable DMA controller clock
+ */
 static void MX_DMA_Init(void)
 {
 
-  /* DMA controller clock enable */
-  __HAL_RCC_DMA2_CLK_ENABLE();
-  __HAL_RCC_DMA1_CLK_ENABLE();
+	/* DMA controller clock enable */
+	__HAL_RCC_DMA1_CLK_ENABLE();
+	__HAL_RCC_DMA2_CLK_ENABLE();
 
-  /* DMA interrupt init */
-  /* DMA1_Stream0_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
-  /* DMA1_Stream1_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
-  /* DMA1_Stream2_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream2_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Stream2_IRQn);
-  /* DMA1_Stream3_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
-  /* DMA2_Stream0_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+	/* DMA interrupt init */
+	/* DMA1_Stream0_IRQn interrupt configuration */
+	HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
+	/* DMA1_Stream1_IRQn interrupt configuration */
+	HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
+	/* DMA1_Stream2_IRQn interrupt configuration */
+	HAL_NVIC_SetPriority(DMA1_Stream2_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(DMA1_Stream2_IRQn);
+	/* DMA1_Stream3_IRQn interrupt configuration */
+	HAL_NVIC_SetPriority(DMA1_Stream3_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(DMA1_Stream3_IRQn);
+	/* DMA2_Stream0_IRQn interrupt configuration */
+	HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
 
 }
 
 /**
-  * Enable MDMA controller clock
-  */
+ * Enable MDMA controller clock
+ */
 static void MX_MDMA_Init(void)
 {
 
-  /* MDMA controller clock enable */
-  __HAL_RCC_MDMA_CLK_ENABLE();
-  /* Local variables */
+	/* MDMA controller clock enable */
+	__HAL_RCC_MDMA_CLK_ENABLE();
+	/* Local variables */
 
-  /* MDMA interrupt initialization */
-  /* MDMA_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(MDMA_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(MDMA_IRQn);
+	/* MDMA interrupt initialization */
+	/* MDMA_IRQn interrupt configuration */
+	HAL_NVIC_SetPriority(MDMA_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(MDMA_IRQn);
 
 }
 
 /**
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
+ * @brief GPIO Initialization Function
+ * @param None
+ * @retval None
+ */
 static void MX_GPIO_Init(void)
 {
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-  /* USER CODE BEGIN MX_GPIO_Init_1 */
+	GPIO_InitTypeDef GPIO_InitStruct = {0};
+	/* USER CODE BEGIN MX_GPIO_Init_1 */
 
-  /* USER CODE END MX_GPIO_Init_1 */
+	/* USER CODE END MX_GPIO_Init_1 */
 
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOE_CLK_ENABLE();
-  __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
+	/* GPIO Ports Clock Enable */
+	__HAL_RCC_GPIOE_CLK_ENABLE();
+	__HAL_RCC_GPIOH_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+	__HAL_RCC_GPIOB_CLK_ENABLE();
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(SPI4_DC_GPIO_Port, SPI4_DC_Pin, GPIO_PIN_SET);
+	/*Configure GPIO pin Output Level */
+	HAL_GPIO_WritePin(SPI4_DC_GPIO_Port, SPI4_DC_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(SPI4_RST_GPIO_Port, SPI4_RST_Pin, GPIO_PIN_SET);
+	/*Configure GPIO pin Output Level */
+	HAL_GPIO_WritePin(SPI4_RST_GPIO_Port, SPI4_RST_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pin : SPI4_DC_Pin */
-  GPIO_InitStruct.Pin = SPI4_DC_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  HAL_GPIO_Init(SPI4_DC_GPIO_Port, &GPIO_InitStruct);
+	/*Configure GPIO pin : SPI4_DC_Pin */
+	GPIO_InitStruct.Pin = SPI4_DC_Pin;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+	HAL_GPIO_Init(SPI4_DC_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : BTN_L_Pin */
-  GPIO_InitStruct.Pin = BTN_L_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(BTN_L_GPIO_Port, &GPIO_InitStruct);
+	/*Configure GPIO pin : BTN_L_Pin */
+	GPIO_InitStruct.Pin = BTN_L_Pin;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(BTN_L_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : BTN_R_Pin */
-  GPIO_InitStruct.Pin = BTN_R_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(BTN_R_GPIO_Port, &GPIO_InitStruct);
+	/*Configure GPIO pin : BTN_R_Pin */
+	GPIO_InitStruct.Pin = BTN_R_Pin;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	HAL_GPIO_Init(BTN_R_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : SPI4_RST_Pin */
-  GPIO_InitStruct.Pin = SPI4_RST_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(SPI4_RST_GPIO_Port, &GPIO_InitStruct);
+	/*Configure GPIO pin : SPI4_RST_Pin */
+	GPIO_InitStruct.Pin = SPI4_RST_Pin;
+	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(SPI4_RST_GPIO_Port, &GPIO_InitStruct);
 
-  /* USER CODE BEGIN MX_GPIO_Init_2 */
+	/* USER CODE BEGIN MX_GPIO_Init_2 */
 
-  /* USER CODE END MX_GPIO_Init_2 */
+	/* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
+// ------------------------------------------------------------ OVERRIDE UART DMA CALLBACKS -- //
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+	// Store the last readHead, we need this for packet reconstruction if bytes got lost
+	uint16_t old_head = uart_rxDMA_readHead;
+
+	// Find the delimeter
+	uint8_t found_delim = 0;
+	for (uint16_t circular_ptr = 0; circular_ptr < UART_BUFFERSIZE; circular_ptr++) {
+		uint16_t packet_ptr = (circular_ptr + uart_rxDMA_readHead) % UART_BUFFERSIZE;
+		if (uart_rxDMA_buffer[packet_ptr] == 0b10101010) {
+			found_delim = 1;					// Update flag
+			uart_rxDMA_readHead = packet_ptr;	// Move the readHead
+			break;
+		}
+	}
+
+	// Couldn't find the delimeter, this packet is FUBAR, discard the whole thing
+	if (!found_delim) {
+		uart_rx_packetState = 1;	// Flag as malformed
+		return;
+	}
+
+	// Copy the partial packet contents into the completed packet buffer
+	memcpy(uart_rx_packetFullBuffer, uart_rx_packetPartBuffer, UART_BUFFERSIZE);
+
+	// Copy the new packet contents into the partial packet buffer
+	memcpy(uart_rx_packetPartBuffer, uart_rxDMA_buffer + uart_rxDMA_readHead, UART_BUFFERSIZE - uart_rxDMA_readHead);
+
+	// finish the old packet
+	// Account for dropped byte underflow
+	if (old_head < uart_rxDMA_readHead) {
+		uart_rx_packetState = 1;	// Flag as malformed
+		return;
+	}
+
+	uint16_t head_slip = old_head - uart_rxDMA_readHead;	// How many bytes were dropped
+	memset(uart_rx_packetFullBuffer + (UART_BUFFERSIZE - old_head), 0x00, head_slip); 									 // Zero dropped bytes
+	memcpy(uart_rx_packetFullBuffer + (UART_BUFFERSIZE - old_head) + head_slip, uart_rxDMA_buffer, uart_rxDMA_readHead); // Fill in missing bytes
+	// Note that the above method attempts to reconstruct packets when bytes are dropped
+	// What this looks like in memory:
+	// B0 B1 B2 B3 B4 XX XX B7
+	// In the event of a single dropped byte, this is accurate, if more than one gets dropped this may become inaccurate
+
+	// Packet is ready
+	uart_rx_packetState = 0;
+}
+
+// ------------------------------------------------------------ OVERRIDE JPEG DMA CALLBACKS -- //
+// JPEG hardware has completed the current image
+void HAL_JPEG_DecodeCpltCallback(JPEG_HandleTypeDef * hjpeg) {
+	// Reset JPEG variables
+	//sprintf(ssd_msg, " JPEG CPLT");
+	//WriteDebug(ssd_msg, strlen(ssd_msg));
+	jpeg_state = 2;
+	// Debug MSG
+	//	sprintf(usb_msg, "JPEG: Finished encode\r\n");
+	//	CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+}
+
+// JPEG hardware encountered an error
+void HAL_JPEG_ErrorCallback (JPEG_HandleTypeDef * hjpeg) {
+	sprintf(ssd_msg, " JPEG ERROR");
+	WriteDebug(ssd_msg, strlen(ssd_msg));
+	//HAL_JPEG_Abort(&hjpeg);
+	jpeg_state = 2;
+}
+
+void HAL_JPEG_DataReadyCallback (JPEG_HandleTypeDef * hjpeg, uint8_t * pDataOut, uint32_t OutDataLength) {
+	sprintf(ssd_msg, " JPEG D %d", OutDataLength);
+	WriteDebug(ssd_msg, strlen(ssd_msg));
+	//HAL_JPEG_Abort(hjpeg);
+	jpeg_state = 2;
+}
 
 // ------------------------------------------------------------ OVERRIDE SPI DMA CALLBACKS -- //
 void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi) {
@@ -892,7 +1031,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 			slider_magnitude[i] = 0;
 
 		if (slider_magnitude[i] > 0xFF-slider_max_deadzone)
-				slider_magnitude[i] = 0xFF;
+			slider_magnitude[i] = 0xFF;
 
 	}
 }
@@ -948,73 +1087,73 @@ void Draw_Slider(uint8_t slider_id) {
 
 // Debug
 void WriteDebug(uint8_t *str_ptr, uint8_t str_len) {
-	  SSD1306_Clear(&hssd1);
-	  SSD1306_Clear(&hssd2);
-	  SSD1306_DrawString(&hssd1, str_ptr, str_len);
-	  SSD1306_DrawString(&hssd2, str_ptr, str_len);
-	  SSD1306_Update(&hssd1);
-	  SSD1306_Update(&hssd2);
+	SSD1306_Clear(&hssd1);
+	SSD1306_Clear(&hssd2);
+	SSD1306_DrawString(&hssd1, str_ptr, str_len);
+	SSD1306_DrawString(&hssd2, str_ptr, str_len);
+	SSD1306_Update(&hssd1);
+	SSD1306_Update(&hssd2);
 }
 
 /* USER CODE END 4 */
 
- /* MPU Configuration */
+/* MPU Configuration */
 
 void MPU_Config(void)
 {
-  MPU_Region_InitTypeDef MPU_InitStruct = {0};
+	MPU_Region_InitTypeDef MPU_InitStruct = {0};
 
-  /* Disables the MPU */
-  HAL_MPU_Disable();
+	/* Disables the MPU */
+	HAL_MPU_Disable();
 
-  /** Initializes and configures the Region and the memory to be protected
-  */
-  MPU_InitStruct.Enable = MPU_REGION_ENABLE;
-  MPU_InitStruct.Number = MPU_REGION_NUMBER0;
-  MPU_InitStruct.BaseAddress = 0x0;
-  MPU_InitStruct.Size = MPU_REGION_SIZE_4GB;
-  MPU_InitStruct.SubRegionDisable = 0x87;
-  MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
-  MPU_InitStruct.AccessPermission = MPU_REGION_NO_ACCESS;
-  MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_DISABLE;
-  MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
-  MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE;
-  MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
+	/** Initializes and configures the Region and the memory to be protected
+	 */
+	MPU_InitStruct.Enable = MPU_REGION_ENABLE;
+	MPU_InitStruct.Number = MPU_REGION_NUMBER0;
+	MPU_InitStruct.BaseAddress = 0x0;
+	MPU_InitStruct.Size = MPU_REGION_SIZE_4GB;
+	MPU_InitStruct.SubRegionDisable = 0x87;
+	MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
+	MPU_InitStruct.AccessPermission = MPU_REGION_NO_ACCESS;
+	MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_DISABLE;
+	MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
+	MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE;
+	MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
 
-  HAL_MPU_ConfigRegion(&MPU_InitStruct);
-  /* Enables the MPU */
-  HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
+	HAL_MPU_ConfigRegion(&MPU_InitStruct);
+	/* Enables the MPU */
+	HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
 
 }
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-  __disable_irq();
-  while (1)
-  {
-  }
-  /* USER CODE END Error_Handler_Debug */
+	/* USER CODE BEGIN Error_Handler_Debug */
+	/* User can add his own implementation to report the HAL error return state */
+	__disable_irq();
+	while (1)
+	{
+	}
+	/* USER CODE END Error_Handler_Debug */
 }
 
 #ifdef  USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file: pointer to the source file name
+ * @param  line: assert_param error line source number
+ * @retval None
+ */
 void assert_failed(uint8_t *file, uint32_t line)
 {
-  /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
+	/* USER CODE BEGIN 6 */
+	/* User can add his own implementation to report the file name and line number,
      ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-  /* USER CODE END 6 */
+	/* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */

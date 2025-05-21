@@ -95,6 +95,7 @@ extern USBD_CDC_ItfTypeDef USBD_Interface_fops_FS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
 extern uint8_t usb_device_rxFlag;
+extern UART_HandleTypeDef huart1;
 /* USER CODE END EXPORTED_VARIABLES */
 
 /**
