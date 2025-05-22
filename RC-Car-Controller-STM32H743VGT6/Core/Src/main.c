@@ -39,11 +39,12 @@
 
 #define UART_BUFFERSIZE 67
 
-#define JPEG_WIDTH  315
+#define JPEG_WIDTH  120
 #define JPEG_HEIGHT 120
 
-#define JPEG_MCU_WIDTH  40
+#define JPEG_MCU_WIDTH  15
 #define JPEG_MCU_HEIGHT 15
+#define JPEG_HEADERSIZE 526
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -111,7 +112,9 @@ uint8_t uart_rx_skippedPackets = 0;
 // ----------------------------------- 2: BUSY
 
 // JPEG VARIABLES
-uint8_t  jpeg_raw[JPEG_WIDTH*JPEG_HEIGHT] = {0};
+uint8_t  jpeg_currentraw = 0;
+uint8_t  jpeg_raw1[JPEG_WIDTH*JPEG_HEIGHT] = {0};
+uint8_t  jpeg_raw2[JPEG_WIDTH*JPEG_HEIGHT] = {0};
 uint8_t  jpeg_out[JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64] = {0};
 uint16_t jpeg_size = 0;
 uint8_t  jpeg_state = 0; // JPEG State
@@ -119,6 +122,85 @@ uint8_t  jpeg_state = 0; // JPEG State
 // ------------------------ 1: JPEG DMA Busy
 // ------------------------ 2: JPEG Decoded
 uint8_t current_mcu_y = 0;
+
+// Store the header for the JPEG, this saves on transmission time
+// 526 BYTES
+uint8_t jpeg_header[] = {
+		0xFF, 0xD8, 0xFF, 0xDB, 0x00, 0x43, 0x00, 0x28,
+		0x1C, 0x1E, 0x23, 0x1E, 0x19, 0x28, 0x23, 0x21,
+		0x23, 0x2D, 0x2B, 0x28, 0x30, 0x3C, 0x64, 0x41,
+		0x3C, 0x37, 0x37, 0x3C, 0x7B, 0x58, 0x5D, 0x49,
+		0x64, 0x91, 0x80, 0x99, 0x96, 0x8F, 0x80, 0x8C,
+		0x8A, 0xA0, 0xB4, 0xE6, 0xC3, 0xA0, 0xAA, 0xDA,
+		0xAD, 0x8A, 0x8C, 0xC8, 0xFF, 0xCB, 0xDA, 0xEE,
+		0xF5, 0xFF, 0xFF, 0xFF, 0x9B, 0xC1, 0xFF, 0xFF,
+
+		0xFF, 0xFA, 0xFF, 0xE6, 0xFD, 0xFF, 0xF8, 0xFF,
+		0xC0, 0x00, 0x0B, 0x08, 0x00, 0x79, 0x00, 0x9E,
+		0x01, 0x01, 0x11, 0x00, 0xFF, 0xC4, 0x00, 0x1F,
+		0x00, 0x00, 0x01, 0x05, 0x01, 0x01, 0x01, 0x01,
+		0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+		0x00, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06,
+		0x07, 0x08, 0x09, 0x0A, 0x0B, 0xFF, 0xC4, 0x00,
+		0xB5, 0x10, 0x00, 0x02, 0x01, 0x03, 0x03, 0x02,
+
+		0x04, 0x03, 0x05, 0x05, 0x04, 0x04, 0x00, 0x00,
+		0x01, 0x7D, 0x01, 0x02, 0x03, 0x00, 0x04, 0x11,
+		0x05, 0x12, 0x21, 0x31, 0x41, 0x06, 0x13, 0x51,
+		0x61, 0x07, 0x22, 0x71, 0x14, 0x32, 0x81, 0x91,
+		0xA1, 0x08, 0x23, 0x42, 0xB1, 0xC1, 0x15, 0x52,
+		0xD1, 0xF0, 0x24, 0x33, 0x62, 0x72, 0x82, 0x09,
+		0x0A, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x25, 0x26,
+		0x27, 0x28, 0x29, 0x2A, 0x34, 0x35, 0x36, 0x37,
+
+		0x38, 0x39, 0x3A, 0x43, 0x44, 0x45, 0x46, 0x47,
+		0x48, 0x49, 0x4A, 0x53, 0x54, 0x55, 0x56, 0x57,
+		0x58, 0x59, 0x5A, 0x63, 0x64, 0x65, 0x66, 0x67,
+		0x68, 0x69, 0x6A, 0x73, 0x74, 0x75, 0x76, 0x77,
+		0x78, 0x79, 0x7A, 0x83, 0x84, 0x85, 0x86, 0x87,
+		0x88, 0x89, 0x8A, 0x92, 0x93, 0x94, 0x95, 0x96,
+		0x97, 0x98, 0x99, 0x9A, 0xA2, 0xA3, 0xA4, 0xA5,
+		0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xB2, 0xB3, 0xB4,
+
+		0xB5, 0xB6, 0xB7, 0xB8, 0xB9, 0xBA, 0xC2, 0xC3,
+		0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xD2,
+		0xD3, 0xD4, 0xD5, 0xD6, 0xD7, 0xD8, 0xD9, 0xDA,
+		0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8,
+		0xE9, 0xEA, 0xF1, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6,
+		0xF7, 0xF8, 0xF9, 0xFA, 0xFF, 0xC4, 0x00, 0x1F,
+		0x01, 0x00, 0x03, 0x01, 0x01, 0x01, 0x01, 0x01,
+		0x01, 0x01, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00,
+
+		0x00, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06,
+		0x07, 0x08, 0x09, 0x0A, 0x0B, 0xFF, 0xC4, 0x00,
+		0xB5, 0x11, 0x00, 0x02, 0x01, 0x02, 0x04, 0x04,
+		0x03, 0x04, 0x07, 0x05, 0x04, 0x04, 0x00, 0x01,
+		0x02, 0x77, 0x00, 0x01, 0x02, 0x03, 0x11, 0x04,
+		0x05, 0x21, 0x31, 0x06, 0x12, 0x41, 0x51, 0x07,
+		0x61, 0x71, 0x13, 0x22, 0x32, 0x81, 0x08, 0x14,
+		0x42, 0x91, 0xA1, 0xB1, 0xC1, 0x09, 0x23, 0x33,
+
+		0x52, 0xF0, 0x15, 0x62, 0x72, 0xD1, 0x0A, 0x16,
+		0x24, 0x34, 0xE1, 0x25, 0xF1, 0x17, 0x18, 0x19,
+		0x1A, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x35, 0x36,
+		0x37, 0x38, 0x39, 0x3A, 0x43, 0x44, 0x45, 0x46,
+		0x47, 0x48, 0x49, 0x4A, 0x53, 0x54, 0x55, 0x56,
+		0x57, 0x58, 0x59, 0x5A, 0x63, 0x64, 0x65, 0x66,
+		0x67, 0x68, 0x69, 0x6A, 0x73, 0x74, 0x75, 0x76,
+		0x77, 0x78, 0x79, 0x7A, 0x82, 0x83, 0x84, 0x85,
+
+		0x86, 0x87, 0x88, 0x89, 0x8A, 0x92, 0x93, 0x94,
+		0x95, 0x96, 0x97, 0x98, 0x99, 0x9A, 0xA2, 0xA3,
+		0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xB2,
+		0xB3, 0xB4, 0xB5, 0xB6, 0xB7, 0xB8, 0xB9, 0xBA,
+		0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9,
+		0xCA, 0xD2, 0xD3, 0xD4, 0xD5, 0xD6, 0xD7, 0xD8,
+		0xD9, 0xDA, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7,
+		0xE8, 0xE9, 0xEA, 0xF2, 0xF3, 0xF4, 0xF5, 0xF6,
+
+		0xF7, 0xF8, 0xF9, 0xFA, 0xFF, 0xDA, 0x00, 0x08,
+		0x01, 0x01, 0x00, 0x00, 0x3F, 0x00
+};
 
 // SCHEDULING VARIABLES
 // Displays use DMA STREAM 1
@@ -258,16 +340,11 @@ int main(void)
 	HAL_Delay(50);
 	ST7789_Update(&hst7789, 1);
 
-	// ------------------------------------------------------------ SETUP JPEG ENCODING -- //
-	// Set the CONFIG
-	JPEG_ConfTypeDef* jpeg_config;
-	jpeg_config->ColorSpace = JPEG_GRAYSCALE_COLORSPACE;
-	//jpeg_config->ColorSpace = JPEG_YCBCR_COLORSPACE;
-	//jpeg_config->ChromaSubsampling = JPEG_422_SUBSAMPLING;
-	jpeg_config->ImageWidth = JPEG_WIDTH;
-	jpeg_config->ImageHeight = JPEG_HEIGHT;
-	//jpeg_config->ImageQuality = JPEG_QUALITY;
-	//HAL_JPEG_ConfigDecoding(&hjpeg, jpeg_config);
+	// ------------------------------------------------------------ SETUP JPEG DECODE -- //
+	// override the header
+	// DO NOT MODIFY THE JPEG_RAW BUF BELOW BYTE 526
+	memcpy(jpeg_raw1, jpeg_header, JPEG_HEADERSIZE);
+	memcpy(jpeg_raw2, jpeg_header, JPEG_HEADERSIZE);
 
 	// ------------------------------------------------------------ SETUP UART -- //
 	// TODO: Move this into a class
@@ -282,6 +359,21 @@ int main(void)
 
 	sprintf(ssd_msg, " JPEG X");
 	WriteDebug(ssd_msg, strlen(ssd_msg));
+
+	// XBEE READ MODE
+//	uint8_t uart_xbee_buffer[256] = {0};	// Get a reference to the start of buffer data
+//	uint8_t uart_xbee_len = 0;			// Get a reference to the start of buffer data
+//	while (1) {
+//		  HAL_UARTEx_ReceiveToIdle(&huart1, uart_xbee_buffer, 256, &uart_xbee_len, 1000);
+//		  if (uart_xbee_len > 0) {
+//			  CDC_Transmit_FS(uart_xbee_buffer, uart_xbee_len);
+//			  uart_xbee_len = 0;
+//			  memset(uart_xbee_buffer, 0x00, 256);
+//		  } else {
+//			  //sprintf(usb_msg, "err\r\n");
+//			  //HAL_UART_Transmit(&huart1, usb_msg, strlen(usb_msg), 1000);
+//		  }
+//	}
 
 	// Begin a UART capture
 	uart_rx_packetState = 2;
@@ -306,10 +398,22 @@ int main(void)
 			rx_byte += uart_rx_packetFullBuffer[2];
 
 			if (rx_byte <= JPEG_WIDTH*JPEG_HEIGHT/64 + 1) {
-				//				if (rx_byte % 10 == 0) {
-				//					sprintf(ssd_msg, " RX %d", rx_byte);
-				//					WriteDebug(ssd_msg, strlen(ssd_msg));
-				//				}
+//				if (rx_byte % 10 == 0) {
+//					sprintf(ssd_msg, " GOT 0x%X", rx_byte);
+//					WriteDebug(ssd_msg, strlen(ssd_msg));
+//				}
+//				if (rx_byte == 8) {
+//					SSD1306_Clear(&hssd1);
+//					for (int z = 0; z < 64; z++) {
+//						if (z != 0 && z % 8 == 0)
+//							hssd1.str_cursor = (z/8)*128;
+//						if (z != 0 && z % 2 == 0 && z % 8 != 0)
+//							hssd1.str_cursor += 4;
+//						sprintf(ssd_msg, "%02X", uart_rx_packetFullBuffer[z+3]);
+//						SSD1306_DrawString(&hssd1, ssd_msg, 2);
+//					}
+//					SSD1306_Update(&hssd1);
+//				}
 
 				if (rx_byte > uart_rx_lastPacketNum + 1) {
 					uart_rx_skippedPackets += (rx_byte - uart_rx_lastPacketNum) - 1;
@@ -320,11 +424,15 @@ int main(void)
 					// Data good, process
 					if (uart_rx_skippedPackets == 0 && jpeg_state == 0) {
 						// Start the jpeg decode
-						jpeg_size = uart_rx_lastPacketNum*64;
-						ST7789_Update(&hst7789, 0);
-						//sprintf(ssd_msg, " JPEG SZ %d", jpeg_size);
-						//WriteDebug(ssd_msg, strlen(ssd_msg));
-						HAL_StatusTypeDef ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw, jpeg_size, jpeg_out, JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64);
+						jpeg_size = uart_rx_lastPacketNum*64 + JPEG_HEADERSIZE;
+						HAL_StatusTypeDef ret;
+						if (jpeg_currentraw)
+							ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw1, jpeg_size, jpeg_out, JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64);
+						else {
+							ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw2, jpeg_size, jpeg_out, JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64);
+						}
+						jpeg_currentraw = !jpeg_currentraw;
+
 						if (ret) {
 							sprintf(ssd_msg, " JPEG FAIL %d", ret);
 							WriteDebug(ssd_msg, strlen(ssd_msg));
@@ -342,20 +450,16 @@ int main(void)
 
 				// fill in the received data
 				//memcpy(hst7789.vram + rx_byte * 64, uart_rx_packetFullBuffer + 3, 64);
-				memcpy(jpeg_raw + rx_byte * 64, uart_rx_packetFullBuffer + 3, 64);
-				// log time
-				uint32_t delta_t = HAL_GetTick() - old_t;
-				sprintf(ssd_msg, " MS: %d", delta_t);
-				WriteDebug(ssd_msg, strlen(ssd_msg));
-				old_t = HAL_GetTick();
+				if (jpeg_currentraw)
+					memcpy(jpeg_raw1 + JPEG_HEADERSIZE + rx_byte * 64, uart_rx_packetFullBuffer + 3, 64);
+				else {
+					memcpy(jpeg_raw2 + JPEG_HEADERSIZE + rx_byte * 64, uart_rx_packetFullBuffer + 3, 64);
+				}
 			}
 		}
 
 		// If the JPEG is decoded, process it
 		if (jpeg_state == 2) {
-			// TODO: Make this an async loop
-			// TODO: Turn these screen dimensions into defines
-
 			// Loop through every mcu block
 			for (uint16_t mcu_x = 0; mcu_x < JPEG_MCU_WIDTH; mcu_x++) {
 				uint16_t mcu_idx = current_mcu_y*JPEG_MCU_WIDTH + mcu_x;
@@ -367,30 +471,57 @@ int main(void)
 						// COLOR FORMAT
 						// |RRRRR GGG|GGG BBBBB|
 						// TODO: stop transmitting overscan to save bandwidth
+
+						uint32_t pix_x = (mcu_x*8 + x)*2;
+						if (pix_x >= LCD_WIDTH-1) continue;
+						pix_x = LCD_WIDTH - pix_x - 1;
+						uint32_t pix_y = (current_mcu_y*8 + y)*3;
+						if (pix_y >= LCD_HEIGHT-2) continue;
+
 						uint8_t sample = jpeg_out[mcu_idx*64 + y*8 + x];
+						uint8_t msb = (sample & 0b11111000) | ((sample & 0b11100000)>>5);
+						uint8_t lsb = ((sample & 0b11111000) >> 3) | ((sample & 0b00011100)<<3);
 
-						uint32_t pix_x = (LCD_WIDTH-(mcu_x*8 + x))*2;
-						uint32_t pix_y = (current_mcu_y*16 + y*2)*LCD_WIDTH*2;
-
-						hst7789.vram[pix_y + pix_x] = (sample & 0b11111000) | ((sample & 0b11100000)>>5);
-						hst7789.vram[pix_y + pix_x + 1] = ((sample & 0b11111000) >> 3) | ((sample & 0b00011100)<<3);
-						//hst7789.vram[(mcu_y*16 + y*2 + 1) * LCD_WIDTH*2 + (LCD_WIDTH-(mcu_x*8 + x))*2    ] = (sample & 0b11111000) | ((sample & 0b11100000)>>5);
-						//hst7789.vram[(mcu_y*16 + y*2 + 1) * LCD_WIDTH*2 + (LCD_WIDTH-(mcu_x*8 + x))*2 + 1] = ((sample & 0b11111000) >> 3) | ((sample & 0b00011100)<<3);
+						// TODO: Speed this up as much as possible, even if it means skipping lines
+						hst7789.vram[ pix_y    * LCD_WIDTH*2 +  pix_x    * 2    ] = msb;
+						hst7789.vram[ pix_y    * LCD_WIDTH*2 +  pix_x    * 2 + 1] = lsb;
+						hst7789.vram[ pix_y    * LCD_WIDTH*2 + (pix_x+1) * 2    ] = msb;
+						hst7789.vram[ pix_y    * LCD_WIDTH*2 + (pix_x+1) * 2 + 1] = lsb;
+						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 +  pix_x    * 2    ] = msb;
+						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 +  pix_x    * 2 + 1] = lsb;
+						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 + (pix_x+1) * 2    ] = msb;
+						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 + (pix_x+1) * 2 + 1] = lsb;
+						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 +  pix_x    * 2    ] = msb;
+						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 +  pix_x    * 2 + 1] = lsb;
+						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 + (pix_x+1) * 2    ] = msb;
+						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 + (pix_x+1) * 2 + 1] = lsb;
 					}
 				}
 			}
 
+
+
 			current_mcu_y++;
 
-			if (current_mcu_y == JPEG_MCU_HEIGHT/2 + 1) {
+			// TODO: Make the screen update a scheduled task OR part of a DMA Interrupt chain with the ADC or something
+			if (current_mcu_y == 5) {
 				ST7789_Update(&hst7789, 0);
+			}
+			if (current_mcu_y == 10) {
+				ST7789_Update(&hst7789, 1);
 			}
 
 			if (current_mcu_y >= JPEG_MCU_HEIGHT) {
-				ST7789_Update(&hst7789, 1);
+				ST7789_Update(&hst7789, 2);
 				current_mcu_y = 0;
 				// Flag JPEG as idle
 				jpeg_state = 0;
+
+				// log time
+				uint32_t delta_t = HAL_GetTick() - old_t;
+				sprintf(ssd_msg, " MS: %d", delta_t);
+				WriteDebug(ssd_msg, strlen(ssd_msg));
+				old_t = HAL_GetTick();
 			}
 			//HAL_Delay(10);
 			//ST7789_Update(&hst7789, 1);
@@ -977,12 +1108,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 // JPEG hardware has completed the current image
 void HAL_JPEG_DecodeCpltCallback(JPEG_HandleTypeDef * hjpeg) {
 	// Reset JPEG variables
-	//sprintf(ssd_msg, " JPEG CPLT");
+	//sprintf(ssd_msg, " JPEG CPLT %d", hjpeg->OutDataLength);
 	//WriteDebug(ssd_msg, strlen(ssd_msg));
 	jpeg_state = 2;
-	// Debug MSG
-	//	sprintf(usb_msg, "JPEG: Finished encode\r\n");
-	//	CDC_Transmit_FS(usb_msg, strlen(usb_msg));
 }
 
 // JPEG hardware encountered an error
@@ -994,8 +1122,8 @@ void HAL_JPEG_ErrorCallback (JPEG_HandleTypeDef * hjpeg) {
 }
 
 void HAL_JPEG_DataReadyCallback (JPEG_HandleTypeDef * hjpeg, uint8_t * pDataOut, uint32_t OutDataLength) {
-	sprintf(ssd_msg, " JPEG D %d", OutDataLength);
-	WriteDebug(ssd_msg, strlen(ssd_msg));
+//	sprintf(ssd_msg, " JPEG D %d", OutDataLength);
+//	WriteDebug(ssd_msg, strlen(ssd_msg));
 	//HAL_JPEG_Abort(hjpeg);
 	jpeg_state = 2;
 }

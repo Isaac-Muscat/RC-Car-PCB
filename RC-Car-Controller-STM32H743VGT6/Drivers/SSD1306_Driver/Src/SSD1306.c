@@ -169,6 +169,11 @@ uint8_t SSD1306_Update(SSD1306_HandleTypeDef *hssd) {
 }
 
 uint8_t SSD1306_DrawChar(SSD1306_HandleTypeDef *hssd, char ch) {
+	// Account for newline
+	if (ch == '\n') {
+		hssd->str_cursor = (hssd->str_cursor/128)*128;
+		return SUCCESS;
+	}
 	if (ch < 32 || ch > 126) return ERROR;	// char is unable to be rendered
 	char newC = ch - 32;					// offset the index-space so the ASCII code aligns with the font table
 	if (ch >= 97 && ch <= 122) newC -= 32;	// convert lowercase to uppercase

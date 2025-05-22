@@ -152,8 +152,13 @@ uint8_t ST7789_Update(ST7789_HandleTypeDef *hst7789, uint8_t screen_section) {
 	HAL_GPIO_WritePin(hst7789->dc_gpio_handle, hst7789->dc_gpio_pin, GPIO_PIN_SET);		// assert DC HI (~CMD)
 
 
-	if (HAL_SPI_Transmit_DMA(hst7789->spi_handle, hst7789->vram + screen_section*0xEA60, 0xEA60))
-		return ERROR;
+	if (screen_section != 2) {
+		if (HAL_SPI_Transmit_DMA(hst7789->spi_handle, hst7789->vram + screen_section*0xEA60, 0xEA60))
+			return ERROR;
+	} else {
+		if (HAL_SPI_Transmit_DMA(hst7789->spi_handle, hst7789->vram + screen_section*0xEA60, 0x8340))
+			return ERROR;
+	}
 //	return SUCCESS;
 	//HAL_SPI_Transmit(hst7789->spi_handle, hst7789->vram, 0xEA60, 500);
 	return SUCCESS;

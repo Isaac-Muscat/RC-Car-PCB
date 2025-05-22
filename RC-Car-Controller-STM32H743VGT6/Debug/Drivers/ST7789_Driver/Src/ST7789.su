@@ -6,4 +6,4 @@
 ../Drivers/ST7789_Driver/Src/ST7789.c:122:6:ST7789_SetWindow	24	static
 ../Drivers/ST7789_Driver/Src/ST7789.c:139:9:ST7789_Clear	16	static
 ../Drivers/ST7789_Driver/Src/ST7789.c:145:9:ST7789_Update	24	static
-../Drivers/ST7789_Driver/Src/ST7789.c:162:6:ST7789_DMATransmitCplt	16	static
+../Drivers/ST7789_Driver/Src/ST7789.c:167:6:ST7789_DMATransmitCplt	16	static

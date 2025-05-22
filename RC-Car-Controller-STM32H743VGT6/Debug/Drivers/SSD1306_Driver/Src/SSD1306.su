@@ -3,4 +3,4 @@
 ../Drivers/SSD1306_Driver/Src/SSD1306.c:159:9:SSD1306_Clear	16	static
 ../Drivers/SSD1306_Driver/Src/SSD1306.c:166:9:SSD1306_Update	16	static
 ../Drivers/SSD1306_Driver/Src/SSD1306.c:171:9:SSD1306_DrawChar	24	static
-../Drivers/SSD1306_Driver/Src/SSD1306.c:184:9:SSD1306_DrawString	32	static
+../Drivers/SSD1306_Driver/Src/SSD1306.c:189:9:SSD1306_DrawString	32	static
