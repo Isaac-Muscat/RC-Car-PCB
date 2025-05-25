@@ -14,6 +14,7 @@ RM := rm -rf
 -include USB_DEVICE/App/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/subdir.mk
+-include Middlewares/Custom/MenuOLED/Src/subdir.mk
 -include Drivers/XBEE_Driver/Src/subdir.mk
 -include Drivers/STM32H7xx_HAL_Driver/Src/subdir.mk
 -include Drivers/ST7789_Driver/Src/subdir.mk

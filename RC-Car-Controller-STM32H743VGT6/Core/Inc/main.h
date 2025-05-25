@@ -59,14 +59,18 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define SPI4_DC_Pin GPIO_PIN_5
 #define SPI4_DC_GPIO_Port GPIOE
-#define BTN_L_Pin GPIO_PIN_5
-#define BTN_L_GPIO_Port GPIOA
+#define BTN_LB_Pin GPIO_PIN_5
+#define BTN_LB_GPIO_Port GPIOA
 #define WIPE_L_Pin GPIO_PIN_6
 #define WIPE_L_GPIO_Port GPIOA
 #define WIPE_R_Pin GPIO_PIN_4
 #define WIPE_R_GPIO_Port GPIOC
-#define BTN_R_Pin GPIO_PIN_5
-#define BTN_R_GPIO_Port GPIOC
+#define BTN_RB_Pin GPIO_PIN_5
+#define BTN_RB_GPIO_Port GPIOC
+#define BTN_LF_Pin GPIO_PIN_8
+#define BTN_LF_GPIO_Port GPIOC
+#define BTN_RF_Pin GPIO_PIN_9
+#define BTN_RF_GPIO_Port GPIOC
 #define SPI4_RST_Pin GPIO_PIN_10
 #define SPI4_RST_GPIO_Port GPIOC
 

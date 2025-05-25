@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "XBEE.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -133,9 +133,8 @@ uint8_t jpeg_out[CAM_GRAYSIZE];		// Reserve u8 array for JPEG result
 volatile uint8_t jpeg_ready = 1;				// JPEG status (ready to start?)
 volatile uint32_t jpeg_size = 0;				// Current size of the JPEG result
 
-// UART VARIABLES
-uint8_t uart_txRaw_buffer[UART_TXSIZE + 4] = {0};				// Reserve 64 data + 2 header bytes for data transmission
-uint8_t *uart_tx_buffer = uart_txRaw_buffer + 4;	// Get a reference to the start of buffer data
+// XBEE VARIABLES
+XBEE_HandleTypeDef hxbee;
 
 /* USER CODE END 0 */
 
@@ -243,6 +242,17 @@ int main(void)
 	jpeg_config->ImageQuality = JPEG_QUALITY;
 	HAL_JPEG_ConfigEncoding(&hjpeg, jpeg_config);
 
+	// ------------------------------------------------------------ SETUP XBEE -- //
+	hxbee.uart_handle = &huart1;
+	hxbee.pktRx_max = 5;
+	hxbee.pktTx_max = 5;
+
+	if (XBEE_Init(&hxbee)) {
+		sprintf(usb_msg, " Failed to Init XBEE");
+		WriteDebug(usb_msg, strlen(usb_msg));
+		while (1) { }
+	}
+
 	//TODO: Implement all JPEG Callbacks
 	//TODO: Try to Interleave CAM/JPEG DMAs using JPEG GetDataCallback
 
@@ -328,16 +338,17 @@ int main(void)
 
 		// Transmit the camera data
 		for (uint16_t i = 0; i < ((jpeg_size - JPEG_HEADERSIZE) / UART_TXSIZE) + 1; i++) {
-			uart_txRaw_buffer[0] = 0b10101010;
-			uart_txRaw_buffer[1] = i >> 8;	// Store MSB of idx in header
-			uart_txRaw_buffer[2] = i & 0x00FF;	// Store LSB of idx in header
-			uint8_t checksum = 0;
+//			uart_txRaw_buffer[0] = 0b10101010;
+//			uart_txRaw_buffer[1] = i >> 8;	// Store MSB of idx in header
+//			uart_txRaw_buffer[2] = i & 0x00FF;	// Store LSB of idx in header
+//			uint8_t checksum = 0;
 //			for (uint8_t z = 0; z < UART_TXSIZE; z++) {
 //				checksum += jpeg_out[i*UART_TXSIZE + JPEG_HEADERSIZE];
 //			}
-			uart_txRaw_buffer[3] = 0x00;
-			memcpy(uart_tx_buffer, jpeg_out + i*UART_TXSIZE + JPEG_HEADERSIZE, UART_TXSIZE);	// Copy jpeg vram into the TX buffer data segment
-			HAL_UART_Transmit(&huart1, uart_txRaw_buffer, UART_TXSIZE + 4, 30);	// Transmit the buffer
+//			uart_txRaw_buffer[3] = 0x00;
+//			memcpy(uart_tx_buffer, jpeg_out + i*UART_TXSIZE + JPEG_HEADERSIZE, UART_TXSIZE);	// Copy jpeg vram into the TX buffer data segment
+//			HAL_UART_Transmit(&huart1, uart_txRaw_buffer, UART_TXSIZE + 4, 30);	// Transmit the buffer
+			XBEE_TXPacket(&hxbee, jpeg_out + i*UART_TXSIZE + JPEG_HEADERSIZE, i);
 			// Debug
 //			if (i % 10 == 0) {
 //				sprintf(usb_msg, "0x%X\r\n", i);

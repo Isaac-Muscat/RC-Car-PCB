@@ -1,0 +1,4 @@
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:13:10:AllocateString	1
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:20:16:AllocateProperties	1
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:24:12:AllocatePages	1
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:28:9:MENU_Init	1
