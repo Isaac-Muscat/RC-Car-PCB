@@ -72,6 +72,8 @@ uint8_t ST7789_SendWord_Data(ST7789_HandleTypeDef *hst7789, uint16_t data) {
 
 uint8_t ST7789_Init(ST7789_HandleTypeDef *hst7789) {
 
+	hst7789->updating_sector = 0;
+
 	// Wake up the SPI line
 	uint8_t dummy = 0x00;
 	HAL_SPI_Transmit_DMA(hst7789->spi_handle, &dummy, 1);
@@ -142,9 +144,15 @@ uint8_t ST7789_Clear(ST7789_HandleTypeDef *hst7789, uint8_t col) {
 	return SUCCESS;
 }
 
-uint8_t ST7789_Update(ST7789_HandleTypeDef *hst7789, uint8_t screen_section) {
-	// Flag busy
-	hst7789->spi_ready = 0;
+uint8_t ST7789_UpdateSector(ST7789_HandleTypeDef *hst7789, uint8_t screen_section) {
+	// Check for bounds/busy
+	if (hst7789->spi_state == 1) return ERROR;
+	if (screen_section > 2) return ERROR;
+
+	hst7789->updating_sector = screen_section;
+
+	// Flag as busy
+	hst7789->spi_state = 1;
 
 	// Set the window based on the vram offset
 	ST7789_SetWindow(hst7789, 0, (screen_section*0xEA60)/(LCD_WIDTH*2), LCD_WIDTH, LCD_HEIGHT);
@@ -164,6 +172,19 @@ uint8_t ST7789_Update(ST7789_HandleTypeDef *hst7789, uint8_t screen_section) {
 	return SUCCESS;
 }
 
+uint8_t ST7789_UpdateAutomatic(ST7789_HandleTypeDef *hst7789) {
+	// perform a screen update
+	if (ST7789_UpdateSector(hst7789, hst7789->updating_sector)) return ERROR;
+
+	// increment the sector to be updated
+	hst7789->updating_sector++;
+	hst7789->updating_sector %= 3;
+
+	return SUCCESS;
+}
+
+
 void ST7789_DMATransmitCplt(ST7789_HandleTypeDef *hst7789) {
-	hst7789->spi_ready = 1;	// Flag ready
+	// Flag idle
+	hst7789->spi_state = 0;
 }

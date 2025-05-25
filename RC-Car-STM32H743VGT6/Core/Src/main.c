@@ -45,8 +45,8 @@
 #define JPEG_OUTBUF_SIZE 64
 #define JPEG_HEADERSIZE 526
 
-#define JPEG_MCU_WIDTH 15
-#define JPEG_MCU_HEIGHT 15
+#define JPEG_MCU_WIDTH 6
+#define JPEG_MCU_HEIGHT 9
 
 #define CAM_GRAYSIZE CAM_WIDTH * CAM_HEIGHT
 #define CAM_422SIZE CAM_WIDTH * CAM_HEIGHT * 2
@@ -134,8 +134,8 @@ volatile uint8_t jpeg_ready = 1;				// JPEG status (ready to start?)
 volatile uint32_t jpeg_size = 0;				// Current size of the JPEG result
 
 // UART VARIABLES
-uint8_t uart_txRaw_buffer[UART_TXSIZE + 3] = {0};				// Reserve 64 data + 2 header bytes for data transmission
-uint8_t *uart_tx_buffer = uart_txRaw_buffer + 3;	// Get a reference to the start of buffer data
+uint8_t uart_txRaw_buffer[UART_TXSIZE + 4] = {0};				// Reserve 64 data + 2 header bytes for data transmission
+uint8_t *uart_tx_buffer = uart_txRaw_buffer + 4;	// Get a reference to the start of buffer data
 
 /* USER CODE END 0 */
 
@@ -331,8 +331,13 @@ int main(void)
 			uart_txRaw_buffer[0] = 0b10101010;
 			uart_txRaw_buffer[1] = i >> 8;	// Store MSB of idx in header
 			uart_txRaw_buffer[2] = i & 0x00FF;	// Store LSB of idx in header
+			uint8_t checksum = 0;
+//			for (uint8_t z = 0; z < UART_TXSIZE; z++) {
+//				checksum += jpeg_out[i*UART_TXSIZE + JPEG_HEADERSIZE];
+//			}
+			uart_txRaw_buffer[3] = 0x00;
 			memcpy(uart_tx_buffer, jpeg_out + i*UART_TXSIZE + JPEG_HEADERSIZE, UART_TXSIZE);	// Copy jpeg vram into the TX buffer data segment
-			HAL_UART_Transmit(&huart1, uart_txRaw_buffer, UART_TXSIZE + 3, 20);	// Transmit the buffer
+			HAL_UART_Transmit(&huart1, uart_txRaw_buffer, UART_TXSIZE + 4, 30);	// Transmit the buffer
 			// Debug
 //			if (i % 10 == 0) {
 //				sprintf(usb_msg, "0x%X\r\n", i);
@@ -1139,10 +1144,10 @@ uint8_t GenerateJPEGMCUBlock() {
 	for (int y = yStart; y < yStart + 8; y++) {
 		for (int x = xStart; x < xStart + 8; x++) {
 			// Pad to 8x8
-			if (x >= CAM_WIDTH) {
+			if ((x*3.33) >= CAM_WIDTH) {
 				jpeg_mcu[i] = 0x00;
 			} else {
-				jpeg_mcu[i] = camera_mem[x + y * CAM_WIDTH];
+				jpeg_mcu[i] = camera_mem[(uint16_t)(x*3.33) + (uint16_t)(y*2) * CAM_WIDTH];
 			}
 			i++;
 		}

@@ -25,6 +25,7 @@
 
 #include "SSD1306.h"
 #include "ST7789.h"
+#include "XBEE.h"
 
 /* USER CODE END Includes */
 
@@ -37,13 +38,11 @@
 /* USER CODE BEGIN PD */
 #define OLED_ADDR 0x3C
 
-#define UART_BUFFERSIZE 67
+#define JPEG_WIDTH  48
+#define JPEG_HEIGHT 72
 
-#define JPEG_WIDTH  120
-#define JPEG_HEIGHT 120
-
-#define JPEG_MCU_WIDTH  15
-#define JPEG_MCU_HEIGHT 15
+#define JPEG_MCU_WIDTH  6
+#define JPEG_MCU_HEIGHT 9
 #define JPEG_HEADERSIZE 526
 /* USER CODE END PD */
 
@@ -98,13 +97,9 @@ uint8_t slider_direction[2] = {0};
 uint8_t slider_min_deadzone = 16;	// Slider deadzone at min
 uint8_t slider_max_deadzone = 12;	// Slider deadzone at max
 
-// UART VARIABLES
-uint8_t uart_rxDMA_buffer[UART_BUFFERSIZE] = {0};	// Circular RX Buffer
-uint8_t uart_rxDMA_readHead = 0;
+// XBEE VARIABLES
+XBEE_HandleTypeDef hxbee;
 
-uint8_t uart_rx_packetPartBuffer[UART_BUFFERSIZE] = {0};	// half packet - buffer
-uint8_t uart_rx_packetFullBuffer[UART_BUFFERSIZE] = {0};	// complete packet - buffer
-uint8_t uart_rx_packetState = 0;							// packet - state
 uint16_t uart_rx_lastPacketNum = 0;
 uint8_t uart_rx_skippedPackets = 0;
 // ----------------------------------- 0: GOOD
@@ -321,7 +316,7 @@ int main(void)
 
 	// ------------------------------------------------------------ SETUP ST7789 -- //
 	hst7789.spi_handle = &hspi4;
-	hst7789.spi_ready = 1;
+	hst7789.spi_state = 0;
 	hst7789.dc_gpio_handle = SPI4_DC_GPIO_Port;
 	hst7789.dc_gpio_pin = SPI4_DC_Pin;
 	hst7789.vram = st7789_vram;
@@ -336,9 +331,9 @@ int main(void)
 
 	// Clear the screen
 	ST7789_Clear(&hst7789, 0x00);
-	ST7789_Update(&hst7789, 0);
+	ST7789_UpdateSector(&hst7789, 0);
 	HAL_Delay(50);
-	ST7789_Update(&hst7789, 1);
+	ST7789_UpdateSector(&hst7789, 1);
 
 	// ------------------------------------------------------------ SETUP JPEG DECODE -- //
 	// override the header
@@ -346,38 +341,36 @@ int main(void)
 	memcpy(jpeg_raw1, jpeg_header, JPEG_HEADERSIZE);
 	memcpy(jpeg_raw2, jpeg_header, JPEG_HEADERSIZE);
 
-	// ------------------------------------------------------------ SETUP UART -- //
-	// TODO: Move this into a class
-	// TODO: Register a callback instead of using the legacy one
+	// ------------------------------------------------------------ SETUP XBEE -- //
+	hxbee.uart_handle = &huart1;
+	hxbee.pktRx_max = 5;
+	hxbee.pktTx_max = 5;
 
-	uint8_t col = 0xF0;
-	uint8_t screen_portion = 0;
-	uint8_t fill_byte = 0;
+	if (XBEE_Init(&hxbee)) {
+		sprintf(ssd_msg, " Failed to Init XBEE");
+		WriteDebug(ssd_msg, strlen(ssd_msg));
+		while (1) { }
+	}
 
 	uint32_t old_t = HAL_GetTick();
-	uint8_t debug_live = 0;
 
 	sprintf(ssd_msg, " JPEG X");
 	WriteDebug(ssd_msg, strlen(ssd_msg));
 
 	// XBEE READ MODE
-//	uint8_t uart_xbee_buffer[256] = {0};	// Get a reference to the start of buffer data
-//	uint8_t uart_xbee_len = 0;			// Get a reference to the start of buffer data
-//	while (1) {
-//		  HAL_UARTEx_ReceiveToIdle(&huart1, uart_xbee_buffer, 256, &uart_xbee_len, 1000);
-//		  if (uart_xbee_len > 0) {
-//			  CDC_Transmit_FS(uart_xbee_buffer, uart_xbee_len);
-//			  uart_xbee_len = 0;
-//			  memset(uart_xbee_buffer, 0x00, 256);
-//		  } else {
-//			  //sprintf(usb_msg, "err\r\n");
-//			  //HAL_UART_Transmit(&huart1, usb_msg, strlen(usb_msg), 1000);
-//		  }
-//	}
-
-	// Begin a UART capture
-	uart_rx_packetState = 2;
-	HAL_UART_Receive_DMA(&huart1, uart_rxDMA_buffer, UART_BUFFERSIZE);
+	//	uint8_t uart_xbee_buffer[256] = {0};	// Get a reference to the start of buffer data
+	//	uint8_t uart_xbee_len = 0;			// Get a reference to the start of buffer data
+	//	while (1) {
+	//		  HAL_UARTEx_ReceiveToIdle(&huart1, uart_xbee_buffer, 256, &uart_xbee_len, 1000);
+	//		  if (uart_xbee_len > 0) {
+	//			  CDC_Transmit_FS(uart_xbee_buffer, uart_xbee_len);
+	//			  uart_xbee_len = 0;
+	//			  memset(uart_xbee_buffer, 0x00, 256);
+	//		  } else {
+	//			  //sprintf(usb_msg, "err\r\n");
+	//			  //HAL_UART_Transmit(&huart1, usb_msg, strlen(usb_msg), 1000);
+	//		  }
+	//	}
 
 	/* USER CODE END 2 */
 
@@ -391,69 +384,37 @@ int main(void)
 
 		// If there's a packet, process it
 		// If the packet is good, push it to the screen
-		if (uart_rx_packetState == 0) {
-			uint16_t rx_byte = 0;
-			rx_byte += uart_rx_packetFullBuffer[1];
-			rx_byte *= 256;
-			rx_byte += uart_rx_packetFullBuffer[2];
-
+		uint16_t rx_byte;
+		uint8_t *rx_packet;
+		uint8_t ret = XBEE_RXPacket(&hxbee, &rx_packet, &rx_byte);
+		if (ret == 0) {
 			if (rx_byte <= JPEG_WIDTH*JPEG_HEIGHT/64 + 1) {
-//				if (rx_byte % 10 == 0) {
-//					sprintf(ssd_msg, " GOT 0x%X", rx_byte);
-//					WriteDebug(ssd_msg, strlen(ssd_msg));
-//				}
-//				if (rx_byte == 8) {
-//					SSD1306_Clear(&hssd1);
-//					for (int z = 0; z < 64; z++) {
-//						if (z != 0 && z % 8 == 0)
-//							hssd1.str_cursor = (z/8)*128;
-//						if (z != 0 && z % 2 == 0 && z % 8 != 0)
-//							hssd1.str_cursor += 4;
-//						sprintf(ssd_msg, "%02X", uart_rx_packetFullBuffer[z+3]);
-//						SSD1306_DrawString(&hssd1, ssd_msg, 2);
-//					}
-//					SSD1306_Update(&hssd1);
-//				}
-
-				if (rx_byte > uart_rx_lastPacketNum + 1) {
-					uart_rx_skippedPackets += (rx_byte - uart_rx_lastPacketNum) - 1;
-				}
-
 				// Data was fully sent
-				if (rx_byte < uart_rx_lastPacketNum) {
-					// Data good, process
-					if (uart_rx_skippedPackets == 0 && jpeg_state == 0) {
-						// Start the jpeg decode
-						jpeg_size = uart_rx_lastPacketNum*64 + JPEG_HEADERSIZE;
-						HAL_StatusTypeDef ret;
-						if (jpeg_currentraw)
-							ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw1, jpeg_size, jpeg_out, JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64);
-						else {
-							ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw2, jpeg_size, jpeg_out, JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64);
-						}
-						jpeg_currentraw = !jpeg_currentraw;
+				if (rx_byte < uart_rx_lastPacketNum && jpeg_state == 0) {
+					// Start the jpeg decode
+					jpeg_size = uart_rx_lastPacketNum*64 + JPEG_HEADERSIZE;
+					HAL_StatusTypeDef ret;
+					if (jpeg_currentraw)
+						ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw1, jpeg_size, jpeg_out, JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64);
+					else {
+						ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw2, jpeg_size, jpeg_out, JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64);
+					}
+					jpeg_currentraw = !jpeg_currentraw;
 
-						if (ret) {
-							sprintf(ssd_msg, " JPEG FAIL %d", ret);
-							WriteDebug(ssd_msg, strlen(ssd_msg));
-						} else {
-							jpeg_state = 1;
-						}
+					if (ret) {
+						sprintf(ssd_msg, " JPEG FAIL %d", ret);
+						WriteDebug(ssd_msg, strlen(ssd_msg));
 					} else {
-						// Packets skipped
-						uart_rx_skippedPackets = 0;
+						jpeg_state = 1;
 					}
 				}
-				// flag the packet as processed
 				uart_rx_lastPacketNum = rx_byte;
-				uart_rx_packetState = 2;
 
 				// fill in the received data
-				//memcpy(hst7789.vram + rx_byte * 64, uart_rx_packetFullBuffer + 3, 64);
 				if (jpeg_currentraw)
-					memcpy(jpeg_raw1 + JPEG_HEADERSIZE + rx_byte * 64, uart_rx_packetFullBuffer + 3, 64);
+					memcpy(jpeg_raw1 + JPEG_HEADERSIZE + rx_byte * 64, rx_packet, 64);
 				else {
-					memcpy(jpeg_raw2 + JPEG_HEADERSIZE + rx_byte * 64, uart_rx_packetFullBuffer + 3, 64);
+					memcpy(jpeg_raw2 + JPEG_HEADERSIZE + rx_byte * 64, rx_packet, 64);
 				}
 			}
 		}
@@ -472,10 +433,10 @@ int main(void)
 						// |RRRRR GGG|GGG BBBBB|
 						// TODO: stop transmitting overscan to save bandwidth
 
-						uint32_t pix_x = (mcu_x*8 + x)*2;
+						uint32_t pix_x = (mcu_x*8 + x)*5;
 						if (pix_x >= LCD_WIDTH-1) continue;
 						pix_x = LCD_WIDTH - pix_x - 1;
-						uint32_t pix_y = (current_mcu_y*8 + y)*3;
+						uint32_t pix_y = (current_mcu_y*8 + y)*5;
 						if (pix_y >= LCD_HEIGHT-2) continue;
 
 						uint8_t sample = jpeg_out[mcu_idx*64 + y*8 + x];
@@ -483,18 +444,24 @@ int main(void)
 						uint8_t lsb = ((sample & 0b11111000) >> 3) | ((sample & 0b00011100)<<3);
 
 						// TODO: Speed this up as much as possible, even if it means skipping lines
-						hst7789.vram[ pix_y    * LCD_WIDTH*2 +  pix_x    * 2    ] = msb;
-						hst7789.vram[ pix_y    * LCD_WIDTH*2 +  pix_x    * 2 + 1] = lsb;
-						hst7789.vram[ pix_y    * LCD_WIDTH*2 + (pix_x+1) * 2    ] = msb;
-						hst7789.vram[ pix_y    * LCD_WIDTH*2 + (pix_x+1) * 2 + 1] = lsb;
-						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 +  pix_x    * 2    ] = msb;
-						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 +  pix_x    * 2 + 1] = lsb;
-						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 + (pix_x+1) * 2    ] = msb;
-						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 + (pix_x+1) * 2 + 1] = lsb;
-						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 +  pix_x    * 2    ] = msb;
-						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 +  pix_x    * 2 + 1] = lsb;
-						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 + (pix_x+1) * 2    ] = msb;
-						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 + (pix_x+1) * 2 + 1] = lsb;
+						// Loop through the pixels in a box
+						for (uint8_t xOff = 0; xOff < 3; xOff++) {
+							for (uint8_t yOff = 0; yOff < 3; yOff++) {
+								hst7789.vram[(pix_y+yOff)*LCD_WIDTH*2 + (pix_x+xOff)*2    ] = msb;
+								hst7789.vram[(pix_y+yOff)*LCD_WIDTH*2 + (pix_x+xOff)*2 + 1] = lsb;
+							}
+						}
+
+//						hst7789.vram[ pix_y    * LCD_WIDTH*2 + (pix_x+1) * 2    ] = msb;
+//						hst7789.vram[ pix_y    * LCD_WIDTH*2 + (pix_x+1) * 2 + 1] = lsb;
+//						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 +  pix_x    * 2    ] = msb;
+//						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 +  pix_x    * 2 + 1] = lsb;
+//						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 + (pix_x+1) * 2    ] = msb;
+//						hst7789.vram[(pix_y+1) * LCD_WIDTH*2 + (pix_x+1) * 2 + 1] = lsb;
+//						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 +  pix_x    * 2    ] = msb;
+//						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 +  pix_x    * 2 + 1] = lsb;
+//						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 + (pix_x+1) * 2    ] = msb;
+//						hst7789.vram[(pix_y+2) * LCD_WIDTH*2 + (pix_x+1) * 2 + 1] = lsb;
 					}
 				}
 			}
@@ -504,29 +471,32 @@ int main(void)
 			current_mcu_y++;
 
 			// TODO: Make the screen update a scheduled task OR part of a DMA Interrupt chain with the ADC or something
-			if (current_mcu_y == 5) {
-				ST7789_Update(&hst7789, 0);
-			}
-			if (current_mcu_y == 10) {
-				ST7789_Update(&hst7789, 1);
-			}
+//			if (current_mcu_y == 5) {
+//				ST7789_UpdateSector(&hst7789, 0);
+//			}
+//			if (current_mcu_y == 10) {
+//				ST7789_UpdateSector(&hst7789, 1);
+//			}
 
 			if (current_mcu_y >= JPEG_MCU_HEIGHT) {
-				ST7789_Update(&hst7789, 2);
+				//ST7789_UpdateSector(&hst7789, 2);
 				current_mcu_y = 0;
 				// Flag JPEG as idle
 				jpeg_state = 0;
 
 				// log time
-				uint32_t delta_t = HAL_GetTick() - old_t;
-				sprintf(ssd_msg, " MS: %d", delta_t);
-				WriteDebug(ssd_msg, strlen(ssd_msg));
-				old_t = HAL_GetTick();
+				//				uint32_t delta_t = HAL_GetTick() - old_t;
+				//				sprintf(ssd_msg, " MS: %d", delta_t);
+				//				WriteDebug(ssd_msg, strlen(ssd_msg));
+				//				old_t = HAL_GetTick();
 			}
 			//HAL_Delay(10);
 			//ST7789_Update(&hst7789, 1);
 
 		}
+
+		if (hst7789.spi_state == 0)
+			ST7789_UpdateAutomatic(&hst7789);
 
 
 		// Queue up the Screen updates
@@ -1059,49 +1029,55 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 // ------------------------------------------------------------ OVERRIDE UART DMA CALLBACKS -- //
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-	// Store the last readHead, we need this for packet reconstruction if bytes got lost
-	uint16_t old_head = uart_rxDMA_readHead;
-
-	// Find the delimeter
-	uint8_t found_delim = 0;
-	for (uint16_t circular_ptr = 0; circular_ptr < UART_BUFFERSIZE; circular_ptr++) {
-		uint16_t packet_ptr = (circular_ptr + uart_rxDMA_readHead) % UART_BUFFERSIZE;
-		if (uart_rxDMA_buffer[packet_ptr] == 0b10101010) {
-			found_delim = 1;					// Update flag
-			uart_rxDMA_readHead = packet_ptr;	// Move the readHead
-			break;
-		}
+	uint8_t ret = XBEE_RX_DMACallback(&hxbee);
+	if (ret) {
+		sprintf(ssd_msg, " PKT Err: %d", ret);
+		WriteDebug(ssd_msg, strlen(ssd_msg));
 	}
 
-	// Couldn't find the delimeter, this packet is FUBAR, discard the whole thing
-	if (!found_delim) {
-		uart_rx_packetState = 1;	// Flag as malformed
-		return;
-	}
-
-	// Copy the partial packet contents into the completed packet buffer
-	memcpy(uart_rx_packetFullBuffer, uart_rx_packetPartBuffer, UART_BUFFERSIZE);
-
-	// Copy the new packet contents into the partial packet buffer
-	memcpy(uart_rx_packetPartBuffer, uart_rxDMA_buffer + uart_rxDMA_readHead, UART_BUFFERSIZE - uart_rxDMA_readHead);
-
-	// finish the old packet
-	// Account for dropped byte underflow
-	if (old_head < uart_rxDMA_readHead) {
-		uart_rx_packetState = 1;	// Flag as malformed
-		return;
-	}
-
-	uint16_t head_slip = old_head - uart_rxDMA_readHead;	// How many bytes were dropped
-	memset(uart_rx_packetFullBuffer + (UART_BUFFERSIZE - old_head), 0x00, head_slip); 									 // Zero dropped bytes
-	memcpy(uart_rx_packetFullBuffer + (UART_BUFFERSIZE - old_head) + head_slip, uart_rxDMA_buffer, uart_rxDMA_readHead); // Fill in missing bytes
-	// Note that the above method attempts to reconstruct packets when bytes are dropped
-	// What this looks like in memory:
-	// B0 B1 B2 B3 B4 XX XX B7
-	// In the event of a single dropped byte, this is accurate, if more than one gets dropped this may become inaccurate
-
-	// Packet is ready
-	uart_rx_packetState = 0;
+	//	// Store the last readHead, we need this for packet reconstruction if bytes got lost
+	//	uint16_t old_head = uart_rxDMA_readHead;
+	//
+	//	// Find the delimeter
+	//	uint8_t found_delim = 0;
+	//	for (uint16_t circular_ptr = 0; circular_ptr < UART_BUFFERSIZE; circular_ptr++) {
+	//		uint16_t packet_ptr = (circular_ptr + uart_rxDMA_readHead) % UART_BUFFERSIZE;
+	//		if (uart_rxDMA_buffer[packet_ptr] == 0b10101010) {
+	//			found_delim = 1;					// Update flag
+	//			uart_rxDMA_readHead = packet_ptr;	// Move the readHead
+	//			break;
+	//		}
+	//	}
+	//
+	//	// Couldn't find the delimeter, this packet is FUBAR, discard the whole thing
+	//	if (!found_delim) {
+	//		uart_rx_packetState = 1;	// Flag as malformed
+	//		return;
+	//	}
+	//
+	//	// Copy the partial packet contents into the completed packet buffer
+	//	memcpy(uart_rx_packetFullBuffer, uart_rx_packetPartBuffer, UART_BUFFERSIZE);
+	//
+	//	// Copy the new packet contents into the partial packet buffer
+	//	memcpy(uart_rx_packetPartBuffer, uart_rxDMA_buffer + uart_rxDMA_readHead, UART_BUFFERSIZE - uart_rxDMA_readHead);
+	//
+	//	// finish the old packet
+	//	// Account for dropped byte underflow
+	//	if (old_head < uart_rxDMA_readHead) {
+	//		uart_rx_packetState = 1;	// Flag as malformed
+	//		return;
+	//	}
+	//
+	//	uint16_t head_slip = old_head - uart_rxDMA_readHead;	// How many bytes were dropped
+	//	memset(uart_rx_packetFullBuffer + (UART_BUFFERSIZE - old_head), 0x00, head_slip); 									 // Zero dropped bytes
+	//	memcpy(uart_rx_packetFullBuffer + (UART_BUFFERSIZE - old_head) + head_slip, uart_rxDMA_buffer, uart_rxDMA_readHead); // Fill in missing bytes
+	//	// Note that the above method attempts to reconstruct packets when bytes are dropped
+	//	// What this looks like in memory:
+	//	// B0 B1 B2 B3 B4 XX XX B7
+	//	// In the event of a single dropped byte, this is accurate, if more than one gets dropped this may become inaccurate
+	//
+	//	// Packet is ready
+	//	uart_rx_packetState = 0;
 }
 
 // ------------------------------------------------------------ OVERRIDE JPEG DMA CALLBACKS -- //
@@ -1122,8 +1098,8 @@ void HAL_JPEG_ErrorCallback (JPEG_HandleTypeDef * hjpeg) {
 }
 
 void HAL_JPEG_DataReadyCallback (JPEG_HandleTypeDef * hjpeg, uint8_t * pDataOut, uint32_t OutDataLength) {
-//	sprintf(ssd_msg, " JPEG D %d", OutDataLength);
-//	WriteDebug(ssd_msg, strlen(ssd_msg));
+	//	sprintf(ssd_msg, " JPEG D %d", OutDataLength);
+	//	WriteDebug(ssd_msg, strlen(ssd_msg));
 	//HAL_JPEG_Abort(hjpeg);
 	jpeg_state = 2;
 }
