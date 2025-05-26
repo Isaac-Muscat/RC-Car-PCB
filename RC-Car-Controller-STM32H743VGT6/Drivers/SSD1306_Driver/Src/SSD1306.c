@@ -187,7 +187,9 @@ uint8_t SSD1306_DrawChar(SSD1306_HandleTypeDef *hssd, char ch) {
 
 
 uint8_t SSD1306_DrawString(SSD1306_HandleTypeDef *hssd, char *str, uint8_t length) {
+	uint8_t start_line = hssd->str_cursor / 120;
 	for (uint8_t i = 0; i < length; i++) {
+		if (hssd->str_cursor / 128 > start_line) break;
 	    if (SSD1306_DrawChar(hssd, str[i])) hssd->str_cursor += 0x06;
 	}
 

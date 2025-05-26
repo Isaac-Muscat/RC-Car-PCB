@@ -48,6 +48,18 @@ typedef struct
 
 	Menu_Page				*pages;			// array of pages (contiguous)
 
+	// Menu state variables
+
+	uint8_t					current_page;
+
+	uint8_t 				page_anim;
+
+	uint8_t					current_property;
+
+	uint8_t					last_property;
+
+	uint8_t 				property_anim;
+
 } Menu_HandleTypeDef;
 
 // FUNCS
@@ -62,5 +74,10 @@ Menu_Page*     	AllocatePages(uint8_t num);
 
 uint8_t MENU_Init(Menu_HandleTypeDef *hmenu);
 uint8_t MENU_Draw(Menu_HandleTypeDef *hmenu, uint32_t delta_t);
+
+void MENU_ParseInput(Menu_HandleTypeDef *hmenu, uint8_t inputs[4]);
+void MENU_AnimateString(Menu_HandleTypeDef *hmenu, SSD1306_HandleTypeDef *hssd, uint8_t *str, uint8_t anim_val, uint8_t anim_start);
+
+float Lerp(float a, float b, float t);
 
 #endif /* CUSTOM_MENUOLED_INC_MENUOLED_H_ */

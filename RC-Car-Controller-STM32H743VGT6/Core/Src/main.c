@@ -50,7 +50,7 @@
 
 // SCHEDULING DEFINES
 
-#define SCH_MS_OLED 50
+#define SCH_MS_OLED 20
 
 /* USER CODE END PD */
 
@@ -103,6 +103,9 @@ uint8_t ssd2_vram[CACHE_SIZE_MEM] = {0};
 uint8_t ssd_msg[100] = {0};	// Reserve 100 bytes for SSD1306 text
 
 uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB Debug messages
+
+// MENU VARIABLES
+Menu_HandleTypeDef hmenu;
 
 // ST7789 VARIABLES
 ST7789_HandleTypeDef hst7789;
@@ -252,7 +255,6 @@ void SCH_GetInputs();
 
 // Utility Functions
 uint32_t DeltaTime(uint32_t start_t);
-float Lerp(float a, float b, float t);
 
 // SSD drawing funcs
 void Draw_Slider(uint8_t slider_id);
@@ -367,6 +369,12 @@ int main(void)
 	ST7789_UpdateSector(&hst7789, 0);
 	HAL_Delay(50);
 	ST7789_UpdateSector(&hst7789, 1);
+
+	// ------------------------------------------------------------ SETUP MENU -- //
+	hmenu.ssdL_handle = &hssd1;
+	hmenu.ssdR_handle = &hssd2;
+	hmenu.page_anim = 0;
+	MENU_Init(&hmenu);
 
 	// ------------------------------------------------------------ SETUP JPEG DECODE -- //
 	// override the header
@@ -1024,16 +1032,7 @@ void SCH_OLEDUpdate() {
 	Draw_Slider(0);
 	Draw_Slider(1);
 
-	// DEBUG INPUT
-	uint8_t tmp_msg[10] = {0};
-	for (uint16_t i = 0; i < 4; i++) {
-		hssd1.str_cursor = 32 + (i+1)*128;
-		hssd2.str_cursor = 32 + (i+1)*128;
-		sprintf(tmp_msg, "%03d", test_vals[i]);
-		SSD1306_DrawString(&hssd1, tmp_msg, strlen(tmp_msg));
-		SSD1306_DrawString(&hssd2, tmp_msg, strlen(tmp_msg));
-	}
-
+	MENU_Draw(&hmenu, delta_t);
 
 	// Update the screens
 	SSD1306_Update(&hssd1);
@@ -1056,10 +1055,16 @@ void SCH_GetInputs() {
 		istate_hold[i] = i_new;							// Update sotred val
 
 		// DEBUG
-		if (istate_pressed[i]) {
-			test_vals[i]++;
-		}
+//		if (istate_pressed[i]) {
+//			test_vals[i]++;
+//		}
 	}
+
+	MENU_ParseInput(&hmenu, istate_pressed);
+	istate_pressed[0] = 0;
+	istate_pressed[1] = 0;
+	istate_pressed[2] = 0;
+	istate_pressed[3] = 0;
 }
 
 // ------------------------------------------------------------ UTILITY FUNCTIONS -- //
@@ -1074,11 +1079,7 @@ uint32_t DeltaTime(uint32_t start_t) {
 	return now_t - start_t;
 }
 
-float Lerp(float a, float b, float t) {
-	if (t >= 1) return b;
-	if (t <= 0) return a;
-	return a*(1.0-t) + b*t;
-}
+
 
 // DEBUG FUNCTIONS
 
