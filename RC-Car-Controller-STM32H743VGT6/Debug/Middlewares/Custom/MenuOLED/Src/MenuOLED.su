@@ -3,8 +3,8 @@
 ../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:24:11:AllocateStringArr	16	static
 ../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:28:16:AllocateProperties	16	static
 ../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:32:12:AllocatePages	16	static
-../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:36:9:MENU_Init	24	static
-../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:162:9:MENU_Draw	32	static
-../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:205:6:MENU_ParseInput	16	static
-../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:238:6:MENU_AnimateString	32	static
-../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:248:7:Lerp	24	static
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:36:9:MENU_Init	48	static
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:125:9:MENU_Draw	64	static
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:191:6:MENU_ParseInput	32	static
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:233:6:MENU_AnimateString	32	static
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:243:7:Lerp	24	static

@@ -21,7 +21,7 @@
 ../Core/Src/main.c:1112:6:HAL_JPEG_DataReadyCallback	1
 ../Core/Src/main.c:1120:6:HAL_SPI_TxCpltCallback	1
 ../Core/Src/main.c:1125:6:HAL_ADC_ConvCpltCallback	6
-../Core/Src/main.c:1156:6:Draw_Slider	15
-../Core/Src/main.c:1205:6:WriteDebug	1
-../Core/Src/main.c:1218:6:MPU_Config	1
-../Core/Src/main.c:1249:6:Error_Handler	1
+../Core/Src/main.c:1153:6:Draw_Slider	25
+../Core/Src/main.c:1262:6:WriteDebug	1
+../Core/Src/main.c:1275:6:MPU_Config	1
+../Core/Src/main.c:1306:6:Error_Handler	1

@@ -23,8 +23,6 @@ typedef struct
 
 	uint8_t					**option_names;	// array of strings: values this property can choose from
 
-	uint8_t					*option_values;	// array of numbers: values these options are stored as
-
 } Menu_Property;
 
 typedef struct
@@ -49,6 +47,8 @@ typedef struct
 	Menu_Page				*pages;			// array of pages (contiguous)
 
 	// Menu state variables
+
+	uint8_t					*state_packet;	// Packet which stores the whole state of the menu
 
 	uint8_t					current_page;
 

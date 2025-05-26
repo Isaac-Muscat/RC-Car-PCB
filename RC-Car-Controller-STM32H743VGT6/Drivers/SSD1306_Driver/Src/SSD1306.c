@@ -115,7 +115,15 @@ const char ALPHNUM[] = {
     0x04, 0x00, 0b00010000, 0b01111100, 0b10000010, 0x00,       0x00,       0x00, // ------ 123 - {
     0x02, 0x00, 0b11111110, 0x00,       0x00,       0x00,       0x00,       0x00, // ------ 124 - |
     0x04, 0x00, 0b10000010, 0b01111100, 0b00010000, 0x00,       0x00,       0x00, // ------ 125 - }
-    0x06, 0x00, 0b00010000, 0b00001000, 0b00010000, 0b00100000, 0b00010000, 0x00  // ------ 126 - ~
+    0x06, 0x00, 0b00010000, 0b00001000, 0b00010000, 0b00100000, 0b00010000, 0x00, // ------ 126 - ~
+
+	0x06, 0x00, 0x00,       0x00,       0x00,       0x00,       0x00,       0x00, // ------ 127 - DEL
+
+	0x06, 0b10001000, 0b00100010, 0b10001000, 0b00100010, 0b10001000, 0b00100010, 0b10001000, // ------ 128 - \x80 (░)
+	0x06, 0b10101010, 0b01010101, 0b10101010, 0b01010101, 0b10101010, 0b01010101, 0b10101010, // ------ 129 - \x81 (▒)
+	0x06, 0b01110111, 0b11011101, 0b01110111, 0b11011101, 0b01110111, 0b11011101, 0b01110111, // ------ 130 - \x82 (▓)
+	0x06, 0xFF,       0xFF,       0xFF,       0xFF,       0xFF,       0xFF,       0xFF,       // ------ 131 - \x83 (█)
+	0x06, 0x00,       0xFF,       0x00,       0xFF,       0x00,       0xFF,       0x00        // ------ 131 - \x84 (|||)
 };
 
 // FUNCTION IMPLEMENTEATIONS
@@ -174,13 +182,21 @@ uint8_t SSD1306_DrawChar(SSD1306_HandleTypeDef *hssd, char ch) {
 		hssd->str_cursor = (hssd->str_cursor/128)*128;
 		return SUCCESS;
 	}
-	if (ch < 32 || ch > 126) return ERROR;	// char is unable to be rendered
+
 	char newC = ch - 32;					// offset the index-space so the ASCII code aligns with the font table
 	if (ch >= 97 && ch <= 122) newC -= 32;	// convert lowercase to uppercase
-	else if (ch >= 123) newC -= 26;			// remap the brace set to align with the font table
+	if (ch >= 123)             newC -= 26;	// remap the rest to align with the font table
+
+	if (newC > 126) return ERROR;	// char is unable to be rendered
 
 	uint8_t len = ALPHNUM[newC*8];
-	memcpy(hssd->vram + hssd->str_cursor, ALPHNUM+(newC*8)+1, len);
+	for (uint8_t i = 0; i < len; i++) {
+		if (!hssd->draw_inverted)
+			hssd->vram[hssd->str_cursor + i] = ALPHNUM[(newC*8)+1 + i];
+		else
+			hssd->vram[hssd->str_cursor + i] = ALPHNUM[(newC*8)+1 + i] ^ 0xFF;
+	}
+	//memcpy(hssd->vram + hssd->str_cursor, ALPHNUM+(newC*8)+1, len);
 	hssd->str_cursor += len;
 	return SUCCESS;
 }
@@ -190,7 +206,7 @@ uint8_t SSD1306_DrawString(SSD1306_HandleTypeDef *hssd, char *str, uint8_t lengt
 	uint8_t start_line = hssd->str_cursor / 120;
 	for (uint8_t i = 0; i < length; i++) {
 		if (hssd->str_cursor / 128 > start_line) break;
-	    if (SSD1306_DrawChar(hssd, str[i])) hssd->str_cursor += 0x06;
+	    if (SSD1306_DrawChar(hssd, str[i])) hssd->str_cursor += 0x00;
 	}
 
 	return SUCCESS;

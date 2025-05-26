@@ -1124,9 +1124,6 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi) {
 // ------------------------------------------------------------ OVERRIDE ADC DMA CALLBACKS -- //
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
-	// Roll the blunt (rolling average)
-	//adc_average[0] = 0;
-	//adc_average[1] = 0;
 	uint16_t adc_newavg[2] = {0, 0};
 	for (int i = 0; i < 20; i++) {
 		// Accumulate the samples
@@ -1185,8 +1182,38 @@ void Draw_Slider(uint8_t slider_id) {
 			ssd1_vram[curs + y*128 + 0] = 0xC0 >> subbit_sel;	// Set the fine control disp.
 			ssd1_vram[curs + y*128 + 1] = 0xC0 >> subbit_sel;
 		}
-		hssd1.str_cursor = 9;
+		hssd1.str_cursor = 10;
+		hssd1.draw_inverted = 1;
 		SSD1306_DrawString(&hssd1, slider_str, strlen(slider_str));
+		hssd1.draw_inverted = 0;
+
+		// Draw the strip on top
+		for (uint8_t i = 10; i <= 128; i++) {
+			if (i%2 == 0)
+				ssd1_vram[128 + i] = 0b00010110;
+			else
+				ssd1_vram[128 + i] = 0b00001110;
+		}
+
+		// Pad the inverted number
+		ssd1_vram[10] = 0xFF;
+		ssd1_vram[29] = 0xFF;
+		for (uint8_t i = 10; i < 30; i++) {
+			ssd1_vram[128 + i] |= 0b00000011;
+		}
+
+		// Draw the cool bars
+		for (uint8_t i = 0; i <= 4; i++) {
+			ssd1_vram[30+i*2] = 0xFF << i;
+			ssd1_vram[30+i*2 + 128] |= 0b00000011;
+		}
+
+		for (uint16_t i = 1; i <= 7; i++) {
+			ssd1_vram[i*128 + 10] = 0xFF;
+			ssd1_vram[i*128 + 11] = 0xFF;
+			ssd1_vram[i*128 + 12] |= 0x55;
+			ssd1_vram[i*128 + 13] |= 0xAA;
+		}
 
 	} else {
 		uint16_t curs = 120;
@@ -1196,8 +1223,38 @@ void Draw_Slider(uint8_t slider_id) {
 			ssd2_vram[curs + y*128 + 6] = 0xC0 >> subbit_sel;	// Set the fine control disp.
 			ssd2_vram[curs + y*128 + 7] = 0xC0 >> subbit_sel;
 		}
-		hssd2.str_cursor = 100;
+		hssd2.str_cursor = 98;
+		hssd2.draw_inverted = 1;
 		SSD1306_DrawString(&hssd2, slider_str, strlen(slider_str));
+		hssd2.draw_inverted = 0;
+
+		// Draw the strip on top
+		for (uint8_t i = 0; i <= 128-10; i++) {
+			if (i%2 == 0)
+				ssd2_vram[128 + i] = 0b00010110;
+			else
+				ssd2_vram[128 + i] = 0b00001110;
+		}
+
+		// Pad the inverted number
+		ssd2_vram[128-10] = 0xFF;
+		ssd2_vram[128-11] = 0xFF;
+		for (uint8_t i = 128-30; i < 128-10; i++) {
+			ssd2_vram[128 + i] |= 0b00000011;
+		}
+
+		// Draw the cool bars
+		for (uint8_t i = 0; i <= 4; i++) {
+			ssd2_vram[128 - (30+i*2)] = 0xFF << i;
+			ssd2_vram[128 - (30+i*2) + 128] |= 0b00000011;
+		}
+
+		for (uint16_t i = 1; i <= 7; i++) {
+			ssd2_vram[i*128 + 118] = 0xFF;
+			ssd2_vram[i*128 + 117] = 0xFF;
+			ssd2_vram[i*128 + 116] |= 0x55;
+			ssd2_vram[i*128 + 115] |= 0xAA;
+		}
 	}
 }
 

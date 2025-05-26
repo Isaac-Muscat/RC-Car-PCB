@@ -36,6 +36,10 @@ Menu_Page* AllocatePages(uint8_t num) {
 uint8_t MENU_Init(Menu_HandleTypeDef *hmenu) {
 	// a buncha of work incoming
 
+	// Initialize the state packet
+	hmenu->state_packet = AllocateValueArr(64);
+	memset(hmenu->state_packet, 0x00, 64);
+
 	// Allocate pages
 	hmenu->num_pages = 2;
 	hmenu->pages = AllocatePages(hmenu->num_pages);
@@ -50,33 +54,20 @@ uint8_t MENU_Init(Menu_HandleTypeDef *hmenu) {
 	hmenu->pages[0].properties[0].name = AllocateString("ENCODING");
 	hmenu->pages[0].properties[0].packet_byte = 0;
 
-	hmenu->pages[0].properties[0].num_options = 3;
+	hmenu->pages[0].properties[0].num_options = 2;
 	hmenu->pages[0].properties[0].option_names = AllocateStringArr(hmenu->pages[0].properties[0].num_options);
 	hmenu->pages[0].properties[0].option_names[0] = AllocateString("JPEG");
-	hmenu->pages[0].properties[0].option_names[1] = AllocateString("GRAYSCALE");
-	hmenu->pages[0].properties[0].option_names[2] = AllocateString("COLOUR");
-
-	hmenu->pages[0].properties[0].option_values = AllocateValueArr(hmenu->pages[0].properties[0].num_options);
-	hmenu->pages[0].properties[0].option_names[0] = 0x00;
-	hmenu->pages[0].properties[0].option_names[1] = 0x01;
-	hmenu->pages[0].properties[0].option_names[2] = 0x02;
+	hmenu->pages[0].properties[0].option_names[1] = AllocateString("RAW");
 
 	// Camera Quality
 	hmenu->pages[0].properties[1].name = AllocateString("QUALITY");
 	hmenu->pages[0].properties[1].packet_byte = 1;
 
-	hmenu->pages[0].properties[1].num_options = 4;
+	hmenu->pages[0].properties[1].num_options = 3;
 	hmenu->pages[0].properties[1].option_names = AllocateStringArr(hmenu->pages[0].properties[1].num_options);
-	hmenu->pages[0].properties[1].option_names[0] = AllocateString("F**KED");
-	hmenu->pages[0].properties[1].option_names[1] = AllocateString("WORSE");
-	hmenu->pages[0].properties[1].option_names[2] = AllocateString("BAD");
-	hmenu->pages[0].properties[1].option_names[3] = AllocateString("EVENTUALLY");
-
-	hmenu->pages[0].properties[1].option_values = AllocateValueArr(hmenu->pages[0].properties[1].num_options);
-	hmenu->pages[0].properties[1].option_names[0] = 0x00;
-	hmenu->pages[0].properties[1].option_names[1] = 0x01;
-	hmenu->pages[0].properties[1].option_names[2] = 0x02;
-	hmenu->pages[0].properties[1].option_names[3] = 0x03;
+	hmenu->pages[0].properties[1].option_names[0] = AllocateString("LOW");
+	hmenu->pages[0].properties[1].option_names[1] = AllocateString("MED");
+	hmenu->pages[0].properties[1].option_names[2] = AllocateString("HIGH");
 
 	// PAGE 1 (LIGHTS)
 	hmenu->pages[1].title = AllocateString("LIGHTING");
@@ -84,77 +75,49 @@ uint8_t MENU_Init(Menu_HandleTypeDef *hmenu) {
 	hmenu->pages[1].num_properties = 4;
 	hmenu->pages[1].properties = AllocateProperties(hmenu->pages[1].num_properties);
 
+	// Pre-allocate the percent strings
+	uint8_t *percentStr[5];
+	percentStr[0] = AllocateString("[\x80\x80\x80\x80]");
+	percentStr[1] = AllocateString("[\x83\x80\x80\x80]");
+	percentStr[2] = AllocateString("[\x83\x83\x80\x80]");
+	percentStr[3] = AllocateString("[\x83\x83\x83\x80]");
+	percentStr[4] = AllocateString("[\x83\x83\x83\x83]");
+
 	hmenu->pages[1].properties[0].name = AllocateString("HEADLIGHTS");
 	hmenu->pages[1].properties[0].packet_byte = 2;
 
 	hmenu->pages[1].properties[0].num_options = 5;
 	hmenu->pages[1].properties[0].option_names = AllocateStringArr(hmenu->pages[1].properties[0].num_options);
-	hmenu->pages[1].properties[0].option_names[0] = AllocateString("[    ]");
-	hmenu->pages[1].properties[0].option_names[1] = AllocateString("[|   ]");
-	hmenu->pages[1].properties[0].option_names[2] = AllocateString("[||  ]");
-	hmenu->pages[1].properties[0].option_names[3] = AllocateString("[||| ]");
-	hmenu->pages[1].properties[0].option_names[4] = AllocateString("[||||]");
 
-	hmenu->pages[1].properties[0].option_values = AllocateValueArr(hmenu->pages[1].properties[0].num_options);
-	hmenu->pages[1].properties[0].option_names[0] = 0x00;
-	hmenu->pages[1].properties[0].option_names[1] = 0x01;
-	hmenu->pages[1].properties[0].option_names[2] = 0x02;
-	hmenu->pages[1].properties[0].option_names[3] = 0x03;
-	hmenu->pages[1].properties[0].option_names[4] = 0x04;
+	for (uint8_t i = 0; i < 5; i++)
+		hmenu->pages[1].properties[0].option_names[i] = percentStr[i];
 
-	hmenu->pages[1].properties[1].name = AllocateString("INTERIOR R");
+	hmenu->pages[1].properties[1].name = AllocateString("INT. R");
 	hmenu->pages[1].properties[1].packet_byte = 3;
 
 	hmenu->pages[1].properties[1].num_options = 5;
 	hmenu->pages[1].properties[1].option_names = AllocateStringArr(hmenu->pages[1].properties[1].num_options);
-	hmenu->pages[1].properties[1].option_names[0] = AllocateString("[    ]");
-	hmenu->pages[1].properties[1].option_names[1] = AllocateString("[|   ]");
-	hmenu->pages[1].properties[1].option_names[2] = AllocateString("[||  ]");
-	hmenu->pages[1].properties[1].option_names[3] = AllocateString("[||| ]");
-	hmenu->pages[1].properties[1].option_names[4] = AllocateString("[||||]");
 
-	hmenu->pages[1].properties[1].option_values = AllocateValueArr(hmenu->pages[1].properties[1].num_options);
-	hmenu->pages[1].properties[1].option_names[0] = 0x00;
-	hmenu->pages[1].properties[1].option_names[1] = 0x01;
-	hmenu->pages[1].properties[1].option_names[2] = 0x02;
-	hmenu->pages[1].properties[1].option_names[3] = 0x03;
-	hmenu->pages[1].properties[1].option_names[4] = 0x04;
+	for (uint8_t i = 0; i < 5; i++)
+		hmenu->pages[1].properties[1].option_names[i] = percentStr[i];
 
-	hmenu->pages[1].properties[2].name = AllocateString("INTERIOR G");
+	hmenu->pages[1].properties[2].name = AllocateString("INT. G");
 	hmenu->pages[1].properties[2].packet_byte = 4;
 
 	hmenu->pages[1].properties[2].num_options = 5;
 	hmenu->pages[1].properties[2].option_names = AllocateStringArr(hmenu->pages[1].properties[2].num_options);
-	hmenu->pages[1].properties[2].option_names[0] = AllocateString("[    ]");
-	hmenu->pages[1].properties[2].option_names[1] = AllocateString("[|   ]");
-	hmenu->pages[1].properties[2].option_names[2] = AllocateString("[||  ]");
-	hmenu->pages[1].properties[2].option_names[3] = AllocateString("[||| ]");
-	hmenu->pages[1].properties[2].option_names[4] = AllocateString("[||||]");
 
-	hmenu->pages[1].properties[2].option_values = AllocateValueArr(hmenu->pages[1].properties[2].num_options);
-	hmenu->pages[1].properties[2].option_names[0] = 0x00;
-	hmenu->pages[1].properties[2].option_names[1] = 0x01;
-	hmenu->pages[1].properties[2].option_names[2] = 0x02;
-	hmenu->pages[1].properties[2].option_names[3] = 0x03;
-	hmenu->pages[1].properties[2].option_names[4] = 0x04;
+	for (uint8_t i = 0; i < 5; i++)
+		hmenu->pages[1].properties[2].option_names[i] = percentStr[i];
 
-	hmenu->pages[1].properties[3].name = AllocateString("INTERIOR B");
+	hmenu->pages[1].properties[3].name = AllocateString("INT. B");
 	hmenu->pages[1].properties[3].packet_byte = 5;
 
 	hmenu->pages[1].properties[3].num_options = 5;
 	hmenu->pages[1].properties[3].option_names = AllocateStringArr(hmenu->pages[1].properties[3].num_options);
-	hmenu->pages[1].properties[3].option_names[0] = AllocateString("[    ]");
-	hmenu->pages[1].properties[3].option_names[1] = AllocateString("[|   ]");
-	hmenu->pages[1].properties[3].option_names[2] = AllocateString("[||  ]");
-	hmenu->pages[1].properties[3].option_names[3] = AllocateString("[||| ]");
-	hmenu->pages[1].properties[3].option_names[4] = AllocateString("[||||]");
 
-	hmenu->pages[1].properties[3].option_values = AllocateValueArr(hmenu->pages[1].properties[3].num_options);
-	hmenu->pages[1].properties[3].option_names[0] = 0x00;
-	hmenu->pages[1].properties[3].option_names[1] = 0x01;
-	hmenu->pages[1].properties[3].option_names[2] = 0x02;
-	hmenu->pages[1].properties[3].option_names[3] = 0x03;
-	hmenu->pages[1].properties[3].option_names[4] = 0x04;
+	for (uint8_t i = 0; i < 5; i++)
+		hmenu->pages[1].properties[3].option_names[i] = percentStr[i];
 
 	return 0;
 }
@@ -162,21 +125,25 @@ uint8_t MENU_Init(Menu_HandleTypeDef *hmenu) {
 uint8_t MENU_Draw(Menu_HandleTypeDef *hmenu, uint32_t delta_t) {
 	// Do the animations
 	if (hmenu->page_anim != 0xFF)
-		hmenu->page_anim++;
+		hmenu->page_anim++;;
 
 	if (hmenu->property_anim != 0xFF)
 		hmenu->property_anim++;
 
+	Menu_Page 	  activePage = hmenu->pages[hmenu->current_page];
+	Menu_Property activeProperty = activePage.properties[hmenu->current_property];
+
 	// Draw the title on the left
-	hmenu->ssdL_handle->str_cursor = (128 - strlen(hmenu->pages[hmenu->current_page].title)*6);
+	hmenu->ssdL_handle->str_cursor = (128 - strlen(activePage.title)*6);
 	MENU_AnimateString(hmenu, hmenu->ssdL_handle,
-			hmenu->pages[hmenu->current_page].title,
+			activePage.title,
 			hmenu->page_anim, 0);
 
-	// Draw the properties
-	for (uint8_t i = 0; i < hmenu->pages[hmenu->current_page].num_properties; i++) {
+
+	for (uint8_t i = 0; i < activePage.num_properties; i++) {
+		// Draw the properties
 		// Compute offset using property anim
-		hmenu->ssdL_handle->str_cursor = 10 + (2+i)*128;
+		hmenu->ssdL_handle->str_cursor = 16 + (2+i)*128;
 		if (i == hmenu->current_property) {
 			uint8_t num_bars = hmenu->property_anim;
 			if (num_bars > 3) num_bars = 3;
@@ -191,15 +158,34 @@ uint8_t MENU_Draw(Menu_HandleTypeDef *hmenu, uint32_t delta_t) {
 		}
 
 		MENU_AnimateString(hmenu, hmenu->ssdL_handle,
-				hmenu->pages[hmenu->current_page].properties[i].name,
+				activePage.properties[i].name,
 				hmenu->page_anim, 6+i*2);
+
+		// Draw the values these properties have
+		uint8_t op_value = hmenu->state_packet[activePage.properties[i].packet_byte];
+		if (op_value < activePage.properties[i].num_options) {
+			hmenu->ssdL_handle->str_cursor = (3+i)*128 - strlen(activePage.properties[i].option_names[op_value])*6;
+			MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+					activePage.properties[i].option_names[op_value],
+					hmenu->page_anim, 6+i*2);
+		}
 	}
 
 	// Draw the selected property on the RIGHT
 	hmenu->ssdR_handle->str_cursor = 0;
 	MENU_AnimateString(hmenu, hmenu->ssdR_handle,
-				hmenu->pages[hmenu->current_page].properties[hmenu->current_property].name,
+				activeProperty.name,
 				hmenu->property_anim, 1);
+
+	// Draw the selected option on the right
+	uint8_t op_value = hmenu->state_packet[activeProperty.packet_byte];
+	if (op_value < activeProperty.num_options) {
+		hmenu->ssdR_handle->str_cursor = 2*128;
+		SSD1306_DrawString(hmenu->ssdR_handle, "> ", 2);
+		SSD1306_DrawString(hmenu->ssdR_handle, activeProperty.option_names[op_value], strlen(activeProperty.option_names[op_value]));
+		SSD1306_DrawString(hmenu->ssdR_handle, " <", 2);
+	}
+
 }
 
 void MENU_ParseInput(Menu_HandleTypeDef *hmenu, uint8_t inputs[4]) {
@@ -232,6 +218,15 @@ void MENU_ParseInput(Menu_HandleTypeDef *hmenu, uint8_t inputs[4]) {
 		else
 			hmenu->current_property++;
 		hmenu->property_anim = 0;
+	}
+
+	if (inputs[2]) {
+		Menu_Property activeProperty = hmenu->pages[hmenu->current_page].properties[hmenu->current_property];
+		uint8_t propertyByte = activeProperty.packet_byte;
+		if (hmenu->state_packet[propertyByte] == activeProperty.num_options - 1)
+			hmenu->state_packet[propertyByte] = 0;
+		else
+			hmenu->state_packet[propertyByte]++;
 	}
 }
 

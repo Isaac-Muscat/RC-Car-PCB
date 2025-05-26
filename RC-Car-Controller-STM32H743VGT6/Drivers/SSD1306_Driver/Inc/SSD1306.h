@@ -78,6 +78,8 @@
 
 		uint16_t			str_cursor;		// position that text commands will start writing from
 
+		uint8_t				draw_inverted;
+
 	} SSD1306_HandleTypeDef;
 
 	// FUNCS
