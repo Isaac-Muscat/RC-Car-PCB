@@ -10,6 +10,17 @@
 
 #include "SSD1306.h"
 
+// DEFINITIONS
+// ------------------------------------------------------------------------------------
+
+#define OP_CAMERA_ENCODING  0x00
+#define OP_CAMERA_QUALITY   0x01
+#define OP_CAMERA_FRAMETIME 0x02
+
+#define RESERVE_LTRACK_MAG	0x07
+#define RESERVE_RTRACK_MAG	0x08
+#define RESERVE_LTRACK_DIR	0x09
+#define RESERVE_RTRACK_DIR	0x0A
 // STRUCTS
 // ------------------------------------------------------------------------------------
 

@@ -35,18 +35,17 @@
 #define OV7670_ADDR_READ 0x43
 #define OV7670_ADDR_WRITE 0x42
 
+// SCHEDULER OPTIONS
+#define SCH_MS_TX 2
+
 // CAMERA SETTINGS
-#define CAM_WIDTH 158
-#define CAM_HEIGHT 121
-#define CAM_BYTES_PER_PIXEL 2
+#define CAM_WIDTH 315
+#define CAM_HEIGHT 242
 
 // JPEG SETTINGS
 #define JPEG_QUALITY 20
 #define JPEG_OUTBUF_SIZE 64
 #define JPEG_HEADERSIZE 526
-
-#define JPEG_MCU_WIDTH 6
-#define JPEG_MCU_HEIGHT 9
 
 #define CAM_GRAYSIZE CAM_WIDTH * CAM_HEIGHT
 #define CAM_422SIZE CAM_WIDTH * CAM_HEIGHT * 2
@@ -81,6 +80,7 @@ TIM_HandleTypeDef htim4;
 TIM_HandleTypeDef htim14;
 
 UART_HandleTypeDef huart1;
+DMA_HandleTypeDef hdma_usart1_rx;
 
 /* USER CODE BEGIN PV */
 
@@ -103,6 +103,15 @@ static void MX_TIM3_Init(void);
 static void MX_JPEG_Init(void);
 static void MX_SPI2_Init(void);
 /* USER CODE BEGIN PFP */
+
+// Scheduling Functions
+void SCH_XBeeRX();
+void SCH_XBeeTX();
+void SCH_Camera();
+void SCH_JPEG();
+
+// Utility Functions
+uint32_t DeltaTime(uint32_t start_t);
 void WriteDebug(uint8_t *str_ptr, uint8_t str_len);
 
 HAL_StatusTypeDef CAM_GetRegister(uint8_t addr, uint8_t* pData, uint8_t haltOnError);
@@ -114,8 +123,11 @@ uint8_t GenerateJPEGMCUBlock();
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+// SCHEDULING VARIABLES
+uint32_t sch_tim_tx = 0;
+
 // USB VARIABLES
-uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB debug messages
+uint8_t ssd_msg[100] = {0};	// Reserve 100 bytes for USB debug messages
 uint8_t usb_device_rxFlag = 0x00; // Extern in usbd_cdc_if.h
 
 // CAMERA VARIABLES
@@ -124,17 +136,35 @@ volatile uint8_t camera_state = 0;			// Camera state variable
 // ----------------------------------- 0: Camera idle
 // ----------------------------------- 1: Camera DMA Queued
 // ----------------------------------- 2: Camera capturing
+// ----------------------------------- 3: Image Ready
 
 // JPEG VARIABLES
 uint8_t jpeg_mcu[64];				// Reserve u8 array for JPEG MCU block
 uint32_t jpeg_block = 0;			// Current JPEG MCU block being processed
 
 uint8_t jpeg_out[CAM_GRAYSIZE];		// Reserve u8 array for JPEG result
-volatile uint8_t jpeg_ready = 1;				// JPEG status (ready to start?)
+volatile uint8_t jpeg_state = 0;				// JPEG state
+// ----------------------------------- 0: JPEG idle
+// ----------------------------------- 1: JPEG Encoding
+// ----------------------------------- 2: JPEG Ready
+
 volatile uint32_t jpeg_size = 0;				// Current size of the JPEG result
+
+uint8_t  jpeg_quality = 0;
+uint16_t jpeg_mcu_widths[4]   = {6, 8,  12, 23};
+uint16_t jpeg_mcu_heights[4]  = {8, 10, 15, 30};
+uint8_t  jpeg_scaleFactors[4] = {4, 3,  2,  1};
+
+uint16_t jpeg_vshift = 0;
 
 // XBEE VARIABLES
 XBEE_HandleTypeDef hxbee;
+
+volatile uint16_t tx_byte = 0;	// Which byte is currently being TX'd
+volatile uint8_t tx_state = 0;	// TX state
+// ----------------------------------- 0: TX Idle
+// ----------------------------------- 1: TX IMAGE
+// ----------------------------------- 2: TX HEADER
 
 /* USER CODE END 0 */
 
@@ -237,49 +267,56 @@ int main(void)
 	jpeg_config->ColorSpace = JPEG_GRAYSCALE_COLORSPACE;
 	//jpeg_config->ColorSpace = JPEG_YCBCR_COLORSPACE;
 	//jpeg_config->ChromaSubsampling = JPEG_422_SUBSAMPLING;
-	jpeg_config->ImageWidth = JPEG_MCU_WIDTH*8;
-	jpeg_config->ImageHeight = JPEG_MCU_HEIGHT*8;
+	jpeg_config->ImageWidth = jpeg_mcu_widths[jpeg_quality]*8;
+	jpeg_config->ImageHeight = jpeg_mcu_heights[jpeg_quality]*8;
 	jpeg_config->ImageQuality = JPEG_QUALITY;
 	HAL_JPEG_ConfigEncoding(&hjpeg, jpeg_config);
 
 	// ------------------------------------------------------------ SETUP XBEE -- //
 	hxbee.uart_handle = &huart1;
-	hxbee.pktRx_max = 5;
-	hxbee.pktTx_max = 5;
+	hxbee.pktRx_max = 2;
+	hxbee.pktTx_max = 2;
 
 	if (XBEE_Init(&hxbee)) {
-		sprintf(usb_msg, " Failed to Init XBEE");
-		WriteDebug(usb_msg, strlen(usb_msg));
-		while (1) { }
+		sprintf(ssd_msg, " Failed to Init XBEE");
+		WriteDebug(ssd_msg, strlen(ssd_msg));
+		// This state is non-functional, reset
+		NVIC_SystemReset();
 	}
+
+//	while (1) {
+//		sprintf(ssd_msg, " ALIVE");
+//		WriteDebug(ssd_msg, strlen(ssd_msg));
+//		HAL_Delay(100);
+//	}
 
 	//TODO: Implement all JPEG Callbacks
 	//TODO: Try to Interleave CAM/JPEG DMAs using JPEG GetDataCallback
 
 	// SETUP MOTOR
-	//TIM2->CCR1 = 0;
-	//TIM2->CCR2 = 400;
+	TIM2->CCR1 = 0;
+	TIM2->CCR2 = 400;
 
-	//TIM4->CCR4 = 0;
-	//TIM4->CCR3 = 400;
-	//HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); // LEFT_PWM_1
-	//HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2); // RIGHT_PWM_1
+	TIM4->CCR4 = 0;
+	TIM4->CCR3 = 400;
+	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); // LEFT_PWM_1
+	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2); // RIGHT_PWM_1
 
-	//HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4); // LEFT_PWM_2
-	//HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3); // RIGHT_PWM_2
+	HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4); // LEFT_PWM_2
+	HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3); // RIGHT_PWM_2
 
 	// Setup lights
-	//  TIM1->CCR4 = 1000;
-	//  TIM3->CCR4 = 1000;
-	//  TIM3->CCR3 = 1000;
-	//  TIM2->CCR4 = 1000;
-	//  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4); // LIGHTS_PWM_1
-	//  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4); // LIGHTS_PWM_2
-	//  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3); // LIGHTS_PWM_3
-	//  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3); // LIGHTS_PWM_4
+	  TIM1->CCR4 = 1000; // 0 - 2000
+	  TIM3->CCR4 = 1000;
+	  TIM3->CCR3 = 1000;
+	  TIM2->CCR4 = 1000;
+	  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4); // LIGHTS_PWM_1
+	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4); // LIGHTS_PWM_2
+	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3); // LIGHTS_PWM_3
+	  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3); // LIGHTS_PWM_4
 
 	// Delay for goofiness
-	//HAL_Delay(3000);
+	HAL_Delay(3000);
 
 	//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); // Motor_en
 
@@ -307,55 +344,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-		// Take a snapshot
-		camera_state = 1;	// Flag Camera as DMA Queued
-		HAL_StatusTypeDef ovStat = HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_SNAPSHOT, camera_mem, CAM_GRAYSIZE / 4);
-		if (ovStat) {
-			//while (1) {
-			sprintf(usb_msg, "DCMI/DMA ERROR - Code 0x%X\r\n", ovStat);
-			CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-			HAL_Delay(1000);
-			//}
-		}
-
-		// Wait until the camera is idle again
-		while (camera_state) { }
-
-		// Start the JPEG Encode
-		jpeg_ready = 0;
-		jpeg_block = 0;
-		jpeg_size = 0;
-
-		GenerateJPEGMCUBlock();
-		HAL_JPEG_Encode_DMA(&hjpeg, jpeg_mcu, 64, jpeg_out, JPEG_OUTBUF_SIZE);
-
-		// Wait until the JPEG is done frying
-		while (!jpeg_ready) { }
-
-//		sprintf(usb_msg, "Begin Transmission\r\n");
-//		CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-
-		// Transmit the camera data
-		for (uint16_t i = 0; i < ((jpeg_size - JPEG_HEADERSIZE) / UART_TXSIZE) + 1; i++) {
-//			uart_txRaw_buffer[0] = 0b10101010;
-//			uart_txRaw_buffer[1] = i >> 8;	// Store MSB of idx in header
-//			uart_txRaw_buffer[2] = i & 0x00FF;	// Store LSB of idx in header
-//			uint8_t checksum = 0;
-//			for (uint8_t z = 0; z < UART_TXSIZE; z++) {
-//				checksum += jpeg_out[i*UART_TXSIZE + JPEG_HEADERSIZE];
-//			}
-//			uart_txRaw_buffer[3] = 0x00;
-//			memcpy(uart_tx_buffer, jpeg_out + i*UART_TXSIZE + JPEG_HEADERSIZE, UART_TXSIZE);	// Copy jpeg vram into the TX buffer data segment
-//			HAL_UART_Transmit(&huart1, uart_txRaw_buffer, UART_TXSIZE + 4, 30);	// Transmit the buffer
-			XBEE_TXPacket(&hxbee, jpeg_out + i*UART_TXSIZE + JPEG_HEADERSIZE, i);
-			// Debug
-//			if (i % 10 == 0) {
-//				sprintf(usb_msg, "0x%X\r\n", i);
-//				CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-//			}
-			HAL_Delay(5);
-		}
+		SCH_XBeeRX();	// Handle radio recieve
+		SCH_Camera();	// Take a picture if camera idle
+		SCH_JPEG();		// Convert JPEG if camera ready to present
+		SCH_XBeeTX();	// Transmit JPEG if JPEG ready
 	}
   /* USER CODE END 3 */
 }
@@ -441,9 +433,9 @@ static void MX_DCMI_Init(void)
   hdcmi.Init.CaptureRate = DCMI_CR_ALL_FRAME;
   hdcmi.Init.ExtendedDataMode = DCMI_EXTEND_DATA_8B;
   hdcmi.Init.JPEGMode = DCMI_JPEG_DISABLE;
-  hdcmi.Init.ByteSelectMode = DCMI_BSM_ALTERNATE_4;
+  hdcmi.Init.ByteSelectMode = DCMI_BSM_OTHER;
   hdcmi.Init.ByteSelectStart = DCMI_OEBS_EVEN;
-  hdcmi.Init.LineSelectMode = DCMI_LSM_ALTERNATE_2;
+  hdcmi.Init.LineSelectMode = DCMI_LSM_ALL;
   hdcmi.Init.LineSelectStart = DCMI_OELS_ODD;
   if (HAL_DCMI_Init(&hdcmi) != HAL_OK)
   {
@@ -880,7 +872,8 @@ static void MX_USART1_UART_Init(void)
   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
   huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
   huart1.Init.ClockPrescaler = UART_PRESCALER_DIV1;
-  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_DMADISABLEONERROR_INIT;
+  huart1.AdvancedInit.DMADisableonRxError = UART_ADVFEATURE_DMA_DISABLEONRXERROR;
   if (HAL_UART_Init(&huart1) != HAL_OK)
   {
     Error_Handler();
@@ -911,11 +904,15 @@ static void MX_DMA_Init(void)
 
   /* DMA controller clock enable */
   __HAL_RCC_DMA1_CLK_ENABLE();
+  __HAL_RCC_DMA2_CLK_ENABLE();
 
   /* DMA interrupt init */
   /* DMA1_Stream0_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
+  /* DMA2_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
 
 }
 
@@ -999,6 +996,146 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+// ------------------------------------------------------------ SCHEDULING FUNCTIONS -- //
+void SCH_XBeeRX() {
+	uint8_t *packet;
+	uint16_t byte_num;
+	if (XBEE_RXPacket(&hxbee, &packet, &byte_num)) {
+		return;
+	}
+
+	// Parse the packet
+	if (byte_num == 0xFFFF) {
+		// Configuration Packet
+
+		if (packet[1] != jpeg_quality) {
+			// JPEG QUALITY CHANGED
+			jpeg_quality = packet[1];
+			// Reconfigure the JPEG HW
+			JPEG_ConfTypeDef* jpeg_config;
+			jpeg_config->ColorSpace = JPEG_GRAYSCALE_COLORSPACE;
+			jpeg_config->ImageWidth = jpeg_mcu_widths[jpeg_quality]*8;
+			jpeg_config->ImageHeight = jpeg_mcu_heights[jpeg_quality]*8;
+			jpeg_config->ImageQuality = JPEG_QUALITY;
+			HAL_JPEG_ConfigEncoding(&hjpeg, jpeg_config);
+
+			jpeg_state = 0;	// Invalidate current JPEG
+			tx_state = 2;	// Flag a header re-transmit
+		}
+
+		// LIGHTS (0-2000)
+		TIM1->CCR4 = packet[3]*500; // L1
+		TIM3->CCR4 = packet[4]*500; // L2
+		TIM3->CCR3 = packet[5]*500; // L3
+		TIM2->CCR4 = packet[6]*500; // L4
+
+		// TANK CONTROL (THIS IS EXTREMELY IMPORTANT)
+		uint8_t motor1_dir = packet[0x09];	// DIR_LEFT
+		uint8_t motor2_dir = packet[0x0A];	// DIR_RIGHT
+
+		// Use the direction to selectively disable one of the two BTNs
+		if (motor1_dir) {
+			TIM2->CCR1 = 0;
+			TIM2->CCR2 = packet[0x07]*4;	// MAG_LEFT
+		} else {
+			TIM2->CCR1 = packet[0x07]*4;	// MAG_LEFT
+			TIM2->CCR2 = 0;
+		}
+
+		// Use the direction to selectively disable one of the two BTNs
+		if (motor2_dir) {
+			TIM4->CCR4 = 0;
+			TIM4->CCR3 = packet[0x08]*4;	// MAG_RIGHT
+		} else {
+			TIM4->CCR4 = packet[0x08]*4;	// MAG_RIGHT
+			TIM4->CCR3 = 0;
+		}
+	}
+}
+
+void SCH_XBeeTX() {
+
+	// Early exit if the JPEG isn't ready, nothing to transmit
+	if (jpeg_state != 2)
+		return;
+
+	// Get delta time, there has to be a delay for the TX to work properly
+	uint32_t delta_t = DeltaTime(sch_tim_tx);
+	if (delta_t < SCH_MS_TX) return;
+
+	if (tx_state == 0)
+		tx_state = 1;	// If Idle, Flag as transmitting IMAGE
+
+	if (tx_state == 1) {
+		// Send an IMAGE packet
+		// Image packet numbers:  0000, 0001, 0002, ...
+		if (XBEE_TXPacket(&hxbee, jpeg_out + tx_byte*UART_TXSIZE + JPEG_HEADERSIZE, tx_byte)) {
+			return;
+		}
+	} else if (tx_state == 2) {
+		// Send a HEADER packet
+		// Header packet numbers: FFFE, FFFD, FFFC, ...
+		if (XBEE_TXPacket(&hxbee, jpeg_out + tx_byte*UART_TXSIZE, 0xFFFF - (tx_byte+1))) {
+			return;
+		}
+	}
+
+	// Update the timer for the next DT period
+	sch_tim_tx = HAL_GetTick();
+	tx_byte++;
+
+	// IMAGE Transmission complete
+	if (tx_state == 1 && tx_byte > (jpeg_size - JPEG_HEADERSIZE) / UART_TXSIZE + 1) {
+		tx_state = 0;	// Flag the radio as idle
+		tx_byte = 0;	// Reset the packet counter to 0
+		jpeg_state = 0;	// Flag the JPEG as idle
+		return;
+	}
+
+	// HEADER Transmission complete
+	if (tx_state == 2 && tx_byte > JPEG_HEADERSIZE / UART_TXSIZE + 1) {
+		tx_state = 0;	// Flag the radio as idle
+		tx_byte = 0;	// Reset the packet counter to 0
+		return;
+	}
+
+//	for (uint16_t i = 0; i < ((jpeg_size - JPEG_HEADERSIZE) / UART_TXSIZE) + 1; i++) {
+//		XBEE_TXPacket(&hxbee, jpeg_out + i*UART_TXSIZE + JPEG_HEADERSIZE, i);
+//		HAL_Delay(5);
+//	}
+}
+
+void SCH_Camera() {
+	if (camera_state != 0) return;	// Exit if the camera is capturing, queued, or has un-encoded data
+	if (jpeg_state != 0) return;	// Exit if the JPEG is processing (camera DMA can corrupt the working buffer of JPEG)
+
+	// Take a snapshot
+	uint8_t ovStat = HAL_DCMI_Start_DMA(&hdcmi, DCMI_MODE_SNAPSHOT, camera_mem, CAM_GRAYSIZE / 4);
+	if (ovStat) {
+		sprintf(ssd_msg, "DCMI/DMA ERROR - Code 0x%X\r\n", ovStat);
+		WriteDebug(ssd_msg, strlen(ssd_msg));
+		return;
+	}
+
+	camera_state = 1;	// Flag Camera as DMA Queued
+}
+
+void SCH_JPEG() {
+
+	if (jpeg_state != 0) return;	// Exit if the JPEG is already processing
+	if (camera_state != 3) return;	// Exit if the camera does not have a new image to present
+	if (tx_state == 1) return;		// Exit if the radio is transmitting
+
+	camera_state = 0;	// flag the camera as idle, it won't start again until the JPEG is done
+	jpeg_state = 1;		// flag JPG as encoding
+
+	jpeg_block = 0;		// Reset the JEPG block idx
+	jpeg_size = 0;		// Reset the JPEG size counter
+
+	GenerateJPEGMCUBlock();
+	HAL_JPEG_Encode_DMA(&hjpeg, jpeg_mcu, 64, jpeg_out, JPEG_OUTBUF_SIZE);
+}
+
 // ------------------------------------------------------------ OVERRIDE CALLBACKS -- //
 // Frame captured event, called when the DMA buffer is full of new frame data
 void HAL_DCMI_VsyncEventCallback(DCMI_HandleTypeDef *hdcmi) {
@@ -1009,27 +1146,29 @@ void HAL_DCMI_VsyncEventCallback(DCMI_HandleTypeDef *hdcmi) {
 		return;
 	}
 
-	if (camera_state == 2) {	// Transition flag to IDLE
+	if (camera_state == 2) {	// Transition flag to READY
 		HAL_DCMI_Stop(hdcmi);
-		camera_state = 0;
+		camera_state = 3;
 		return;
 	}
 }
 
+// ------------------------------------------------------------ OVERRIDE UART DMA CALLBACKS -- //
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+	XBEE_RX_DMACallback(&hxbee);
+}
+
 // JPEG hardware is requesting the next MCU block
 void HAL_JPEG_GetDataCallback(JPEG_HandleTypeDef *hjpeg, uint32_t NbDecodedData) {
-	//	if (jpeg_block % 64 == 0) {
-	//		uint8_t usb_msg[100] = {0};
-	//		sprintf(usb_msg, "JPEG: Block: %d\r\n", jpeg_block);
-	//		CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-	//	}
 
 	// Restock the input buffer with new MCU
 	if (GenerateJPEGMCUBlock()) {
 		// ERROR while generating MCU, probable memory leak - recover JPEG peripheral by restarting
-		// Reset JPEG variables
-		jpeg_ready = 1;
-		jpeg_block = 0;
+		jpeg_state = 0;	// Flag JPEG as idle
+		jpeg_block = 0;	// Reset the JPEG block IDX
+
+		sprintf(ssd_msg, "JPEG OVERRUN\n");
+		WriteDebug(ssd_msg, strlen(ssd_msg));
 	}
 	else {
 		// Configure the buffer to be the same as before, it's contents have changed
@@ -1043,22 +1182,35 @@ void HAL_JPEG_DataReadyCallback(JPEG_HandleTypeDef *hjpeg, uint8_t *pDataOut, ui
 	// Setup new output buffer location (part of contiguous super-buffer)
 	jpeg_size += JPEG_OUTBUF_SIZE;
 	HAL_JPEG_ConfigOutputBuffer(hjpeg, jpeg_out + jpeg_size, JPEG_OUTBUF_SIZE);
-	// Debug MSG
-	//	sprintf(usb_msg, "JPEG: DataReady - output: %d\r\n", jpeg_size);
-	//	CDC_Transmit_FS(usb_msg, strlen(usb_msg));
 }
 
 // JPEG hardware has completed the current image
 void HAL_JPEG_EncodeCpltCallback(JPEG_HandleTypeDef *hjpeg) {
-	// Reset JPEG variables
-	jpeg_ready = 1;
-	jpeg_block = 0;
-	// Debug MSG
-	//	sprintf(usb_msg, "JPEG: Finished encode\r\n");
-	//	CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+	jpeg_state = 2;	// Flag JPEG as ready
+	jpeg_block = 0;	// Reset the JPEG block IDX
+	sprintf(ssd_msg, "JPEG DONE\n");
+	WriteDebug(ssd_msg, strlen(ssd_msg));
+}
+
+// JPEG hardware encountered an error
+void HAL_JPEG_ErrorCallback (JPEG_HandleTypeDef * hjpeg) {
+	sprintf(ssd_msg, " JPEG ERROR");
+	WriteDebug(ssd_msg, strlen(ssd_msg));
+	//HAL_JPEG_Abort(&hjpeg);
+	jpeg_state = 0;	// Flag JPEG as idle
 }
 
 // ------------------------------------------------------------ UTILITY FUNCTIONS -- //
+uint32_t DeltaTime(uint32_t start_t) {
+	uint32_t now_t = HAL_GetTick();
+	if (now_t < start_t) {
+		// Overflow has occurred
+		return (0xFFFFFFFF - start_t) + now_t;
+	}
+
+	return now_t - start_t;
+}
+
 // Transmit wrapper, this is for continuity across Controller project which debugs by printing to OLEDs
 void WriteDebug(uint8_t *str_ptr, uint8_t str_len) {
 	CDC_Transmit_FS(str_ptr, str_len);
@@ -1148,17 +1300,19 @@ HAL_StatusTypeDef CAM_SetRegister(uint8_t addr, uint8_t data, uint8_t haltOnErro
 
 // GENERATE JPEG MCU BLOCK
 uint8_t GenerateJPEGMCUBlock() {
-	if (jpeg_block >= JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT) { return 1; }
-	int xStart = (jpeg_block % JPEG_MCU_WIDTH) * 8;
-	int yStart = (jpeg_block / JPEG_MCU_WIDTH) * 8;
+	// Don't go over the bounds of the specified MCU area
+	if (jpeg_block > jpeg_mcu_widths[jpeg_quality]*jpeg_mcu_heights[jpeg_quality]) { return 1; }
+
+	int xStart = (jpeg_block % jpeg_mcu_widths[jpeg_quality]) * 8;
+	int yStart = (jpeg_block / jpeg_mcu_widths[jpeg_quality]) * 8;
 	int i = 0;
 	for (int y = yStart; y < yStart + 8; y++) {
 		for (int x = xStart; x < xStart + 8; x++) {
 			// Pad to 8x8
-			if ((x*3.33) >= CAM_WIDTH) {
+			if (x*jpeg_scaleFactors[jpeg_quality] >= CAM_WIDTH || y*jpeg_scaleFactors[jpeg_quality] >= CAM_HEIGHT) {
 				jpeg_mcu[i] = 0x00;
 			} else {
-				jpeg_mcu[i] = camera_mem[(uint16_t)(x*3.33) + (uint16_t)(y*2) * CAM_WIDTH];
+				jpeg_mcu[i] = camera_mem[x*jpeg_scaleFactors[jpeg_quality] + y*jpeg_scaleFactors[jpeg_quality] * CAM_WIDTH];
 			}
 			i++;
 		}

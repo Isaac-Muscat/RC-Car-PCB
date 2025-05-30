@@ -47,27 +47,37 @@ uint8_t MENU_Init(Menu_HandleTypeDef *hmenu) {
 	// PAGE 0 (CAMERA)
 	hmenu->pages[0].title = AllocateString("CAMERA");
 
-	hmenu->pages[0].num_properties = 2;
+	hmenu->pages[0].num_properties = 3;
 	hmenu->pages[0].properties = AllocateProperties(hmenu->pages[0].num_properties);
 
-	// Camera Mode
-	hmenu->pages[0].properties[0].name = AllocateString("ENCODING");
-	hmenu->pages[0].properties[0].packet_byte = 0;
-
-	hmenu->pages[0].properties[0].num_options = 2;
-	hmenu->pages[0].properties[0].option_names = AllocateStringArr(hmenu->pages[0].properties[0].num_options);
-	hmenu->pages[0].properties[0].option_names[0] = AllocateString("JPEG");
-	hmenu->pages[0].properties[0].option_names[1] = AllocateString("RAW");
-
 	// Camera Quality
-	hmenu->pages[0].properties[1].name = AllocateString("QUALITY");
-	hmenu->pages[0].properties[1].packet_byte = 1;
+	hmenu->pages[0].properties[0].name = AllocateString("QUALITY");
+	hmenu->pages[0].properties[0].packet_byte = OP_CAMERA_QUALITY;
 
-	hmenu->pages[0].properties[1].num_options = 3;
+	hmenu->pages[0].properties[0].num_options = 4;
+	hmenu->pages[0].properties[0].option_names = AllocateStringArr(hmenu->pages[0].properties[0].num_options);
+	hmenu->pages[0].properties[0].option_names[0] = AllocateString("LOW");
+	hmenu->pages[0].properties[0].option_names[1] = AllocateString("MED");
+	hmenu->pages[0].properties[0].option_names[2] = AllocateString("HIGH");
+	hmenu->pages[0].properties[0].option_names[3] = AllocateString("BEST");
+
+	// Camera Vertical Shift
+	hmenu->pages[0].properties[1].name = AllocateString("SHOW MS");
+	hmenu->pages[0].properties[1].packet_byte = OP_CAMERA_FRAMETIME;
+
+	hmenu->pages[0].properties[1].num_options = 2;
 	hmenu->pages[0].properties[1].option_names = AllocateStringArr(hmenu->pages[0].properties[1].num_options);
-	hmenu->pages[0].properties[1].option_names[0] = AllocateString("LOW");
-	hmenu->pages[0].properties[1].option_names[1] = AllocateString("MED");
-	hmenu->pages[0].properties[1].option_names[2] = AllocateString("HIGH");
+	hmenu->pages[0].properties[1].option_names[0] = AllocateString("[\x83\x83]");
+	hmenu->pages[0].properties[1].option_names[1] = AllocateString("[\x80\x80]");
+
+	// Camera Mode
+	hmenu->pages[0].properties[2].name = AllocateString("ENCODING");
+	hmenu->pages[0].properties[2].packet_byte = OP_CAMERA_ENCODING;
+
+	hmenu->pages[0].properties[2].num_options = 2;
+	hmenu->pages[0].properties[2].option_names = AllocateStringArr(hmenu->pages[0].properties[2].num_options);
+	hmenu->pages[0].properties[2].option_names[0] = AllocateString("JPEG");
+	hmenu->pages[0].properties[2].option_names[1] = AllocateString("RAW");
 
 	// PAGE 1 (LIGHTS)
 	hmenu->pages[1].title = AllocateString("LIGHTING");
@@ -84,7 +94,7 @@ uint8_t MENU_Init(Menu_HandleTypeDef *hmenu) {
 	percentStr[4] = AllocateString("[\x83\x83\x83\x83]");
 
 	hmenu->pages[1].properties[0].name = AllocateString("HEADLIGHTS");
-	hmenu->pages[1].properties[0].packet_byte = 2;
+	hmenu->pages[1].properties[0].packet_byte = 3;
 
 	hmenu->pages[1].properties[0].num_options = 5;
 	hmenu->pages[1].properties[0].option_names = AllocateStringArr(hmenu->pages[1].properties[0].num_options);
@@ -93,7 +103,7 @@ uint8_t MENU_Init(Menu_HandleTypeDef *hmenu) {
 		hmenu->pages[1].properties[0].option_names[i] = percentStr[i];
 
 	hmenu->pages[1].properties[1].name = AllocateString("INT. R");
-	hmenu->pages[1].properties[1].packet_byte = 3;
+	hmenu->pages[1].properties[1].packet_byte = 4;
 
 	hmenu->pages[1].properties[1].num_options = 5;
 	hmenu->pages[1].properties[1].option_names = AllocateStringArr(hmenu->pages[1].properties[1].num_options);
@@ -102,7 +112,7 @@ uint8_t MENU_Init(Menu_HandleTypeDef *hmenu) {
 		hmenu->pages[1].properties[1].option_names[i] = percentStr[i];
 
 	hmenu->pages[1].properties[2].name = AllocateString("INT. G");
-	hmenu->pages[1].properties[2].packet_byte = 4;
+	hmenu->pages[1].properties[2].packet_byte = 5;
 
 	hmenu->pages[1].properties[2].num_options = 5;
 	hmenu->pages[1].properties[2].option_names = AllocateStringArr(hmenu->pages[1].properties[2].num_options);
@@ -111,7 +121,7 @@ uint8_t MENU_Init(Menu_HandleTypeDef *hmenu) {
 		hmenu->pages[1].properties[2].option_names[i] = percentStr[i];
 
 	hmenu->pages[1].properties[3].name = AllocateString("INT. B");
-	hmenu->pages[1].properties[3].packet_byte = 5;
+	hmenu->pages[1].properties[3].packet_byte = 6;
 
 	hmenu->pages[1].properties[3].num_options = 5;
 	hmenu->pages[1].properties[3].option_names = AllocateStringArr(hmenu->pages[1].properties[3].num_options);

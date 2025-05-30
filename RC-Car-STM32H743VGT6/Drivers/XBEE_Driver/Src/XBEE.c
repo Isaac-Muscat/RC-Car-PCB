@@ -41,6 +41,19 @@ uint8_t XBEE_RXPacket(XBEE_HandleTypeDef *hxbee, uint8_t **pRxBuffer, uint16_t *
 	// There's a packet up for grabs, get a pointer to the raw pkt incl. Header
 	uint8_t *pRxInternal = hxbee->pktRx_mem + hxbee->pktRx_idxPop*PKT_RAWSIZE;
 
+	hxbee->pktRx_idxPop += 1;
+	hxbee->pktRx_idxPop %= hxbee->pktRx_max;
+
+	// Compute the checksum
+	uint8_t checksum = 0x00;
+	for (uint8_t i = 0; i < PKT_RAWSIZE; i++) {
+		if (i == 3) continue;
+		checksum |= pRxInternal[i];
+	}
+
+	// Packet corrupted, mismatch checksum
+	if (pRxInternal[3] != checksum) return 1;
+
 	// Get the 16 bit packet number field
 	*pkt_num = 0;
 	*pkt_num += pRxInternal[1];
@@ -48,9 +61,6 @@ uint8_t XBEE_RXPacket(XBEE_HandleTypeDef *hxbee, uint8_t **pRxBuffer, uint16_t *
 	*pkt_num += pRxInternal[2];
 
 	*pRxBuffer = pRxInternal + 4;
-
-	hxbee->pktRx_idxPop += 1;
-	hxbee->pktRx_idxPop %= hxbee->pktRx_max;
 
 	return 0;
 }
@@ -71,14 +81,19 @@ uint8_t XBEE_TXPacket(XBEE_HandleTypeDef *hxbee, uint8_t *pTxBuffer, uint16_t pk
 	newPkt[0] = PKT_DELIMETER;
 	newPkt[1] = pkt_num >> 8;
 	newPkt[2] = pkt_num & 0x00FF;
-	newPkt[3] = 0x00; // TODO: Checksum
+
 	memcpy(newPkt + 4, pTxBuffer, PKT_DATASIZE);
 
+	// Compute the checksum
+	newPkt[3] = 0x00;
+	for (uint8_t i = 0; i < PKT_RAWSIZE; i++) {
+		if (i == 3) continue;
+		newPkt[3] |= newPkt[i];
+	}
+
 	// Try and immediately send the packet
-	// TODO: Make this a DMA process
 	// TODO: Set the bust state, interrupts
-	// TODO: Make sure there's adequate delay between TX (5ms for 68B packet)
-	HAL_UART_Transmit(hxbee->uart_handle, newPkt, PKT_RAWSIZE, 30);	// Transmit the buffer
+	return HAL_UART_Transmit(hxbee->uart_handle, newPkt, PKT_RAWSIZE, 30);	// Transmit the buffer
 }
 
 // DMA CALLBACKS

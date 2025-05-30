@@ -39,6 +39,39 @@ const uint8_t ST7789_INITCMDS[] = {
 	0,  0x29
 };
 
+// FONT
+// ------------------------------------------------------------------------------------
+const char TXT_NOSIGNAL[] = {
+	    0x00, 0b11111110, 0b00001100, 0b00010000, 0b01100000, 0b11111110, 0x00, // 0 - N
+	    0x00, 0b01111100, 0b10000010, 0b10000010, 0b10000010, 0b01111100, 0x00, // 1 - O
+	    0x00, 0x00,       0x00,       0x00,       0x00,       0x00,       0x00, // 2 - SP
+		0x00, 0b01001100, 0b10010010, 0b10010010, 0b10010010, 0b01100100, 0x00, // 3 - S
+		0x00, 0b10000010, 0b10000010, 0b11111110, 0b10000010, 0b10000010, 0x00, // 4 - I
+		0x00, 0b01111110, 0b10000010, 0b10000010, 0b10010010, 0b01110100, 0x00, // 5 - G
+		0x00, 0b11111110, 0b00001100, 0b00010000, 0b01100000, 0b11111110, 0x00, // 6 - N
+		0x00, 0b11111100, 0b00010010, 0b00010010, 0b00010010, 0b11111110, 0x00, // 7 - A
+		0x00, 0b11111110, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0x00  // 8 - L
+};
+
+const char TXT_MS[] = {
+		0x00, 0b11111110, 0b00000010, 0b00011100, 0b00000010, 0b11111110, 0x00, // 0 - M
+		0x00, 0b01001100, 0b10010010, 0b10010010, 0b10010010, 0b01100100, 0x00, // 1 - S
+		0x00, 0x00,       0x00,       0x00,       0x00,       0x00,       0x00  // 2 - SP
+};
+
+const char TXT_NUM[] = {
+	    0x00, 0b01111100, 0b11100010, 0b10010010, 0b10001110, 0b01111100, 0x00, // 0
+	    0x00, 0b10000010, 0b10000010, 0b11111110, 0b10000000, 0b10000000, 0x00, // 1
+	    0x00, 0b11100100, 0b10010010, 0b10010010, 0b10010010, 0b10001100, 0x00, // 2
+	    0x00, 0b01000100, 0b10000010, 0b10010010, 0b10010010, 0b01101100, 0x00, // 3
+	    0x00, 0b00011110, 0b00010000, 0b00010000, 0b00010000, 0b11111110, 0x00, // 4
+	    0x00, 0b01001110, 0b10010010, 0b10010010, 0b10010010, 0b01100010, 0x00, // 5
+	    0x00, 0b01111100, 0b10010010, 0b10010010, 0b10010010, 0b01100100, 0x00, // 6
+	    0x00, 0b10000010, 0b01100010, 0b00010010, 0b00001110, 0b00000010, 0x00, // 7
+	    0x00, 0b01101100, 0b10010010, 0b10010010, 0b10010010, 0b01101100, 0x00, // 8
+	    0x00, 0b01001100, 0b10010010, 0b10010010, 0b10010010, 0b01111100, 0x00  // 9
+};
+
 // FUNCTION IMPLEMENTEATIONS
 // ------------------------------------------------------------------------------------
 
@@ -72,7 +105,7 @@ uint8_t ST7789_SendWord_Data(ST7789_HandleTypeDef *hst7789, uint16_t data) {
 
 uint8_t ST7789_Init(ST7789_HandleTypeDef *hst7789) {
 
-	hst7789->updating_sector = 0;
+	hst7789->update_sequence = 2;
 
 	// Wake up the SPI line
 	uint8_t dummy = 0x00;
@@ -138,9 +171,93 @@ void ST7789_SetWindow(ST7789_HandleTypeDef *hst7789, uint16_t xStart, uint16_t y
 }
 
 
-uint8_t ST7789_Clear(ST7789_HandleTypeDef *hst7789, uint8_t col) {
-	// fill VRAM with white
-	memset(hst7789->vram, col, LCD_WIDTH*LCD_HEIGHT*2);
+uint8_t ST7789_Clear(ST7789_HandleTypeDef *hst7789, uint8_t nosig) {
+	// fill VRAM with black
+	memset(hst7789->vram, 0x00, LCD_WIDTH*LCD_HEIGHT*2);
+	if (!nosig)
+		return SUCCESS;
+
+	// Draw the NO SIGNAL symbol
+	uint32_t cursor = LCD_WIDTH*(LCD_HEIGHT - 9*FONTSCALE_NOSIGNAL)*2 + (LCD_WIDTH - 4*FONTSCALE_NOSIGNAL);
+	for (uint8_t c = 0; c < 9; c++) {		// Loop chars
+		for (uint8_t l = 0; l < 7; l++) {	// Loop lines
+			uint8_t line_byte = TXT_NOSIGNAL[c*7 + l];
+
+			for (uint8_t b = 0; b < 8; b++) {		// Loop bits
+				if ((line_byte >> b) & 0x01) {	// Check if bit is 1
+					for (uint8_t y = 0; y < FONTSCALE_NOSIGNAL; y++) {
+						for (uint8_t x = 0; x < FONTSCALE_NOSIGNAL; x++) {
+							hst7789->vram[(x*LCD_WIDTH + y + b*FONTSCALE_NOSIGNAL)*2 + cursor    ] = 0xFF;
+							hst7789->vram[(x*LCD_WIDTH + y + b*FONTSCALE_NOSIGNAL)*2 + cursor + 1] = 0xFF;
+						}
+					}
+				}
+			}
+			cursor -= LCD_WIDTH*FONTSCALE_NOSIGNAL*2;
+		}
+	}
+
+	return SUCCESS;
+}
+
+uint8_t ST7789_DrawData(ST7789_HandleTypeDef *hst7789, uint32_t frametime_ms) {
+
+	uint16_t ms = frametime_ms;
+	if (ms > 999)
+		ms = 999;
+
+	uint8_t digits[3] = {
+			(ms / 100) % 10,
+			(ms / 10)  % 10,
+			 ms        % 10
+	};
+
+	// Clear the corner
+	uint32_t cursor = (LCD_WIDTH*(LCD_HEIGHT-2) + 2)*2;
+	for (uint32_t x = 0; x < 44*FONTSCALE_FRAMETIME; x++) {
+		memset(hst7789->vram + cursor - x*LCD_WIDTH*2, 0x00, 24*FONTSCALE_FRAMETIME);
+	}
+
+
+	// Draw the MS symbol
+	cursor = (LCD_WIDTH*(LCD_HEIGHT-2) + 2)*2;
+	for (uint8_t c = 0; c < 3; c++) {		// Loop chars
+		for (uint8_t l = 0; l < 7; l++) {	// Loop lines
+			uint8_t line_byte = TXT_MS[c*7 + l];
+
+			for (uint8_t b = 0; b < 8; b++) {		// Loop bits
+				if ((line_byte >> b) & 0x01) {	// Check if bit is 1
+					for (uint8_t y = 0; y < FONTSCALE_FRAMETIME; y++) {
+						for (uint8_t x = 0; x < FONTSCALE_FRAMETIME; x++) {
+							hst7789->vram[(x*LCD_WIDTH + y + b*FONTSCALE_FRAMETIME)*2 + cursor    ] = 0xFF;
+							hst7789->vram[(x*LCD_WIDTH + y + b*FONTSCALE_FRAMETIME)*2 + cursor + 1] = 0xFF;
+						}
+					}
+				}
+			}
+			cursor -= LCD_WIDTH*FONTSCALE_FRAMETIME*2;
+		}
+	}
+
+	// Draw the Digits
+	for (uint8_t c = 0; c < 3; c++) {		// Loop digits
+			for (uint8_t l = 0; l < 7; l++) {	// Loop lines
+				uint8_t line_byte = TXT_NUM[digits[c]*7 + l];
+
+				for (uint8_t b = 0; b < 8; b++) {		// Loop bits
+					if ((line_byte >> b) & 0x01) {	// Check if bit is 1
+						for (uint8_t y = 0; y < FONTSCALE_FRAMETIME; y++) {
+							for (uint8_t x = 0; x < FONTSCALE_FRAMETIME; x++) {
+								hst7789->vram[(x*LCD_WIDTH + y + b*FONTSCALE_FRAMETIME)*2 + cursor    ] = 0xFF;
+								hst7789->vram[(x*LCD_WIDTH + y + b*FONTSCALE_FRAMETIME)*2 + cursor + 1] = 0xFF;
+							}
+						}
+					}
+				}
+				cursor -= LCD_WIDTH*FONTSCALE_FRAMETIME*2;
+			}
+		}
+
 	return SUCCESS;
 }
 
@@ -148,8 +265,6 @@ uint8_t ST7789_UpdateSector(ST7789_HandleTypeDef *hst7789, uint8_t screen_sectio
 	// Check for bounds/busy
 	if (hst7789->spi_state == 1) return ERROR;
 	if (screen_section > 2) return ERROR;
-
-	hst7789->updating_sector = screen_section;
 
 	// Flag as busy
 	hst7789->spi_state = 1;
@@ -173,12 +288,11 @@ uint8_t ST7789_UpdateSector(ST7789_HandleTypeDef *hst7789, uint8_t screen_sectio
 }
 
 uint8_t ST7789_UpdateAutomatic(ST7789_HandleTypeDef *hst7789) {
-	// perform a screen update
-	if (ST7789_UpdateSector(hst7789, hst7789->updating_sector)) return ERROR;
+	// Reset the sector counter
+	hst7789->update_sequence = 0;
 
-	// increment the sector to be updated
-	hst7789->updating_sector++;
-	hst7789->updating_sector %= 3;
+	// perform a screen update
+	if (ST7789_UpdateSector(hst7789, hst7789->update_sequence)) return ERROR;
 
 	return SUCCESS;
 }
@@ -187,4 +301,11 @@ uint8_t ST7789_UpdateAutomatic(ST7789_HandleTypeDef *hst7789) {
 void ST7789_DMATransmitCplt(ST7789_HandleTypeDef *hst7789) {
 	// Flag idle
 	hst7789->spi_state = 0;
+
+	// Check the state of the update sequence
+	if (hst7789->update_sequence < 2) {
+		// Immediately start the next update in the sequence
+		hst7789->update_sequence++;
+		ST7789_UpdateSector(hst7789, hst7789->update_sequence);
+	}
 }

@@ -39,18 +39,17 @@
 /* USER CODE BEGIN PD */
 #define OLED_ADDR 0x3C
 
-#define JPEG_WIDTH  48
-#define JPEG_HEIGHT 72
+#define JPEG_MAX_WIDTH  184
+#define JPEG_MAX_HEIGHT 240
 
-#define JPEG_MCU_WIDTH  6
-#define JPEG_MCU_HEIGHT 9
 #define JPEG_HEADERSIZE 526
 
 #define INPUT_DEBOUNCE 20
 
 // SCHEDULING DEFINES
 
-#define SCH_MS_OLED 20
+#define SCH_MS_OLED 33
+#define SCH_MS_TX 	200
 
 /* USER CODE END PD */
 
@@ -82,6 +81,7 @@ DMA_HandleTypeDef hdma_usart1_rx;
 
 // SCHEDULING VARIABLES
 uint32_t sch_tim_oled = 0;
+uint32_t sch_tim_tx = 0;
 
 // INPUT VARIABLES
 GPIO_TypeDef *i_ports[4] = {BTN_RB_GPIO_Port, BTN_LB_GPIO_Port, BTN_RF_GPIO_Port, BTN_LF_GPIO_Port};
@@ -110,7 +110,12 @@ Menu_HandleTypeDef hmenu;
 // ST7789 VARIABLES
 ST7789_HandleTypeDef hst7789;
 uint8_t st7789_vram[LCD_WIDTH*LCD_HEIGHT*2] = {0};
-uint8_t st7789_ready = 1;
+uint8_t st7789_state = 0;	// ST7789 STATE
+// ------------------------ 0: LCD Idle
+// ------------------------ 1: LCD Requested
+// ------------------------ 2: LCD Busy
+
+uint8_t st_interlacing = 0;
 
 // ADC VARIABLES
 uint16_t adc_buffer[20] = {0};
@@ -125,17 +130,27 @@ uint8_t slider_max_deadzone = 12;	// Slider deadzone at max
 // XBEE VARIABLES
 XBEE_HandleTypeDef hxbee;
 
-uint16_t uart_rx_lastPacketNum = 0;
+uint16_t jpeg_img_lastRcvPkt = 0;
 uint8_t uart_rx_skippedPackets = 0;
 // ----------------------------------- 0: GOOD
 // ----------------------------------- 1: MALFORMED
 // ----------------------------------- 2: BUSY
 
+uint32_t avg_ms_imgRecv = 0;
+uint32_t tim_ms_imgRecv = 0;
+
 // JPEG VARIABLES
+uint8_t  jpeg_quality = 0;
+
+uint16_t jpeg_mcu_widths[4]   = {6, 8,  12, 23};
+uint16_t jpeg_mcu_heights[4]  = {8, 10, 15, 30};
+//uint8_t  jpeg_scaleFactors[4] = {1, 1,  1,  1};
+uint8_t  jpeg_scaleFactors[4] = {6, 5,  3,  2};
+
 uint8_t  jpeg_currentraw = 0;
-uint8_t  jpeg_raw1[JPEG_WIDTH*JPEG_HEIGHT] = {0};
-uint8_t  jpeg_raw2[JPEG_WIDTH*JPEG_HEIGHT] = {0};
-uint8_t  jpeg_out[JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64] = {0};
+uint8_t  jpeg_raw1[JPEG_MAX_WIDTH*JPEG_MAX_HEIGHT] = {0};
+uint8_t  jpeg_raw2[JPEG_MAX_WIDTH*JPEG_MAX_HEIGHT] = {0};
+uint8_t  jpeg_out[JPEG_MAX_WIDTH*JPEG_MAX_HEIGHT] = {0};
 uint16_t jpeg_size = 0;
 uint8_t  jpeg_state = 0; // JPEG State
 // ------------------------ 0: JPEG Idle
@@ -248,13 +263,23 @@ static void MX_I2C2_Init(void);
 
 // Scheduling Functions
 void SCH_XBeeRX();
+void SCH_XBeeTX();
 void SCH_ImageDecode();
 void SCH_LCDUpdate();
 void SCH_OLEDUpdate();
 void SCH_GetInputs();
 
+// Scoping Functions
+void ParsePacket_JPEG_IMAGE(uint8_t* packet, uint16_t byte_num);
+void ParsePacket_JPEG_HEADER(uint8_t* packet, uint16_t byte_num);
+
+void ParsePacket_RAW(uint8_t* packet, uint16_t byte_num);
+void ParsePacket_COMMAND(uint8_t* packet, uint16_t byte_num);
+
 // Utility Functions
 uint32_t DeltaTime(uint32_t start_t);
+uint8_t GetState(uint8_t byte_num);
+uint8_t SetState(uint8_t byte_num, uint8_t val);
 
 // SSD drawing funcs
 void Draw_Slider(uint8_t slider_id);
@@ -330,11 +355,10 @@ int main(void)
 	hssd1.vram_full = ssd1_vram;
 	init_result = SSD1306_Init(&hssd1);
 	if (init_result) {
-		while (1) {
-			sprintf(usb_msg, "Failed to Init SSD1: %d\r\n", init_result);
-			CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-			HAL_Delay(1000);
-		}
+		sprintf(usb_msg, "Failed to Init SSD1: %d\r\n", init_result);
+		CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+		// This state is non-functional, reset
+		NVIC_SystemReset();
 	}
 
 	hssd2.i2c_handle = &hi2c1;
@@ -342,11 +366,10 @@ int main(void)
 	hssd2.vram_full = ssd2_vram;
 	init_result = SSD1306_Init(&hssd2);
 	if (init_result) {
-		while (1) {
-			sprintf(usb_msg, "Failed to Init SSD2: %d\r\n", init_result);
-			CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-			HAL_Delay(1000);
-		}
+		sprintf(usb_msg, "Failed to Init SSD2: %d\r\n", init_result);
+		CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+		// This state is non-functional, reset
+		NVIC_SystemReset();
 	}
 
 	// ------------------------------------------------------------ SETUP ST7789 -- //
@@ -357,18 +380,19 @@ int main(void)
 	hst7789.vram = st7789_vram;
 	init_result = ST7789_Init(&hst7789);
 	if (init_result) {
-		while (1) {
-			sprintf(usb_msg, "Failed to Init ST7789: %d\r\n", init_result);
-			CDC_Transmit_FS(usb_msg, strlen(usb_msg));
-			HAL_Delay(1000);
-		}
+		sprintf(usb_msg, "Failed to Init ST7789: %d\r\n", init_result);
+		CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+		// This state is non-functional, reset
+		NVIC_SystemReset();
 	}
 
 	// Clear the screen
-	ST7789_Clear(&hst7789, 0x00);
+	ST7789_Clear(&hst7789, 1);
 	ST7789_UpdateSector(&hst7789, 0);
 	HAL_Delay(50);
 	ST7789_UpdateSector(&hst7789, 1);
+	HAL_Delay(50);
+	ST7789_UpdateSector(&hst7789, 2);
 
 	// ------------------------------------------------------------ SETUP MENU -- //
 	hmenu.ssdL_handle = &hssd1;
@@ -390,23 +414,24 @@ int main(void)
 	if (XBEE_Init(&hxbee)) {
 		sprintf(ssd_msg, " Failed to Init XBEE");
 		WriteDebug(ssd_msg, strlen(ssd_msg));
-		while (1) { }
+		// This state is non-functional, reset
+		NVIC_SystemReset();
 	}
 
 	// XBEE READ MODE
-	//	uint8_t uart_xbee_buffer[256] = {0};	// Get a reference to the start of buffer data
-	//	uint8_t uart_xbee_len = 0;			// Get a reference to the start of buffer data
-	//	while (1) {
-	//		  HAL_UARTEx_ReceiveToIdle(&huart1, uart_xbee_buffer, 256, &uart_xbee_len, 1000);
-	//		  if (uart_xbee_len > 0) {
-	//			  CDC_Transmit_FS(uart_xbee_buffer, uart_xbee_len);
-	//			  uart_xbee_len = 0;
-	//			  memset(uart_xbee_buffer, 0x00, 256);
-	//		  } else {
-	//			  //sprintf(usb_msg, "err\r\n");
-	//			  //HAL_UART_Transmit(&huart1, usb_msg, strlen(usb_msg), 1000);
-	//		  }
-	//	}
+//		uint8_t uart_xbee_buffer[256] = {0};	// Get a reference to the start of buffer data
+//		uint8_t uart_xbee_len = 0;			// Get a reference to the start of buffer data
+//		while (1) {
+//			  HAL_UARTEx_ReceiveToIdle(&huart1, uart_xbee_buffer, 256, &uart_xbee_len, 1000);
+//			  if (uart_xbee_len > 0) {
+//				  CDC_Transmit_FS(uart_xbee_buffer, uart_xbee_len);
+//				  uart_xbee_len = 0;
+//				  memset(uart_xbee_buffer, 0x00, 256);
+//			  } else {
+//				  //sprintf(usb_msg, "err\r\n");
+//				  //HAL_UART_Transmit(&huart1, usb_msg, strlen(usb_msg), 1000);
+//			  }
+//		}
 
   /* USER CODE END 2 */
 
@@ -418,12 +443,15 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		SCH_XBeeRX();		// Process any incoming packets
+		SCH_XBeeTX();		// Send any neccesarry outgoing packets
 		SCH_ImageDecode();	// Decode pending MCU blocks
 		SCH_OLEDUpdate();	// Update the OLEDs
 		SCH_GetInputs();	// Get user inputs
 
-		if (hst7789.spi_state == 0)
+		if (hst7789.spi_state == 0 && st7789_state == 1) {
 			ST7789_UpdateAutomatic(&hst7789);
+			st7789_state = 0;
+		}
 	}
   /* USER CODE END 3 */
 }
@@ -496,16 +524,7 @@ void PeriphCommonClock_Config(void)
 
   /** Initializes the peripherals clock
   */
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_ADC|RCC_PERIPHCLK_I2C2
-                              |RCC_PERIPHCLK_I2C1|RCC_PERIPHCLK_SPI4;
-  PeriphClkInitStruct.PLL2.PLL2M = 16;
-  PeriphClkInitStruct.PLL2.PLL2N = 128;
-  PeriphClkInitStruct.PLL2.PLL2P = 20;
-  PeriphClkInitStruct.PLL2.PLL2Q = 2;
-  PeriphClkInitStruct.PLL2.PLL2R = 2;
-  PeriphClkInitStruct.PLL2.PLL2RGE = RCC_PLL2VCIRANGE_0;
-  PeriphClkInitStruct.PLL2.PLL2VCOSEL = RCC_PLL2VCOWIDE;
-  PeriphClkInitStruct.PLL2.PLL2FRACN = 0;
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2C2|RCC_PERIPHCLK_I2C1;
   PeriphClkInitStruct.PLL3.PLL3M = 2;
   PeriphClkInitStruct.PLL3.PLL3N = 12;
   PeriphClkInitStruct.PLL3.PLL3P = 2;
@@ -514,9 +533,7 @@ void PeriphCommonClock_Config(void)
   PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_3;
   PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOMEDIUM;
   PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
-  PeriphClkInitStruct.Spi45ClockSelection = RCC_SPI45CLKSOURCE_PLL2;
   PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_PLL3;
-  PeriphClkInitStruct.AdcClockSelection = RCC_ADCCLKSOURCE_PLL2;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -545,7 +562,7 @@ static void MX_ADC1_Init(void)
   /** Common config
   */
   hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV16;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_16B;
   hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
@@ -929,6 +946,51 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+//  Scoping Funtions
+void ParsePacket_JPEG_IMAGE(uint8_t* packet, uint16_t byte_num) {
+	// Data was fully sent
+	if (byte_num < jpeg_img_lastRcvPkt && jpeg_state == 0) {
+		// Start the jpeg decode
+		jpeg_size = jpeg_img_lastRcvPkt*PKT_DATASIZE + JPEG_HEADERSIZE;
+		HAL_StatusTypeDef ret;
+		if (jpeg_currentraw)
+			ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw1, jpeg_size, jpeg_out, jpeg_mcu_widths[jpeg_quality]*jpeg_mcu_heights[jpeg_quality]*64);
+		else {
+			ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw2, jpeg_size, jpeg_out, jpeg_mcu_widths[jpeg_quality]*jpeg_mcu_heights[jpeg_quality]*64);
+		}
+		jpeg_currentraw = !jpeg_currentraw;
+
+		if (ret) {
+			sprintf(ssd_msg, " JPEG FAIL %d", ret);
+			WriteDebug(ssd_msg, strlen(ssd_msg));
+		} else {
+			jpeg_state = 1;	// Flag JPEG as busy
+		}
+	}
+	jpeg_img_lastRcvPkt = byte_num;
+
+	// fill in the received data
+	if (jpeg_currentraw)
+		memcpy(jpeg_raw1 + JPEG_HEADERSIZE + byte_num * 64, packet, 64);
+	else {
+		memcpy(jpeg_raw2 + JPEG_HEADERSIZE + byte_num * 64, packet, 64);
+	}
+}
+
+void ParsePacket_JPEG_HEADER(uint8_t* packet, uint16_t byte_num) {
+	uint16_t byte_num_conv = (0xFFFF - byte_num) - 1;
+	for (uint8_t i = 0; i < PKT_DATASIZE; i++) {
+		// Bounds check on last packet
+		if (byte_num*PKT_DATASIZE + i >= JPEG_HEADERSIZE)
+			return;
+
+		// Update both buffers' headers
+		jpeg_raw1[byte_num*PKT_DATASIZE + i] = packet[i];
+		jpeg_raw2[byte_num*PKT_DATASIZE + i] = packet[i];
+	}
+}
+
 // ------------------------------------------------------------ SCHDULING FUNCTIONS -- //
 void SCH_XBeeRX() {
 	// If there's a packet, process it
@@ -937,43 +999,60 @@ void SCH_XBeeRX() {
 	uint8_t *rx_packet;
 	uint8_t ret = XBEE_RXPacket(&hxbee, &rx_packet, &rx_byte);
 	if (ret == 0) {
-		if (rx_byte <= JPEG_WIDTH*JPEG_HEIGHT/64 + 1) {
-			// Data was fully sent
-			if (rx_byte < uart_rx_lastPacketNum && jpeg_state == 0) {
-				// Start the jpeg decode
-				jpeg_size = uart_rx_lastPacketNum*64 + JPEG_HEADERSIZE;
-				HAL_StatusTypeDef ret;
-				if (jpeg_currentraw)
-					ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw1, jpeg_size, jpeg_out, JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64);
-				else {
-					ret = HAL_JPEG_Decode_DMA(&hjpeg, jpeg_raw2, jpeg_size, jpeg_out, JPEG_MCU_WIDTH*JPEG_MCU_HEIGHT*64);
-				}
-				jpeg_currentraw = !jpeg_currentraw;
-
-				if (ret) {
-					sprintf(ssd_msg, " JPEG FAIL %d", ret);
-					WriteDebug(ssd_msg, strlen(ssd_msg));
-				} else {
-					jpeg_state = 1;
-				}
-			}
-			uart_rx_lastPacketNum = rx_byte;
-
-			// fill in the received data
-			if (jpeg_currentraw)
-				memcpy(jpeg_raw1 + JPEG_HEADERSIZE + rx_byte * 64, rx_packet, 64);
-			else {
-				memcpy(jpeg_raw2 + JPEG_HEADERSIZE + rx_byte * 64, rx_packet, 64);
-			}
+		// Packet contains telemetry
+		if (rx_byte == 0xFFFF) {
+			// TODO: Parse Telemetry
+			return;
 		}
+
+		// Packet contains JPEG HEADER data
+		if (GetState(OP_CAMERA_ENCODING) == 0 && rx_byte > 0xFFF0) {
+			ParsePacket_JPEG_HEADER(rx_packet, rx_byte);
+			return;
+		}
+
+		// Packet contains JPEG IMAGE data
+		if (GetState(OP_CAMERA_ENCODING) == 0 && rx_byte < jpeg_mcu_widths[jpeg_quality]*jpeg_mcu_heights[jpeg_quality] + 1) {
+			ParsePacket_JPEG_IMAGE(rx_packet, rx_byte);
+			return;
+		}
+
+		// Packet contains RAW image data
+		if (GetState(OP_CAMERA_ENCODING) == 1 && rx_byte < jpeg_mcu_widths[jpeg_quality]*jpeg_mcu_heights[jpeg_quality] + 1) {
+			ParsePacket_JPEG_IMAGE(rx_packet, rx_byte);
+			return;
+		}
+
+		// TODO: Parse JPEG Header data
 	}
+}
+
+void SCH_XBeeTX() {
+	// Get delta time and allow delay for screen refresh
+	uint32_t delta_t = DeltaTime(sch_tim_tx);
+	if (delta_t < SCH_MS_TX) return;
+
+	// Set the tank controls just before send, minimize latency
+	SetState(RESERVE_LTRACK_MAG, slider_magnitude[0]);
+	SetState(RESERVE_RTRACK_MAG, slider_magnitude[1]);
+	SetState(RESERVE_LTRACK_DIR, slider_direction[0]);
+	SetState(RESERVE_RTRACK_DIR, slider_direction[1]);
+
+	if (XBEE_TXPacket(&hxbee, hmenu.state_packet, 0xFFFF))  {
+		// Line busy, retry ASAP
+		return;
+	}
+
+	// Update the timer for the next DT period
+	sch_tim_tx = HAL_GetTick();
 }
 
 void SCH_ImageDecode() {
 	if (jpeg_state != 2) return;
 		// Loop through every mcu block
-		for (uint16_t mcu_x = 0; mcu_x < JPEG_MCU_WIDTH; mcu_x++) {
-			uint16_t mcu_idx = current_mcu_y*JPEG_MCU_WIDTH + mcu_x;
+
+		for (uint16_t mcu_x = 0; mcu_x < jpeg_mcu_widths[jpeg_quality]; mcu_x++) {
+			uint16_t mcu_idx = current_mcu_y*jpeg_mcu_widths[jpeg_quality] + mcu_x;
 
 			for (uint16_t y = 0; y < 8; y++) {
 				for (uint16_t x = 0; x < 8; x++) {
@@ -981,12 +1060,11 @@ void SCH_ImageDecode() {
 					if ((mcu_x*8 + x) > LCD_WIDTH) continue;
 					// COLOR FORMAT
 					// |RRRRR GGG|GGG BBBBB|
-					// TODO: stop transmitting overscan to save bandwidth
 
-					uint32_t pix_x = (mcu_x*8 + x)*5;
+					uint32_t pix_x = (mcu_x*8 + x)*jpeg_scaleFactors[jpeg_quality];
 					if (pix_x >= LCD_WIDTH-1) continue;
 					pix_x = LCD_WIDTH - pix_x - 1;
-					uint32_t pix_y = (current_mcu_y*8 + y)*5;
+					uint32_t pix_y = (current_mcu_y*8 + y)*jpeg_scaleFactors[jpeg_quality];
 					if (pix_y >= LCD_HEIGHT-2) continue;
 
 					uint8_t sample = jpeg_out[mcu_idx*64 + y*8 + x];
@@ -995,10 +1073,18 @@ void SCH_ImageDecode() {
 
 					// TODO: Speed this up as much as possible, even if it means skipping lines
 					// Loop through the pixels in a box
-					for (uint8_t xOff = 0; xOff < 3; xOff++) {
-						for (uint8_t yOff = 0; yOff < 3; yOff++) {
-							hst7789.vram[(pix_y+yOff)*LCD_WIDTH*2 + (pix_x+xOff)*2    ] = msb;
-							hst7789.vram[(pix_y+yOff)*LCD_WIDTH*2 + (pix_x+xOff)*2 + 1] = lsb;
+					uint8_t perfScaleFac = jpeg_scaleFactors[jpeg_quality];
+					if (perfScaleFac == 0)
+						perfScaleFac = 1;
+
+					for (uint8_t yOff = 0; yOff < perfScaleFac; yOff++) {
+						uint32_t cached_yOff = (pix_y+yOff)*LCD_WIDTH*2;	// Cache the Y offset so we don't compute it every loop
+
+						for (uint8_t xOff = 0; xOff < perfScaleFac; xOff++) {
+							uint32_t cached_xOff = (pix_x+xOff)*2;
+
+							hst7789.vram[cached_yOff + cached_xOff    ] = msb;
+							hst7789.vram[cached_yOff + cached_xOff + 1] = lsb;
 						}
 					}
 				}
@@ -1007,11 +1093,21 @@ void SCH_ImageDecode() {
 
 		current_mcu_y++;
 
-		if (current_mcu_y >= JPEG_MCU_HEIGHT) {
-			//ST7789_UpdateSector(&hst7789, 2);
-			current_mcu_y = 0;
-			// Flag JPEG as idle
-			jpeg_state = 0;
+		if (current_mcu_y >= jpeg_mcu_heights[jpeg_quality]) {
+			current_mcu_y = 0;	// Reset the V-MCU counter
+
+			avg_ms_imgRecv *= 0.8;
+			avg_ms_imgRecv += DeltaTime(tim_ms_imgRecv)*0.2;	// Get the time since last frame
+			tim_ms_imgRecv = HAL_GetTick();						// start the frame-timer
+
+			// Plaster the FPS on top of VRAM
+			if (!GetState(OP_CAMERA_FRAMETIME))
+				ST7789_DrawData(&hst7789, avg_ms_imgRecv);
+
+			jpeg_state = 0;		// Flag JPEG as idle
+			st7789_state = 1;	// Flag LCD as requested
+
+			st_interlacing = !st_interlacing; // Toggle interlacing
 		}
 }
 
@@ -1060,11 +1156,20 @@ void SCH_GetInputs() {
 //		}
 	}
 
+	// Update the menu state
 	MENU_ParseInput(&hmenu, istate_pressed);
 	istate_pressed[0] = 0;
 	istate_pressed[1] = 0;
 	istate_pressed[2] = 0;
 	istate_pressed[3] = 0;
+
+	// Update the JPEG settings
+	if (jpeg_quality != GetState(OP_CAMERA_QUALITY)) {
+		jpeg_quality = GetState(OP_CAMERA_QUALITY);
+		// Clear the screen
+		ST7789_Clear(&hst7789, 0);
+	}
+
 }
 
 // ------------------------------------------------------------ UTILITY FUNCTIONS -- //
@@ -1079,7 +1184,16 @@ uint32_t DeltaTime(uint32_t start_t) {
 	return now_t - start_t;
 }
 
+uint8_t GetState(uint8_t byte_num) {
+	if (byte_num >= 64) return 0;
+	return hmenu.state_packet[byte_num];
+}
 
+uint8_t SetState(uint8_t byte_num, uint8_t val) {
+	if (byte_num >= 64) return 1;
+	hmenu.state_packet[byte_num] = val;
+	return 0;
+}
 
 // DEBUG FUNCTIONS
 
@@ -1087,8 +1201,8 @@ uint32_t DeltaTime(uint32_t start_t) {
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 	uint8_t ret = XBEE_RX_DMACallback(&hxbee);
 	if (ret) {
-		sprintf(ssd_msg, " PKT Err: %d", ret);
-		WriteDebug(ssd_msg, strlen(ssd_msg));
+//		sprintf(ssd_msg, " PKT Err: %d", ret);
+//		WriteDebug(ssd_msg, strlen(ssd_msg));
 	}
 }
 
@@ -1124,17 +1238,17 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi) {
 // ------------------------------------------------------------ OVERRIDE ADC DMA CALLBACKS -- //
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
-	uint16_t adc_newavg[2] = {0, 0};
-	for (int i = 0; i < 20; i++) {
-		// Accumulate the samples
-		// Have to pre-divide so the result fits in a uint16
-		adc_newavg[i%2] += (adc_buffer[i])/10;	// DIV 10*4, this includes the 4 for the interp. process
-	}
+//	adc_average[0] = 0;
+//	adc_average[1] = 0;
+//	for (int i = 0; i < 20; i++) {
+//		// Accumulate the samples
+//		// Have to pre-divide so the result fits in a uint16
+//		adc_average[i%2] += (adc_buffer[i])/10;	// DIV 10*4, this includes the 4 for the interp. process
+//	}
 
 	for (int i = 0; i < 2; i++) {
-		// Interpolate for smoother control
-		adc_average[i] *= 0.4;
-		adc_average[i] += adc_newavg[i]*0.6;
+
+		adc_average[i] = adc_buffer[i]; // Skip the averaging process
 
 		slider_direction[i] = !(adc_average[i] >> 15); // shift right to only keep 1 MSB (sign bit)
 		slider_magnitude[i] = adc_average[i] >> 7;	// shift right to chop off 1 MSB and 7 LSB
@@ -1179,8 +1293,8 @@ void Draw_Slider(uint8_t slider_id) {
 		for (int y = 0; y < 8; y++) {
 			for (int x = 3; x < 8; x++)
 				ssd1_vram[curs + y*128 + x] = slider_vram[y];	// Set large bar
-			ssd1_vram[curs + y*128 + 0] = 0xC0 >> subbit_sel;	// Set the fine control disp.
-			ssd1_vram[curs + y*128 + 1] = 0xC0 >> subbit_sel;
+			ssd1_vram[curs + y*128 + 0] = 0x80 >> subbit_sel;	// Set the fine control disp.
+			ssd1_vram[curs + y*128 + 1] = 0x80 >> subbit_sel;
 		}
 		hssd1.str_cursor = 10;
 		hssd1.draw_inverted = 1;
@@ -1220,8 +1334,8 @@ void Draw_Slider(uint8_t slider_id) {
 		for (int y = 0; y < 8; y++) {
 			for (int x = 0; x < 5; x++)
 				ssd2_vram[curs + y*128 + x] = slider_vram[y];	// Set large bar
-			ssd2_vram[curs + y*128 + 6] = 0xC0 >> subbit_sel;	// Set the fine control disp.
-			ssd2_vram[curs + y*128 + 7] = 0xC0 >> subbit_sel;
+			ssd2_vram[curs + y*128 + 6] = 0x80 >> subbit_sel;	// Set the fine control disp.
+			ssd2_vram[curs + y*128 + 7] = 0x80 >> subbit_sel;
 		}
 		hssd2.str_cursor = 98;
 		hssd2.draw_inverted = 1;

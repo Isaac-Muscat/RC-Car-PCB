@@ -13,6 +13,9 @@
 #define LCD_WIDTH   240 //LCD width
 #define LCD_HEIGHT  320 //LCD height
 
+#define FONTSCALE_NOSIGNAL 4
+#define FONTSCALE_FRAMETIME 1
+
 // STRUCTS
 // ------------------------------------------------------------------------------------
 typedef struct
@@ -27,7 +30,7 @@ typedef struct
 
 	uint8_t				*vram;			// ptr to the MCU side copy of ST7789 VRAM
 
-	uint8_t				updating_sector;// portion of screen being updated
+	uint8_t				update_sequence;// counter for the sequence of an automatic update
 
 } ST7789_HandleTypeDef;
 
@@ -41,7 +44,8 @@ typedef struct
 
 	void ST7789_SetCursor(ST7789_HandleTypeDef *hst7789, uint16_t x, uint16_t y);
 	void ST7789_SetWindow(ST7789_HandleTypeDef *hst7789, uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t  yEnd);
-	uint8_t ST7789_Clear(ST7789_HandleTypeDef *hst7789, uint8_t col);
+	uint8_t ST7789_Clear(ST7789_HandleTypeDef *hst7789, uint8_t nosig);
+	uint8_t ST7789_DrawData(ST7789_HandleTypeDef *hst7789, uint32_t frametime_ms);
 	uint8_t ST7789_UpdateSector(ST7789_HandleTypeDef *hst7789, uint8_t screen_section);
 	uint8_t ST7789_UpdateAutomatic(ST7789_HandleTypeDef *hst7789);
 
