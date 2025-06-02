@@ -48,7 +48,7 @@ uint8_t XBEE_RXPacket(XBEE_HandleTypeDef *hxbee, uint8_t **pRxBuffer, uint16_t *
 	uint8_t checksum = 0x00;
 	for (uint8_t i = 0; i < PKT_RAWSIZE; i++) {
 		if (i == 3) continue;
-		checksum |= pRxInternal[i];
+		checksum ^= pRxInternal[i];
 	}
 
 	// Packet corrupted, mismatch checksum
@@ -88,7 +88,7 @@ uint8_t XBEE_TXPacket(XBEE_HandleTypeDef *hxbee, uint8_t *pTxBuffer, uint16_t pk
 	newPkt[3] = 0x00;
 	for (uint8_t i = 0; i < PKT_RAWSIZE; i++) {
 		if (i == 3) continue;
-		newPkt[3] |= newPkt[i];
+		newPkt[3] ^= newPkt[i];
 	}
 
 	// Try and immediately send the packet

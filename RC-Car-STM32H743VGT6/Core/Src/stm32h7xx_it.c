@@ -62,6 +62,7 @@ extern I2C_HandleTypeDef hi2c2;
 extern MDMA_HandleTypeDef hmdma_jpeg_infifo_th;
 extern MDMA_HandleTypeDef hmdma_jpeg_outfifo_ne;
 extern JPEG_HandleTypeDef hjpeg;
+extern TIM_HandleTypeDef htim5;
 extern TIM_HandleTypeDef htim14;
 extern DMA_HandleTypeDef hdma_usart1_rx;
 extern UART_HandleTypeDef huart1;
@@ -275,6 +276,20 @@ void TIM8_TRG_COM_TIM14_IRQHandler(void)
   /* USER CODE BEGIN TIM8_TRG_COM_TIM14_IRQn 1 */
 
   /* USER CODE END TIM8_TRG_COM_TIM14_IRQn 1 */
+}
+
+/**
+  * @brief This function handles TIM5 global interrupt.
+  */
+void TIM5_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM5_IRQn 0 */
+  NetworkTimeout();
+  /* USER CODE END TIM5_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim5);
+  /* USER CODE BEGIN TIM5_IRQn 1 */
+
+  /* USER CODE END TIM5_IRQn 1 */
 }
 
 /**

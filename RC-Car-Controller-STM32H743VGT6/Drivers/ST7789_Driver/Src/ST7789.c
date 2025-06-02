@@ -170,37 +170,81 @@ void ST7789_SetWindow(ST7789_HandleTypeDef *hst7789, uint16_t xStart, uint16_t y
 	ST7789_SendByte_Command(hst7789, 0x2C);
 }
 
+uint8_t ST7789_UpdateSector(ST7789_HandleTypeDef *hst7789, uint8_t screen_section) {
+	// Check for bounds/busy
+	if (hst7789->spi_state == 1) return ERROR;
+	if (screen_section > 2) return ERROR;
 
-uint8_t ST7789_Clear(ST7789_HandleTypeDef *hst7789, uint8_t nosig) {
-	// fill VRAM with black
-	memset(hst7789->vram, 0x00, LCD_WIDTH*LCD_HEIGHT*2);
-	if (!nosig)
-		return SUCCESS;
+	// Flag as busy
+	hst7789->spi_state = 1;
 
-	// Draw the NO SIGNAL symbol
-	uint32_t cursor = LCD_WIDTH*(LCD_HEIGHT - 9*FONTSCALE_NOSIGNAL)*2 + (LCD_WIDTH - 4*FONTSCALE_NOSIGNAL);
-	for (uint8_t c = 0; c < 9; c++) {		// Loop chars
-		for (uint8_t l = 0; l < 7; l++) {	// Loop lines
-			uint8_t line_byte = TXT_NOSIGNAL[c*7 + l];
+	// Set the window based on the vram offset
+	ST7789_SetWindow(hst7789, 0, (screen_section*0xEA60)/(LCD_WIDTH*2), LCD_WIDTH, LCD_HEIGHT);
 
-			for (uint8_t b = 0; b < 8; b++) {		// Loop bits
-				if ((line_byte >> b) & 0x01) {	// Check if bit is 1
-					for (uint8_t y = 0; y < FONTSCALE_NOSIGNAL; y++) {
-						for (uint8_t x = 0; x < FONTSCALE_NOSIGNAL; x++) {
-							hst7789->vram[(x*LCD_WIDTH + y + b*FONTSCALE_NOSIGNAL)*2 + cursor    ] = 0xFF;
-							hst7789->vram[(x*LCD_WIDTH + y + b*FONTSCALE_NOSIGNAL)*2 + cursor + 1] = 0xFF;
-						}
-					}
-				}
-			}
-			cursor -= LCD_WIDTH*FONTSCALE_NOSIGNAL*2;
-		}
+	HAL_GPIO_WritePin(hst7789->dc_gpio_handle, hst7789->dc_gpio_pin, GPIO_PIN_SET);		// assert DC HI (~CMD)
+
+
+	if (screen_section != 2) {
+		if (HAL_SPI_Transmit_DMA(hst7789->spi_handle, hst7789->vram + screen_section*0xEA60, 0xEA60))
+			return ERROR;
+	} else {
+		if (HAL_SPI_Transmit_DMA(hst7789->spi_handle, hst7789->vram + screen_section*0xEA60, 0x8340))
+			return ERROR;
 	}
+//	return SUCCESS;
+	//HAL_SPI_Transmit(hst7789->spi_handle, hst7789->vram, 0xEA60, 500);
+	return SUCCESS;
+}
+
+uint8_t ST7789_UpdateAutomatic(ST7789_HandleTypeDef *hst7789) {
+	// Reset the sector counter
+	hst7789->update_sequence = 0;
+
+	// perform a screen update
+	if (ST7789_UpdateSector(hst7789, hst7789->update_sequence)) return ERROR;
 
 	return SUCCESS;
 }
 
-uint8_t ST7789_DrawData(ST7789_HandleTypeDef *hst7789, uint32_t frametime_ms) {
+
+uint8_t ST7789_Clear(ST7789_HandleTypeDef *hst7789) {
+	// fill VRAM with black
+	memset(hst7789->vram, 0x00, LCD_WIDTH*LCD_HEIGHT*2);
+	return SUCCESS;
+}
+
+uint8_t ST7789_Draw_NOSIG(ST7789_HandleTypeDef *hst7789) {
+
+	// Clear the area
+	uint32_t cursor = LCD_WIDTH*(LCD_HEIGHT - 7*FONTSCALE_NOSIGNAL)*2 + (LCD_WIDTH - 7*FONTSCALE_NOSIGNAL);
+	for (uint32_t x = 0; x < 66*FONTSCALE_NOSIGNAL; x++) {
+		memset(hst7789->vram + cursor - x*LCD_WIDTH*2, 0x00, 24*FONTSCALE_NOSIGNAL);
+	}
+
+	// Draw the NO SIGNAL symbol
+		cursor = LCD_WIDTH*(LCD_HEIGHT - 9*FONTSCALE_NOSIGNAL)*2 + (LCD_WIDTH - 4*FONTSCALE_NOSIGNAL);
+		for (uint8_t c = 0; c < 9; c++) {		// Loop chars
+			for (uint8_t l = 0; l < 7; l++) {	// Loop lines
+				uint8_t line_byte = TXT_NOSIGNAL[c*7 + l];
+
+				for (uint8_t b = 0; b < 8; b++) {		// Loop bits
+					if ((line_byte >> b) & 0x01) {	// Check if bit is 1
+						for (uint8_t y = 0; y < FONTSCALE_NOSIGNAL; y++) {
+							for (uint8_t x = 0; x < FONTSCALE_NOSIGNAL; x++) {
+								hst7789->vram[(x*LCD_WIDTH + y + b*FONTSCALE_NOSIGNAL)*2 + cursor    ] = 0xFF;
+								hst7789->vram[(x*LCD_WIDTH + y + b*FONTSCALE_NOSIGNAL)*2 + cursor + 1] = 0xFF;
+							}
+						}
+					}
+				}
+				cursor -= LCD_WIDTH*FONTSCALE_NOSIGNAL*2;
+			}
+		}
+
+		return SUCCESS;
+}
+
+uint8_t ST7789_Draw_DATA(ST7789_HandleTypeDef *hst7789, uint32_t frametime_ms) {
 
 	uint16_t ms = frametime_ms;
 	if (ms > 999)
@@ -260,43 +304,6 @@ uint8_t ST7789_DrawData(ST7789_HandleTypeDef *hst7789, uint32_t frametime_ms) {
 
 	return SUCCESS;
 }
-
-uint8_t ST7789_UpdateSector(ST7789_HandleTypeDef *hst7789, uint8_t screen_section) {
-	// Check for bounds/busy
-	if (hst7789->spi_state == 1) return ERROR;
-	if (screen_section > 2) return ERROR;
-
-	// Flag as busy
-	hst7789->spi_state = 1;
-
-	// Set the window based on the vram offset
-	ST7789_SetWindow(hst7789, 0, (screen_section*0xEA60)/(LCD_WIDTH*2), LCD_WIDTH, LCD_HEIGHT);
-
-	HAL_GPIO_WritePin(hst7789->dc_gpio_handle, hst7789->dc_gpio_pin, GPIO_PIN_SET);		// assert DC HI (~CMD)
-
-
-	if (screen_section != 2) {
-		if (HAL_SPI_Transmit_DMA(hst7789->spi_handle, hst7789->vram + screen_section*0xEA60, 0xEA60))
-			return ERROR;
-	} else {
-		if (HAL_SPI_Transmit_DMA(hst7789->spi_handle, hst7789->vram + screen_section*0xEA60, 0x8340))
-			return ERROR;
-	}
-//	return SUCCESS;
-	//HAL_SPI_Transmit(hst7789->spi_handle, hst7789->vram, 0xEA60, 500);
-	return SUCCESS;
-}
-
-uint8_t ST7789_UpdateAutomatic(ST7789_HandleTypeDef *hst7789) {
-	// Reset the sector counter
-	hst7789->update_sequence = 0;
-
-	// perform a screen update
-	if (ST7789_UpdateSector(hst7789, hst7789->update_sequence)) return ERROR;
-
-	return SUCCESS;
-}
-
 
 void ST7789_DMATransmitCplt(ST7789_HandleTypeDef *hst7789) {
 	// Flag idle

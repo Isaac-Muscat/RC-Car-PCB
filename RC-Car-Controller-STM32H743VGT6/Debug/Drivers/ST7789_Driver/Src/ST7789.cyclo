@@ -4,8 +4,9 @@
 ../Drivers/ST7789_Driver/Src/ST7789.c:106:9:ST7789_Init	5
 ../Drivers/ST7789_Driver/Src/ST7789.c:140:6:ST7789_SetCursor	1
 ../Drivers/ST7789_Driver/Src/ST7789.c:157:6:ST7789_SetWindow	1
-../Drivers/ST7789_Driver/Src/ST7789.c:174:9:ST7789_Clear	8
-../Drivers/ST7789_Driver/Src/ST7789.c:203:9:ST7789_DrawData	15
-../Drivers/ST7789_Driver/Src/ST7789.c:264:9:ST7789_UpdateSector	6
-../Drivers/ST7789_Driver/Src/ST7789.c:290:9:ST7789_UpdateAutomatic	2
-../Drivers/ST7789_Driver/Src/ST7789.c:301:6:ST7789_DMATransmitCplt	2
+../Drivers/ST7789_Driver/Src/ST7789.c:173:9:ST7789_UpdateSector	6
+../Drivers/ST7789_Driver/Src/ST7789.c:199:9:ST7789_UpdateAutomatic	2
+../Drivers/ST7789_Driver/Src/ST7789.c:210:9:ST7789_Clear	1
+../Drivers/ST7789_Driver/Src/ST7789.c:216:9:ST7789_Draw_NOSIG	8
+../Drivers/ST7789_Driver/Src/ST7789.c:247:9:ST7789_Draw_DATA	15
+../Drivers/ST7789_Driver/Src/ST7789.c:308:6:ST7789_DMATransmitCplt	2

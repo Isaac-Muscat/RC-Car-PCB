@@ -46,10 +46,12 @@
 
 #define INPUT_DEBOUNCE 20
 
-// SCHEDULING DEFINES
+// WATCHDOG DEFINES
+#define WDOG_NETWORK_CUTOFF 4
 
+// SCHEDULING DEFINES
 #define SCH_MS_OLED 33
-#define SCH_MS_TX 	200
+#define SCH_MS_TX 	100
 
 /* USER CODE END PD */
 
@@ -74,10 +76,15 @@ MDMA_HandleTypeDef hmdma_jpeg_outfifo_ne;
 SPI_HandleTypeDef hspi4;
 DMA_HandleTypeDef hdma_spi4_tx;
 
+TIM_HandleTypeDef htim5;
+
 UART_HandleTypeDef huart1;
 DMA_HandleTypeDef hdma_usart1_rx;
 
 /* USER CODE BEGIN PV */
+
+// WATCHDOG VARIABLES
+uint8_t wdog_network = 0;
 
 // SCHEDULING VARIABLES
 uint32_t sch_tim_oled = 0;
@@ -259,7 +266,11 @@ static void MX_I2C1_Init(void);
 static void MX_SPI4_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_I2C2_Init(void);
+static void MX_TIM5_Init(void);
 /* USER CODE BEGIN PFP */
+
+// Watchdog Fucntions
+void NetworkTimeout();
 
 // Scheduling Functions
 void SCH_XBeeRX();
@@ -267,6 +278,7 @@ void SCH_XBeeTX();
 void SCH_ImageDecode();
 void SCH_LCDUpdate();
 void SCH_OLEDUpdate();
+void SCH_LCDUpdate();
 void SCH_GetInputs();
 
 // Scoping Functions
@@ -279,7 +291,6 @@ void ParsePacket_COMMAND(uint8_t* packet, uint16_t byte_num);
 // Utility Functions
 uint32_t DeltaTime(uint32_t start_t);
 uint8_t GetState(uint8_t byte_num);
-uint8_t SetState(uint8_t byte_num, uint8_t val);
 
 // SSD drawing funcs
 void Draw_Slider(uint8_t slider_id);
@@ -340,6 +351,7 @@ int main(void)
   MX_SPI4_Init();
   MX_ADC1_Init();
   MX_I2C2_Init();
+  MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
 
 	// ------------------------------------------------------------ SETUP ADC DMA -- //
@@ -359,6 +371,7 @@ int main(void)
 		CDC_Transmit_FS(usb_msg, strlen(usb_msg));
 		// This state is non-functional, reset
 		NVIC_SystemReset();
+		while (1) {}
 	}
 
 	hssd2.i2c_handle = &hi2c1;
@@ -370,6 +383,7 @@ int main(void)
 		CDC_Transmit_FS(usb_msg, strlen(usb_msg));
 		// This state is non-functional, reset
 		NVIC_SystemReset();
+		while (1) {}
 	}
 
 	// ------------------------------------------------------------ SETUP ST7789 -- //
@@ -384,15 +398,13 @@ int main(void)
 		CDC_Transmit_FS(usb_msg, strlen(usb_msg));
 		// This state is non-functional, reset
 		NVIC_SystemReset();
+		while (1) {}
 	}
 
-	// Clear the screen
-	ST7789_Clear(&hst7789, 1);
-	ST7789_UpdateSector(&hst7789, 0);
-	HAL_Delay(50);
-	ST7789_UpdateSector(&hst7789, 1);
-	HAL_Delay(50);
-	ST7789_UpdateSector(&hst7789, 2);
+
+	ST7789_Clear(&hst7789);		 // Clear the screen
+	ST7789_Draw_NOSIG(&hst7789); // Draw the NOSIG symbol
+	st7789_state = 1;			 // Flag LCD as requested
 
 	// ------------------------------------------------------------ SETUP MENU -- //
 	hmenu.ssdL_handle = &hssd1;
@@ -416,6 +428,17 @@ int main(void)
 		WriteDebug(ssd_msg, strlen(ssd_msg));
 		// This state is non-functional, reset
 		NVIC_SystemReset();
+		while (1) {}
+	}
+
+	// ------------------------------------------------------------ SETUP WATCHDOG TIMER-- //
+	if (HAL_TIM_Base_Start_IT(&htim5) != HAL_OK)
+	{
+		sprintf(ssd_msg, " Failed to Start Watchdog");
+		WriteDebug(ssd_msg, strlen(ssd_msg));
+		// This state is non-functional, reset
+		NVIC_SystemReset();
+		while (1) {}
 	}
 
 	// XBEE READ MODE
@@ -443,14 +466,18 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		SCH_XBeeRX();		// Process any incoming packets
-		SCH_XBeeTX();		// Send any neccesarry outgoing packets
-		SCH_ImageDecode();	// Decode pending MCU blocks
-		SCH_OLEDUpdate();	// Update the OLEDs
 		SCH_GetInputs();	// Get user inputs
+		SCH_OLEDUpdate();	// Update the OLEDs
+		SCH_LCDUpdate();	// Update the LCD
 
-		if (hst7789.spi_state == 0 && st7789_state == 1) {
-			ST7789_UpdateAutomatic(&hst7789);
-			st7789_state = 0;
+		// Network timeout condition:
+		// Don't SEND anything
+		// Don't bother processing images
+		// Don't update the screen
+		if (wdog_network < WDOG_NETWORK_CUTOFF) {
+
+			SCH_XBeeTX();		// Send any neccesarry outgoing packets
+			SCH_ImageDecode();	// Decode pending MCU blocks
 		}
 	}
   /* USER CODE END 3 */
@@ -789,6 +816,51 @@ static void MX_SPI4_Init(void)
 }
 
 /**
+  * @brief TIM5 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM5_Init(void)
+{
+
+  /* USER CODE BEGIN TIM5_Init 0 */
+
+  /* USER CODE END TIM5_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM5_Init 1 */
+
+  /* USER CODE END TIM5_Init 1 */
+  htim5.Instance = TIM5;
+  htim5.Init.Prescaler = 0;
+  htim5.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim5.Init.Period = 7499998;
+  htim5.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim5.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim5) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim5, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim5, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM5_Init 2 */
+
+  /* USER CODE END TIM5_Init 2 */
+
+}
+
+/**
   * @brief USART1 Initialization Function
   * @param None
   * @retval None
@@ -947,6 +1019,20 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+// Watchdog Fucntions
+void NetworkTimeout() {
+	if (wdog_network < WDOG_NETWORK_CUTOFF) {
+		// Increment the timeout ctr
+		wdog_network++;
+
+		// A timeout occurs when wdog_network == the Cutoff
+		if (wdog_network == WDOG_NETWORK_CUTOFF) {
+			ST7789_Draw_NOSIG(&hst7789); // Draw the NOSIG symbol
+			st7789_state = 1;			 // Flag LCD as requested
+		}
+	}
+}
+
 //  Scoping Funtions
 void ParsePacket_JPEG_IMAGE(uint8_t* packet, uint16_t byte_num) {
 	// Data was fully sent
@@ -999,6 +1085,9 @@ void SCH_XBeeRX() {
 	uint8_t *rx_packet;
 	uint8_t ret = XBEE_RXPacket(&hxbee, &rx_packet, &rx_byte);
 	if (ret == 0) {
+		// Network is active, reset the watchdog
+		wdog_network = 0;
+
 		// Packet contains telemetry
 		if (rx_byte == 0xFFFF) {
 			// TODO: Parse Telemetry
@@ -1033,10 +1122,10 @@ void SCH_XBeeTX() {
 	if (delta_t < SCH_MS_TX) return;
 
 	// Set the tank controls just before send, minimize latency
-	SetState(RESERVE_LTRACK_MAG, slider_magnitude[0]);
-	SetState(RESERVE_RTRACK_MAG, slider_magnitude[1]);
-	SetState(RESERVE_LTRACK_DIR, slider_direction[0]);
-	SetState(RESERVE_RTRACK_DIR, slider_direction[1]);
+	hmenu.state_packet[RESERVE_LTRACK_MAG] = slider_magnitude[0];
+	hmenu.state_packet[RESERVE_RTRACK_MAG] = slider_magnitude[1];
+	hmenu.state_packet[RESERVE_LTRACK_DIR] = slider_direction[0];
+	hmenu.state_packet[RESERVE_RTRACK_DIR] = slider_direction[1];
 
 	if (XBEE_TXPacket(&hxbee, hmenu.state_packet, 0xFFFF))  {
 		// Line busy, retry ASAP
@@ -1102,7 +1191,7 @@ void SCH_ImageDecode() {
 
 			// Plaster the FPS on top of VRAM
 			if (!GetState(OP_CAMERA_FRAMETIME))
-				ST7789_DrawData(&hst7789, avg_ms_imgRecv);
+				ST7789_Draw_DATA(&hst7789, avg_ms_imgRecv);
 
 			jpeg_state = 0;		// Flag JPEG as idle
 			st7789_state = 1;	// Flag LCD as requested
@@ -1133,6 +1222,14 @@ void SCH_OLEDUpdate() {
 	// Update the screens
 	SSD1306_Update(&hssd1);
 	SSD1306_Update(&hssd2);
+}
+
+void SCH_LCDUpdate() {
+	// Update the displays
+	if (hst7789.spi_state == 0 && st7789_state == 1) {
+		ST7789_UpdateAutomatic(&hst7789);
+		st7789_state = 0;
+	}
 }
 
 void SCH_GetInputs() {
@@ -1167,7 +1264,7 @@ void SCH_GetInputs() {
 	if (jpeg_quality != GetState(OP_CAMERA_QUALITY)) {
 		jpeg_quality = GetState(OP_CAMERA_QUALITY);
 		// Clear the screen
-		ST7789_Clear(&hst7789, 0);
+		ST7789_Clear(&hst7789);
 	}
 
 }
@@ -1187,12 +1284,6 @@ uint32_t DeltaTime(uint32_t start_t) {
 uint8_t GetState(uint8_t byte_num) {
 	if (byte_num >= 64) return 0;
 	return hmenu.state_packet[byte_num];
-}
-
-uint8_t SetState(uint8_t byte_num, uint8_t val) {
-	if (byte_num >= 64) return 1;
-	hmenu.state_packet[byte_num] = val;
-	return 0;
 }
 
 // DEBUG FUNCTIONS
@@ -1217,16 +1308,18 @@ void HAL_JPEG_DecodeCpltCallback(JPEG_HandleTypeDef * hjpeg) {
 
 // JPEG hardware encountered an error
 void HAL_JPEG_ErrorCallback (JPEG_HandleTypeDef * hjpeg) {
-	sprintf(ssd_msg, " JPEG ERROR");
-	WriteDebug(ssd_msg, strlen(ssd_msg));
 	//HAL_JPEG_Abort(&hjpeg);
-	jpeg_state = 2;
+	jpeg_state = 0;
 }
 
 void HAL_JPEG_DataReadyCallback (JPEG_HandleTypeDef * hjpeg, uint8_t * pDataOut, uint32_t OutDataLength) {
-	//	sprintf(ssd_msg, " JPEG D %d", OutDataLength);
-	//	WriteDebug(ssd_msg, strlen(ssd_msg));
-	//HAL_JPEG_Abort(hjpeg);
+	// Abort if it's too long
+	if (OutDataLength > JPEG_MAX_WIDTH*JPEG_MAX_HEIGHT) {
+		HAL_JPEG_Abort(hjpeg);
+		jpeg_state = 2;
+		return;
+	}
+
 	jpeg_state = 2;
 }
 

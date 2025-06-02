@@ -44,10 +44,13 @@ typedef struct
 
 	void ST7789_SetCursor(ST7789_HandleTypeDef *hst7789, uint16_t x, uint16_t y);
 	void ST7789_SetWindow(ST7789_HandleTypeDef *hst7789, uint16_t xStart, uint16_t yStart, uint16_t xEnd, uint16_t  yEnd);
-	uint8_t ST7789_Clear(ST7789_HandleTypeDef *hst7789, uint8_t nosig);
-	uint8_t ST7789_DrawData(ST7789_HandleTypeDef *hst7789, uint32_t frametime_ms);
+
 	uint8_t ST7789_UpdateSector(ST7789_HandleTypeDef *hst7789, uint8_t screen_section);
 	uint8_t ST7789_UpdateAutomatic(ST7789_HandleTypeDef *hst7789);
+
+	uint8_t ST7789_Clear(ST7789_HandleTypeDef *hst7789);
+	uint8_t ST7789_Draw_NOSIG(ST7789_HandleTypeDef *hst7789);
+	uint8_t ST7789_Draw_DATA(ST7789_HandleTypeDef *hst7789, uint32_t frametime_ms);
 
 	void ST7789_DMATransmitCplt(ST7789_HandleTypeDef *hst7789);
 

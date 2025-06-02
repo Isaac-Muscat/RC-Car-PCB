@@ -35,12 +35,16 @@
 #define OV7670_ADDR_READ 0x43
 #define OV7670_ADDR_WRITE 0x42
 
+// WATCHDOG DEFINES
+#define WDOG_NETWORK_CUTOFF 4
+
 // SCHEDULER OPTIONS
-#define SCH_MS_TX 2
+#define SCH_MS_TX 5
 
 // CAMERA SETTINGS
 #define CAM_WIDTH 315
 #define CAM_HEIGHT 242
+#define CAM_VSHIFT_INCREMENTS CAM_HEIGHT / 2
 
 // JPEG SETTINGS
 #define JPEG_QUALITY 20
@@ -77,6 +81,7 @@ TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim4;
+TIM_HandleTypeDef htim5;
 TIM_HandleTypeDef htim14;
 
 UART_HandleTypeDef huart1;
@@ -102,7 +107,11 @@ static void MX_TIM1_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_JPEG_Init(void);
 static void MX_SPI2_Init(void);
+static void MX_TIM5_Init(void);
 /* USER CODE BEGIN PFP */
+
+// Watchdog Fucntions
+void NetworkTimeout();
 
 // Scheduling Functions
 void SCH_XBeeRX();
@@ -123,6 +132,9 @@ uint8_t GenerateJPEGMCUBlock();
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+// WATCHDOG VARIABLES
+uint8_t wdog_network = 0;
+
 // SCHEDULING VARIABLES
 uint32_t sch_tim_tx = 0;
 
@@ -137,6 +149,8 @@ volatile uint8_t camera_state = 0;			// Camera state variable
 // ----------------------------------- 1: Camera DMA Queued
 // ----------------------------------- 2: Camera capturing
 // ----------------------------------- 3: Image Ready
+
+uint32_t camera_vshift = CAM_VSHIFT_INCREMENTS;
 
 // JPEG VARIABLES
 uint8_t jpeg_mcu[64];				// Reserve u8 array for JPEG MCU block
@@ -213,6 +227,7 @@ int main(void)
   MX_TIM3_Init();
   MX_JPEG_Init();
   MX_SPI2_Init();
+  MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
 
 	// ------------------------------------------------------------ SETUP USB MESSAGING -- //
@@ -272,6 +287,16 @@ int main(void)
 	jpeg_config->ImageQuality = JPEG_QUALITY;
 	HAL_JPEG_ConfigEncoding(&hjpeg, jpeg_config);
 
+	// ------------------------------------------------------------ SETUP WATCHDOG TIMER-- //
+	if (HAL_TIM_Base_Start_IT(&htim5) != HAL_OK)
+	{
+		sprintf(ssd_msg, " Failed to Start Watchdog");
+		WriteDebug(ssd_msg, strlen(ssd_msg));
+		// This state is non-functional, reset
+		NVIC_SystemReset();
+		while (1) {}
+	}
+
 	// ------------------------------------------------------------ SETUP XBEE -- //
 	hxbee.uart_handle = &huart1;
 	hxbee.pktRx_max = 2;
@@ -284,21 +309,12 @@ int main(void)
 		NVIC_SystemReset();
 	}
 
-//	while (1) {
-//		sprintf(ssd_msg, " ALIVE");
-//		WriteDebug(ssd_msg, strlen(ssd_msg));
-//		HAL_Delay(100);
-//	}
-
-	//TODO: Implement all JPEG Callbacks
-	//TODO: Try to Interleave CAM/JPEG DMAs using JPEG GetDataCallback
-
 	// SETUP MOTOR
 	TIM2->CCR1 = 0;
-	TIM2->CCR2 = 400;
+	TIM2->CCR2 = 0;
 
 	TIM4->CCR4 = 0;
-	TIM4->CCR3 = 400;
+	TIM4->CCR3 = 0;
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); // LEFT_PWM_1
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2); // RIGHT_PWM_1
 
@@ -306,19 +322,19 @@ int main(void)
 	HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_3); // RIGHT_PWM_2
 
 	// Setup lights
-	  TIM1->CCR4 = 1000; // 0 - 2000
-	  TIM3->CCR4 = 1000;
-	  TIM3->CCR3 = 1000;
-	  TIM2->CCR4 = 1000;
-	  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4); // LIGHTS_PWM_1
-	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4); // LIGHTS_PWM_2
-	  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3); // LIGHTS_PWM_3
-	  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3); // LIGHTS_PWM_4
+	TIM1->CCR4 = 1000; // 0 - 2000
+	TIM3->CCR4 = 1000;
+	TIM3->CCR3 = 1000;
+	TIM2->CCR4 = 1000;
+	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4); // LIGHTS_PWM_1
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4); // LIGHTS_PWM_2
+	HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3); // LIGHTS_PWM_3
+	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3); // LIGHTS_PWM_4
 
 	// Delay for goofiness
-	HAL_Delay(3000);
+	HAL_Delay(1000);
 
-	//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); // Motor_en
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); // Motor_en
 
 	// XBEE READ MODE
 //	uint8_t uart_xbee_buffer[256] = {0};	// Get a reference to the start of buffer data
@@ -802,6 +818,51 @@ static void MX_TIM4_Init(void)
 }
 
 /**
+  * @brief TIM5 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM5_Init(void)
+{
+
+  /* USER CODE BEGIN TIM5_Init 0 */
+
+  /* USER CODE END TIM5_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM5_Init 1 */
+
+  /* USER CODE END TIM5_Init 1 */
+  htim5.Instance = TIM5;
+  htim5.Init.Prescaler = 0;
+  htim5.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim5.Init.Period = 7499998;
+  htim5.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim5.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim5) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim5, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim5, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM5_Init 2 */
+
+  /* USER CODE END TIM5_Init 2 */
+
+}
+
+/**
   * @brief TIM14 Initialization Function
   * @param None
   * @retval None
@@ -996,6 +1057,27 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+// Watchdog Fucntions
+void NetworkTimeout() {
+	if (wdog_network < WDOG_NETWORK_CUTOFF) {
+		// Increment the timeout ctr
+		wdog_network++;
+
+		// A timeout occurs when wdog_network == the Cutoff
+		if (wdog_network == WDOG_NETWORK_CUTOFF) {
+			// Kill the motors
+			TIM2->CCR1 = 0;
+			TIM2->CCR2 = 0;
+			TIM4->CCR4 = 0;
+			TIM4->CCR3 = 0;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET); // Motor_disable
+			// DEBUG
+			sprintf(ssd_msg, "Network Dead!\n");
+			WriteDebug(ssd_msg, strlen(ssd_msg));
+		}
+	}
+}
+
 // ------------------------------------------------------------ SCHEDULING FUNCTIONS -- //
 void SCH_XBeeRX() {
 	uint8_t *packet;
@@ -1004,10 +1086,18 @@ void SCH_XBeeRX() {
 		return;
 	}
 
+	// Network active, reset the watchdog
+	if (wdog_network >= WDOG_NETWORK_CUTOFF) {
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); // Motor_en
+		// DEBUG
+		sprintf(ssd_msg, "Network Alive!\n");
+		WriteDebug(ssd_msg, strlen(ssd_msg));
+	}
+	wdog_network = 0;
+
 	// Parse the packet
 	if (byte_num == 0xFFFF) {
 		// Configuration Packet
-
 		if (packet[1] != jpeg_quality) {
 			// JPEG QUALITY CHANGED
 			jpeg_quality = packet[1];
@@ -1030,25 +1120,26 @@ void SCH_XBeeRX() {
 		TIM2->CCR4 = packet[6]*500; // L4
 
 		// TANK CONTROL (THIS IS EXTREMELY IMPORTANT)
-		uint8_t motor1_dir = packet[0x09];	// DIR_LEFT
-		uint8_t motor2_dir = packet[0x0A];	// DIR_RIGHT
+		uint8_t motor1_dir = packet[0x0A];	// DIR_LEFT
+		uint8_t motor2_dir = packet[0x09];	// DIR_RIGHT
 
 		// Use the direction to selectively disable one of the two BTNs
 		if (motor1_dir) {
 			TIM2->CCR1 = 0;
-			TIM2->CCR2 = packet[0x07]*4;	// MAG_LEFT
+			TIM2->CCR2 = packet[0x08]*4;	// MAG_LEFT
 		} else {
-			TIM2->CCR1 = packet[0x07]*4;	// MAG_LEFT
+			TIM2->CCR1 = packet[0x08]*4;	// MAG_LEFT
 			TIM2->CCR2 = 0;
 		}
 
 		// Use the direction to selectively disable one of the two BTNs
 		if (motor2_dir) {
-			TIM4->CCR4 = 0;
-			TIM4->CCR3 = packet[0x08]*4;	// MAG_RIGHT
-		} else {
-			TIM4->CCR4 = packet[0x08]*4;	// MAG_RIGHT
+			TIM4->CCR4 = packet[0x07]*4;	// MAG_RIGHT
 			TIM4->CCR3 = 0;
+
+		} else {
+			TIM4->CCR4 = 0;
+			TIM4->CCR3 = packet[0x07]*4;	// MAG_RIGHT
 		}
 	}
 }
@@ -1188,8 +1279,8 @@ void HAL_JPEG_DataReadyCallback(JPEG_HandleTypeDef *hjpeg, uint8_t *pDataOut, ui
 void HAL_JPEG_EncodeCpltCallback(JPEG_HandleTypeDef *hjpeg) {
 	jpeg_state = 2;	// Flag JPEG as ready
 	jpeg_block = 0;	// Reset the JPEG block IDX
-	sprintf(ssd_msg, "JPEG DONE\n");
-	WriteDebug(ssd_msg, strlen(ssd_msg));
+//	sprintf(ssd_msg, "JPEG DONE\n");
+//	WriteDebug(ssd_msg, strlen(ssd_msg));
 }
 
 // JPEG hardware encountered an error
@@ -1307,12 +1398,15 @@ uint8_t GenerateJPEGMCUBlock() {
 	int yStart = (jpeg_block / jpeg_mcu_widths[jpeg_quality]) * 8;
 	int i = 0;
 	for (int y = yStart; y < yStart + 8; y++) {
+		uint16_t cached_y = y*jpeg_scaleFactors[jpeg_quality];
+
 		for (int x = xStart; x < xStart + 8; x++) {
+			uint16_t cached_x = x*jpeg_scaleFactors[jpeg_quality] + camera_vshift;
 			// Pad to 8x8
-			if (x*jpeg_scaleFactors[jpeg_quality] >= CAM_WIDTH || y*jpeg_scaleFactors[jpeg_quality] >= CAM_HEIGHT) {
+			if (cached_x >= CAM_WIDTH || cached_y >= CAM_HEIGHT) {
 				jpeg_mcu[i] = 0x00;
 			} else {
-				jpeg_mcu[i] = camera_mem[x*jpeg_scaleFactors[jpeg_quality] + y*jpeg_scaleFactors[jpeg_quality] * CAM_WIDTH];
+				jpeg_mcu[i] = camera_mem[cached_x + cached_y * CAM_WIDTH];
 			}
 			i++;
 		}
