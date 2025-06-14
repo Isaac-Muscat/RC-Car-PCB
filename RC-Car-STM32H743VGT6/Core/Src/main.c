@@ -22,6 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "INA229.h"
 #include "XBEE.h"
 /* USER CODE END Includes */
 
@@ -40,6 +41,10 @@
 
 // SCHEDULER OPTIONS
 #define SCH_MS_TX 5
+#define SCH_MS_DEBUG 50
+
+// CONTROL DEFINES
+#define CTRL_MAX_PWRDELTA_PERSECOND 1000
 
 // CAMERA SETTINGS
 #define CAM_WIDTH 315
@@ -116,8 +121,10 @@ void NetworkTimeout();
 // Scheduling Functions
 void SCH_XBeeRX();
 void SCH_XBeeTX();
+void SCH_CTRL();
 void SCH_Camera();
 void SCH_JPEG();
+void SCH_DEBUG();
 
 // Utility Functions
 uint32_t DeltaTime(uint32_t start_t);
@@ -136,11 +143,24 @@ uint8_t GenerateJPEGMCUBlock();
 uint8_t wdog_network = 0;
 
 // SCHEDULING VARIABLES
-uint32_t sch_tim_tx = 0;
+uint32_t sch_tim_tx   = 0;
+uint32_t sch_tim_ctrl = 0;
+uint32_t sch_tim_debug = 0;
+uint32_t debug_ctr = 0;
+
+// CONTROL VARIABLES
+float ctrl_input[2]  = {0, 0};
+float ctrl_output[2] = {0, 0};
+
+uint16_t ctrl_output_mag[2] = {0, 0};
+uint8_t ctrl_output_dir[2] = {0, 0};
 
 // USB VARIABLES
 uint8_t ssd_msg[100] = {0};	// Reserve 100 bytes for USB debug messages
 uint8_t usb_device_rxFlag = 0x00; // Extern in usbd_cdc_if.h
+
+// INA229 VARIABLES
+INA229_HandleTypeDef hina229;
 
 // CAMERA VARIABLES
 uint8_t camera_mem[CAM_GRAYSIZE];	// Reserve u8 array for camera DMA transfer
@@ -230,8 +250,35 @@ int main(void)
   MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
 
-	// ------------------------------------------------------------ SETUP USB MESSAGING -- //
-	//uint8_t usb_msg[100] = {0};	// Reserve 100 bytes for USB Debug messages
+  // ------------------------------------------------------------ XBEE READ MODE -- //
+//	uint8_t uart_xbee_buffer[256] = {0};	// Get a reference to the start of buffer data
+//	uint8_t uart_xbee_len = 0;			// Get a reference to the start of buffer data
+//	while (1) {
+//		  HAL_UARTEx_ReceiveToIdle(&huart1, uart_xbee_buffer, 256, &uart_xbee_len, 1000);
+//		  if (uart_xbee_len > 0) {
+//			  CDC_Transmit_FS(uart_xbee_buffer, uart_xbee_len);
+//			  uart_xbee_len = 0;
+//			  memset(uart_xbee_buffer, 0x00, 256);
+//		  } else {
+//			  //sprintf(usb_msg, "err\r\n");
+//			  //HAL_UART_Transmit(&huart1, usb_msg, strlen(usb_msg), 1000);
+//		  }
+//	}
+
+	// ------------------------------------------------------------ SETUP INA229 -- //
+  	hina229.spi_handle = &hspi2;
+  	hina229.cs_gpio_handle = INA_CS_GPIO_Port;
+  	hina229.cs_gpio_pin = INA_CS_Pin;
+
+  	while (1) {
+		if (INA229_Init(&hina229)) {
+			sprintf(ssd_msg, " Failed to Init INA229");
+			WriteDebug(ssd_msg, strlen(ssd_msg));
+			// This state is non-functional, reset
+			NVIC_SystemReset();
+		}
+		HAL_Delay(500);
+  	}
 
 	// ------------------------------------------------------------ SETUP CAMERA INTERFACE -- //
 	HAL_TIM_PWM_Start(&htim14, TIM_CHANNEL_1);	// XCLK - Start the camera's core clock
@@ -336,21 +383,6 @@ int main(void)
 
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); // Motor_en
 
-	// XBEE READ MODE
-//	uint8_t uart_xbee_buffer[256] = {0};	// Get a reference to the start of buffer data
-//	uint8_t uart_xbee_len = 0;			// Get a reference to the start of buffer data
-//	while (1) {
-//		  HAL_UARTEx_ReceiveToIdle(&huart1, uart_xbee_buffer, 256, &uart_xbee_len, 1000);
-//		  if (uart_xbee_len > 0) {
-//			  CDC_Transmit_FS(uart_xbee_buffer, uart_xbee_len);
-//			  uart_xbee_len = 0;
-//			  memset(uart_xbee_buffer, 0x00, 256);
-//		  } else {
-//			  //sprintf(usb_msg, "err\r\n");
-//			  //HAL_UART_Transmit(&huart1, usb_msg, strlen(usb_msg), 1000);
-//		  }
-//	}
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -361,9 +393,12 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		SCH_XBeeRX();	// Handle radio recieve
+		SCH_CTRL();		// Handle control signals
 		SCH_Camera();	// Take a picture if camera idle
 		SCH_JPEG();		// Convert JPEG if camera ready to present
 		SCH_XBeeTX();	// Transmit JPEG if JPEG ready
+
+		SCH_DEBUG();
 	}
   /* USER CODE END 3 */
 }
@@ -556,16 +591,16 @@ static void MX_SPI2_Init(void)
   hspi2.Instance = SPI2;
   hspi2.Init.Mode = SPI_MODE_MASTER;
   hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi2.Init.DataSize = SPI_DATASIZE_4BIT;
-  hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi2.Init.CLKPolarity = SPI_POLARITY_HIGH;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   hspi2.Init.CRCPolynomial = 0x0;
-  hspi2.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
+  hspi2.Init.NSSPMode = SPI_NSS_PULSE_DISABLE;
   hspi2.Init.NSSPolarity = SPI_NSS_POLARITY_LOW;
   hspi2.Init.FifoThreshold = SPI_FIFO_THRESHOLD_01DATA;
   hspi2.Init.TxCRCInitializationPattern = SPI_CRC_INITIALIZATION_ALL_ZERO_PATTERN;
@@ -1015,7 +1050,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_14|GPIO_PIN_15, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, ADC_CS_Pin|INA_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
@@ -1023,8 +1058,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_0, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PC14 PC15 */
-  GPIO_InitStruct.Pin = GPIO_PIN_14|GPIO_PIN_15;
+  /*Configure GPIO pins : ADC_CS_Pin INA_CS_Pin */
+  GPIO_InitStruct.Pin = ADC_CS_Pin|INA_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -1059,6 +1094,9 @@ static void MX_GPIO_Init(void)
 
 // Watchdog Fucntions
 void NetworkTimeout() {
+	// TEMPORARY: DISABLE THIS FOR TESTING
+	return;
+
 	if (wdog_network < WDOG_NETWORK_CUTOFF) {
 		// Increment the timeout ctr
 		wdog_network++;
@@ -1088,7 +1126,7 @@ void SCH_XBeeRX() {
 
 	// Network active, reset the watchdog
 	if (wdog_network >= WDOG_NETWORK_CUTOFF) {
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); // Motor_en
+		//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET); // Motor_en
 		// DEBUG
 		sprintf(ssd_msg, "Network Alive!\n");
 		WriteDebug(ssd_msg, strlen(ssd_msg));
@@ -1123,24 +1161,17 @@ void SCH_XBeeRX() {
 		uint8_t motor1_dir = packet[0x0A];	// DIR_LEFT
 		uint8_t motor2_dir = packet[0x09];	// DIR_RIGHT
 
-		// Use the direction to selectively disable one of the two BTNs
-		if (motor1_dir) {
-			TIM2->CCR1 = 0;
-			TIM2->CCR2 = packet[0x08]*4;	// MAG_LEFT
-		} else {
-			TIM2->CCR1 = packet[0x08]*4;	// MAG_LEFT
-			TIM2->CCR2 = 0;
-		}
+		// Use the direction to set the desired power output
+		// 0-255 >> REMAP >> 0-2000
+		if (motor1_dir)
+			ctrl_input[0] = -((float)packet[0x08])*20.0/2.55;
+		else
+			ctrl_input[0] = ((float)packet[0x08])*20.0/2.55;
 
-		// Use the direction to selectively disable one of the two BTNs
-		if (motor2_dir) {
-			TIM4->CCR4 = packet[0x07]*4;	// MAG_RIGHT
-			TIM4->CCR3 = 0;
-
-		} else {
-			TIM4->CCR4 = 0;
-			TIM4->CCR3 = packet[0x07]*4;	// MAG_RIGHT
-		}
+		if (motor2_dir)
+			ctrl_input[1] = ((float)packet[0x07])*20.0/2.55;
+		else
+			ctrl_input[1] = -((float)packet[0x07])*20.0/2.55;
 	}
 }
 
@@ -1196,6 +1227,60 @@ void SCH_XBeeTX() {
 //	}
 }
 
+void SCH_CTRL() {
+	uint32_t delta_t = DeltaTime(sch_tim_ctrl);
+	sch_tim_ctrl = HAL_GetTick();
+
+	// This is how much the power level of the motors can change right now
+	float maxAllowablePwrDelta = CTRL_MAX_PWRDELTA_PERSECOND*((float)delta_t/1000.0);
+	for (uint8_t i = 0; i < 2; i++) {
+		// Correct the control signals if they somehow go out of bounds
+		if (ctrl_input[i] >  2000.0) ctrl_input[i] =  2000.0;
+		if (ctrl_input[i] < -2000.0) ctrl_input[i] = -2000.0;
+
+		float delta = ctrl_input[i] - ctrl_output[i];
+		if (delta > 0) {
+			if (maxAllowablePwrDelta >= delta)
+				ctrl_output[i] = ctrl_input[i];
+			else
+				ctrl_output[i] += maxAllowablePwrDelta;
+		} else {
+			if (maxAllowablePwrDelta >= -delta)
+				ctrl_output[i] = ctrl_input[i];
+			else
+				ctrl_output[i] -= maxAllowablePwrDelta;
+		}
+
+		// Correct the output signals if they somehow go out of bounds
+		if (ctrl_output[i] >  2000.0) ctrl_output[i] =  2000.0;
+		if (ctrl_output[i] < -2000.0) ctrl_output[i] = -2000.0;
+
+		// Turn the interpolated values into actual PWM levels
+		ctrl_output_dir[i] = ctrl_output[i] >= 0;
+		if (ctrl_output_dir[i])
+			ctrl_output_mag[i] = (uint16_t)(ctrl_output[i]);
+		else
+			ctrl_output_mag[i] = (uint16_t)(-ctrl_output[i]);
+	}
+
+	// Toggle the motors
+	if (ctrl_output_dir[0]) {
+		TIM2->CCR1 = 0;
+		TIM2->CCR2 = ctrl_output_mag[0];
+	} else {
+		TIM2->CCR1 = ctrl_output_mag[0];
+		TIM2->CCR2 = 0;
+	}
+
+	if (ctrl_output_dir[1]) {
+		TIM4->CCR3 = 0;
+		TIM4->CCR4 = ctrl_output_mag[1];
+	} else {
+		TIM4->CCR3 = ctrl_output_mag[1];
+		TIM4->CCR4 = 0;
+	}
+}
+
 void SCH_Camera() {
 	if (camera_state != 0) return;	// Exit if the camera is capturing, queued, or has un-encoded data
 	if (jpeg_state != 0) return;	// Exit if the JPEG is processing (camera DMA can corrupt the working buffer of JPEG)
@@ -1225,6 +1310,30 @@ void SCH_JPEG() {
 
 	GenerateJPEGMCUBlock();
 	HAL_JPEG_Encode_DMA(&hjpeg, jpeg_mcu, 64, jpeg_out, JPEG_OUTBUF_SIZE);
+}
+
+void SCH_DEBUG() {
+	uint32_t delta_t = DeltaTime(sch_tim_debug);
+	if (delta_t < SCH_MS_DEBUG)
+		return;
+
+	debug_ctr++;
+
+	if (debug_ctr >= 60) {
+		debug_ctr = 0;
+		for (uint8_t i = 0; i < 2; i++) {
+			uint8_t polarity = rand()%2;
+			if (polarity)
+				ctrl_input[i] = (float)(rand()%2000);
+			else
+				ctrl_input[i] = -(float)(rand()%2000);
+		}
+	}
+
+	sprintf(ssd_msg, "L: %04d - R: %04d\n", ctrl_output_mag[0], ctrl_output_mag[1]);
+	WriteDebug(ssd_msg, strlen(ssd_msg));
+
+	sch_tim_debug = HAL_GetTick();
 }
 
 // ------------------------------------------------------------ OVERRIDE CALLBACKS -- //

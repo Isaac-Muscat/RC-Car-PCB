@@ -59,6 +59,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define ADC_CS_Pin GPIO_PIN_14
+#define ADC_CS_GPIO_Port GPIOC
+#define INA_CS_Pin GPIO_PIN_15
+#define INA_CS_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
 

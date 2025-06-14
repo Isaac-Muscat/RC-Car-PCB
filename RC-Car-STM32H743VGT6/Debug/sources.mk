@@ -24,6 +24,7 @@ C_DEPS :=
 SUBDIRS := \
 Core/Src \
 Core/Startup \
+Drivers/INA229_Driver/Src \
 Drivers/STM32H7xx_HAL_Driver/Src \
 Drivers/XBEE_Driver/Src \
 Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src \

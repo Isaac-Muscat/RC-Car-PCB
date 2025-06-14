@@ -264,7 +264,11 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 	USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
 	USBD_CDC_ReceivePacket(&hUsbDeviceFS);
 	usb_device_rxFlag = 0x01;
-	HAL_UART_Transmit(&huart1, Buf, *Len, 100);
+
+	if (HAL_UART_Transmit(&huart1, Buf, *Len, 100)) {
+		uint8_t* usb_msg = "Failed to TX\n";
+		CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+	}
 
 	//CDC_Transmit_FS(Buf,*Len);
 	return (USBD_OK);

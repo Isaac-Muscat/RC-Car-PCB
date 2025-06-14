@@ -16,6 +16,7 @@ RM := rm -rf
 -include Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/subdir.mk
 -include Drivers/XBEE_Driver/Src/subdir.mk
 -include Drivers/STM32H7xx_HAL_Driver/Src/subdir.mk
+-include Drivers/INA229_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk
@@ -67,7 +68,7 @@ main-build: RC-Car-STM32H743VGT6.elf secondary-outputs
 
 # Tool invocations
 RC-Car-STM32H743VGT6.elf RC-Car-STM32H743VGT6.map: $(OBJS) $(USER_OBJS) D:\8_Tank_MINI\Electronics\RC-Car-PCB\RC-Car-PCB\RC-Car-STM32H743VGT6\STM32H743VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "RC-Car-STM32H743VGT6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\8_Tank_MINI\Electronics\RC-Car-PCB\RC-Car-PCB\RC-Car-STM32H743VGT6\STM32H743VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RC-Car-STM32H743VGT6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "RC-Car-STM32H743VGT6.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\8_Tank_MINI\Electronics\RC-Car-PCB\RC-Car-PCB\RC-Car-STM32H743VGT6\STM32H743VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RC-Car-STM32H743VGT6.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

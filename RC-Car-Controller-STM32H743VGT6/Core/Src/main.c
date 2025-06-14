@@ -354,6 +354,21 @@ int main(void)
   MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
 
+	// XBEE READ MODE
+//		uint8_t uart_xbee_buffer[256] = {0};	// Get a reference to the start of buffer data
+//		uint8_t uart_xbee_len = 0;			// Get a reference to the start of buffer data
+//		while (1) {
+//			  HAL_UARTEx_ReceiveToIdle(&huart1, uart_xbee_buffer, 256, &uart_xbee_len, 1000);
+//			  if (uart_xbee_len > 0) {
+//				  CDC_Transmit_FS(uart_xbee_buffer, uart_xbee_len);
+//				  uart_xbee_len = 0;
+//				  memset(uart_xbee_buffer, 0x00, 256);
+//			  } else {
+//				  //sprintf(usb_msg, "err\r\n");
+//				  //HAL_UART_Transmit(&huart1, usb_msg, strlen(usb_msg), 1000);
+//			  }
+//		}
+
 	// ------------------------------------------------------------ SETUP ADC DMA -- //
 
 	HAL_ADC_Start_DMA(&hadc1, adc_buffer, 20);
@@ -441,21 +456,6 @@ int main(void)
 		while (1) {}
 	}
 
-	// XBEE READ MODE
-//		uint8_t uart_xbee_buffer[256] = {0};	// Get a reference to the start of buffer data
-//		uint8_t uart_xbee_len = 0;			// Get a reference to the start of buffer data
-//		while (1) {
-//			  HAL_UARTEx_ReceiveToIdle(&huart1, uart_xbee_buffer, 256, &uart_xbee_len, 1000);
-//			  if (uart_xbee_len > 0) {
-//				  CDC_Transmit_FS(uart_xbee_buffer, uart_xbee_len);
-//				  uart_xbee_len = 0;
-//				  memset(uart_xbee_buffer, 0x00, 256);
-//			  } else {
-//				  //sprintf(usb_msg, "err\r\n");
-//				  //HAL_UART_Transmit(&huart1, usb_msg, strlen(usb_msg), 1000);
-//			  }
-//		}
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -474,11 +474,11 @@ int main(void)
 		// Don't SEND anything
 		// Don't bother processing images
 		// Don't update the screen
-		if (wdog_network < WDOG_NETWORK_CUTOFF) {
+		//if (wdog_network < WDOG_NETWORK_CUTOFF) {
 
 			SCH_XBeeTX();		// Send any neccesarry outgoing packets
 			SCH_ImageDecode();	// Decode pending MCU blocks
-		}
+		//}
 	}
   /* USER CODE END 3 */
 }
