@@ -36,8 +36,9 @@
 #define OV7670_ADDR_READ 0x43
 #define OV7670_ADDR_WRITE 0x42
 
-// WATCHDOG DEFINES
+// SAFETY DEFINES
 #define WDOG_NETWORK_CUTOFF 4
+#define OVERCURRENT_PROTLIMIT 5.0
 
 // SCHEDULER OPTIONS
 #define SCH_MS_TX 5
@@ -122,6 +123,7 @@ void NetworkTimeout();
 void SCH_XBeeRX();
 void SCH_XBeeTX();
 void SCH_CTRL();
+void SCH_PowerMon();
 void SCH_Camera();
 void SCH_JPEG();
 void SCH_DEBUG();
@@ -139,8 +141,12 @@ uint8_t GenerateJPEGMCUBlock();
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-// WATCHDOG VARIABLES
+// SAFETY VARIABLES
 uint8_t wdog_network = 0;
+uint8_t overcurrent_protState = 0;
+
+float debug_peakVoltage = 0;
+float debug_peakCurrent = 0;
 
 // SCHEDULING VARIABLES
 uint32_t sch_tim_tx   = 0;
@@ -150,6 +156,7 @@ uint32_t debug_ctr = 0;
 
 // CONTROL VARIABLES
 float ctrl_input[2]  = {0, 0};
+float ctrl_inputLast[2]  = {0, 0};
 float ctrl_output[2] = {0, 0};
 
 uint16_t ctrl_output_mag[2] = {0, 0};
@@ -270,15 +277,12 @@ int main(void)
   	hina229.cs_gpio_handle = INA_CS_GPIO_Port;
   	hina229.cs_gpio_pin = INA_CS_Pin;
 
-  	while (1) {
-		if (INA229_Init(&hina229)) {
-			sprintf(ssd_msg, " Failed to Init INA229");
-			WriteDebug(ssd_msg, strlen(ssd_msg));
-			// This state is non-functional, reset
-			NVIC_SystemReset();
-		}
-		HAL_Delay(500);
-  	}
+	if (INA229_Init(&hina229)) {
+		sprintf(ssd_msg, " Failed to Init INA229");
+		WriteDebug(ssd_msg, strlen(ssd_msg));
+		// This state is non-functional, reset
+		NVIC_SystemReset();
+	}
 
 	// ------------------------------------------------------------ SETUP CAMERA INTERFACE -- //
 	HAL_TIM_PWM_Start(&htim14, TIM_CHANNEL_1);	// XCLK - Start the camera's core clock
@@ -394,6 +398,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		SCH_XBeeRX();	// Handle radio recieve
 		SCH_CTRL();		// Handle control signals
+		SCH_PowerMon();	// Power Monitoring
 		SCH_Camera();	// Take a picture if camera idle
 		SCH_JPEG();		// Convert JPEG if camera ready to present
 		SCH_XBeeTX();	// Transmit JPEG if JPEG ready
@@ -1151,27 +1156,46 @@ void SCH_XBeeRX() {
 			tx_state = 2;	// Flag a header re-transmit
 		}
 
-		// LIGHTS (0-2000)
-		TIM1->CCR4 = packet[3]*500; // L1
-		TIM3->CCR4 = packet[4]*500; // L2
-		TIM3->CCR3 = packet[5]*500; // L3
-		TIM2->CCR4 = packet[6]*500; // L4
+		// Don't process high power systems if the overcurrent protection is active
+		if (overcurrent_protState) {
+			// KILL THE LIGHTS
+			// LIGHTS (0-2000)
+			TIM1->CCR4 = 0; // L1
+			TIM3->CCR4 = 0; // L2
+			TIM3->CCR3 = 0; // L3
+			TIM2->CCR4 = 0; // L4
 
-		// TANK CONTROL (THIS IS EXTREMELY IMPORTANT)
-		uint8_t motor1_dir = packet[0x0A];	// DIR_LEFT
-		uint8_t motor2_dir = packet[0x09];	// DIR_RIGHT
+			// KILL THE MOTORS (ABIDE BY CTRL RULES)
+			ctrl_input[0] = 0; // Motor 1
+			ctrl_input[1] = 0; // Motor 2
 
-		// Use the direction to set the desired power output
-		// 0-255 >> REMAP >> 0-2000
-		if (motor1_dir)
-			ctrl_input[0] = -((float)packet[0x08])*20.0/2.55;
-		else
-			ctrl_input[0] = ((float)packet[0x08])*20.0/2.55;
+		} else {
+			// LIGHTS (0-2000)
+			TIM1->CCR4 = packet[3]*500; // L1
+			TIM3->CCR4 = packet[4]*500; // L2
+			TIM3->CCR3 = packet[5]*500; // L3
+			TIM2->CCR4 = packet[6]*500; // L4
 
-		if (motor2_dir)
-			ctrl_input[1] = ((float)packet[0x07])*20.0/2.55;
-		else
-			ctrl_input[1] = -((float)packet[0x07])*20.0/2.55;
+
+			// TANK CONTROL (THIS IS EXTREMELY IMPORTANT)
+			uint8_t motor1_dir = packet[0x0A];	// DIR_LEFT
+			uint8_t motor2_dir = packet[0x09];	// DIR_RIGHT
+
+			// Use the direction to set the desired power output
+			// 0-255 >> REMAP >> 0-2000
+			if (motor1_dir)
+				ctrl_input[0] = -((float)packet[0x08])*20.0/2.55;
+			else
+				ctrl_input[0] = ((float)packet[0x08])*20.0/2.55;
+
+			if (motor2_dir)
+				ctrl_input[1] = ((float)packet[0x07])*20.0/2.55;
+			else
+				ctrl_input[1] = -((float)packet[0x07])*20.0/2.55;
+
+			ctrl_inputLast[0] = ctrl_input[0];
+			ctrl_inputLast[1] = ctrl_input[1];
+		}
 	}
 }
 
@@ -1281,6 +1305,24 @@ void SCH_CTRL() {
 	}
 }
 
+void SCH_PowerMon() {
+	INA229_Get(&hina229);
+
+	if (hina229.voltage > debug_peakVoltage) debug_peakVoltage = hina229.voltage;
+	if (hina229.current > debug_peakCurrent) debug_peakCurrent = hina229.current;
+
+	if (hina229.current >= OVERCURRENT_PROTLIMIT) {
+		overcurrent_protState = 1;
+		ctrl_input[0] = 0;
+		ctrl_input[1] = 0;
+	} else {
+		overcurrent_protState = 0;
+		ctrl_input[0] = ctrl_inputLast[0];
+		ctrl_input[1] = ctrl_inputLast[1];
+	}
+
+}
+
 void SCH_Camera() {
 	if (camera_state != 0) return;	// Exit if the camera is capturing, queued, or has un-encoded data
 	if (jpeg_state != 0) return;	// Exit if the JPEG is processing (camera DMA can corrupt the working buffer of JPEG)
@@ -1327,11 +1369,20 @@ void SCH_DEBUG() {
 				ctrl_input[i] = (float)(rand()%2000);
 			else
 				ctrl_input[i] = -(float)(rand()%2000);
+
+			ctrl_inputLast[i] = ctrl_input[i];
 		}
 	}
 
-	sprintf(ssd_msg, "L: %04d - R: %04d\n", ctrl_output_mag[0], ctrl_output_mag[1]);
+	// Print Motor CTRL states
+	sprintf(ssd_msg, "L: %04d - R: %04d\nV: %.2f, A: %.2f\n", ctrl_output_mag[0], ctrl_output_mag[1], debug_peakVoltage, debug_peakCurrent);
+
+	// Print Power levels
+	//sprintf(ssd_msg, "V: %.2f, A: %f\n", hina229.voltage, hina229.current);
 	WriteDebug(ssd_msg, strlen(ssd_msg));
+
+	debug_peakVoltage = 0;
+	debug_peakCurrent = 0;
 
 	sch_tim_debug = HAL_GetTick();
 }
