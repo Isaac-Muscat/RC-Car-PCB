@@ -38,14 +38,14 @@
 
 // SAFETY DEFINES
 #define WDOG_NETWORK_CUTOFF 4
-#define OVERCURRENT_PROTLIMIT 5.0
+#define OVERCURRENT_PROTLIMIT 1.0
 
 // SCHEDULER OPTIONS
 #define SCH_MS_TX 5
 #define SCH_MS_DEBUG 50
 
 // CONTROL DEFINES
-#define CTRL_MAX_PWRDELTA_PERSECOND 1000
+#define CTRL_MAX_PWRDELTA_PERSECOND 2000
 
 // CAMERA SETTINGS
 #define CAM_WIDTH 315
@@ -713,7 +713,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 0;
+  htim2.Init.Prescaler = 7;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 2000;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -823,7 +823,7 @@ static void MX_TIM4_Init(void)
 
   /* USER CODE END TIM4_Init 1 */
   htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 0;
+  htim4.Init.Prescaler = 7;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim4.Init.Period = 2000;
   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -1193,8 +1193,8 @@ void SCH_XBeeRX() {
 			else
 				ctrl_input[1] = -((float)packet[0x07])*20.0/2.55;
 
-			ctrl_inputLast[0] = ctrl_input[0];
-			ctrl_inputLast[1] = ctrl_input[1];
+//			ctrl_inputLast[0] = ctrl_input[0];
+//			ctrl_inputLast[1] = ctrl_input[1];
 		}
 	}
 }
@@ -1255,22 +1255,31 @@ void SCH_CTRL() {
 	uint32_t delta_t = DeltaTime(sch_tim_ctrl);
 	sch_tim_ctrl = HAL_GetTick();
 
+	float ctrl_safe[2] = {0, 0};
+	ctrl_safe[0] = ctrl_input[0];
+	ctrl_safe[1] = ctrl_input[1];
+
+	if (overcurrent_protState) {
+		ctrl_safe[0] = 0;
+		ctrl_safe[1] = 0;
+	}
+
 	// This is how much the power level of the motors can change right now
-	float maxAllowablePwrDelta = CTRL_MAX_PWRDELTA_PERSECOND*((float)delta_t/1000.0);
+	float maxAllowablePwrDelta = CTRL_MAX_PWRDELTA_PERSECOND*(((float)delta_t)/1000.0);
 	for (uint8_t i = 0; i < 2; i++) {
 		// Correct the control signals if they somehow go out of bounds
-		if (ctrl_input[i] >  2000.0) ctrl_input[i] =  2000.0;
-		if (ctrl_input[i] < -2000.0) ctrl_input[i] = -2000.0;
+		if (ctrl_safe[i] >  2000.0) ctrl_safe[i] =  2000.0;
+		if (ctrl_safe[i] < -2000.0) ctrl_safe[i] = -2000.0;
 
-		float delta = ctrl_input[i] - ctrl_output[i];
+		float delta = ctrl_safe[i] - ctrl_output[i];
 		if (delta > 0) {
 			if (maxAllowablePwrDelta >= delta)
-				ctrl_output[i] = ctrl_input[i];
+				ctrl_output[i] = ctrl_safe[i];
 			else
 				ctrl_output[i] += maxAllowablePwrDelta;
 		} else {
 			if (maxAllowablePwrDelta >= -delta)
-				ctrl_output[i] = ctrl_input[i];
+				ctrl_output[i] = ctrl_safe[i];
 			else
 				ctrl_output[i] -= maxAllowablePwrDelta;
 		}
@@ -1311,16 +1320,7 @@ void SCH_PowerMon() {
 	if (hina229.voltage > debug_peakVoltage) debug_peakVoltage = hina229.voltage;
 	if (hina229.current > debug_peakCurrent) debug_peakCurrent = hina229.current;
 
-	if (hina229.current >= OVERCURRENT_PROTLIMIT) {
-		overcurrent_protState = 1;
-		ctrl_input[0] = 0;
-		ctrl_input[1] = 0;
-	} else {
-		overcurrent_protState = 0;
-		ctrl_input[0] = ctrl_inputLast[0];
-		ctrl_input[1] = ctrl_inputLast[1];
-	}
-
+	overcurrent_protState = hina229.current >= OVERCURRENT_PROTLIMIT;
 }
 
 void SCH_Camera() {
@@ -1370,13 +1370,16 @@ void SCH_DEBUG() {
 			else
 				ctrl_input[i] = -(float)(rand()%2000);
 
-			ctrl_inputLast[i] = ctrl_input[i];
+			//ctrl_inputLast[i] = ctrl_input[i];
 		}
 	}
 
 	// Print Motor CTRL states
-	sprintf(ssd_msg, "L: %04d - R: %04d\nV: %.2f, A: %.2f\n", ctrl_output_mag[0], ctrl_output_mag[1], debug_peakVoltage, debug_peakCurrent);
-
+	if (overcurrent_protState == 1) {
+		sprintf(ssd_msg, "!! OVERCURRENT !!\n----------\n");
+	} else {
+		sprintf(ssd_msg, "L: %04d - R: %04d | V: %.2f, A: %.2f\n----------\n", ctrl_output_mag[0], ctrl_output_mag[1], debug_peakVoltage, debug_peakCurrent);
+	}
 	// Print Power levels
 	//sprintf(ssd_msg, "V: %.2f, A: %f\n", hina229.voltage, hina229.current);
 	WriteDebug(ssd_msg, strlen(ssd_msg));
