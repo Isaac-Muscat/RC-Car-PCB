@@ -39,6 +39,7 @@
 // SAFETY DEFINES
 #define WDOG_NETWORK_CUTOFF 4
 #define OVERCURRENT_PROTLIMIT 1.0
+#define UNDERVOLT_PROTLIMIT 21.0
 
 // SCHEDULER OPTIONS
 #define SCH_MS_TX 5
@@ -143,7 +144,8 @@ uint8_t GenerateJPEGMCUBlock();
 
 // SAFETY VARIABLES
 uint8_t wdog_network = 0;
-uint8_t overcurrent_protState = 0;
+uint8_t error_overcurrent = 0;
+uint8_t error_undervolt = 0;
 
 float debug_peakVoltage = 0;
 float debug_peakCurrent = 0;
@@ -1255,31 +1257,31 @@ void SCH_CTRL() {
 	uint32_t delta_t = DeltaTime(sch_tim_ctrl);
 	sch_tim_ctrl = HAL_GetTick();
 
-	float ctrl_safe[2] = {0, 0};
-	ctrl_safe[0] = ctrl_input[0];
-	ctrl_safe[1] = ctrl_input[1];
+	float ctrl_override[2] = {0, 0};
+	ctrl_override[0] = ctrl_input[0];
+	ctrl_override[1] = ctrl_input[1];
 
-	if (overcurrent_protState) {
-		ctrl_safe[0] = 0;
-		ctrl_safe[1] = 0;
+	if (error_overcurrent || error_undervolt) {
+		ctrl_override[0] = 0;
+		ctrl_override[1] = 0;
 	}
 
 	// This is how much the power level of the motors can change right now
 	float maxAllowablePwrDelta = CTRL_MAX_PWRDELTA_PERSECOND*(((float)delta_t)/1000.0);
 	for (uint8_t i = 0; i < 2; i++) {
 		// Correct the control signals if they somehow go out of bounds
-		if (ctrl_safe[i] >  2000.0) ctrl_safe[i] =  2000.0;
-		if (ctrl_safe[i] < -2000.0) ctrl_safe[i] = -2000.0;
+		if (ctrl_override[i] >  2000.0) ctrl_override[i] =  2000.0;
+		if (ctrl_override[i] < -2000.0) ctrl_override[i] = -2000.0;
 
-		float delta = ctrl_safe[i] - ctrl_output[i];
+		float delta = ctrl_override[i] - ctrl_output[i];
 		if (delta > 0) {
 			if (maxAllowablePwrDelta >= delta)
-				ctrl_output[i] = ctrl_safe[i];
+				ctrl_output[i] = ctrl_override[i];
 			else
 				ctrl_output[i] += maxAllowablePwrDelta;
 		} else {
 			if (maxAllowablePwrDelta >= -delta)
-				ctrl_output[i] = ctrl_safe[i];
+				ctrl_output[i] = ctrl_override[i];
 			else
 				ctrl_output[i] -= maxAllowablePwrDelta;
 		}
@@ -1320,7 +1322,8 @@ void SCH_PowerMon() {
 	if (hina229.voltage > debug_peakVoltage) debug_peakVoltage = hina229.voltage;
 	if (hina229.current > debug_peakCurrent) debug_peakCurrent = hina229.current;
 
-	overcurrent_protState = hina229.current >= OVERCURRENT_PROTLIMIT;
+	error_overcurrent = hina229.current >= OVERCURRENT_PROTLIMIT;
+	error_undervolt   = hina229.voltage <= UNDERVOLTAGE_PROTLIMIT;
 }
 
 void SCH_Camera() {
@@ -1375,11 +1378,12 @@ void SCH_DEBUG() {
 	}
 
 	// Print Motor CTRL states
-	if (overcurrent_protState == 1) {
-		sprintf(ssd_msg, "!! OVERCURRENT !!\n----------\n");
-	} else {
+	if (error_undervolt)
+		sprintf(ssd_msg, "!! UNDERVOLT (%.2f) !!\n----------\n", debug_peakVoltage);
+	else if (error_overcurrent)
+		sprintf(ssd_msg, "!! OVERCURRENT (%.2f) !!\n----------\n", debug_peakCurrent);
+	else
 		sprintf(ssd_msg, "L: %04d - R: %04d | V: %.2f, A: %.2f\n----------\n", ctrl_output_mag[0], ctrl_output_mag[1], debug_peakVoltage, debug_peakCurrent);
-	}
 	// Print Power levels
 	//sprintf(ssd_msg, "V: %.2f, A: %f\n", hina229.voltage, hina229.current);
 	WriteDebug(ssd_msg, strlen(ssd_msg));
