@@ -1,4 +1,6 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+Drivers/STC3100_Driver/Src/STC3100.o: \
+ ../Drivers/STC3100_Driver/Src/STC3100.c \
+ ../Drivers/STC3100_Driver/Inc/STC3100.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  ../Core/Inc/stm32h7xx_hal_conf.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -39,15 +41,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
- ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
- ../USB_DEVICE/App/usb_device.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../USB_DEVICE/Target/usbd_conf.h ../Drivers/SSD1306_Driver/Inc/SSD1306.h \
- ../Drivers/ST7789_Driver/Inc/ST7789.h \
- ../Drivers/STC3100_Driver/Inc/STC3100.h \
- ../Drivers/XBEE_Driver/Inc/XBEE.h \
- ../Middlewares/Custom/MenuOLED/Inc/MenuOLED.h
-../Core/Inc/main.h:
+ ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h
+../Drivers/STC3100_Driver/Inc/STC3100.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 ../Core/Inc/stm32h7xx_hal_conf.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h:
@@ -89,11 +84,3 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
-../USB_DEVICE/App/usb_device.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
-../USB_DEVICE/Target/usbd_conf.h:
-../Drivers/SSD1306_Driver/Inc/SSD1306.h:
-../Drivers/ST7789_Driver/Inc/ST7789.h:
-../Drivers/STC3100_Driver/Inc/STC3100.h:
-../Drivers/XBEE_Driver/Inc/XBEE.h:
-../Middlewares/Custom/MenuOLED/Inc/MenuOLED.h:

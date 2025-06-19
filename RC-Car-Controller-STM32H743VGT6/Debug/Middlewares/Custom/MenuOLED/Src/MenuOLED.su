@@ -4,7 +4,7 @@
 ../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:28:16:AllocateProperties	16	static
 ../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:32:12:AllocatePages	16	static
 ../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:36:9:MENU_Init	48	static
-../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:135:9:MENU_Draw	64	static
-../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:201:6:MENU_ParseInput	32	static
-../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:243:6:MENU_AnimateString	32	static
-../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:253:7:Lerp	24	static
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:133:9:MENU_Draw	88	static
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:365:6:MENU_ParseInput	32	static
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:407:6:MENU_AnimateString	32	static
+../Middlewares/Custom/MenuOLED/Src/MenuOLED.c:417:7:Lerp	24	static

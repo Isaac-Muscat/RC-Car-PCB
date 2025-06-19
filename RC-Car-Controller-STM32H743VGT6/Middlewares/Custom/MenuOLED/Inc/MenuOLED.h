@@ -71,6 +71,32 @@ typedef struct
 
 	uint8_t 				property_anim;
 
+	// Stats Values
+
+	float					current_con;
+
+	float					current_car;
+
+	float					voltage_con;
+
+	float					voltage_car;
+
+	float					bat_perc_con;
+
+	float					bat_perc_car;
+
+	float					bat_time_con;
+
+	float					bat_time_car;
+
+	uint8_t 				alert_current_con;
+
+	uint8_t 				alert_current_car;
+
+	uint8_t 				alert_voltage_con;
+
+	uint8_t 				alert_voltage_car;
+
 } Menu_HandleTypeDef;
 
 // FUNCS

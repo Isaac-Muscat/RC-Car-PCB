@@ -150,7 +150,6 @@ uint8_t SSD1306_Init(SSD1306_HandleTypeDef *hssd) {
 	        // Get no. of Args
 	        n_arguments = SSD1306_INITCMDS[cmd_idx];
 	        cmd_idx++;
-
 	        // Send initial command
 	        if (SSD1306_SendCommand(hssd, SSD1306_INITCMDS[cmd_idx])) return cmd_idx;
 	        cmd_idx++;
@@ -191,13 +190,32 @@ uint8_t SSD1306_DrawChar(SSD1306_HandleTypeDef *hssd, char ch) {
 
 	uint8_t len = ALPHNUM[newC*8];
 	for (uint8_t i = 0; i < len; i++) {
-		if (!hssd->draw_inverted)
-			hssd->vram[hssd->str_cursor + i] = ALPHNUM[(newC*8)+1 + i];
-		else
-			hssd->vram[hssd->str_cursor + i] = ALPHNUM[(newC*8)+1 + i] ^ 0xFF;
+
+		uint8_t drawbyte = ALPHNUM[(newC*8)+1 + i];
+		if (hssd->draw_inverted) drawbyte ^= 0xFF;
+
+		if (!hssd->draw_scale) hssd->vram[hssd->str_cursor + i] = drawbyte;
+		else {
+			uint8_t drawbyte_1 =  (drawbyte & 0b00000001)       | ((drawbyte & 0b00000001) << 1) |
+								 ((drawbyte & 0b00000010) << 1) | ((drawbyte & 0b00000010) << 2) |
+								 ((drawbyte & 0b00000100) << 2) | ((drawbyte & 0b00000100) << 3) |
+								 ((drawbyte & 0b00001000) << 3) | ((drawbyte & 0b00001000) << 4);
+
+			uint8_t drawbyte_2 = ((drawbyte & 0b00010000) >> 4) | ((drawbyte & 0b00010000) >> 3) |
+								 ((drawbyte & 0b00100000) >> 3) | ((drawbyte & 0b00100000) >> 2) |
+								 ((drawbyte & 0b01000000) >> 2) | ((drawbyte & 0b01000000) >> 1) |
+								 ((drawbyte & 0b10000000) >> 1) | (drawbyte & 0b10000000);
+
+			hssd->vram[hssd->str_cursor + i*2      ] = drawbyte_1;
+			hssd->vram[hssd->str_cursor + i*2 + 1  ] = drawbyte_1;
+			hssd->vram[hssd->str_cursor + i*2 + 128] = drawbyte_2;
+			hssd->vram[hssd->str_cursor + i*2 + 129] = drawbyte_2;
+		}
 	}
 	//memcpy(hssd->vram + hssd->str_cursor, ALPHNUM+(newC*8)+1, len);
 	hssd->str_cursor += len;
+	if (hssd->draw_scale)
+		hssd->str_cursor += len;
 	return SUCCESS;
 }
 

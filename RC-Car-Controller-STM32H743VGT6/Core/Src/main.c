@@ -25,6 +25,7 @@
 
 #include "SSD1306.h"
 #include "ST7789.h"
+#include "STC3100.h"
 #include "XBEE.h"
 #include "MenuOLED.h"
 
@@ -38,6 +39,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define OLED_ADDR 0x3C
+#define STC_ADDR  0x70
 
 #define JPEG_MAX_WIDTH  184
 #define JPEG_MAX_HEIGHT 240
@@ -129,6 +131,9 @@ uint16_t adc_buffer[20] = {0};
 uint16_t adc_average[2] = {0};
 uint8_t slider_magnitude[2] = {0};
 uint8_t slider_direction[2] = {0};
+
+// STC3100ST VARIABLES
+STC3100_HandleTypeDef hstc;
 
 //uint16_t slider_midpoint[2] = {0x80, 0x80};	// Define midpoints for sliders
 uint8_t slider_min_deadzone = 16;	// Slider deadzone at min
@@ -275,6 +280,7 @@ void NetworkTimeout();
 // Scheduling Functions
 void SCH_XBeeRX();
 void SCH_XBeeTX();
+void SCH_PowerMon();
 void SCH_ImageDecode();
 void SCH_LCDUpdate();
 void SCH_OLEDUpdate();
@@ -369,17 +375,33 @@ int main(void)
 //			  }
 //		}
 
+
+	uint8_t init_result = 0;
+
 	// ------------------------------------------------------------ SETUP ADC DMA -- //
 
 	HAL_ADC_Start_DMA(&hadc1, adc_buffer, 20);
 
-	// ------------------------------------------------------------ SETUP SSD1306 -- //
+	// ------------------------------------------------------------ SETUP STC3100 -- //
 
-	uint8_t init_result = 0;
+	hstc.address = STC_ADDR;
+	hstc.i2c_handle = &hi2c2;
+	init_result = STC3100_Init(&hstc);
+	if (init_result) {
+		sprintf(usb_msg, "Failed to Init STC3100: %d\r\n", init_result);
+		CDC_Transmit_FS(usb_msg, strlen(usb_msg));
+		// This state is non-functional, reset
+		NVIC_SystemReset();
+		while (1) {}
+	}
+
+	// ------------------------------------------------------------ SETUP SSD1306 -- //
 
 	hssd1.i2c_handle = &hi2c2;
 	hssd1.address = OLED_ADDR;
 	hssd1.vram_full = ssd1_vram;
+	hssd1.draw_inverted = 0;
+	hssd1.draw_scale = 0;
 	init_result = SSD1306_Init(&hssd1);
 	if (init_result) {
 		sprintf(usb_msg, "Failed to Init SSD1: %d\r\n", init_result);
@@ -392,6 +414,8 @@ int main(void)
 	hssd2.i2c_handle = &hi2c1;
 	hssd2.address = OLED_ADDR;
 	hssd2.vram_full = ssd2_vram;
+	hssd2.draw_inverted = 0;
+	hssd2.draw_scale = 0;
 	init_result = SSD1306_Init(&hssd2);
 	if (init_result) {
 		sprintf(usb_msg, "Failed to Init SSD2: %d\r\n", init_result);
@@ -425,6 +449,8 @@ int main(void)
 	hmenu.ssdL_handle = &hssd1;
 	hmenu.ssdR_handle = &hssd2;
 	hmenu.page_anim = 0;
+	//hmenu.alert_current_con = 1;
+	//hmenu.alert_voltage_con = 1;
 	MENU_Init(&hmenu);
 
 	// ------------------------------------------------------------ SETUP JPEG DECODE -- //
@@ -466,8 +492,9 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		SCH_XBeeRX();		// Process any incoming packets
+		SCH_PowerMon();		// Monitor Power
 		SCH_GetInputs();	// Get user inputs
-		SCH_OLEDUpdate();	// Update the OLEDs
+		//SCH_OLEDUpdate();	// Update the OLEDs
 		SCH_LCDUpdate();	// Update the LCD
 
 		// Network timeout condition:
@@ -1134,6 +1161,13 @@ void SCH_XBeeTX() {
 
 	// Update the timer for the next DT period
 	sch_tim_tx = HAL_GetTick();
+}
+
+void SCH_PowerMon() {
+	STC3100_Get(&hstc);
+
+	// TODO: Update Menu
+
 }
 
 void SCH_ImageDecode() {

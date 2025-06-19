@@ -34,14 +34,12 @@ Menu_Page* AllocatePages(uint8_t num) {
 }
 
 uint8_t MENU_Init(Menu_HandleTypeDef *hmenu) {
-	// a buncha of work incoming
-
 	// Initialize the state packet
 	hmenu->state_packet = AllocateValueArr(64);
 	memset(hmenu->state_packet, 0x00, 64);
 
 	// Allocate pages
-	hmenu->num_pages = 2;
+	hmenu->num_pages = 3;
 	hmenu->pages = AllocatePages(hmenu->num_pages);
 
 	// PAGE 0 (CAMERA)
@@ -134,68 +132,234 @@ uint8_t MENU_Init(Menu_HandleTypeDef *hmenu) {
 
 uint8_t MENU_Draw(Menu_HandleTypeDef *hmenu, uint32_t delta_t) {
 	// Do the animations
-	if (hmenu->page_anim != 0xFF)
-		hmenu->page_anim++;;
+	hmenu->page_anim++;
+	if (hmenu->page_anim == 0xFF)
+		hmenu->page_anim = 0xF1; // Loop the last 16 animation frames
+
 
 	if (hmenu->property_anim != 0xFF)
 		hmenu->property_anim++;
 
-	Menu_Page 	  activePage = hmenu->pages[hmenu->current_page];
-	Menu_Property activeProperty = activePage.properties[hmenu->current_property];
+	if (hmenu->current_page == 0) {
+		// STATUS PAGE, SPECIAL RULES
+		uint8_t tmp_msg[20];
 
-	// Draw the title on the left
-	hmenu->ssdL_handle->str_cursor = (128 - strlen(activePage.title)*6);
-	MENU_AnimateString(hmenu, hmenu->ssdL_handle,
-			activePage.title,
-			hmenu->page_anim, 0);
-
-
-	for (uint8_t i = 0; i < activePage.num_properties; i++) {
-		// Draw the properties
-		// Compute offset using property anim
-		hmenu->ssdL_handle->str_cursor = 16 + (2+i)*128;
-		if (i == hmenu->current_property) {
-			uint8_t num_bars = hmenu->property_anim;
-			if (num_bars > 3) num_bars = 3;
-			SSD1306_DrawString(hmenu->ssdL_handle, ">> ", num_bars);
-		}
-
-		// De-animate the previous property
-		if (i == hmenu->last_property && hmenu->property_anim/2 <= 2) {
-			uint8_t num_bars = 2 - hmenu->property_anim/2;
-			if (num_bars > 2) num_bars = 2;
-			SSD1306_DrawString(hmenu->ssdL_handle, ">> ", num_bars);
-		}
-
+		// Draw the title CAR on the left screen
+		hmenu->ssdL_handle->str_cursor = (128 - 7*6);
 		MENU_AnimateString(hmenu, hmenu->ssdL_handle,
-				activePage.properties[i].name,
-				hmenu->page_anim, 6+i*2);
+				"VEHICLE",
+				hmenu->page_anim, 0);
 
-		// Draw the values these properties have
-		uint8_t op_value = hmenu->state_packet[activePage.properties[i].packet_byte];
-		if (op_value < activePage.properties[i].num_options) {
-			hmenu->ssdL_handle->str_cursor = (3+i)*128 - strlen(activePage.properties[i].option_names[op_value])*6;
+		// Draw the left screen stats
+
+		if (hmenu->alert_voltage_car && (hmenu->page_anim % 4) >= 2)
+					hmenu->ssdL_handle->draw_inverted = 1;
+
+		hmenu->ssdL_handle->str_cursor = 16 + 2*128;
+		sprintf(tmp_msg, "% 5.2f V  ", hmenu->voltage_car);
+		MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+						tmp_msg,
+						hmenu->page_anim, 2);
+
+		hmenu->ssdL_handle->draw_inverted = 0;
+		if (hmenu->alert_current_car && (hmenu->page_anim % 4) >= 2)
+			hmenu->ssdL_handle->draw_inverted = 1;
+
+		hmenu->ssdL_handle->str_cursor = 16 + 3*128;
+		sprintf(tmp_msg, "% 5.2f A ", hmenu->current_car);
+		MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+						tmp_msg,
+						hmenu->page_anim, 3);
+
+		hmenu->ssdL_handle->draw_inverted = 0;
+
+		hmenu->ssdL_handle->str_cursor = 60 + 2*128;
+		hmenu->ssdL_handle->draw_scale = 1;
+		sprintf(tmp_msg, "% 4.0f", hmenu->voltage_car*hmenu->current_car);
+		MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+						tmp_msg,
+						hmenu->page_anim, 6);
+
+		hmenu->ssdL_handle->str_cursor = 114 + 2*128;
+		MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+						"W",
+						hmenu->page_anim, 10);
+
+		hmenu->ssdL_handle->draw_scale = 0;
+
+		// BATTERY
+
+		hmenu->ssdL_handle->str_cursor = 16 + 5*128;
+		sprintf(tmp_msg, "BAT:  % 3.0f ", hmenu->bat_perc_car);
+		MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+						tmp_msg,
+						hmenu->page_anim, 6);
+
+
+		if (hmenu->bat_time_car >= 0) {
+			hmenu->ssdL_handle->str_cursor = 16 + 6*128;
+			sprintf(tmp_msg, "TIME: % 3.0f ", hmenu->bat_time_car);
 			MENU_AnimateString(hmenu, hmenu->ssdL_handle,
-					activePage.properties[i].option_names[op_value],
+							tmp_msg,
+							hmenu->page_anim, 8);
+
+			hmenu->ssdL_handle->str_cursor = 16 + 7*128;
+			sprintf(tmp_msg, "CHARGE");
+			MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+						tmp_msg,
+						hmenu->page_anim, 10);
+		}
+		else {
+			hmenu->ssdL_handle->str_cursor = 16 + 6*128;
+			sprintf(tmp_msg, "TIME: % 3.0f ", -hmenu->bat_time_car);
+			MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+							tmp_msg,
+							hmenu->page_anim, 8);
+
+			hmenu->ssdL_handle->str_cursor = 16 + 7*128;
+			sprintf(tmp_msg, "DISCHARGE");
+			MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+						tmp_msg,
+						hmenu->page_anim, 10);
+		}
+
+		// Draw the title CON on the right screen
+		hmenu->ssdR_handle->str_cursor = 0;
+		MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+				"CONTROLLER",
+				hmenu->page_anim, 0);
+
+		// Draw the right screen stats
+
+		if (hmenu->alert_voltage_con && (hmenu->page_anim % 4) >= 2)
+			hmenu->ssdR_handle->draw_inverted = 1;
+
+		hmenu->ssdR_handle->str_cursor = 2*128;
+		sprintf(tmp_msg, "% 5.2f V ", hmenu->voltage_con);
+		MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+						tmp_msg,
+						hmenu->page_anim, 2);
+
+		hmenu->ssdR_handle->draw_inverted = 0;
+		if (hmenu->alert_current_con && (hmenu->page_anim % 4) >= 2)
+			hmenu->ssdR_handle->draw_inverted = 1;
+
+		hmenu->ssdR_handle->str_cursor = 3*128;
+		sprintf(tmp_msg, "% 5.2f A ", hmenu->current_con);
+		MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+						tmp_msg,
+						hmenu->page_anim, 3);
+
+		hmenu->ssdR_handle->draw_inverted = 0;
+
+		hmenu->ssdR_handle->str_cursor = 44 + 2*128;
+		hmenu->ssdR_handle->draw_scale = 1;
+		sprintf(tmp_msg, "% 4.0f", hmenu->voltage_con*hmenu->current_con);
+		MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+						tmp_msg,
+						hmenu->page_anim, 6);
+
+		hmenu->ssdR_handle->str_cursor = 98 + 2*128;
+		MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+						"W",
+						hmenu->page_anim, 10);
+		hmenu->ssdR_handle->draw_scale = 0;
+
+		// BATTERY
+
+		hmenu->ssdR_handle->str_cursor = 5*128;
+		sprintf(tmp_msg, "BAT:  % 3.0f ", hmenu->bat_perc_con);
+		MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+						tmp_msg,
+						hmenu->page_anim, 6);
+
+
+		if (hmenu->bat_time_con >= 0) {
+			hmenu->ssdR_handle->str_cursor = 6*128;
+			sprintf(tmp_msg, "TIME: % 3.0f ", hmenu->bat_time_con);
+			MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+							tmp_msg,
+							hmenu->page_anim, 8);
+
+			hmenu->ssdR_handle->str_cursor = 7*128;
+			sprintf(tmp_msg, "CHARGE");
+			MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+						tmp_msg,
+						hmenu->page_anim, 10);
+		}
+		else {
+			hmenu->ssdR_handle->str_cursor = 6*128;
+			sprintf(tmp_msg, "TIME: % 3.0f ", -hmenu->bat_time_con);
+			MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+							tmp_msg,
+							hmenu->page_anim, 8);
+
+			hmenu->ssdR_handle->str_cursor = 7*128;
+			sprintf(tmp_msg, "DISCHARGE");
+			MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+						tmp_msg,
+						hmenu->page_anim, 10);
+		}
+
+	} else {
+		// REGULAR PAGE, ADJUST INDEX
+
+		Menu_Page 	  activePage = hmenu->pages[hmenu->current_page-1];
+		Menu_Property activeProperty = activePage.properties[hmenu->current_property];
+
+		// Draw the title on the left
+		hmenu->ssdL_handle->str_cursor = (128 - strlen(activePage.title)*6);
+		MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+				activePage.title,
+				hmenu->page_anim, 0);
+
+
+		for (uint8_t i = 0; i < activePage.num_properties; i++) {
+			// Draw the properties
+			// Compute offset using property anim
+			hmenu->ssdL_handle->str_cursor = 16 + (2+i)*128;
+			if (i == hmenu->current_property) {
+				uint8_t num_bars = hmenu->property_anim;
+				if (num_bars > 3) num_bars = 3;
+				SSD1306_DrawString(hmenu->ssdL_handle, ">> ", num_bars);
+			}
+
+			// De-animate the previous property
+			if (i == hmenu->last_property && hmenu->property_anim/2 <= 2) {
+				uint8_t num_bars = 2 - hmenu->property_anim/2;
+				if (num_bars > 2) num_bars = 2;
+				SSD1306_DrawString(hmenu->ssdL_handle, ">> ", num_bars);
+			}
+
+			MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+					activePage.properties[i].name,
 					hmenu->page_anim, 6+i*2);
+
+			// Draw the values these properties have
+			uint8_t op_value = hmenu->state_packet[activePage.properties[i].packet_byte];
+			if (op_value < activePage.properties[i].num_options) {
+				hmenu->ssdL_handle->str_cursor = (3+i)*128 - strlen(activePage.properties[i].option_names[op_value])*6;
+				MENU_AnimateString(hmenu, hmenu->ssdL_handle,
+						activePage.properties[i].option_names[op_value],
+						hmenu->page_anim, 6+i*2);
+			}
+		}
+
+		// Draw the selected property on the RIGHT
+		hmenu->ssdR_handle->str_cursor = 0;
+		MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+					activeProperty.name,
+					hmenu->property_anim, 1);
+
+		// Draw the selected option on the right
+		uint8_t op_value = hmenu->state_packet[activeProperty.packet_byte];
+		if (op_value < activeProperty.num_options) {
+			hmenu->ssdR_handle->str_cursor = 2*128;
+			SSD1306_DrawString(hmenu->ssdR_handle, "> ", 2);
+			SSD1306_DrawString(hmenu->ssdR_handle, activeProperty.option_names[op_value], strlen(activeProperty.option_names[op_value]));
+			SSD1306_DrawString(hmenu->ssdR_handle, " <", 2);
 		}
 	}
-
-	// Draw the selected property on the RIGHT
-	hmenu->ssdR_handle->str_cursor = 0;
-	MENU_AnimateString(hmenu, hmenu->ssdR_handle,
-				activeProperty.name,
-				hmenu->property_anim, 1);
-
-	// Draw the selected option on the right
-	uint8_t op_value = hmenu->state_packet[activeProperty.packet_byte];
-	if (op_value < activeProperty.num_options) {
-		hmenu->ssdR_handle->str_cursor = 2*128;
-		SSD1306_DrawString(hmenu->ssdR_handle, "> ", 2);
-		SSD1306_DrawString(hmenu->ssdR_handle, activeProperty.option_names[op_value], strlen(activeProperty.option_names[op_value]));
-		SSD1306_DrawString(hmenu->ssdR_handle, " <", 2);
-	}
-
 }
 
 void MENU_ParseInput(Menu_HandleTypeDef *hmenu, uint8_t inputs[4]) {

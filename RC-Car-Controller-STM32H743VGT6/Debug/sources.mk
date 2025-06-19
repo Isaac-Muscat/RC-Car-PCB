@@ -26,6 +26,7 @@ Core/Src \
 Core/Startup \
 Drivers/SSD1306_Driver/Src \
 Drivers/ST7789_Driver/Src \
+Drivers/STC3100_Driver/Src \
 Drivers/STM32H7xx_HAL_Driver/Src \
 Drivers/XBEE_Driver/Src \
 Middlewares/Custom/MenuOLED/Src \

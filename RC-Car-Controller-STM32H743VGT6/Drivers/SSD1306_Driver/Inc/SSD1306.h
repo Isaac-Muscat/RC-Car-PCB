@@ -80,6 +80,8 @@
 
 		uint8_t				draw_inverted;
 
+		uint8_t				draw_scale;
+
 	} SSD1306_HandleTypeDef;
 
 	// FUNCS

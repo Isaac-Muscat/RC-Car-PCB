@@ -10,6 +10,21 @@
 
 #include "stm32h7xx_hal.h"
 
+    // Command definition
+    // ------------------------------------------------------------------------------------
+	#define REG_MODE				0
+    #define REG_CTRL				1
+    #define REG_CHARGE_LOW			2
+    #define REG_CHARGE_HIGH			3
+    #define REG_COUNTER_LOW			4
+    #define REG_COUNTER_HIGH		5
+    #define REG_CURRENT_LOW			6
+    #define REG_CURRENT_HIGH		7
+    #define REG_VOLTAGE_LOW			8
+    #define REG_COLTAGE_HIGH		9
+    #define REG_TEMPERATURE_LOW		10
+    #define REG_TEMPERATURE_HIGH	11
+
 	// STRUCTS
     // ------------------------------------------------------------------------------------
 	typedef struct
@@ -18,12 +33,21 @@
 
 		uint8_t				address;		// address of the SSD1306, usually 0x3C
 
+		float 				charge;
+
+		float 				voltage;
+
+		float 				current;
+
+		float 				temperature;
+
 	} STC3100_HandleTypeDef;
 
 	// FUNCS
 	// ------------------------------------------------------------------------------------
 
-	uint8_t STC3100_SendCommand(STC3100_HandleTypeDef *hssd, uint8_t command);
+	uint8_t STC3100_ReadRegister(STC3100_HandleTypeDef *hstc, uint8_t reg, uint8_t *pData, uint8_t len);
+
 	uint8_t STC3100_Init(STC3100_HandleTypeDef *hstc);
 	uint8_t STC3100_Get(STC3100_HandleTypeDef *hstc);
 
