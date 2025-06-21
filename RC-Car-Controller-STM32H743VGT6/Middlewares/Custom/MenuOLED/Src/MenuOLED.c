@@ -231,7 +231,7 @@ uint8_t MENU_Draw(Menu_HandleTypeDef *hmenu, uint32_t delta_t) {
 
 		// Draw the right screen stats
 
-		if (hmenu->alert_voltage_con && (hmenu->page_anim % 4) >= 2)
+		if (hmenu->alert_voltage_con && (hmenu->page_anim % ALERT_BLINKFREQ) >= ALERT_BLINKDUTY)
 			hmenu->ssdR_handle->draw_inverted = 1;
 
 		hmenu->ssdR_handle->str_cursor = 2*128;
@@ -241,7 +241,7 @@ uint8_t MENU_Draw(Menu_HandleTypeDef *hmenu, uint32_t delta_t) {
 						hmenu->page_anim, 2);
 
 		hmenu->ssdR_handle->draw_inverted = 0;
-		if (hmenu->alert_current_con && (hmenu->page_anim % 4) >= 2)
+		if (hmenu->alert_current_con && (hmenu->page_anim % ALERT_BLINKFREQ) >= ALERT_BLINKDUTY)
 			hmenu->ssdR_handle->draw_inverted = 1;
 
 		hmenu->ssdR_handle->str_cursor = 3*128;
@@ -267,39 +267,68 @@ uint8_t MENU_Draw(Menu_HandleTypeDef *hmenu, uint32_t delta_t) {
 
 		// BATTERY
 
-		hmenu->ssdR_handle->str_cursor = 5*128;
-		sprintf(tmp_msg, "BAT:  % 3.0f ", hmenu->bat_perc_con);
+		// Draw the divider
+		hmenu->ssdR_handle->draw_scale = 1;
+
+		hmenu->ssdR_handle->str_cursor = 4*128 + 2;
+		sprintf(tmp_msg, "---------");
 		MENU_AnimateString(hmenu, hmenu->ssdR_handle,
 						tmp_msg,
 						hmenu->page_anim, 6);
 
+		hmenu->ssdR_handle->str_cursor = 5*128 + 80;
+		sprintf(tmp_msg, "---");
+		MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+						tmp_msg,
+						hmenu->page_anim, 6);
 
-		if (hmenu->bat_time_con >= 0) {
+		hmenu->ssdR_handle->draw_scale = 0;
+
+		// Draw the bats label
+		hmenu->ssdR_handle->draw_inverted = 1;
+		hmenu->ssdR_handle->str_cursor = 5*128 + 74;
+		sprintf(tmp_msg, "\x84 BATS ");
+		MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+						tmp_msg,
+						hmenu->page_anim, 6);
+		hmenu->ssdR_handle->draw_inverted = 0;
+
+		if (hmenu->bat_time_con == 0.0) {
+			// CHARGING
+			hmenu->ssdR_handle->draw_scale = 1;
+			hmenu->ssdR_handle->str_cursor = 6*128 + 10;
+			sprintf(tmp_msg, "CHRG");
+			MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+							tmp_msg,
+							hmenu->page_anim, 6);
+			hmenu->ssdR_handle->draw_scale = 0;
+
+		} else {
+			// DISCHARGING
 			hmenu->ssdR_handle->str_cursor = 6*128;
-			sprintf(tmp_msg, "TIME: % 3.0f ", hmenu->bat_time_con);
+			if ((hmenu->alert_battery_con) && (hmenu->page_anim % ALERT_BLINKFREQ) >= ALERT_BLINKDUTY)
+				hmenu->ssdR_handle->draw_inverted = 1;
+
+			sprintf(tmp_msg, "% 4.1f %%", hmenu->bat_perc_con);
+			MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+							tmp_msg,
+							hmenu->page_anim, 7);
+
+			hmenu->ssdR_handle->draw_inverted = 0;
+
+			hmenu->ssdR_handle->str_cursor = 7*128;
+			sprintf(tmp_msg, "% 4.1f M", hmenu->bat_time_con);
 			MENU_AnimateString(hmenu, hmenu->ssdR_handle,
 							tmp_msg,
 							hmenu->page_anim, 8);
-
-			hmenu->ssdR_handle->str_cursor = 7*128;
-			sprintf(tmp_msg, "CHARGE");
-			MENU_AnimateString(hmenu, hmenu->ssdR_handle,
-						tmp_msg,
-						hmenu->page_anim, 10);
 		}
-		else {
-			hmenu->ssdR_handle->str_cursor = 6*128;
-			sprintf(tmp_msg, "TIME: % 3.0f ", -hmenu->bat_time_con);
-			MENU_AnimateString(hmenu, hmenu->ssdR_handle,
-							tmp_msg,
-							hmenu->page_anim, 8);
 
-			hmenu->ssdR_handle->str_cursor = 7*128;
-			sprintf(tmp_msg, "DISCHARGE");
-			MENU_AnimateString(hmenu, hmenu->ssdR_handle,
+		hmenu->ssdR_handle->str_cursor = 7*128 + 68;
+		sprintf(tmp_msg, "% 3.1f *C", hmenu->bat_temp_con);
+		MENU_AnimateString(hmenu, hmenu->ssdR_handle,
 						tmp_msg,
-						hmenu->page_anim, 10);
-		}
+						hmenu->page_anim, 8);
+
 
 	} else {
 		// REGULAR PAGE, ADJUST INDEX

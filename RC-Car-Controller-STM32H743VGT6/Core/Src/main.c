@@ -494,7 +494,7 @@ int main(void)
 		SCH_XBeeRX();		// Process any incoming packets
 		SCH_PowerMon();		// Monitor Power
 		SCH_GetInputs();	// Get user inputs
-		//SCH_OLEDUpdate();	// Update the OLEDs
+		SCH_OLEDUpdate();	// Update the OLEDs
 		SCH_LCDUpdate();	// Update the LCD
 
 		// Network timeout condition:
@@ -1164,10 +1164,26 @@ void SCH_XBeeTX() {
 }
 
 void SCH_PowerMon() {
-	STC3100_Get(&hstc);
+	uint8_t result = STC3100_Get(&hstc);
+	// General read error
+	if (result == 1)
+		return;
 
-	// TODO: Update Menu
+	if (result == 2) {
+		// Battery error, we need to kill ourselves NOW
+		//TODO: implement this
+		return;
+	}
 
+	hmenu.current_con = hstc.current;
+	hmenu.voltage_con = hstc.voltage;
+	hmenu.bat_temp_con = hstc.temperature;
+	hmenu.bat_perc_con = hstc.charge_percent*100.0; // Convert to 0-100%
+	hmenu.bat_time_con = hstc.charge_time/60.0;		// Convert to minutes
+
+	hmenu.alert_battery_con = hstc.charge_percent < 0.20;
+	hmenu.alert_voltage_con = hstc.voltage < 3.75;
+	hmenu.alert_current_con = hstc.current > 3;
 }
 
 void SCH_ImageDecode() {

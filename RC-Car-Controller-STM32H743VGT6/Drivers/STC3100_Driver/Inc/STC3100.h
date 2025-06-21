@@ -10,6 +10,9 @@
 
 #include "stm32h7xx_hal.h"
 
+	// Define the battery capacity
+	#define CAPACITY_AH 	2.0
+
     // Command definition
     // ------------------------------------------------------------------------------------
 	#define REG_MODE				0
@@ -33,7 +36,9 @@
 
 		uint8_t				address;		// address of the SSD1306, usually 0x3C
 
-		float 				charge;
+		// READ
+
+		float 				charge_delta;
 
 		float 				voltage;
 
@@ -41,12 +46,24 @@
 
 		float 				temperature;
 
+		// COMPUTED
+
+		float 				charge;
+
+		uint8_t 			charge_state;
+
+		float 				charge_percent;
+
+		float 				charge_time;
+
+
 	} STC3100_HandleTypeDef;
 
 	// FUNCS
 	// ------------------------------------------------------------------------------------
 
 	uint8_t STC3100_ReadRegister(STC3100_HandleTypeDef *hstc, uint8_t reg, uint8_t *pData, uint8_t len);
+	uint8_t STC3100_WriteRegister(STC3100_HandleTypeDef *hstc, uint8_t reg, uint8_t data);
 
 	uint8_t STC3100_Init(STC3100_HandleTypeDef *hstc);
 	uint8_t STC3100_Get(STC3100_HandleTypeDef *hstc);

@@ -13,6 +13,9 @@
 // DEFINITIONS
 // ------------------------------------------------------------------------------------
 
+#define ALERT_BLINKFREQ 8
+#define ALERT_BLINKDUTY 4
+
 #define OP_CAMERA_ENCODING  0x00
 #define OP_CAMERA_QUALITY   0x01
 #define OP_CAMERA_FRAMETIME 0x02
@@ -89,6 +92,10 @@ typedef struct
 
 	float					bat_time_car;
 
+	float					bat_temp_con;
+
+	float					bat_temp_car;
+
 	uint8_t 				alert_current_con;
 
 	uint8_t 				alert_current_car;
@@ -96,6 +103,10 @@ typedef struct
 	uint8_t 				alert_voltage_con;
 
 	uint8_t 				alert_voltage_car;
+
+	uint8_t 				alert_battery_con;
+
+	uint8_t 				alert_battery_car;
 
 } Menu_HandleTypeDef;
 
