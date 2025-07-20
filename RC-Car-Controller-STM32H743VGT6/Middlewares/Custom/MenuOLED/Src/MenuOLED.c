@@ -423,8 +423,8 @@ void MENU_ParseInput(Menu_HandleTypeDef *hmenu, uint8_t inputs[4]) {
 		hmenu->property_anim = 0;
 	}
 
-	if (inputs[2]) {
-		Menu_Property activeProperty = hmenu->pages[hmenu->current_page].properties[hmenu->current_property];
+	if (inputs[2] && hmenu->current_page > 0) {
+		Menu_Property activeProperty = hmenu->pages[hmenu->current_page-1].properties[hmenu->current_property];
 		uint8_t propertyByte = activeProperty.packet_byte;
 		if (hmenu->state_packet[propertyByte] == activeProperty.num_options - 1)
 			hmenu->state_packet[propertyByte] = 0;
